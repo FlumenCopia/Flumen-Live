@@ -1,0 +1,46 @@
+/* ==== 
+ --------- (3.02) forms styles start ---------
+ ==== */
+
+// subscribe form
+.subscribe-form {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 164%;
+  max-width: 360px;
+  input {
+    flex-grow: 1;
+    padding: 22px 20px;
+    background-color: var(--primary-color);
+    border-radius: 40px;
+    color: var(--white);
+    width: calc(100% - 70px);
+  }
+  input::placeholder {
+    color: #b1b0b6; 
+    opacity: 1; 
+  }
+  
+  input:-webkit-autofill::placeholder {
+    color: #b1b0b6;  
+  }
+
+  
+  button {
+    @include box(70px);
+    background-color: var(--primary-color);
+    color: #b1b0b6;
+    font-size: 24px;
+  }
+}
+
+.input-single {
+  input {
+    color: black !important;
+  }
+}
+
+/* ==== 
+ --------- (3.02) forms styles end ---------
+ ==== */

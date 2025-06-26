@@ -1,0 +1,49 @@
+*   Trying 127.0.0.1:5173...
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0* Connected to localhost (127.0.0.1) port 5173 (#0)
+> GET / HTTP/1.1
+> Host: localhost:5173
+> User-Agent: curl/7.81.0
+> Accept: */*
+> 
+* Mark bundle as not supporting multiuse
+< HTTP/1.1 200 OK
+< Access-Control-Allow-Origin: *
+< Content-Type: text/html
+< Cache-Control: no-cache
+< Etag: W/"2c9-NSw3gGXsq4+anhQFz1ajgHUjBRY"
+< Date: Fri, 13 Dec 2024 05:15:21 GMT
+< Connection: keep-alive
+< Keep-Alive: timeout=5
+< Content-Length: 713
+< 
+{ [713 bytes data]
+100   713  100   713    0     0   163k      0 --:--:-- --:--:-- --:--:--  174k
+* Connection #0 to host localhost left intact
+<!doctype html>
+<html lang="en">
+
+<head>
+  <script type="module">
+import RefreshRuntime from "/@react-refresh"
+RefreshRuntime.injectIntoGlobalHook(window)
+window.$RefreshReg$ = () => {}
+window.$RefreshSig$ = () => (type) => type
+window.__vite_plugin_react_preamble_installed__ = true
+</script>
+
+  <script type="module" src="/@vite/client"></script>
+
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/images/logo-stoiii.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Best Freelancer In Trivandrum | STOIII</title>
+</head>
+
+<body class="fixed-header">
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+
+</html>
