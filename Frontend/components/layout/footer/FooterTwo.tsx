@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import JoinUs from "@/components/containers/JoinUs";
-import Logo from "public/images/logo.png";
+// import Logo from "public/images/logo.png";
 
 const FooterTwo = () => {
   const pathname = usePathname();
@@ -25,7 +25,7 @@ const FooterTwo = () => {
                 <div className="col-12 col-lg-7 col-xl-8">
                   <div className="footer-cmn__left text-center text-lg-start">
                     <a href="/" className="logo">
-                      <Image src={Logo} alt="Image" priority />
+                      {/* <Image src={Logo} alt="Image" priority /> */}
                     </a>
                     <div className="footer__nav-list">
                       <ul className="justify-content-center justify-content-lg-start">

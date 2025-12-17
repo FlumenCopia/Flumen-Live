@@ -4,13 +4,16 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import NavbarData from "@/public/data/navbar-data";
-import Logo from "public/images/flumen-logo-white.png";
-import LogoLight from "public/images/logo-three.png";
+// import Logo from "public/images/flumen-logo-white.png";
+// import LogoLight from "public/images/logo-three.png";
 
 type MobileMenuProps = {
   isMenuOpen: boolean;
   setIsMenuOpen: (value: boolean) => void;
 };
+
+const DEFAULT_LOGO = "/images/flumen-logo-regular.png";
+const LIGHT_LOGO = "/images/logo-three.png";
 
 const MobileMenu = ({ isMenuOpen, setIsMenuOpen }: MobileMenuProps) => {
   useEffect(() => {
@@ -24,12 +27,14 @@ const MobileMenu = ({ isMenuOpen, setIsMenuOpen }: MobileMenuProps) => {
     };
   }, [setIsMenuOpen]);
 
-  let logoSrc = Logo;
+ let logoSrc = DEFAULT_LOGO;
 
   const pathname = usePathname();
-  if (pathname === "/index-five" || pathname === "/index-six") {
-    logoSrc = LogoLight;
-  }
+
+
+if (pathname === "/index-five" || pathname === "/index-six") {
+  logoSrc = LIGHT_LOGO;
+}
 
   useEffect(() => {
     const parentItems = document.querySelectorAll(
@@ -56,7 +61,8 @@ const MobileMenu = ({ isMenuOpen, setIsMenuOpen }: MobileMenuProps) => {
           <div className="mobile-menu__header nav-fade">
             <div className="logo">
               <a href="/" aria-label="home page" title="logo">
-                <Image src={logoSrc} alt="Image" priority />
+                <Image src={logoSrc} alt="Image" width={180}
+      height={60} priority />
               </a>
             </div>
             <button

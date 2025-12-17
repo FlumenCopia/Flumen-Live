@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import Logo from "public/images/logo.png";
+// import Logo from "public/images/logo.png";
 
 const FooterFour = () => {
   const currentYear = new Date().getFullYear();
@@ -15,7 +15,7 @@ const FooterFour = () => {
                 <div className="col-12 col-lg-3">
                   <div className="footer__nav-logo text-center text-lg-start">
                     <a href="/" aria-label="home page" title="logo">
-                      <Image src={Logo} alt="Image" priority />
+                      {/* <Image src={Logo} alt="Image" priority /> */}
                     </a>
                   </div>
                 </div>

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Newsletter from "@/components/containers/Newsletter";
-import Logo from "public/images/logo-three.png";
+// import Logo from "public/images/logo-three.png";
 
 const FooterThree = () => {
   const currentYear = new Date().getFullYear();
@@ -17,7 +17,7 @@ const FooterThree = () => {
                 <div className="col-12 col-lg-4">
                   <div className="footer__nav-logo text-center text-lg-start">
                     <a href="/" aria-label="home page" title="logo">
-                      <Image src={Logo} alt="Image" priority />
+                      {/* <Image src={Logo} alt="Image" priority /> */}
                     </a>
                   </div>
                 </div>

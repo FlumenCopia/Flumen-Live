@@ -6,8 +6,8 @@ import Link from "next/link";
 import NavbarData from "@/public/data/navbar-data";
 import MobileMenu from "./MobileMenu";
 import OffcanvasInfo from "./OffcanvasInfo";
-import Logos from "public/images/flumen-logo-regular.png";
-import LogoLight from "public/images/logo-three.png";
+// import Logos from "public/images/flumen-logo-regular.png";
+// import LogoLight from "public/images/logo-three.png";
 import Search from "./Search";
 import SidebarCart from "./SidebarCart";
 
@@ -17,6 +17,9 @@ const Header = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const DEFAULT_LOGO = "/images/flumen-logo-regular.png";
+  const LIGHT_LOGO = "/images/logo-three.png";
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,12 +40,14 @@ const Header = () => {
     };
   }, [scrolled]);
 
-  let logoSrc = Logos;
+  let logoSrc = DEFAULT_LOGO;
 
   const pathname = usePathname();
-  if (pathname === "/index-five" || pathname === "/index-six") {
-    logoSrc = LogoLight;
-  }
+
+
+if (pathname === "/index-five" || pathname === "/index-six") {
+  logoSrc = LIGHT_LOGO;
+}
 
   const handleCart = () => {
     setIsCartOpen(true);
@@ -79,7 +84,8 @@ const Header = () => {
                 <nav className="navbar p-0">
                   <div className="navbar__logo" style={{width:'220px'}}>
                     <a href="/" aria-label="home page" title="logo">
-                      <Image src={logoSrc} alt="Image" priority />
+                      <Image src={logoSrc} alt="Image" width={180}
+      height={60} priority />
                     </a>
                   </div>
                   <div className="navbar__menu">

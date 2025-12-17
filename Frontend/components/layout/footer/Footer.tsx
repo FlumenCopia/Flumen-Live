@@ -4,9 +4,6 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import Image from "next/image";
 import Link from "next/link";
-import Logo from "public/images/flumen-logo-white.png";
-import ThumbOne from "public/images/footer/footer-img-1.jpg";
-import ThumbTwo from "public/images/footer/footer-img-2.jpg";
 import { color } from "framer-motion";
 
 const Footer = () => {
@@ -79,7 +76,9 @@ const Footer = () => {
                 <div className="col-12 col-lg-4">
                   <div className="footer__nav-logo text-center text-lg-start">
                     <a href="/" aria-label="home page" title="logo">
-                      <Image src={Logo} alt="Image" priority />
+                      <Image src="/images/flumen-logo-white.png" width={180}
+      height={60} alt="Image" priority />
+                      
                     </a>
                   </div>
                 </div>
@@ -166,10 +165,12 @@ const Footer = () => {
         </div>
       </div>
       <div className="footer-thumb-one">
-        <Image src={ThumbTwo} alt="Image" priority />
+        <Image src="/images/footer/footer-img-2.jpg" width={180}
+      height={60} alt="Image" priority />
       </div>
       <div className="footer-thumb-two">
-        <Image src={ThumbOne} alt="Image" priority />
+        <Image src="/images/footer/footer-img-1.jpg" width={180}
+      height={60} alt="Image" priority />
       </div>
     </footer>
   );
