@@ -1,5 +1,5 @@
 import Image from "next/image";
-import FooterTwoThumb from "public/images/footer/footer-two-thumb.png";
+// import FooterTwoThumb from "public/images/footer/footer-two-thumb.png";
 
 const Newsletter = () => {
   return (
@@ -36,8 +36,10 @@ const Newsletter = () => {
             </div>
           </div>
           <Image
-            src={FooterTwoThumb}
+            src="/images/footer/footer-two-thumb.png"
             alt="Image"
+            width={180}
+            height={60}
             priority
             className="thumber d-none d-md-block"
           />
