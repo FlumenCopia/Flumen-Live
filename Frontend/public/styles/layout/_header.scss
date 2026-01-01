@@ -5,7 +5,6 @@
 // LOGO BRAND COLORS
 $brand-yellow: #eefc25; 
 $brand-teal: #7da298;
-// $header-bg: #0b0d10;
 $header-bg: #1C342E;
 $header-border: rgba(255, 255, 255, 0.08);
 
@@ -17,16 +16,17 @@ $header-border: rgba(255, 255, 255, 0.08);
   right: 0px;
   width: 100%;
   z-index: 999;
-  background-color: $header-bg; // Dark background for logo visibility
+  background-color: $header-bg;
   border-bottom: 1px solid $header-border;
   transition: all 0.4s ease-in-out;
 
   .navbar {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 26px;
-    flex-wrap: wrap;
+    justify-content: space-between; 
+    flex-wrap: nowrap; 
+    gap: 15px; 
+    padding: 5px 0; // Default desktop padding
   }
 
   .navbar__menu {
@@ -45,39 +45,60 @@ $header-border: rgba(255, 255, 255, 0.08);
   .navbar__item {
     button,
     a {
-      padding: 41px 9px;
+      padding: 25px 12px;
       font-weight: 500;
       width: 100%;
-      color: #ffffff; // White text for dark background
+      color: #ffffff; 
       transition: color 0.3s ease;
+      &:hover { color: $brand-yellow; }
+    }
+  }
+
+  // ============================================
+  // MOBILE / TABLET SPECIFIC FIXES
+  // ============================================
+  @media (max-width: 1199px) {
+    .navbar {
+        // Keep padding tight so header doesn't get too tall
+        padding: 0px 0 !important; 
+    }
     
-      &:hover {
-        color: $brand-yellow; // Yellow highlight on hover
-      }
+    .navbar__logo {
+        // Allow logo container to take more width if needed
+        max-width: 75%; 
+        display: flex;
+        align-items: center;
+        
+        a {
+            display: block;
+            line-height: 0; 
+        }
+
+        img {
+            width: auto;
+            // UPDATED: Allow wider width so it doesn't squish
+            max-width: 220px !important; 
+            // UPDATED: Increased max-height from 38px to 52px for visibility
+            max-height: 65px !important; 
+            object-fit: contain;
+        }
+    }
+
+    .open-mobile-menu {
+        // Slightly larger icon to balance with larger logo
+        font-size: 30px !important; 
     }
   }
 
   .navbar__item--has-children {
     position: relative;
-
     &:hover {
       & > .navbar__dropdown-label {
         color: $brand-yellow;
-        &::after {
-          transform: rotate(180deg);
-          color: $brand-yellow;
-        }
-      }
-      & > .navbar__dropdown-label-sub {
-        &::after {
-          transform: rotate(-90deg);
-        }
+        &::after { transform: rotate(180deg); color: $brand-yellow; }
       }
       & > .navbar__sub-menu {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0px);
-        pointer-events: all;
+        opacity: 1; visibility: visible; transform: translateY(0px); pointer-events: all;
       }
     }
   }
@@ -104,7 +125,7 @@ $header-border: rgba(255, 255, 255, 0.08);
     left: 0px;
     min-width: 220px;
     max-width: 260px;
-    background-color: $header-bg; // Dark dropdown to match header
+    background-color: $header-bg; 
     border: 1px solid $header-border;
     opacity: 0;
     visibility: hidden;
@@ -114,293 +135,99 @@ $header-border: rgba(255, 255, 255, 0.08);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     padding: 20px 0px;
     border-radius: 6px;
-    
     z-index: 9;
-    &::before {
-      content: "";
-      position: absolute;
-      top: -5px;
-      left: 25px;
-      height: 15px;
-      width: 15px;
-      transform: rotate(45deg);
-      background-color: inherit;
-      border-top: 1px solid $header-border;
-      border-left: 1px solid $header-border;
-      transition: var(--transition);
-      z-index: -1;
-    }
 
-    li {
-      &:nth-last-of-type(1) {
-        a {
-          border-bottom: 0px;
-        }
-      }
-    }
-
-    a,
-    button {
+    a, button {
       width: 100%;
       display: flex;
       padding: 16px 40px;
-      color: #ffffff; // White text in dropdown
+      color: #ffffff; 
       position: relative;
       font-size: 14px;
       border-bottom: 1px solid $header-border;
-      &::before {
-        content: "";
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        left: 20px;
-        height: 1px;
-        width: 0px;
-        transition: var(--transition);
-        background-color: $brand-yellow;
-      }
-      &:hover {
-        color: $brand-yellow;
-        &::before {
-          width: 10px;
-        }
-      }
+      &:hover { color: $brand-yellow; }
     }
-
-    .navbar__item--has-children {
-      &:hover {
-        & > .navbar__dropdown-label-sub {
-          color: $brand-yellow;
-        }
-      }
-    }
-
-    .navbar__dropdown-label-sub {
-      &::before {
-        display: none;
-      }
-    }
-  }
-
-  .navbar__sub-menu__nested {
-    top: 0%;
-    left: 100%;
-    min-width: 220px;
-    &::before {
-      left: -5px;
-      top: 17px;
-      box-shadow: -2px 2px 4px rgba(0, 0, 0, 0.1);
-    }
-  }
-
-  .navbar__sub-menu-n {
-    display: none;
   }
 
   .navbar__options {
     display: flex;
     align-items: center;
-    gap: 40px;
+    gap: 20px;
     
-    // Icons
     button, i {
       color: #ffffff;
       transition: color 0.3s ease;
-      &:hover {
-        color: $brand-yellow;
-      }
+      &:hover { color: $brand-yellow; }
     }
   }
 
+  // Force hide extra icons on mobile
   .navbar__mobile-options {
-    display: flex;
-    align-items: center;
-    gap: 40px;
-    flex-wrap: wrap;
-    button,
-    .prevent-cart {
-      font-size: 24px;
-      color: #ffffff;
-      &:hover {
-        color: $brand-yellow;
-      }
-    }
+    display: none !important; 
   }
 
   .open-mobile-menu {
-    font-size: 30px;
+    font-size: 32px;
     color: #ffffff;
-    &:hover {
-      color: $brand-yellow;
-    }
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    &:hover { color: $brand-yellow; }
   }
 }
 
-@keyframes navLinkFade {
-  from {
-    opacity: 0;
-    transform: translateY(50px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes navLinkFadeReverse {
-  from {
-    opacity: 0;
-    transform: translateY(0px);
-  }
-
-  to {
-    opacity: 0;
-    transform: translateY(100%);
-  }
-}
-
-@keyframes stickyNavbar {
-  0% {
-    transform: translateY(-100%);
-  }
-  100% {
-    transform: translateY(0px);
-  }
-}
+// ... Animations ...
+@keyframes navLinkFade { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes navLinkFadeReverse { from { opacity: 0; transform: translateY(0px); } to { opacity: 0; transform: translateY(100%); } }
+@keyframes stickyNavbar { 0% { transform: translateY(-100%); } 100% { transform: translateY(0px); } }
 
 .navbar-active {
-  background-color: #1C342E; // Semi-transparent dark
-  backdrop-filter: blur(12px); // Glass effect
+  background-color: #1C342E; 
+  backdrop-filter: blur(12px); 
   -webkit-backdrop-filter: blur(12px);
   animation: stickyNavbar 0.9s ease-in-out;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-  border-bottom: 1px solid $brand-teal; // Subtle teal line at bottom when sticky
+  border-bottom: 1px solid $brand-teal; 
 }
 
-.home-five,
-.home-six {
+/* =========================================
+   Mobile Menu Styles
+   ========================================= */
+.mobile-menu {
+  background-color: $header-bg; 
+  .mobile-menu__wrapper { background-color: $header-bg; border-right: 1px solid $header-border; }
+  .mobile-menu__header {
+    border-bottom: 1px solid $header-border;
+    .close-mobile-menu { color: #ffffff; &:hover { color: $brand-yellow; } }
+  }
+  .navbar__list > li {
+    border-bottom: 1px solid $header-border; 
+    &:first-child { border-top: 1px solid $header-border; }
+    a, button { color: #ffffff; &:hover { color: $brand-yellow; } }
+    &.navbar__item-active > a { color: $brand-yellow; }
+  }
+  .navbar__dropdown-label::after { color: #ffffff; border-left: 1px solid $header-border; }
+  .navbar__sub-menu {
+    background-color: rgba(0, 0, 0, 0.2); 
+    li a, li button { color: #b0b0b0; &:hover { color: $brand-yellow; } }
+    li:last-child a { border-bottom: none; }
+  }
+  .mobile-menu__backdrop { background-color: rgba(0, 0, 0, 0.7); backdrop-filter: blur(4px); }
+}
+
+// ... Home variants (home-five, etc) ...
+.home-five, .home-six {
   .primary-navbar {
     border-bottom: 1px solid #ebebec;
-    background-color: #ffffff; // Reset to white for these specific home versions if needed
-    .navbar__list {
-      border: 1px solid #ebebec;
-      border-top: 0px;
-      border-bottom: 0px;
-    }
-    .navbar__item {
-      button,
-      a {
-        color: #191b1a;
-        &:hover {
-          color: #000000 !important;
-        }
-      }
-      &:hover {
-        a,
-        button {
-          color: #000000;
-        }
-      }
-    }
-
-    .navbar__mobile-options {
-      button {
-        color: #191b1a;
-        &:hover {
-          color: #000000 !important;
-        }
-      }
-    }
-
-    .open-mobile-menu {
-      color: #191b1a;
-      &:hover {
-        color: #000000 !important;
-      }
-    }
+    background-color: #ffffff;
+    .navbar__list { border: 1px solid #ebebec; border-top: 0px; border-bottom: 0px; }
+    .navbar__item button, .navbar__item a { color: #191b1a; &:hover { color: #000000 !important; } }
+    .open-mobile-menu { color: #191b1a; &:hover { color: #000000 !important; } }
   }
-
-  .navbar-active {
-    background-color: white;
-  }
-
-  .mobile-menu {
-    background-color: white;
-  }
-  .mobile-menu .mobile-menu__wrapper {
-    background-color: white;
-  }
-
-  .mobile-menu .navbar__list > li {
-    button,
-    a {
-      border-bottom: 1px solid #ebebec;
-    }
-  }
-
-  .mobile-menu .navbar__list > li:nth-of-type(1) {
-    border-top: 1px solid #ebebec;
-  }
-
-  .mobile-menu .navbar__item--has-children .navbar__dropdown-label::after {
-    border-left: 1px solid #ebebec;
-  }
-
-  .mobile-menu .navbar__item-active {
-    color: #000000 !important;
-  }
-
-  .mobile-menu .navbar__sub-menu li:nth-last-of-type(1) a,
-  .mobile-menu .navbar__sub-menu li:nth-last-of-type(1) button {
-    border-bottom: 1px solid #ebebec;
-  }
-
-  .mobile-menu .navbar__sub-menu {
-    box-shadow: none !important;
-  }
-
-  .mobile-menu .close-mobile-menu {
-    color: #000000 !important;
-    &:hover {
-      color: #000000 !important;
-    }
-  }
-  .mobile-menu__backdrop {
-    background-color: rgba(0, 0, 0, 0.67);
-  }
+  .navbar-active { background-color: white; }
+  .mobile-menu, .mobile-menu .mobile-menu__wrapper { background-color: white; }
+  .mobile-menu .navbar__list > li a { border-bottom: 1px solid #ebebec; color: #191b1a; }
+  .mobile-menu .close-mobile-menu { color: #000000 !important; }
 }
 
-.home-seven {
-  .primary-navbar {
-    border-color: rgba(255, 255, 255, 0.05);
-
-    .navbar__list {
-      border-color: rgba(255, 255, 255, 0.05);
-    }
-  }
-}
-
-// Active States using the new Yellow
-.active-it {
-  color: $brand-yellow !important;
-}
-
-.active-sub {
-  color: $brand-yellow !important;
-  &::before {
-    width: 10px !important;
-    background-color: $brand-yellow !important;
-  }
-}
-
-.active-parent > button {
-  color: $brand-yellow !important;
-}
-
-.active-parent > .navbar__dropdown-label-sub {
-  color: $brand-yellow !important;
-}
-/* ==== 
- --------- (4.01) header styles end ---------
- ==== */
+.active-it, .active-sub, .active-parent > button { color: $brand-yellow !important; }

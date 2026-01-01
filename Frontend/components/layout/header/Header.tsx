@@ -1,13 +1,11 @@
 "use client";
+
 import { useState, useEffect, Fragment } from "react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
-import Link from "next/link";
 import NavbarData from "@/public/data/navbar-data";
 import MobileMenu from "./MobileMenu";
 import OffcanvasInfo from "./OffcanvasInfo";
-// import Logos from "public/images/flumen-logo-regular.png";
-// import LogoLight from "public/images/logo-three.png";
 import Search from "./Search";
 import SidebarCart from "./SidebarCart";
 
@@ -17,136 +15,82 @@ const Header = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-  // const DEFAULT_LOGO = "/images/flumen-logo-regular.png";
-  const DEFAULT_LOGO = "/images/flumenx-logo.png";
+
+  const DEFAULT_LOGO = "/images/flumenx-logo2.png";
   const LIGHT_LOGO = "/images/logo-three.png";
-
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      if (scrollPosition > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    handleScroll();
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [scrolled]);
-
-  let logoSrc = DEFAULT_LOGO;
 
   const pathname = usePathname();
 
-
-if (pathname === "/index-five" || pathname === "/index-six") {
-  logoSrc = LIGHT_LOGO;
-}
-
-  const handleCart = () => {
-    setIsCartOpen(true);
-  };
-
-  const handleSearch = () => {
-    setIsSearchOpen(true);
-  };
-
-  const handleOffCanvas = () => {
-    setIsOpen(true);
-  };
+  /* Scroll detection */
   useEffect(() => {
-    const parentItems = document.querySelectorAll(
-      ".navbar__item--has-children"
-    );
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-    parentItems.forEach((parentItem) => {
-      const childItems = parentItem.querySelectorAll(".active-sub");
+  const logoSrc =
+    pathname === "/index-five" || pathname === "/index-six"
+      ? LIGHT_LOGO
+      : DEFAULT_LOGO;
 
-      if (childItems.length > 0) {
-        parentItem.classList.add("active-parent");
-      }
-    });
+  /* Active parent detection */
+  useEffect(() => {
+    document
+      .querySelectorAll(".navbar__item--has-children")
+      .forEach((item) => {
+        if (item.querySelector(".active-sub")) {
+          item.classList.add("active-parent");
+        }
+      });
   }, []);
 
   return (
     <>
       <header className="header">
-        <div className={"primary-navbar" + (scrolled ? " navbar-active" : " ")}>
+        <div className={`primary-navbar ${scrolled ? "navbar-active" : ""}`}>
           <div className="container">
-            <div className="row">
-              <div className="col-12">
-                <nav className="navbar p-0">
-                  <div className="navbar__logo" style={{ width: 'auto', minWidth: '240px' }}>
-  <a href="/" aria-label="home page" title="logo">
-    <Image 
-      src={logoSrc} 
-      alt="Image" 
-      // Increased width to maintain aspect ratio of the new logo
-      width={220} 
-      // Adjusted height slightly if needed (or keep 60 if it fits your navbar height)
-      height={55} 
-      priority 
-      style={{ objectFit: 'contain' }} // Ensures logo doesn't distort
-    />
-  </a>
-</div>
-                  <div className="navbar__menu">
-                    <ul className="navbar__list">
-                      {NavbarData.map((item, index) => {
-                        return <MenuItem key={index} item={item} />;
-                      })}
-                    </ul>
-                  </div>
-                  <div className="navbar__options">
-                    <div className="navbar__mobile-options">
-                      <button
-                        className="open-cart"
-                        aria-label="selected products"
-                        title=" enquire now"
-                        onClick={handleCart}
-                      >
-                        <i className="fa fa-message"></i>
-                      </button>
-                      <button
-                        className="open-search"
-                        aria-label="search products"
-                        title="open search box"
-                        onClick={handleSearch}
-                      >
-                        <i className="fa fa-search"></i>
-                      </button>
-                      <button
-                        className="open-offcanvas"
-                        aria-label="open offcanvas"
-                        title="Contact now"
-                        onClick={handleOffCanvas}
-                      >
-                        <i className="fa-solid fa-circle-info" style={{fontSize:'26px'}}></i>
-                      </button>
-                    </div>
-                    <button
-                      className="open-mobile-menu d-flex d-xl-none"
-                      onClick={() => setIsMenuOpen(!isMenuOpen)}
-                      aria-label="toggle mobile menu"
-                      title="open mobile menu"
-                    >
-                      <i className="material-symbols-outlined">menu_open</i>
-                    </button>
-                  </div>
-                </nav>
+            <nav className="navbar">
+              {/* Logo */}
+              <div className="navbar__logo">
+                <a href="/" aria-label="Home">
+                  <Image
+                    src={logoSrc}
+                    alt="Logo"
+                    width={270}
+                    height={68}
+                    priority
+                    style={{ objectFit: "contain" }}
+                  />
+                </a>
               </div>
-            </div>
+
+              {/* Desktop menu */}
+              <div className="navbar__menu d-none d-xl-flex">
+                <ul className="navbar__list">
+                  {NavbarData.map((item, index) => (
+                    <MenuItem key={index} item={item} />
+                  ))}
+                </ul>
+              </div>
+
+              {/* Right options */}
+              <div className="navbar__options">
+                <button
+                  className="open-mobile-menu d-flex d-xl-none"
+                  onClick={() => setIsMenuOpen(!isMenuOpen)}
+                  aria-label="Open mobile menu"
+                >
+                  <i className="material-symbols-outlined">menu_open</i>
+                </button>
+              </div>
+            </nav>
           </div>
+
           <MobileMenu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
         </div>
       </header>
+
       <SidebarCart isCartOpen={isCartOpen} setIsCartOpen={setIsCartOpen} />
       <Search isSearchOpen={isSearchOpen} setIsSearchOpen={setIsSearchOpen} />
       <OffcanvasInfo isOpen={isOpen} setIsOpen={setIsOpen} />
@@ -156,40 +100,38 @@ if (pathname === "/index-five" || pathname === "/index-six") {
 
 export default Header;
 
-// menu item
+/* =========================
+   Menu Components
+   ========================= */
+
 const MenuItem = ({ item }: any) => {
   const pathname = usePathname();
+
   return item.submenu ? (
-    <li className="navbar__item navbar__item--has-children nav-fade">
-      <button aria-label="dropdown menu" className="navbar__dropdown-label">
-        {item.title}
-      </button>
+    <li className="navbar__item navbar__item--has-children">
+      <button className="navbar__dropdown-label">{item.title}</button>
       <ul className="navbar__sub-menu">
-        {item.submenu?.map((subItem: any, index: number) => {
-          return (
-            <Fragment key={index}>
-              {subItem.subInSub ? (
-                <SubDropdown subItem={subItem} key={index} />
-              ) : (
-                <li key={index}>
-                  <a
-                    href={`${subItem.path}`}
-                    className={pathname === subItem.path ? " active-sub" : " "}
-                  >
-                    {subItem.title}
-                  </a>
-                </li>
-              )}
-            </Fragment>
-          );
-        })}
+        {item.submenu.map((sub: any, i: number) =>
+          sub.subInSub ? (
+            <SubDropdown key={i} subItem={sub} />
+          ) : (
+            <li key={i}>
+              <a
+                href={sub.path}
+                className={pathname === sub.path ? "active-sub" : ""}
+              >
+                {sub.title}
+              </a>
+            </li>
+          )
+        )}
       </ul>
     </li>
   ) : (
-    <li className="navbar__item nav-fade">
+    <li className="navbar__item">
       <a
-        href={`${item.path}`}
-        className={pathname === item.path ? " active-it" : " "}
+        href={item.path}
+        className={pathname === item.path ? "active-it" : ""}
       >
         {item.title}
       </a>
@@ -197,25 +139,22 @@ const MenuItem = ({ item }: any) => {
   );
 };
 
-// sub dropdown
 const SubDropdown = ({ subItem }: any) => {
   const pathname = usePathname();
+
   return (
     <li className="navbar__item navbar__item--has-children">
-      <button
-        aria-label="dropdown menu"
-        className="navbar__dropdown-label navbar__dropdown-label-sub"
-      >
+      <button className="navbar__dropdown-label navbar__dropdown-label-sub">
         {subItem.title}
       </button>
       <ul className="navbar__sub-menu navbar__sub-menu__nested">
-        {subItem.subInSub?.map((subInSubItem: any, index: number) => (
-          <li key={index}>
+        {subItem.subInSub.map((child: any, i: number) => (
+          <li key={i}>
             <a
-              href={subInSubItem.path}
-              className={pathname === subInSubItem.path ? " active-sub" : " "}
+              href={child.path}
+              className={pathname === child.path ? "active-sub" : ""}
             >
-              {subInSubItem.title}
+              {child.title}
             </a>
           </li>
         ))}

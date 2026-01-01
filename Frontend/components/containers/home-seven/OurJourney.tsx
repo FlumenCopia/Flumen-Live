@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Counter from "../Counter"
-import one from "@/public/images/flumen-icon.png";
+import one from "@/public/images/flumenx-icon.png";
 import two from "@/public/images/about-us.jpg";
 import framer from "@/public/images/enquire-frame1.png";
 
