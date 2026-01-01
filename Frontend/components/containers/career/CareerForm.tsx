@@ -11,7 +11,7 @@ const CareerForm = () => {
           <div className="col-12">
             <div className="section__header">
               <h2 className="text-center text-white title-animation mt-5 " style={{fontSize:'30px', lineHeight:'38px', fontWeight:'500'}}>
-                Apply To Join Flumencopia
+                Apply To Join FlumenX
               </h2>
             </div>
           </div>

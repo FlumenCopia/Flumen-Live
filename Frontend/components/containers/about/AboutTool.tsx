@@ -19,7 +19,7 @@ const AboutTool = () => {
               What Makes Us Unique
               </h2>
               <p style={{color:'black'}}>
-              At FLUMENCOPIA, we believe that exceptional results come from a unique approach. Here is what sets us apart in the world of digital marketing and web development:
+              At FlumenX, we believe that exceptional results come from a unique approach. Here is what sets us apart in the world of digital marketing and web development:
               </p>
             </div>
           </div>

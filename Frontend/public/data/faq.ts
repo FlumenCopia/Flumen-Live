@@ -17,7 +17,7 @@ export const faqData = [
   {
     id: 4,
     question: "Can you Measure Social Media Results?",
-    content: "At FlumenCopia, we effectively monitor your social media performance and engagement using specialized analytics tools designed for social platforms. We track key metrics such as likes, shares, comments, reach, and impressions to assess how well our content resonates with your audience. By focusing on engagement rates and setting specific campaign goals, we can evaluate our success and refine our strategies in real time." 
+    content: "At FlumenX, we effectively monitor your social media performance and engagement using specialized analytics tools designed for social platforms. We track key metrics such as likes, shares, comments, reach, and impressions to assess how well our content resonates with your audience. By focusing on engagement rates and setting specific campaign goals, we can evaluate our success and refine our strategies in real time." 
   },
   
   // {

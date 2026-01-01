@@ -2,6 +2,13 @@
  --------- (4.01) header styles start ---------
  ==== */
 
+// LOGO BRAND COLORS
+$brand-yellow: #eefc25; 
+$brand-teal: #7da298;
+// $header-bg: #0b0d10;
+$header-bg: #1C342E;
+$header-border: rgba(255, 255, 255, 0.08);
+
 //  header
 .primary-navbar {
   position: fixed;
@@ -10,7 +17,10 @@
   right: 0px;
   width: 100%;
   z-index: 999;
-  border-bottom: 1px solid #3d3b4b;
+  background-color: $header-bg; // Dark background for logo visibility
+  border-bottom: 1px solid $header-border;
+  transition: all 0.4s ease-in-out;
+
   .navbar {
     display: flex;
     align-items: center;
@@ -27,7 +37,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid #3d3b4b;
+    border: 1px solid $header-border;
     border-top: 0px;
     border-bottom: 0px;
   }
@@ -38,9 +48,11 @@
       padding: 41px 9px;
       font-weight: 500;
       width: 100%;
+      color: #ffffff; // White text for dark background
+      transition: color 0.3s ease;
     
       &:hover {
-        color: var(--primary-color);
+        color: $brand-yellow; // Yellow highlight on hover
       }
     }
   }
@@ -50,9 +62,10 @@
 
     &:hover {
       & > .navbar__dropdown-label {
-        color: var(--primary-color);
+        color: $brand-yellow;
         &::after {
           transform: rotate(180deg);
+          color: $brand-yellow;
         }
       }
       & > .navbar__dropdown-label-sub {
@@ -72,6 +85,7 @@
   .navbar__dropdown-label {
     position: relative;
     justify-content: space-between;
+    color: #ffffff;
     &::after {
       font-family: "bootstrap-icons";
       font-weight: 600;
@@ -80,6 +94,7 @@
       transition: transform 0.3s ease-in-out;
       font-size: 12px;
       transform: rotate(0deg);
+      margin-left: 6px;
     }
   }
 
@@ -89,13 +104,14 @@
     left: 0px;
     min-width: 220px;
     max-width: 260px;
-    background-color: var(--white);
+    background-color: $header-bg; // Dark dropdown to match header
+    border: 1px solid $header-border;
     opacity: 0;
     visibility: hidden;
     transform: translateY(30px);
     pointer-events: none;
     transition: var(--transition);
-    box-shadow: 0 0 31px rgba(0, 0, 0, 0.345);;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     padding: 20px 0px;
     border-radius: 6px;
     
@@ -109,6 +125,8 @@
       width: 15px;
       transform: rotate(45deg);
       background-color: inherit;
+      border-top: 1px solid $header-border;
+      border-left: 1px solid $header-border;
       transition: var(--transition);
       z-index: -1;
     }
@@ -126,10 +144,10 @@
       width: 100%;
       display: flex;
       padding: 16px 40px;
-      color: var(--black);
+      color: #ffffff; // White text in dropdown
       position: relative;
       font-size: 14px;
-      border-bottom: 1px solid #cecece7a;
+      border-bottom: 1px solid $header-border;
       &::before {
         content: "";
         position: absolute;
@@ -139,10 +157,10 @@
         height: 1px;
         width: 0px;
         transition: var(--transition);
-        background-color: #1f1c2f;
+        background-color: $brand-yellow;
       }
       &:hover {
-        color: #1f1c2f;
+        color: $brand-yellow;
         &::before {
           width: 10px;
         }
@@ -152,7 +170,7 @@
     .navbar__item--has-children {
       &:hover {
         & > .navbar__dropdown-label-sub {
-          color: #1f1c2f;
+          color: $brand-yellow;
         }
       }
     }
@@ -183,6 +201,15 @@
     display: flex;
     align-items: center;
     gap: 40px;
+    
+    // Icons
+    button, i {
+      color: #ffffff;
+      transition: color 0.3s ease;
+      &:hover {
+        color: $brand-yellow;
+      }
+    }
   }
 
   .navbar__mobile-options {
@@ -193,18 +220,18 @@
     button,
     .prevent-cart {
       font-size: 24px;
-      color: var(--quinary-color);
+      color: #ffffff;
       &:hover {
-        color: var(--primary-color);
+        color: $brand-yellow;
       }
     }
   }
 
   .open-mobile-menu {
     font-size: 30px;
-    color: var(--quinary-color);
+    color: #ffffff;
     &:hover {
-      color: var(--primary-color);
+      color: $brand-yellow;
     }
   }
 }
@@ -243,15 +270,19 @@
 }
 
 .navbar-active {
-  background-color: white;
+  background-color: #1C342E; // Semi-transparent dark
+  backdrop-filter: blur(12px); // Glass effect
+  -webkit-backdrop-filter: blur(12px);
   animation: stickyNavbar 0.9s ease-in-out;
-  box-shadow: var(--shadow);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid $brand-teal; // Subtle teal line at bottom when sticky
 }
 
 .home-five,
 .home-six {
   .primary-navbar {
     border-bottom: 1px solid #ebebec;
+    background-color: #ffffff; // Reset to white for these specific home versions if needed
     .navbar__list {
       border: 1px solid #ebebec;
       border-top: 0px;
@@ -350,24 +381,25 @@
   }
 }
 
+// Active States using the new Yellow
 .active-it {
-  color: var(--primary-color) !important;
+  color: $brand-yellow !important;
 }
 
 .active-sub {
-  color: #b1b0b6 !important;
+  color: $brand-yellow !important;
   &::before {
     width: 10px !important;
-    background-color: #b1b0b6 !important;
+    background-color: $brand-yellow !important;
   }
 }
 
 .active-parent > button {
-  color: var(--primary-color) !important;
+  color: $brand-yellow !important;
 }
 
 .active-parent > .navbar__dropdown-label-sub {
-  color: #b1b0b6 !important;
+  color: $brand-yellow !important;
 }
 /* ==== 
  --------- (4.01) header styles end ---------

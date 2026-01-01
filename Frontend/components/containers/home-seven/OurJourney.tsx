@@ -18,7 +18,7 @@ const OurJourney = () => {
                with Innovation
               </h2>
               <p>
-              Flumencopia is a digital marketing and web development agency based in Trivandrum, dedicated to transforming
+              FlumenX is a digital marketing and web development agency based in Trivandrum, dedicated to transforming
               your business into a digital powerhouse. With a passion for innovation and a commitment to excellence, we craft
               tailored strategies that drive growth, enhance brand visibility, and deliver measurable results. Join us on a
               journey to digital success!

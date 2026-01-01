@@ -61,7 +61,7 @@ const Review = () => {
               <SwiperSlide> 
                 <div className="review__slider-single">
                   <p style={{color:'#b1b0b6'}}>
-                  Flumencopia&apos;s strategic creativity boosted our online presence. Their responsiveness and results make them a top choice for digital marketing.
+                  FlumenX&apos;s strategic creativity boosted our online presence. Their responsiveness and results make them a top choice for digital marketing.
                   </p>
                   <div className="review__meta">
                     <div className="content">
@@ -101,7 +101,7 @@ const Review = () => {
                 <div className="review__slider-single">
                   <p style={{color:'#b1b0b6'}}>
                   best services for digital marketing.and well experience employees
-                  Flumencopia is best digital marketing company in trivandrum
+                  FlumenX is best digital marketing company in trivandrum
                   </p>
                   <div className="review__meta">
                     <div className="content">

@@ -20,7 +20,7 @@ function Video_details() {
               <div className="text-group slide-top">
                 <p>
                 Bring Your Vision to Life with Professional Video Production.
-                At Flumencopia, we specialize in creating high-quality, impactful videos that capture attention and
+                At FlumenX, we specialize in creating high-quality, impactful videos that capture attention and
                 tell your story. Whether it&apos;s promotional content, corporate storytelling, or event coverage, our team
                 ensures every frame reflects your brand&apos;s essence.
                 </p>

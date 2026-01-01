@@ -23,12 +23,12 @@ const NextLevel = () => {
                Discover Our Story
               </h2>
               <p>
-              Flumencopia is a forward-thinking digital marketing and web development agency located in Kerala. We are dedicated to
+              FlumenX is a forward-thinking digital marketing and web development agency located in Kerala. We are dedicated to
               empowering businesses by harnessing the power of innovative technology and creative strategy. Our approach integrates
               cutting-edge design with data-driven insights to craft customized solutions that not only drive growth but also elevate
               your online presence. </p> 
               <p> From building responsive websites that captivate and engage users to executing comprehensive digital
-              marketing campaigns that boost visibility and performance, Flumencopia is committed to delivering results that make a
+              marketing campaigns that boost visibility and performance, FlumenX is committed to delivering results that make a
               tangible difference.</p>
               <p> Our team of experts collaborates closely with clients to understand their unique goals and challenges,
               ensuring that every solution we provide is tailored to achieve success in the ever-evolving digital landscape.

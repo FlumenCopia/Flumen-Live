@@ -17,7 +17,8 @@ const Header = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const DEFAULT_LOGO = "/images/flumen-logo-regular.png";
+  // const DEFAULT_LOGO = "/images/flumen-logo-regular.png";
+  const DEFAULT_LOGO = "/images/flumenx-logo.png";
   const LIGHT_LOGO = "/images/logo-three.png";
 
 
@@ -82,12 +83,20 @@ if (pathname === "/index-five" || pathname === "/index-six") {
             <div className="row">
               <div className="col-12">
                 <nav className="navbar p-0">
-                  <div className="navbar__logo" style={{width:'220px'}}>
-                    <a href="/" aria-label="home page" title="logo">
-                      <Image src={logoSrc} alt="Image" width={180}
-      height={60} priority />
-                    </a>
-                  </div>
+                  <div className="navbar__logo" style={{ width: 'auto', minWidth: '240px' }}>
+  <a href="/" aria-label="home page" title="logo">
+    <Image 
+      src={logoSrc} 
+      alt="Image" 
+      // Increased width to maintain aspect ratio of the new logo
+      width={220} 
+      // Adjusted height slightly if needed (or keep 60 if it fits your navbar height)
+      height={55} 
+      priority 
+      style={{ objectFit: 'contain' }} // Ensures logo doesn't distort
+    />
+  </a>
+</div>
                   <div className="navbar__menu">
                     <ul className="navbar__list">
                       {NavbarData.map((item, index) => {

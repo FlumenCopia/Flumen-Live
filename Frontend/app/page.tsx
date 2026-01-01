@@ -26,8 +26,8 @@ import ImgStrip from "@/components/containers/home/ImgStrip";
 
 
 export const metadata: Metadata = {
-  title: "Digital Marketing Agency In Trivandrum,Kerala | Flumencopia",
-  description: "Elevate your business with Flumencopia,a leading digital marketing company in Trivandrum, Kerala. Expert strategies to grow your online presence.",
+  title: "Digital Marketing Agency In Trivandrum,Kerala | FlumenX",
+  description: "Elevate your business with FlumenX,a leading digital marketing company in Trivandrum, Kerala. Expert strategies to grow your online presence.",
   keywords: [    "digital marketing",
     "digital marketing agency",
     "online marketing",
@@ -40,6 +40,7 @@ export const metadata: Metadata = {
     "online presence",
     "business growth",
     "Flumencopia",
+    "FlumenX",
     "content marketing",
     "PPC",
     "branding",
@@ -62,7 +63,7 @@ const page = () => {
             {/* <ServiceSlider /> */}
             <Partner />
             <Why_choose_us />
-            <VideoSection />
+            {/* <VideoSection /> */}
             <GenerationTwo />
             <PricingPlan />
             <Review />

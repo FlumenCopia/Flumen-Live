@@ -11,10 +11,10 @@ const UnlockSection = () => {
             <div className="section__content">
               <span className="sub-title">Why Choose Us</span>
               <h2 className="title title-animation">
-              Why Flumencopia?
+              Why FlumenX?
               </h2>
               <p>
-              At Flumencopia, we are passionate about helping your business thrive in the digital world. Although we are newer to the industry, our dedicated team brings fresh ideas and innovative solutions to every project. We combine creativity, technology, and strategic thinking to deliver results that make a difference. Our client-centric approach ensures that each project is personalized to meet your unique needs and goals.
+              At FlumenX, we are passionate about helping your business thrive in the digital world. Although we are newer to the industry, our dedicated team brings fresh ideas and innovative solutions to every project. We combine creativity, technology, and strategic thinking to deliver results that make a difference. Our client-centric approach ensures that each project is personalized to meet your unique needs and goals.
               </p>
             </div>
           </div>

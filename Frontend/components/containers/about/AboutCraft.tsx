@@ -58,7 +58,7 @@ const AboutCraft = () => {
             Our Vision: Driving Innovation and Success
             </h2>
             <p>
-            FlumenCopia, one of the leading digital marketing companies in Kerala, was launched with the vision of helping clients achieve the highest levels of success through uniquely creative ideas and strategies. We have assembled a highly motivated team of outstanding marketers, designers, advertising professionals, and storytellers, all with one distinct objective in mind: to expand customer interaction and traffic, thereby increasing the popularity, revenue, and growth of your business.
+            FlumenX, one of the leading digital marketing companies in Kerala, was launched with the vision of helping clients achieve the highest levels of success through uniquely creative ideas and strategies. We have assembled a highly motivated team of outstanding marketers, designers, advertising professionals, and storytellers, all with one distinct objective in mind: to expand customer interaction and traffic, thereby increasing the popularity, revenue, and growth of your business.
             </p>
           </div>
         </div>

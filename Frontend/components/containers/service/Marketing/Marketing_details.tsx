@@ -19,7 +19,7 @@ function Marketing_details() {
               </div>
               <div className="text-group slide-top">
                 <p>
-                Partnering with FlumenCopia will maximize the potential of digital marketing like no other in the market. 
+                Partnering with FlumenX will maximize the potential of digital marketing like no other in the market. 
                 From the moment you work with us, you&apos;ll notice the change. Our dedicated team will conduct a comprehensive
                 analysis to help you identify areas where your business can grow. <br/></p>
                 <p>We pride ourselves on our open communication 

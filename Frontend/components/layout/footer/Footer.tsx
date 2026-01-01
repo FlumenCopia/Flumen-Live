@@ -55,7 +55,7 @@ const Footer = () => {
           <div className="col-12 col-md-9 col-lg-9 col-xl-10 col-xxl-9">
             <div className="footer__content text-center">
               <h2 className="light-title fw-7 title-animation">
-                Embrace The Future with <span style={{color:'#57efe0'}}>FlumenCopia</span>
+                Embrace The Future with <span style={{color:'#57efe0'}}>FlumenX</span>
               </h2>
               <div className="footer__content-cta">
                 <a href="/contact-us" className="btn btn--primary">
@@ -122,7 +122,7 @@ const Footer = () => {
                     <p style={{color:'var(--quinary-color)'}}>
                       Copyright &copy;{" "}
                       <span id="copyrightYear">{currentYear}</span>{" "}
-                      <a href="/" className='link_copyright'>FlumenCopia</a>. All Rights Reserved
+                      <a href="/" className='link_copyright'>FlumenX</a>. All Rights Reserved
                     </p>
                   </div>
                 </div>
