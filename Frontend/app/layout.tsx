@@ -1,10 +1,18 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local"; // Import localFont
+import localFont from "next/font/local"; 
+import { Inter } from "next/font/google"; 
 import "@/public/styles/main.scss";
 
-// Configure the local font
+// 2. Configure Inter for body text
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+// 3. Configure Orlean for Headings only
 const orlean = localFont({
-  src: "./fonts/Orlean.ttf", // Path relative to this layout file
+  src: "./fonts/Orlean.ttf",
   variable: "--font-orlean",
   display: "swap",
 });
@@ -24,8 +32,8 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/images/flumen-favicon.png"/>
       </head>
-      {/* Apply the variable to the body */}
-      <body className={`${orlean.variable}`}>
+      {/* 4. Add BOTH variables to the class list */}
+      <body className={`${inter.variable} ${orlean.variable}`}>
         {children}
       </body>
     </html>

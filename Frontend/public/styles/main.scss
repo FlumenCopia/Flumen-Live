@@ -123,6 +123,15 @@
 // responsive styles
 @import "./responsive";
 
+/* 1. Set the default text to Inter so it is readable and spacious */
 body {
+  font-family: var(--font-inter), sans-serif; 
+  line-height: 1.6; /* Adds breathing room to text */
+}
+
+/* 2. Force Headings to use Orlean */
+h1, h2, h3, h4, h5, h6, .brand-text {
   font-family: var(--font-orlean), sans-serif;
+  font-weight: normal; /* Display fonts often don't need bold weight */
+  letter-spacing: 1px; /* Optional: Adds a tiny bit of space to the title */
 }
