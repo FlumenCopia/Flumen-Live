@@ -417,7 +417,7 @@
     .l-t {
       -webkit-text-fill-color: transparent;
       -webkit-text-stroke: 2px #dedee1;
-      font-family: sans-serif;
+      font-family: var(--font-orlean), sans-serif;
     }
 
     .swiper-wrapper {
