@@ -122,3 +122,7 @@
 
 // responsive styles
 @import "./responsive";
+
+body {
+  font-family: var(--font-orlean), sans-serif;
+}
