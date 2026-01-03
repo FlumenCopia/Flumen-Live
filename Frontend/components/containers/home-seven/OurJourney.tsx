@@ -14,8 +14,7 @@ const OurJourney = () => {
             <div className="section__content">
             <span className="sub-title">About us</span>
               <h2 className="title mt-12 title-animation">
-               Empowering Your <span className="text-primary">Digital Future </span>
-               with Innovation
+               Empowering Your Digital Future with Innovation
               </h2>
               <p>
               FlumenX is a digital marketing and web development agency based in Trivandrum, dedicated to transforming

@@ -12,7 +12,7 @@ Graphicdesigning = () => {
             <div className="section__content">
               <span className="sub-title">IT Solutions</span>
               <h2 className="title title-animation">
-              Expert Web Development for Powerful, Responsive Sites
+              Expert Web Development for Powerful, Responsive Websites
               </h2>
               <p>
               Create a stunning online presence with our expert web development services. We build responsive, user-friendly

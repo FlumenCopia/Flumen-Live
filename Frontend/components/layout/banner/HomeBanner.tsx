@@ -86,7 +86,7 @@ const HomeBanner = () => {
           <div className="col-12 col-sm-8 col-md-7 col-lg-7 col-xxl-6">
             <div className="banner__content text-center">
               <h1 className="">
-                Elevate Your<span>Brand</span> With{" "}
+                Elevate Your<span>&nbsp;Brand</span> With{" "}
                 <span className="banner-anime .outline-title" style={{color:'#116265', }}>FlumenX</span>
               </h1>
             </div>
