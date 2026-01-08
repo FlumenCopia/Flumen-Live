@@ -130,8 +130,12 @@ body {
 }
 
 /* 2. Force Headings to use Orlean */
-h1, h2, h3, h4, h5, h6, .brand-text {
+ h2, h3, h4, h5, h6, .brand-text {
   font-family: var(--font-orlean), sans-serif;
   font-weight: normal; /* Display fonts often don't need bold weight */
   letter-spacing: 1px; /* Optional: Adds a tiny bit of space to the title */
+}
+
+h1, .brand-text{
+    font-family: var(--font-inter), sans-serif;
 }
