@@ -53,7 +53,7 @@ const page = () => {
           <Header/>
           <main>
             <HomeBanner />
-            <TextSlider />
+            {/* <TextSlider /> */}
             <OurJourney />
             <TextSliderLarge />
             <Tools />
