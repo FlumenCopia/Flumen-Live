@@ -45,6 +45,24 @@ const Header = () => {
       });
   }, []);
 
+  useEffect(() => {
+  const header = document.querySelector(".primary-navbar") as HTMLElement;
+  if (!header) return;
+
+  const setHeaderHeight = () => {
+    document.documentElement.style.setProperty(
+      "--header-height",
+      `${header.offsetHeight}px`
+    );
+  };
+
+  setHeaderHeight();
+  window.addEventListener("resize", setHeaderHeight);
+
+  return () => window.removeEventListener("resize", setHeaderHeight);
+}, []);
+
+
   return (
     <>
       <header className="header">

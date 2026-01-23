@@ -797,3 +797,38 @@
 .client-banner{
   background-image: url("/images/banner/client-banner-one.jpg");
 }
+
+/* ==========================================
+   Home Banner – Header Safe & Responsive
+   ========================================== */
+
+:root {
+  --header-height: 0px;
+}
+
+.home-banner-wrapper {
+  position: relative;
+  width: 100%;
+  margin-top: var(--header-height);
+  z-index: 1;
+  overflow: hidden;
+
+  /* Desktop */
+  height: calc(100vh - var(--header-height));
+
+  /* Modern mobile-safe viewport */
+  @supports (height: 100svh) {
+    height: calc(100svh - var(--header-height));
+  }
+
+  img {
+    object-fit: cover;
+  }
+}
+
+/* Mobile optimization */
+@media (max-width: 768px) {
+  .home-banner-wrapper {
+    min-height: 65svh;
+  }
+}

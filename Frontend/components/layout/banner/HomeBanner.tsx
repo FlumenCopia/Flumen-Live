@@ -1,21 +1,33 @@
 "use client";
+
 import Image from "next/image";
-import BannerImg from "@/public/images/flumenxbanner.webp"; 
+import DesktopBanner from "@/public/images/flumenxbanner.webp";
+import MobileBanner from "@/public/images/flumenx-mobilebanner.webp";
 
 const HomeBanner = () => {
   return (
-    <div style={{ position: 'relative', width: '100%', height: '100vh', overflow: 'hidden' }}>
-      <a href="/about-us">
-        <Image 
-          src={BannerImg} 
-          alt="Banner Image" 
-          fill
-          priority
-          style={{ objectFit: "cover" }}
-          quality={100}
-        />
+    <section className="home-banner-wrapper">
+      <a href="/about-us" aria-label="About us">
+        <picture>
+          {/* Mobile Banner */}
+          <source
+            media="(max-width: 768px)"
+            srcSet={MobileBanner.src}
+          />
+
+          {/* Desktop Banner */}
+          <Image
+            src={DesktopBanner}
+            alt="Home Banner"
+            fill
+            priority
+            quality={90}
+            sizes="100vw"
+            style={{ objectFit: "cover" }}
+          />
+        </picture>
       </a>
-    </div>
+    </section>
   );
 };
 
