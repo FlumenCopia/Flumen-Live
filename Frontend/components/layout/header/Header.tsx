@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, Fragment } from "react";
+import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import NavbarData from "@/public/data/navbar-data";
@@ -16,25 +16,73 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
-  const DEFAULT_LOGO = "/images/flumenx-logo2.png";
-  const LIGHT_LOGO = "/images/logo-three.png";
-
   const pathname = usePathname();
 
-  /* Scroll detection */
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", handleScroll);
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const DEFAULT_LOGO = "/images/flumenx-logo2.png";
+  const LIGHT_LOGO = "/images/logo-three.png";
 
   const logoSrc =
     pathname === "/index-five" || pathname === "/index-six"
       ? LIGHT_LOGO
       : DEFAULT_LOGO;
 
-  /* Active parent detection */
+  /* =========================================
+     Scroll detection (ONLY for style toggle)
+     ========================================= */
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  /* =========================================
+     Header height measurement (SAFE)
+     ========================================= */
+  useEffect(() => {
+    const header = document.querySelector(".primary-navbar") as HTMLElement;
+    if (!header) return;
+
+    const setHeaderHeight = () => {
+      requestAnimationFrame(() => {
+        document.documentElement.style.setProperty(
+          "--header-height",
+          `${header.offsetHeight}px`
+        );
+      });
+    };
+
+    // Initial + resize only
+    setHeaderHeight();
+    window.addEventListener("resize", setHeaderHeight);
+
+    return () => {
+      window.removeEventListener("resize", setHeaderHeight);
+    };
+  }, []);
+
+  /* =========================================
+     Recalculate height when sticky state changes
+     ========================================= */
+  useEffect(() => {
+    const header = document.querySelector(".primary-navbar") as HTMLElement;
+    if (!header) return;
+
+    requestAnimationFrame(() => {
+      document.documentElement.style.setProperty(
+        "--header-height",
+        `${header.offsetHeight}px`
+      );
+    });
+  }, [scrolled]);
+
+  /* =========================================
+     Active parent detection
+     ========================================= */
   useEffect(() => {
     document
       .querySelectorAll(".navbar__item--has-children")
@@ -44,24 +92,6 @@ const Header = () => {
         }
       });
   }, []);
-
-  useEffect(() => {
-  const header = document.querySelector(".primary-navbar") as HTMLElement;
-  if (!header) return;
-
-  const setHeaderHeight = () => {
-    document.documentElement.style.setProperty(
-      "--header-height",
-      `${header.offsetHeight}px`
-    );
-  };
-
-  setHeaderHeight();
-  window.addEventListener("resize", setHeaderHeight);
-
-  return () => window.removeEventListener("resize", setHeaderHeight);
-}, []);
-
 
   return (
     <>
@@ -92,11 +122,11 @@ const Header = () => {
                 </ul>
               </div>
 
-              {/* Right options */}
+              {/* Mobile menu button */}
               <div className="navbar__options">
                 <button
                   className="open-mobile-menu d-flex d-xl-none"
-                  onClick={() => setIsMenuOpen(!isMenuOpen)}
+                  onClick={() => setIsMenuOpen(true)}
                   aria-label="Open mobile menu"
                 >
                   <i className="material-symbols-outlined">menu_open</i>
@@ -105,7 +135,10 @@ const Header = () => {
             </nav>
           </div>
 
-          <MobileMenu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
+          <MobileMenu
+            isMenuOpen={isMenuOpen}
+            setIsMenuOpen={setIsMenuOpen}
+          />
         </div>
       </header>
 
@@ -118,9 +151,9 @@ const Header = () => {
 
 export default Header;
 
-/* =========================
+/* =========================================
    Menu Components
-   ========================= */
+   ========================================= */
 
 const MenuItem = ({ item }: any) => {
   const pathname = usePathname();
