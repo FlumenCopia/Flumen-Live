@@ -12,7 +12,7 @@ type MobileMenuProps = {
   setIsMenuOpen: (value: boolean) => void;
 };
 
-const DEFAULT_LOGO = "/images/flumen-logo-regular.png";
+const DEFAULT_LOGO = "/images/flumenx-logo2.png";
 const LIGHT_LOGO = "/images/logo-three.png";
 
 const MobileMenu = ({ isMenuOpen, setIsMenuOpen }: MobileMenuProps) => {
