@@ -231,3 +231,14 @@ $header-border: rgba(255, 255, 255, 0.08);
 }
 
 .active-it, .active-sub, .active-parent > button { color: $brand-yellow !important; }
+
+.mobile-menu,
+.mobile-menu__wrapper,
+.mobile-menu__backdrop {
+  position: fixed !important;
+  top: 0;
+  height: 100vh;
+  z-index: 9999;
+}
+
+

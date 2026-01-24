@@ -811,7 +811,9 @@
   width: 100%;
   margin-top: var(--header-height);
   z-index: 1;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: visible;
+
 
   /* Desktop */
   height: calc(100vh - var(--header-height));
