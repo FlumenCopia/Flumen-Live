@@ -88,7 +88,7 @@ if (pathname === "/index-five" || pathname === "/index-six") {
           <a href="https://www.linkedin.com/company/flumencopia/" target="_blank" aria-label="share us on linkedin" title="linkedin">
             <i className="bi bi-linkedin"></i>
           </a>
-          <a href="https://www.instagram.com/flumencopia/" target="_blank" aria-label="share us on instagram" title="instagram" >
+          <a href="https://www.instagram.com/flumen_x/" target="_blank" aria-label="share us on instagram" title="instagram" >
                         <i className="bi bi-instagram"></i>
           </a>
           </div>
