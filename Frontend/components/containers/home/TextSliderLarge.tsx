@@ -12,7 +12,7 @@ const TextSliderLarge = () => {
   return (
     <section
       className={`text-slider-large-wrapper ${
-        isHomeSeven ? " section pb-0" : ""
+        isHomeSeven ? " pb-0" : ""
       }`}
     >
       <Swiper

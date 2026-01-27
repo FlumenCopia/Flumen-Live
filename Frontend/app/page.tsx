@@ -12,7 +12,7 @@ import ServiceSlider from "@/components/containers/home/ServiceSlider";
 import UnlockSection from "@/components/containers/home/UnlockSection";
 import Overview from "@/components/containers/home/Overview";
 import VideoSection from "@/components/containers/home/VideoSection";
-import GenerationTwo from "@/components/containers/home/GenerationTwo";
+import GenerationTwo from "@/components/containers/home/HomeAudible";
 import PricingPlan from "@/components/containers/home/PricingPlan";
 import BlogOne from "@/components/containers/home/BlogOne";
 import Footer from "@/components/layout/footer/Footer";

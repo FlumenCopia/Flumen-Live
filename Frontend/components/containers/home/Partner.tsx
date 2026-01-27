@@ -20,7 +20,7 @@ const Partner = () => {
   const isHomeTwoRoute = pathname === "/index-two";
 
   return (
-    <div className={"my-5 pb-5 partner" + (isHomeTwoRoute ? " pb-0" : " ")} >
+    <div className={"mt-5 mb-2 pb-2 partner" + (isHomeTwoRoute ? " pb-0" : " ")} >
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-12 col-lg-5">

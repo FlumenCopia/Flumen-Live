@@ -4,7 +4,7 @@ import genThumb from "@/public/images/audible-img.jpg";
 
 const GenerationTwo = () => {
   return (
-    <section className="section gen-two pb-0">
+    <section className="mt-5 gen-two pb-0">
       <div className="container">
         <div className="row align-items-center gaper">
           <div className="col-12 col-lg-5 order-last order-lg-first">

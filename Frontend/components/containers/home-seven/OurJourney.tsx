@@ -7,7 +7,7 @@ import framer from "@/public/images/enquire-frame1.png";
 
 const OurJourney = () => {
   return (
-    <section className="s-journey section hg-i" id="scrollPosition">
+    <section className="s-journey my-5 pb-5 hg-i" id="scrollPosition">
       <div className="container">
         <div className="row gaper align-items-center section__header--secondary">
           <div className="col-12 col-md-9 col-lg-7 col-xxl-6">

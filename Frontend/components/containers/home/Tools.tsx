@@ -4,7 +4,7 @@ import ToolsThumb from "@/public/images/digital_marketing.png";
 
 const Tools = () => { 
   return (
-    <section className="section-1 tools pb-0">
+    <section className="mt-5 tools pb-0">
       <div className="container">
         <div className="row gaper align-items-center">
           <div className="col-12 col-lg-7">

@@ -15,7 +15,7 @@ const Demo = () => {
 
   return (
     <>
-      <section className="m-3 overview case-details">
+      <section className="mx-3 mb-3 overview case-details">
         <div className="container">
           <div className="row">
             <div className="col-12">

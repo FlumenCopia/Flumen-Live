@@ -32,7 +32,7 @@ const Generation = () => {
           </div>
         </div>
       </div>
-      <div className="section__content-cta pb-5 " style={{display:'flex', justifyContent:'center', marginTop:'150px'}}>
+      <div className="section__content-cta  " style={{display:'flex', justifyContent:'center', marginTop:'125px'}}>
         <a href="/services" className="btn btn--primary">
           More Services
         </a>
