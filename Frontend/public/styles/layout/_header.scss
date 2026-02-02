@@ -3,7 +3,7 @@
  ==== */
 
 // LOGO BRAND COLORS
-$brand-yellow: #eefc25; 
+$brand-yellow: #eefc25;
 $brand-teal: #7da298;
 $header-bg: #1C342E;
 $header-border: rgba(255, 255, 255, 0.08);
@@ -23,9 +23,9 @@ $header-border: rgba(255, 255, 255, 0.08);
   .navbar {
     display: flex;
     align-items: center;
-    justify-content: space-between; 
-    flex-wrap: nowrap; 
-    gap: 15px; 
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    gap: 15px;
     padding: 5px 0; // Default desktop padding
   }
 
@@ -48,9 +48,11 @@ $header-border: rgba(255, 255, 255, 0.08);
       padding: 25px 12px;
       font-weight: 500;
       width: 100%;
-      color: #ffffff; 
+      color: #ffffff;
       transition: color 0.3s ease;
-      &:hover { color: $brand-yellow; }
+      &:hover {
+        color: $brand-yellow;
+      }
     }
   }
 
@@ -59,34 +61,34 @@ $header-border: rgba(255, 255, 255, 0.08);
   // ============================================
   @media (max-width: 1199px) {
     .navbar {
-        // Keep padding tight so header doesn't get too tall
-        padding: 0px 0 !important; 
+      // Keep padding tight so header doesn't get too tall
+      padding: 0px 0 !important;
     }
-    
-    .navbar__logo {
-        // Allow logo container to take more width if needed
-        max-width: 75%; 
-        display: flex;
-        align-items: center;
-        
-        a {
-            display: block;
-            line-height: 0; 
-        }
 
-        img {
-            width: auto;
-            // UPDATED: Allow wider width so it doesn't squish
-            max-width: 220px !important; 
-            // UPDATED: Increased max-height from 38px to 52px for visibility
-            max-height: 65px !important; 
-            object-fit: contain;
-        }
+    .navbar__logo {
+      // Allow logo container to take more width if needed
+      max-width: 75%;
+      display: flex;
+      align-items: center;
+
+      a {
+        display: block;
+        line-height: 0;
+      }
+
+      img {
+        width: auto;
+        // UPDATED: Allow wider width so it doesn't squish
+        max-width: 220px !important;
+        // UPDATED: Increased max-height from 38px to 52px for visibility
+        max-height: 65px !important;
+        object-fit: contain;
+      }
     }
 
     .open-mobile-menu {
-        // Slightly larger icon to balance with larger logo
-        font-size: 30px !important; 
+      // Slightly larger icon to balance with larger logo
+      font-size: 30px !important;
     }
   }
 
@@ -95,10 +97,16 @@ $header-border: rgba(255, 255, 255, 0.08);
     &:hover {
       & > .navbar__dropdown-label {
         color: $brand-yellow;
-        &::after { transform: rotate(180deg); color: $brand-yellow; }
+        &::after {
+          transform: rotate(180deg);
+          color: $brand-yellow;
+        }
       }
       & > .navbar__sub-menu {
-        opacity: 1; visibility: visible; transform: translateY(0px); pointer-events: all;
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0px);
+        pointer-events: all;
       }
     }
   }
@@ -119,13 +127,14 @@ $header-border: rgba(255, 255, 255, 0.08);
     }
   }
 
+  // LEVEL 2 MENU (Standard Dropdown)
   .navbar__sub-menu {
     position: absolute;
     top: 100%;
     left: 0px;
     min-width: 220px;
     max-width: 260px;
-    background-color: $header-bg; 
+    background-color: $header-bg;
     border: 1px solid $header-border;
     opacity: 0;
     visibility: hidden;
@@ -137,33 +146,77 @@ $header-border: rgba(255, 255, 255, 0.08);
     border-radius: 6px;
     z-index: 9;
 
-    a, button {
+    a,
+    button {
       width: 100%;
       display: flex;
       padding: 16px 40px;
-      color: #ffffff; 
+      color: #ffffff;
       position: relative;
       font-size: 14px;
       border-bottom: 1px solid $header-border;
-      &:hover { color: $brand-yellow; }
+      &:hover {
+        color: $brand-yellow;
+      }
     }
   }
+
+  /* =========================================
+     FIX START: Level 3 (Nested) Menu Styling
+     ========================================= */
+  // We use the specific class 'navbar__sub-menu__nested' found in your React component
+  .navbar__sub-menu__nested {
+    top: 0px !important; /* Aligns top with the "Digital Marketing" item */
+    left: 100% !important; /* Pushes it to the right side */
+    transform: translateY(10px);
+    margin-top: -5px; /* Slight tweak to align perfectly with mouse */
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: all 0.3s ease-in-out;
+
+    /* THE BUG FIX: The "Safe Bridge" */
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 100%; /* Fills the gap between Level 2 and Level 3 */
+      width: 20px; /* Width of the gap */
+      height: 100%; /* LIMITS height so it doesn't cover "Web Dev" below */
+      background-color: transparent;
+    }
+  }
+
+  /* Ensure the nested menu appears when hovering its parent li */
+  .navbar__item--has-children:hover > .navbar__sub-menu__nested {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0px) !important;
+    pointer-events: all !important;
+  }
+  /* =========================================
+     FIX END
+     ========================================= */
 
   .navbar__options {
     display: flex;
     align-items: center;
     gap: 20px;
-    
-    button, i {
+
+    button,
+    i {
       color: #ffffff;
       transition: color 0.3s ease;
-      &:hover { color: $brand-yellow; }
+      &:hover {
+        color: $brand-yellow;
+      }
     }
   }
 
   // Force hide extra icons on mobile
   .navbar__mobile-options {
-    display: none !important; 
+    display: none !important;
   }
 
   .open-mobile-menu {
@@ -172,65 +225,154 @@ $header-border: rgba(255, 255, 255, 0.08);
     cursor: pointer;
     display: flex;
     align-items: center;
-    &:hover { color: $brand-yellow; }
+    &:hover {
+      color: $brand-yellow;
+    }
   }
 }
 
 // ... Animations ...
-@keyframes navLinkFade { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes navLinkFadeReverse { from { opacity: 0; transform: translateY(0px); } to { opacity: 0; transform: translateY(100%); } }
-@keyframes stickyNavbar { 0% { transform: translateY(-100%); } 100% { transform: translateY(0px); } }
+@keyframes navLinkFade {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes navLinkFadeReverse {
+  from {
+    opacity: 0;
+    transform: translateY(0px);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+}
+@keyframes stickyNavbar {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
 
 .navbar-active {
-  background-color: #1C342E; 
-  backdrop-filter: blur(12px); 
+  background-color: #1c342e;
+  backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   animation: stickyNavbar 0.9s ease-in-out;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-  border-bottom: 1px solid $brand-teal; 
+  border-bottom: 1px solid $brand-teal;
 }
 
 /* =========================================
    Mobile Menu Styles
    ========================================= */
 .mobile-menu {
-  background-color: $header-bg; 
-  .mobile-menu__wrapper { background-color: $header-bg; border-right: 1px solid $header-border; }
+  background-color: $header-bg;
+  .mobile-menu__wrapper {
+    background-color: $header-bg;
+    border-right: 1px solid $header-border;
+  }
   .mobile-menu__header {
     border-bottom: 1px solid $header-border;
-    .close-mobile-menu { color: #ffffff; &:hover { color: $brand-yellow; } }
+    .close-mobile-menu {
+      color: #ffffff;
+      &:hover {
+        color: $brand-yellow;
+      }
+    }
   }
   .navbar__list > li {
-    border-bottom: 1px solid $header-border; 
-    &:first-child { border-top: 1px solid $header-border; }
-    a, button { color: #ffffff; &:hover { color: $brand-yellow; } }
-    &.navbar__item-active > a { color: $brand-yellow; }
+    border-bottom: 1px solid $header-border;
+    &:first-child {
+      border-top: 1px solid $header-border;
+    }
+    a,
+    button {
+      color: #ffffff;
+      &:hover {
+        color: $brand-yellow;
+      }
+    }
+    &.navbar__item-active > a {
+      color: $brand-yellow;
+    }
   }
-  .navbar__dropdown-label::after { color: #ffffff; border-left: 1px solid $header-border; }
+  .navbar__dropdown-label::after {
+    color: #ffffff;
+    border-left: 1px solid $header-border;
+  }
   .navbar__sub-menu {
-    background-color: rgba(0, 0, 0, 0.2); 
-    li a, li button { color: #b0b0b0; &:hover { color: $brand-yellow; } }
-    li:last-child a { border-bottom: none; }
+    background-color: rgba(0, 0, 0, 0.2);
+    li a,
+    li button {
+      color: #b0b0b0;
+      &:hover {
+        color: $brand-yellow;
+      }
+    }
+    li:last-child a {
+      border-bottom: none;
+    }
   }
-  .mobile-menu__backdrop { background-color: rgba(0, 0, 0, 0.7); backdrop-filter: blur(4px); }
+  .mobile-menu__backdrop {
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+  }
 }
 
 // ... Home variants (home-five, etc) ...
-.home-five, .home-six {
+.home-five,
+.home-six {
   .primary-navbar {
     border-bottom: 1px solid #ebebec;
     background-color: #ffffff;
-    .navbar__list { border: 1px solid #ebebec; border-top: 0px; border-bottom: 0px; }
-    .navbar__item button, .navbar__item a { color: #191b1a; &:hover { color: #000000 !important; } }
-    .open-mobile-menu { color: #191b1a; &:hover { color: #000000 !important; } }
+    .navbar__list {
+      border: 1px solid #ebebec;
+      border-top: 0px;
+      border-bottom: 0px;
+    }
+    .navbar__item button,
+    .navbar__item a {
+      color: #191b1a;
+      &:hover {
+        color: #000000 !important;
+      }
+    }
+    .open-mobile-menu {
+      color: #191b1a;
+      &:hover {
+        color: #000000 !important;
+      }
+    }
   }
-  .navbar-active { background-color: white; }
-  .mobile-menu, .mobile-menu .mobile-menu__wrapper { background-color: white; }
-  .mobile-menu .navbar__list > li a { border-bottom: 1px solid #ebebec; color: #191b1a; }
-  .mobile-menu .close-mobile-menu { color: #000000 !important; }
+  .navbar-active {
+    background-color: white;
+  }
+  .mobile-menu,
+  .mobile-menu .mobile-menu__wrapper {
+    background-color: white;
+  }
+  .mobile-menu .navbar__list > li a {
+    border-bottom: 1px solid #ebebec;
+    color: #191b1a;
+  }
+  .mobile-menu .close-mobile-menu {
+    color: #000000 !important;
+  }
 }
 
-.active-it, .active-sub, .active-parent > button { color: $brand-yellow !important; }
+.active-it,
+.active-sub,
+.active-parent > button {
+  color: $brand-yellow !important;
+}
 
 .mobile-menu,
 .mobile-menu__wrapper,
@@ -240,5 +382,3 @@ $header-border: rgba(255, 255, 255, 0.08);
   height: 100vh;
   z-index: 9999;
 }
-
-
