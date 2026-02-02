@@ -53,7 +53,7 @@ const LearnWebContent = () => {
                             <i className="bi bi-linkedin"></i>
                           </a>
                           <a
-                            href="https://www.instagram.com/flumencopia?igsh=OXAyOGZ5eXZ3cGV3 "
+                            href="https://www.instagram.com/flumen_x/ "
                             target="_blank"
                             aria-label="share us on instagram"
                             title="instagram"

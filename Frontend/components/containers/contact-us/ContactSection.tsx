@@ -19,8 +19,8 @@ const ContactSection = () => {
               <div className="content">
                 <h3>Email</h3>
                 <p>
-                  <a href="mailto:info@flumencopia.com">
-                   info@flumencopia.com
+                  <a href="mailto:info@flumenx.com">
+                   info@flumenx.com
                   </a>
                 </p>
               </div>

@@ -21,7 +21,7 @@ const OffcanvasInfo = ({ isOpen, setIsOpen }: any) => {
             <h5>Contact Us</h5>
             <ul>
               <li>
-                <a href="mailto:info@flumencopia.com">info@flumencopia.com</a>
+                <a href="mailto:info@flumenx.com">info@flumenx.com</a>
               </li>
               <li>
                 <a href="tel:+918848608726">+91 88486 08726  </a><span style={{color:'#b1b0b6'}}> , </span>
@@ -81,7 +81,7 @@ const OffcanvasInfo = ({ isOpen, setIsOpen }: any) => {
                 <i className="bi bi-linkedin"></i>
               </a>
               <a
-                href="https://www.instagram.com/flumencopia?igsh=OXAyOGZ5eXZ3cGV3"
+                href="https://www.instagram.com/flumen_x/"
                 target="_blank"
                 aria-label="share us on instagram"
                 title="instagram"
