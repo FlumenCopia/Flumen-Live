@@ -5,7 +5,8 @@
 //  footer one
 .footer {
   background-color: var(--primary-color);
-  overflow: hidden !important;
+  overflow-x: hidden; /* Only hide horizontal overflow */
+  overflow-y: visible; /* Allow vertical content to dictate height */
   position: relative;
   z-index: 1;
   
@@ -353,7 +354,7 @@
 .footer-cmn {
   position: relative;
   z-index: 1;
-  overflow: hidden;
+  overflow-x: hidden;
   &::after {
     position: absolute;
     bottom: 0px;

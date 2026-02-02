@@ -16,6 +16,12 @@ import CounterTwo from "@/components/containers/home-five/CounterTwo";
 import EmpowerThree from "@/components/containers/home-seven/EmpowerThree";
 import Relatedsection from "@/components/containers/home-seven/Relatedsection";
 
+export const metadata = {
+  title: 'Get To Know Us | FlumenX',
+  description: 'Learn more about our story and values.',
+  // keywords: 'vision and values, premium services, trusted brand, digital marketing, web development',
+};
+
 const page = () => {
   return (
     <div className="my-app">

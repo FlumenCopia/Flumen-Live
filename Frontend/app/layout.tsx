@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local"; 
-import { Inter } from "next/font/google"; 
+import localFont from "next/font/local";
+import { Inter } from "next/font/google";
 import "@/public/styles/main.scss";
 
 // 2. Configure Inter for body text
@@ -18,8 +18,9 @@ const orlean = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "FlumenCopia",
-  description: "Artificial Neural Network AI React NextJs Template",
+  title: "FlumenX | Best Digital Marketing Agency in Trivandrum",
+  description: " FlumenX offers the best SEO services, social media marketing, and tailored strategies for business growth.",
+  keywords: 'premium service, trusted brand, digital marketing, web development, social media marketing',
 };
 
 export default function RootLayout({
@@ -30,7 +31,20 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/images/flumen-favicon.png"/>
+        
+        {/* <!-- Google tag (gtag.js) --> */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-WTS92LEL34"></script>
+        <script>
+          {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-WTS92LEL34');
+          `}
+        </script>
+
+        <link rel="icon" href="/images/flumen-favicon.png" />
       </head>
       {/* 4. Add BOTH variables to the class list */}
       <body className={`${inter.variable} ${orlean.variable}`}>
