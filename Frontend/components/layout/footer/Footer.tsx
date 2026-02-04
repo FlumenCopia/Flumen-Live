@@ -76,7 +76,7 @@ const Footer = () => {
                 <div className="col-12 col-lg-4">
                   <div className="footer__nav-logo text-center text-lg-start">
                     <a href="/" aria-label="home page" title="logo">
-                      <Image src="/images/flumenx-logo2.png" width={180}
+                      <Image src="/images/flumenx-logo2.webp" width={180}
       height={60} alt="Image" priority />
                       
                     </a>

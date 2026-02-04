@@ -18,7 +18,7 @@ const Header = () => {
 
   const pathname = usePathname();
 
-  const DEFAULT_LOGO = "/images/flumenx-logo2.png";
+  const DEFAULT_LOGO = "/images/flumenx-logo2.webp";
   const LIGHT_LOGO = "/images/logo-three.png";
 
   const logoSrc =
