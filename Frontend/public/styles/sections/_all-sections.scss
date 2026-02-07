@@ -4989,3 +4989,127 @@
   }
 }
 
+/* ==== 
+ --------- (5.51) sageo framework styles start ---------
+ ==== */
+.sageo-hero {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  padding-top: 160px;
+  padding-bottom: 120px;
+  background: radial-gradient(120% 120% at 10% 10%, rgba(75, 255, 223, 0.12) 0%, rgba(13, 67, 69, 0.04) 40%, rgba(255, 255, 255, 0) 70%),
+    linear-gradient(180deg, #f7fbfb 0%, #eef4f4 100%);
+
+  &::after {
+    position: absolute;
+    top: 15%;
+    right: -160px;
+    @include blur(520px, 520px, rgba(17, 98, 101, 0.12), 20px);
+  }
+
+  .title-animation {
+    color: #0d4345;
+    letter-spacing: 0.5px;
+  }
+
+  .primary-text {
+    color: #1c3a3b;
+    max-width: 680px;
+  }
+
+  .section__content-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 24px;
+  }
+
+  .sageo-hero__meta {
+    padding: 24px;
+    border-radius: 16px;
+    background-color: #ffffffcc;
+    border: 1px solid #dfe9e9;
+    box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.08);
+  }
+}
+
+.sageo-problem {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  background-color: #ffffff;
+  padding-top: 120px;
+  padding-bottom: 120px;
+
+  &::before {
+    position: absolute;
+    bottom: -200px;
+    left: -200px;
+    @include blur(520px, 520px, rgba(75, 169, 255, 0.08), 20px);
+  }
+
+  .title {
+    color: #0d4345;
+  }
+
+  .primary-text {
+    color: #243c3d;
+  }
+
+  .sageo-problem__steps {
+    margin-left: 16px;
+    list-style: disc;
+    color: #0d4345;
+    li {
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+  }
+
+  .sageo-problem__stats {
+    padding: 32px;
+    border-radius: 20px;
+    background-color: #f2f7f7;
+    border: 1px solid #e1ecec;
+    box-shadow: 0px 12px 28px rgba(13, 67, 69, 0.08);
+  }
+
+  .sageo-problem__stats-list {
+    margin-top: 16px;
+    margin-left: 16px;
+    list-style: square;
+    color: #1b3536;
+    li {
+      margin-bottom: 12px;
+      font-weight: 500;
+    }
+  }
+}
+
+@media (max-width: 991px) {
+  .sageo-hero {
+    padding-top: 120px;
+    padding-bottom: 80px;
+  }
+
+  .sageo-problem {
+    padding-top: 90px;
+    padding-bottom: 90px;
+  }
+}
+
+@media (max-width: 575px) {
+  .sageo-hero {
+    padding-top: 100px;
+    padding-bottom: 70px;
+  }
+
+  .sageo-problem__stats {
+    padding: 24px;
+  }
+}
+/* ==== 
+ --------- (5.51) sageo framework styles end ---------
+ ==== */
+

@@ -78,6 +78,10 @@ const NavbarData = [
     ]    
   },
   {
+    title: "SAG·EO Framework",
+    path: "/sageo-framework",
+  },
+  {
     title: "Blog",
     path: "/blog",    
   },
