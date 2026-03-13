@@ -12,7 +12,7 @@
   input {
     flex-grow: 1;
     padding: 22px 20px;
-    background-color: var(--primary-color);
+    background-image: var(--brand-gradient);
     border-radius: 40px;
     color: var(--white);
     width: calc(100% - 70px);
@@ -29,7 +29,7 @@
   
   button {
     @include box(70px);
-    background-color: var(--primary-color);
+    background-image: var(--brand-button-gradient);
     color: #b1b0b6;
     font-size: 24px;
   }

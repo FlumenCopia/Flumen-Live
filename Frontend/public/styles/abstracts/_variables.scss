@@ -7,14 +7,16 @@
   // colors
   --white: #ffffff;
   --black: #000000;
-  --primary-color: #116265;
-  --secondary-color: #168388;
-  --tertiary-color: #120f23;
-  --quaternary-color: #191b1a;
-  --quinary-color: #b1b0b6;
   --brand-surface-start: #1c342e;
   --brand-surface-mid: #284941;
   --brand-surface-end: #3f6a60;
+  --brand-accent: #7da298;
+  --brand-accent-light: #a9d9b9;
+  --primary-color: var(--brand-surface-mid);
+  --secondary-color: var(--brand-accent);
+  --tertiary-color: #120f23;
+  --quaternary-color: #191b1a;
+  --quinary-color: #b1b0b6;
   --brand-gradient: linear-gradient(
     145deg,
     var(--brand-surface-start) 0%,
