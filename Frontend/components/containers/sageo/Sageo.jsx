@@ -11,7 +11,7 @@ const Sageo = () => {
                 </h1>
               </div>
               <p className="primary-text">
-                Search doesn't work the way it used to. Google ranks. AI answers.
+                Search doesn&apos;t work the way it used to. Google ranks. AI answers.
                 LLMs decide. SAG·EO is the system that connects all three.
               </p>
               <div className="section__content-cta">
@@ -43,7 +43,7 @@ const Sageo = () => {
             <div className="col-12 col-lg-7">
               <div className="section__header text-start">
                 <h2 className="title title-animation">
-                  Your Brand Might Be Invisible (And You Don't Even Know It)
+                  Your Brand Might Be Invisible (And You Don&apos;t Even Know It)
                 </h2>
               </div>
               <div className="section__content">
@@ -54,15 +54,15 @@ const Sageo = () => {
                   <li>Open Perplexity. Look for solutions you provide.</li>
                 </ul>
                 <p className="primary-text mb-2">See that?</p>
-                <p className="primary-text mb-2">You're not there.</p>
+                <p className="primary-text mb-2">You&apos;re not there.</p>
                 <p className="primary-text mb-2">Not in the AI answer.</p>
                 <p className="primary-text mb-2">Not in the overview.</p>
                 <p className="primary-text mb-2">Not in the conversation.</p>
                 <p className="primary-text mb-2">
-                  While you've been optimizing for Google, your customers started
+                  While you&apos;ve been optimizing for Google, your customers started
                   asking AI.
                 </p>
-                <p className="primary-text">And AI doesn't know you exist.</p>
+                <p className="primary-text">And AI doesn&apos;t know you exist.</p>
               </div>
             </div>
             <div className="col-12 col-lg-5">
