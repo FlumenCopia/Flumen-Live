@@ -10,10 +10,11 @@ const InitCustomCursor: React.FC<CursorProps> = ({
   handleMouseLeaveTitle,
 }) => {
   return (
-    <CustomCursor
-      onTitleMouseEnter={handleMouseEnterTitle}
-      onTitleMouseLeave={handleMouseLeaveTitle}
-    />
+    // <CustomCursor
+    //   onTitleMouseEnter={handleMouseEnterTitle}
+    //   onTitleMouseLeave={handleMouseLeaveTitle}
+    // />
+    null
   );
 };
 

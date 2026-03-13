@@ -1,6 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
-import logo from "@/public/images/flumen-icon2.png";
+import logo from "@/public/images/flumen-icon.png";
 
 const OffcanvasInfo = ({ isOpen, setIsOpen }: any) => {
   return (
@@ -21,19 +20,30 @@ const OffcanvasInfo = ({ isOpen, setIsOpen }: any) => {
             <h5>Contact Us</h5>
             <ul>
               <li>
+                <span className="contact-icon" aria-hidden="true">
+                  <i className="bi bi-envelope-fill"></i>
+                </span>
                 <a href="mailto:info@flumenx.com">info@flumenx.com</a>
               </li>
               <li>
-                <a href="tel:+918848608726">+91 88486 08726  </a><span style={{color:'#b1b0b6'}}> , </span>
-                <a href="tel:+918907634900">+91 89076 34900</a>
+                <span className="contact-icon" aria-hidden="true">
+                  <i className="bi bi-telephone-fill"></i>
+                </span>
+                <div className="contact-copy">
+                  <a href="tel:+918848608726">+91 88486 08726</a>
+                  , 
+                  <a href="tel:+918907634900">+91 89076 34900</a>
+                </div>
               </li>
               <li>
+                <span className="contact-icon" aria-hidden="true">
+                  <i className="bi bi-person-vcard-fill"></i>
+                </span>
                 <a
                   href="https://maps.app.goo.gl/inYkBrxFHWXKwLa47"
                   target="_blank"
                 >
-                  Gautham villa T.c 7/82, Kanjirampara P.O, 
-                  Kanjirampara Thiruvananthapuram, Kerala 695030.
+                  Gautham villa T.C 7/82, Kanjirampara P.O, Kanjirampara Thiruvananthapuram, Kerala 695030.
                 </a>
               </li>
             </ul>
@@ -65,7 +75,7 @@ const OffcanvasInfo = ({ isOpen, setIsOpen }: any) => {
             <p className="tertiary-text">Follow Us :</p>
             <div className="social">
               <a
-                href="https://www.facebook.com/"
+                href="https://www.facebook.com/profile.php?id=61564341603272"
                 target="_blank"
                 aria-label="share us on facebook"
                 title="facebook"

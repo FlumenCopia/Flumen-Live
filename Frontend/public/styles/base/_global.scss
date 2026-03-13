@@ -30,7 +30,7 @@ span {
   box-sizing: border-box;
   z-index: 10000000;
   opacity: 1;
-  transition: all 0.2s ease-out;
+  transition: opacity 0.2s ease-out;
   mix-blend-mode: difference;
 
   &.cursor-hover {
@@ -952,8 +952,8 @@ span {
   min-height: 100vh;
   // width: 100%;
   max-width: 520px;
-  background-color: var(--primary-color);
-  background-image: linear-gradient(132deg, var(--primary-color) 0%, #7c999a 100%);
+  background-color: #1c342e;
+  background-image: linear-gradient(145deg, #1c342e 0%, #284941 55%, #3f6a60 100%);
   z-index: 99999;
   transform: translateX(100%);
   box-shadow: -10px 0 15px rgba(0, 0, 0, 0.1);
@@ -972,6 +972,21 @@ span {
   }
 
   .offcanvas-info__intro {
+    .offcanvas-info__logo {
+      a {
+        display: inline-flex;
+        align-items: center;
+        max-width: 100%;
+      }
+
+      img {
+        width: auto;
+        max-width: clamp(140px, 42vw, 180px);
+        max-height: clamp(56px, 16vw, 78px);
+        object-fit: contain;
+      }
+    }
+
     h4 {
       max-width: 320px;
       color: #b1b0b6;
@@ -993,22 +1008,29 @@ span {
     }
 
     li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
       margin-bottom: 15px;
-      padding-left: 15px;
-      position: relative;
-      &::before {
-        content: "";
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        left: 0px;
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        background-color: #b1b0b6;
-      }
       &:nth-last-of-type(1) {
         margin-bottom: 0px;
+      }
+
+      .contact-icon {
+        color: #7da298;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 22px;
+        font-size: 16px;
+        line-height: 1;
+        margin-top: 6px;
+        flex-shrink: 0;
+      }
+
+      .contact-copy {
+        color: #b1b0b6;
+        line-height: 30px;
       }
 
       a {
@@ -1051,9 +1073,10 @@ span {
       height: auto;
       min-width: auto;
       background-color: transparent;
+      color: #7da298;
       font-size: 24px;
       &:hover {
-        color: #b1b0b6;
+        color: #a9c7bf;
       }
     }
   }
@@ -1063,8 +1086,8 @@ span {
     top: -24px;
     right: -24px;
     @include box(124px);
-    background-color: #b1b0b6;
-    color: var(--primary-color);
+    background-color: transparent;
+    color: #ffffff;
     font-size: 30px;
     justify-content: flex-start;
     padding-left: 40px;

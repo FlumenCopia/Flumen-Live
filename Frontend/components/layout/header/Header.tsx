@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import NavbarData from "@/public/data/navbar-data";
@@ -12,9 +12,11 @@ import SidebarCart from "./SidebarCart";
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [isStickyVisible, setIsStickyVisible] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const lastScrollYRef = useRef(0);
 
   const pathname = usePathname();
 
@@ -31,9 +33,16 @@ const Header = () => {
      ========================================= */
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      const currentScrollY = window.scrollY;
+      const hasPassedThreshold = currentScrollY > 50;
+      const isScrollingUp = currentScrollY < lastScrollYRef.current;
+
+      setScrolled(hasPassedThreshold);
+      setIsStickyVisible(hasPassedThreshold && isScrollingUp);
+      lastScrollYRef.current = currentScrollY;
     };
 
+    lastScrollYRef.current = window.scrollY;
     handleScroll();
     window.addEventListener("scroll", handleScroll);
 
@@ -44,14 +53,14 @@ const Header = () => {
      Header height measurement (SAFE)
      ========================================= */
   useEffect(() => {
-    const header = document.querySelector(".primary-navbar") as HTMLElement;
-    if (!header) return;
-
     const setHeaderHeight = () => {
+      const navbar = document.querySelector(".primary-navbar .navbar") as HTMLElement;
+      if (!navbar) return;
+
       requestAnimationFrame(() => {
         document.documentElement.style.setProperty(
           "--header-height",
-          `${header.offsetHeight}px`
+          `${navbar.offsetHeight}px`
         );
       });
     };
@@ -69,16 +78,16 @@ const Header = () => {
      Recalculate height when sticky state changes
      ========================================= */
   useEffect(() => {
-    const header = document.querySelector(".primary-navbar") as HTMLElement;
-    if (!header) return;
+    const navbar = document.querySelector(".primary-navbar .navbar") as HTMLElement;
+    if (!navbar) return;
 
     requestAnimationFrame(() => {
       document.documentElement.style.setProperty(
         "--header-height",
-        `${header.offsetHeight}px`
+        `${navbar.offsetHeight}px`
       );
     });
-  }, [scrolled]);
+  }, [scrolled, isStickyVisible]);
 
   /* =========================================
      Active parent detection
@@ -109,7 +118,11 @@ const Header = () => {
   return (
     <>
       <header className="header">
-        <div className={`primary-navbar ${scrolled ? "navbar-active" : ""}`}>
+        <div
+          className={`primary-navbar ${scrolled ? "navbar-scrolled" : ""} ${
+            isStickyVisible ? "navbar-active" : "navbar-hidden"
+          }`}
+        >
           <div className="container">
             <nav className="navbar">
               {/* Logo */}
@@ -137,6 +150,13 @@ const Header = () => {
 
               {/* Mobile menu button */}
               <div className="navbar__options">
+                <button
+                  className="d-none d-xl-flex"
+                  onClick={() => setIsOpen(true)}
+                  aria-label="Open sidebar"
+                >
+                  <i className="material-symbols-outlined">widgets</i>
+                </button>
                 <button
                   className="open-mobile-menu d-flex d-xl-none"
                   onClick={() => setIsMenuOpen(true)}

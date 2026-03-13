@@ -78,8 +78,8 @@ const NavbarData = [
     ]    
   },
   {
-    title: "SAG·EO Framework",
-    path: "/sageo-framework",
+    title: "SAG·EO ",
+    path: "https://sageo.flumenx.com",
   },
   {
     title: "Blog",

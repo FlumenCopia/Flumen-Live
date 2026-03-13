@@ -809,18 +809,17 @@
 .home-banner-wrapper {
   position: relative;
   width: 100%;
-  margin-top: var(--header-height);
   z-index: 1;
   overflow-x: hidden;
   overflow-y: visible;
 
 
   /* Desktop */
-  height: calc(100vh - var(--header-height));
+  height: 100vh;
 
   /* Modern mobile-safe viewport */
   @supports (height: 100svh) {
-    height: calc(100svh - var(--header-height));
+    height: 100svh;
   }
 
   img {
