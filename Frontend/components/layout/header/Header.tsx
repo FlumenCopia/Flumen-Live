@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
+import Link from "next/link";
 import NavbarData from "@/public/data/navbar-data";
 import MobileMenu from "./MobileMenu";
 import OffcanvasInfo from "./OffcanvasInfo";
@@ -13,6 +14,7 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [isStickyVisible, setIsStickyVisible] = useState(false);
+  const [isHeroBannerActive, setIsHeroBannerActive] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -114,6 +116,36 @@ const Header = () => {
   };
 }, [isMenuOpen]);
 
+  useEffect(() => {
+    const updateHeroBannerState = () => {
+      if (pathname !== "/") {
+        setIsHeroBannerActive(false);
+        return;
+      }
+
+      const heroBanner = document.querySelector(".home-banner-wrapper");
+      if (!heroBanner) {
+        setIsHeroBannerActive(false);
+        return;
+      }
+
+      const heroBottom = heroBanner.getBoundingClientRect().bottom;
+      const headerHeight =
+        document.querySelector(".primary-navbar .navbar")?.clientHeight ?? 0;
+
+      setIsHeroBannerActive(heroBottom > headerHeight + 20);
+    };
+
+    updateHeroBannerState();
+    window.addEventListener("scroll", updateHeroBannerState, { passive: true });
+    window.addEventListener("resize", updateHeroBannerState);
+
+    return () => {
+      window.removeEventListener("scroll", updateHeroBannerState);
+      window.removeEventListener("resize", updateHeroBannerState);
+    };
+  }, [pathname]);
+
 
   return (
     <>
@@ -121,13 +153,13 @@ const Header = () => {
         <div
           className={`primary-navbar ${scrolled ? "navbar-scrolled" : ""} ${
             isStickyVisible ? "navbar-active" : "navbar-hidden"
-          }`}
+          } ${isHeroBannerActive ? "navbar-hero-glass" : ""}`}
         >
           <div className="container">
             <nav className="navbar">
               {/* Logo */}
               <div className="navbar__logo">
-                <a href="/" aria-label="Home">
+                <Link href="/" aria-label="Home">
                   <Image
                     src={logoSrc}
                     alt="Logo"
@@ -136,7 +168,7 @@ const Header = () => {
                     priority
                     style={{ objectFit: "contain" }}
                   />
-                </a>
+                </Link>
               </div>
 
               {/* Desktop menu */}
@@ -200,12 +232,12 @@ const MenuItem = ({ item }: any) => {
             <SubDropdown key={i} subItem={sub} />
           ) : (
             <li key={i}>
-              <a
+              <Link
                 href={sub.path}
                 className={pathname === sub.path ? "active-sub" : ""}
               >
                 {sub.title}
-              </a>
+              </Link>
             </li>
           )
         )}
@@ -213,12 +245,12 @@ const MenuItem = ({ item }: any) => {
     </li>
   ) : (
     <li className="navbar__item">
-      <a
+      <Link
         href={item.path}
         className={pathname === item.path ? "active-it" : ""}
       >
         {item.title}
-      </a>
+      </Link>
     </li>
   );
 };
@@ -234,12 +266,12 @@ const SubDropdown = ({ subItem }: any) => {
       <ul className="navbar__sub-menu navbar__sub-menu__nested">
         {subItem.subInSub.map((child: any, i: number) => (
           <li key={i}>
-            <a
+            <Link
               href={child.path}
               className={pathname === child.path ? "active-sub" : ""}
             >
               {child.title}
-            </a>
+            </Link>
           </li>
         ))}
       </ul>

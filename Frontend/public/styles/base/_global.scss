@@ -457,7 +457,7 @@ span {
 
 // offcanvas cart styles start
 .sidebar-cart {
-  background: var(--primary-color);
+  background: var(--brand-gradient);
   color: var(--white);
   padding: 20px 20px 0 20px;
   position: fixed;
@@ -549,12 +549,20 @@ span {
   touch-action: manipulation;
   white-space: nowrap;
   cursor: pointer;
-  background-color:  #06bebe;
+  background-image: var(--brand-gradient);
+  box-shadow: 0 12px 24px rgba(15, 34, 30, 0.18);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background-image 0.25s ease;
 }
 
 .contact-button:active,
 .contact-button:hover {
   outline: 0;
+  background-image: var(--brand-gradient-hover);
+  box-shadow: 0 16px 28px rgba(15, 34, 30, 0.22);
+  transform: translateY(-1px);
 }
 
 .contact-button span {
@@ -738,7 +746,7 @@ span {
     }
   }
 
-  .action-buttons {
+.action-buttons {
     padding: 0;
     position: absolute;
     bottom: 0;
@@ -769,16 +777,16 @@ span {
     }
 
     .view-cart-button {
-      background: var(--black);
-      border-color: var(--secondary-color);
+      background: var(--brand-gradient);
+      border-color: rgba(125, 162, 152, 0.52);
       margin-right: 5px;
-      color: var(--secondary-color);
+      color: var(--white);
       width: 80px;
     }
 
     .checkout-button {
-      border-color: var(--secondary-color);
-      background: var(--black);
+      border-color: rgba(125, 162, 152, 0.52);
+      background: var(--brand-gradient);
       margin-left: 5px;
       color: var(--white);
       width: 200px;
@@ -952,8 +960,7 @@ span {
   min-height: 100vh;
   // width: 100%;
   max-width: 520px;
-  background-color: #1c342e;
-  background-image: linear-gradient(145deg, #1c342e 0%, #284941 55%, #3f6a60 100%);
+  background-image: var(--brand-gradient);
   z-index: 99999;
   transform: translateX(100%);
   box-shadow: -10px 0 15px rgba(0, 0, 0, 0.1);

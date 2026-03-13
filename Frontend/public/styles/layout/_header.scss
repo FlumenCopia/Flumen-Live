@@ -36,8 +36,8 @@ $header-border: rgba(255, 255, 255, 0.08);
     gap: clamp(18px, 2vw, 28px);
     min-height: clamp(70px, 7vw, 84px);
     padding: clamp(3px, 0.55vw, 6px) clamp(16px, 1.8vw, 24px);
-    background-color: #1c342e;
-    border: 1px solid $brand-teal;
+    background-image: var(--brand-gradient);
+    border: 1px solid rgba(125, 162, 152, 0.52);
     border-radius: 999px;
     box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
     transition:
@@ -346,6 +346,21 @@ $header-border: rgba(255, 255, 255, 0.08);
   box-shadow: none;
 }
 
+.navbar-hero-glass {
+  .navbar {
+    background: linear-gradient(
+      145deg,
+      rgba(28, 52, 46, 0.46) 0%,
+      rgba(40, 73, 65, 0.4) 55%,
+      rgba(63, 106, 96, 0.34) 100%
+    );
+    border-color: rgba(125, 162, 152, 0.5);
+    box-shadow: 0 12px 34px rgba(0, 0, 0, 0.16);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+}
+
 // ... Animations ...
 @keyframes navLinkFade {
   from {
@@ -371,10 +386,10 @@ $header-border: rgba(255, 255, 255, 0.08);
   transform: translateY(0);
 
   .navbar {
-    background-color: #1c342e;
+    background-image: var(--brand-gradient);
     border-radius: 999px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.26);
-    border-color: $brand-teal;
+    border-color: rgba(125, 162, 152, 0.58);
   }
 
   @media (max-width: 1199px) {
@@ -394,9 +409,9 @@ $header-border: rgba(255, 255, 255, 0.08);
    Mobile Menu Styles
    ========================================= */
 .mobile-menu {
-  background-color: $header-bg;
+  background-image: var(--brand-gradient);
   .mobile-menu__wrapper {
-    background-color: $header-bg;
+    background-image: var(--brand-gradient);
     border-right: 1px solid $header-border;
   }
   .mobile-menu__header {
@@ -445,7 +460,12 @@ $header-border: rgba(255, 255, 255, 0.08);
     min-width: 100%;
     width: 100%;
     max-width: 100%;
-    background-color: rgba(0, 0, 0, 0.2);
+    background: linear-gradient(
+      145deg,
+      rgba(28, 52, 46, 0.92) 0%,
+      rgba(40, 73, 65, 0.92) 55%,
+      rgba(63, 106, 96, 0.9) 100%
+    );
     transform: none;
     box-shadow: none;
     border: 0;

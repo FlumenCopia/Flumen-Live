@@ -993,6 +993,13 @@
 
   // footer one
   .footer {
+    .footer__nav-logo {
+      img {
+        max-width: clamp(200px, 30vw, 260px);
+        max-height: clamp(66px, 8vw, 84px);
+      }
+    }
+
     .footer__content-cta {
       margin-top: 60px;
     }
@@ -1672,6 +1679,17 @@
 
   // footer one
   .footer {
+    .footer__hero {
+      padding: 40px 0 28px;
+    }
+
+    .footer__nav-logo {
+      img {
+        max-width: clamp(180px, 56vw, 230px);
+        max-height: clamp(58px, 14vw, 74px);
+      }
+    }
+
     .footer__content {
       h2 {
         margin-left: auto;
@@ -1756,20 +1774,6 @@
             opacity: var(--opacity);
           }
         }
-      }
-    }
-
-    .footer-thumb-one {
-      img {
-        transform: rotate(10deg) translateX(300px);
-        opacity: 0.5;
-      }
-    }
-
-    .footer-thumb-two {
-      img {
-        opacity: 0.5;
-        transform: rotate(-154deg) translateY(-200px);
       }
     }
   }

@@ -60,10 +60,10 @@ if (pathname === "/index-five" || pathname === "/index-six") {
         <nav className="mobile-menu__wrapper">
           <div className="mobile-menu__header nav-fade">
             <div className="logo">
-              <a href="/" aria-label="home page" title="logo">
+              <Link href="/" aria-label="home page" title="logo">
                 <Image src={logoSrc} alt="Image" width={180}
       height={60} priority />
-              </a>
+              </Link>
             </div>
             <button
               aria-label="close mobile menu"
@@ -157,12 +157,12 @@ const MenuItem = ({ item }: any) => {
                 <SubDropdown subItem={subItem} key={index} />
               ) : (
                 <li key={index}>
-                  <a
-                    href={`${subItem.path}`}
+                  <Link
+                    href={subItem.path}
                     className={pathname === subItem.path ? " active-sub" : " "}
                   >
                     {subItem.title}
-                  </a>
+                  </Link>
                 </li>
               )}
             </Fragment>
@@ -172,12 +172,12 @@ const MenuItem = ({ item }: any) => {
     </li>
   ) : (
     <li className="navbar__item nav-fade">
-      <a
-        href={`${item.path}`}
+      <Link
+        href={item.path}
         className={pathname === item.path ? " active-it" : " "}
       >
         {item.title}
-      </a>
+      </Link>
     </li>
   );
 };
@@ -210,12 +210,12 @@ const SubDropdown = ({ subItem }: any) => {
       >
         {subItem.subInSub?.map((subInSubItem: any, index: number) => (
           <li key={index}>
-            <a
+            <Link
               href={subInSubItem.path}
               className={pathname === subInSubItem.path ? " active-sub" : " "}
             >
               {subInSubItem.title}
-            </a>
+            </Link>
           </li>
         ))}
       </ul>

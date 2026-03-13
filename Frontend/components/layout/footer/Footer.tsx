@@ -3,8 +3,6 @@ import { useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import Image from "next/image";
-import Link from "next/link";
-import { color } from "framer-motion";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -30,28 +28,13 @@ const Footer = () => {
         duration: 3,
         ease: "power1.inOut",
       });
-
-      tl.to(".footer-thumb-one img", {
-        transform: "rotate(-24deg)",
-        x: "0px",
-        opacity: 1,
-        duration: 3,
-        ease: "power1.inOut",
-      });
-
-      tl.to(".footer-thumb-two img", {
-        y: "0px",
-        opacity: 1,
-        duration: 3,
-        ease: "power1.inOut",
-      });
     }
   }, []);
 
   return (
     <footer className="footer">
       <div className="container">
-        <div className="row justify-content-center section">
+        <div className="row justify-content-center footer__hero">
           <div className="col-12 col-md-9 col-lg-9 col-xl-10 col-xxl-9">
             <div className="footer__content text-center">
               <h2 className="light-title fw-7 title-animation">
@@ -72,6 +55,7 @@ const Footer = () => {
         <div className="row">
           <div className="col-12">
             <div className="footer__nav">
+              
               <div className="row gaper">
                 <div className="col-12 col-lg-4">
                   <div className="footer__nav-logo text-center text-lg-start">
@@ -117,17 +101,9 @@ const Footer = () => {
           <div className="col-12">
             <div className="footer__copyright">
               <div className="row gaper">
+                
                 <div className="col-12 col-lg-6">
-                  <div className="footer__copyright-content text-center text-lg-start">
-                    <p style={{color:'var(--quinary-color)'}}>
-                      Copyright &copy;{" "}
-                      <span id="copyrightYear">{currentYear}</span>{" "}
-                      <a href="/" className='link_copyright'>FlumenX</a>. All Rights Reserved
-                    </p>
-                  </div>
-                </div>
-                <div className="col-12 col-lg-6">
-                  <div className="footer__copyright-social justify-content-center justify-content-lg-end">
+                  <div className="footer__copyright-social text-lg-start ">
                     <p className="tertiary-text d-none d-lg-block">
                       Follow Us :
                     </p>
@@ -159,18 +135,20 @@ const Footer = () => {
                     </div>
                   </div>
                 </div>
+
+                <div className="col-12 col-lg-6">
+                  <div className="footer__copyright-content text-end justify-content-lg-end">
+                    <p style={{color:'var(--quinary-color)'}}>
+                      Copyright &copy;{" "}
+                      <span id="copyrightYear">{currentYear}</span>{" "}
+                      <a href="/" className='link_copyright'>FlumenX</a>. All Rights Reserved
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div className="footer-thumb-one">
-        <Image src="/images/footer/footer-img-2.jpg" width={180}
-      height={60} alt="Image" priority />
-      </div>
-      <div className="footer-thumb-two">
-        <Image src="/images/footer/footer-img-1.jpg" width={180}
-      height={60} alt="Image" priority />
       </div>
     </footer>
   );

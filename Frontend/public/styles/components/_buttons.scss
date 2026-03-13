@@ -26,7 +26,7 @@
 .btn--primary {
   z-index: 1; 
   color: white;
-  background-image: linear-gradient(140deg, #199094 0%, #0da8b0 100%);
+  background-image: var(--brand-button-gradient);
   border: 0px;
   &::before {
     content: "";
@@ -36,7 +36,7 @@
     bottom: 0px;
     width: 0px;
     height: 100%;
-    background-image: linear-gradient(-140deg, #14d6e1 0%, #61aeb3 100%);
+    background-image: var(--brand-button-gradient-hover);
     transition: all 0.6s ease;
     z-index: -1;
   }
@@ -55,7 +55,7 @@
   z-index: 1;
   color: var(--white);
   border: 0px;
-  background-image: linear-gradient(140deg, #199094 0%, #0da8b0 100%);
+  background-image: var(--brand-button-gradient);
   // text-transform: capitalize;
   &::before {
     content: "";
@@ -65,7 +65,7 @@
     bottom: 0px;
     width: 0px;
     height: 100%;
-    background-image: linear-gradient(-140deg, #14d6e1 0%, #61aeb3 100%);
+    background-image: var(--brand-button-gradient-hover);
     transition: all 0.6s ease;
     z-index: -1;
   }
@@ -82,9 +82,9 @@
 
 .btn--tertiary {
   z-index: 1;
-  color: var(--primary-color);
-  border: 1px solid black !important;
-  background-color: #181818;
+  color: var(--white);
+  border: 1px solid rgba(125, 162, 152, 0.55) !important;
+  background-image: var(--brand-button-gradient);
   gap: 20px;
   display: inline-flex;
   align-items: center;
@@ -97,14 +97,14 @@
     bottom: 0px;
     width: 0px;
     height: 100%;
-    background-color: var(--primary-color);
+    background-image: var(--brand-button-gradient-hover);
     transition: all 0.6s ease;
     z-index: -1;
   }
 
   &:hover {
-    border: 1px solid var(--primary-color);
-    color: var(--black);
+    border: 1px solid rgba(125, 162, 152, 0.8);
+    color: var(--white);
     &::before {
       width: 100%;
       left: 0px;
@@ -114,9 +114,9 @@
 
 .btn--quaternary {
   z-index: 1;
-  color: var(--primary-color);
-  border: 1px solid var(--primary-color) !important;
-  background-color: #181818;
+  color: var(--white);
+  border: 1px solid rgba(125, 162, 152, 0.55) !important;
+  background-image: var(--brand-button-gradient);
   gap: 20px;
   display: inline-flex;
   align-items: center;
@@ -130,14 +130,14 @@
     bottom: 0px;
     width: 0px;
     height: 100%;
-    background-image: linear-gradient(140deg, #65ff4b 0%, #46e695 100%);
+    background-image: var(--brand-button-gradient-hover);
     transition: all 0.6s ease;
     z-index: -1;
   }
 
   &:hover {
-    border: 1px solid var(--primary-color);
-    color: var(--black);
+    border: 1px solid rgba(125, 162, 152, 0.8);
+    color: var(--white);
     &::before {
       width: 100%;
       left: 0px;
