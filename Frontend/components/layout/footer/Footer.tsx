@@ -10,9 +10,10 @@ const Footer = () => {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
     const deviceWidth = window.innerWidth;
+    let tl: gsap.core.Timeline | null = null;
 
     if (document.querySelector(".footer") && deviceWidth >= 768) {
-      const tl = gsap.timeline({
+      tl = gsap.timeline({
         scrollTrigger: {
           trigger: ".footer",
           start: "top center",
@@ -29,6 +30,11 @@ const Footer = () => {
         ease: "power1.inOut",
       });
     }
+
+    return () => {
+      tl?.scrollTrigger?.kill();
+      tl?.kill();
+    };
   }, []);
 
   return (
