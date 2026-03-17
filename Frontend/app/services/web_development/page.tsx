@@ -14,8 +14,8 @@ const page = () => {
       <Header />
       <main>
         <Web_banner />
-       <Web_details/>
-       <Web_servicedata/>
+        <Web_details />
+        <Web_servicedata />
       </main>
       <Footer />
       <InitCustomCursor />

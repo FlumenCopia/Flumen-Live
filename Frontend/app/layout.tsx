@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Inter } from "next/font/google";
 import "@/public/styles/main.scss";
+import Script from "next/script";
 
 // 2. Configure Inter for body text
 const inter = Inter({
@@ -33,8 +34,8 @@ export default function RootLayout({
       <head>
         
         {/* <!-- Google tag (gtag.js) --> */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-WTS92LEL34"></script>
-        <script>
+        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-WTS92LEL34"></Script>
+        <Script>
           {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
@@ -42,7 +43,7 @@ export default function RootLayout({
 
           gtag('config', 'G-WTS92LEL34');
           `}
-        </script>
+        </Script>
 
         <link rel="icon" href="/images/flumen-favicon.png" />
       </head>

@@ -36,7 +36,7 @@ const NavbarData = [
         ]
       },
       {
-        title: "Web Developement",
+        title: "Web/App Developement",
         path:"/services/web_development",
       },
       {

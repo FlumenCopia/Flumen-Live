@@ -39,7 +39,7 @@ const Web_banner = ({ title , bgimage }: any) => {
           <div className="col-12 col-lg-10 col-xxl-8">
             <div className="cmn-banner__content text-center">
               <h2 className="light-title fw-7 "style={{color:'#116265'}}>
-              Web Development
+              Web/App Development
               </h2>
             </div>
           </div>
