@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TCGC — Execution Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream:   #FAF7F2;
+  --cream2:  #F3EDE3;
+  --cream3:  #EDE4D6;
+  --ink:     #1C1814;
+  --ink2:    #3A332C;
+  --muted:   #7A6F65;
+  --border:  #E4DAD0;
+  --rose:    #C8606A;
+  --rose-lt: #F5E8EA;
+  --rose-dk: #8C3A41;
+  --gold:    #B8925A;
+  --gold-lt: #F5EDE2;
+  --teal:    #3A7D74;
+  --teal-lt: #E2F0EE;
+  --white:   #FFFFFF;
+  --success: #2D7A4F;
+  --warn:    #B87A1A;
+  --danger:  #C0392B;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);font-size:14px;line-height:1.6;}
+
+/* ── STICKY HEADER ── */
+.site-header{
+  position:sticky;top:0;z-index:200;
+  background:var(--ink);
+  border-bottom:1px solid #2E2820;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 24px;height:58px;gap:16px;
+}
+.hdr-brand{display:flex;align-items:center;gap:12px;flex-shrink:0;}
+.hdr-logo{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:#FAF7F2;letter-spacing:.04em;}
+.hdr-logo span{color:#D4A843;}
+.hdr-divider{width:1px;height:20px;background:#3A332C;}
+.hdr-client{font-size:12px;color:#8A7C76;letter-spacing:.06em;text-transform:uppercase;}
+.hdr-progress{flex:1;max-width:320px;}
+.hdr-progress-label{font-size:10px;color:#8A7C76;margin-bottom:4px;display:flex;justify-content:space-between;}
+.hdr-progress-track{height:4px;background:#2E2820;border-radius:2px;overflow:hidden;}
+.hdr-progress-bar{height:100%;background:linear-gradient(90deg,var(--rose),var(--gold));border-radius:2px;transition:width .5s ease;}
+.hdr-meta{font-size:11px;color:#8A7C76;text-align:right;flex-shrink:0;}
+
+/* ── TABS ── */
+.tabs-bar{
+  background:var(--ink2);
+  display:flex;overflow-x:auto;gap:0;
+  border-bottom:1px solid #2E2820;
+  scrollbar-width:none;
+}
+.tabs-bar::-webkit-scrollbar{display:none;}
+.tab-btn{
+  padding:12px 20px;font-size:12px;font-weight:500;
+  letter-spacing:.04em;text-transform:uppercase;
+  color:#6A5E56;background:none;border:none;cursor:pointer;
+  white-space:nowrap;border-bottom:2px solid transparent;
+  transition:all .2s;
+}
+.tab-btn:hover{color:#C5B8B0;}
+.tab-btn.active{color:#FAF7F2;border-bottom-color:var(--rose);}
+.tab-panel{display:none;padding:28px 24px;max-width:1100px;margin:0 auto;}
+.tab-panel.active{display:block;}
+
+/* ── SECTION HEADERS ── */
+.sec-tag{font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--rose);margin-bottom:6px;display:flex;align-items:center;gap:8px;}
+.sec-tag::before{content:'';width:20px;height:1px;background:var(--rose);}
+.sec-title{font-family:'Playfair Display',serif;font-size:28px;font-weight:400;color:var(--ink);margin-bottom:6px;line-height:1.2;}
+.sec-title em{font-style:italic;color:var(--rose);}
+.sec-sub{color:var(--muted);font-size:13px;margin-bottom:28px;max-width:640px;}
+
+/* ── CARDS ── */
+.card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:20px;}
+.card-grid{display:grid;gap:14px;}
+.g2{grid-template-columns:repeat(auto-fit,minmax(280px,1fr));}
+.g3{grid-template-columns:repeat(auto-fit,minmax(220px,1fr));}
+.g4{grid-template-columns:repeat(auto-fit,minmax(180px,1fr));}
+@media(max-width:600px){.g2,.g3,.g4{grid-template-columns:1fr;}}
+
+/* ── METRIC CARDS ── */
+.metric-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:18px 16px;text-align:center;}
+.metric-card .num{font-family:'Playfair Display',serif;font-size:32px;font-weight:500;line-height:1;}
+.metric-card .lbl{font-size:11px;color:var(--muted);margin-top:5px;text-transform:uppercase;letter-spacing:.06em;}
+.metric-card .sub{font-size:11px;color:var(--muted);margin-top:3px;}
+.num-rose{color:var(--rose-dk);}
+.num-teal{color:var(--teal);}
+.num-gold{color:var(--gold);}
+.num-ink{color:var(--ink);}
+
+/* ── BADGES ── */
+.badge{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:500;letter-spacing:.03em;padding:2px 8px;border-radius:20px;}
+.b-dm{background:#EAF0F5;color:#1B5E8C;border:1px solid #B8D0E8;}
+.b-design{background:#F0EAF5;color:#5E1B8C;border:1px solid #D0B8E8;}
+.b-client{background:#F5F0EA;color:#8C5E1B;border:1px solid #E8D0B8;}
+.b-ops{background:#EAF5EE;color:#1B6B3A;border:1px solid #B8DEC8;}
+.b-rose{background:var(--rose-lt);color:var(--rose-dk);border:1px solid #E8C4C8;}
+.b-gold{background:var(--gold-lt);color:#7A5A28;border:1px solid #DEC9A8;}
+.b-teal{background:var(--teal-lt);color:var(--teal);border:1px solid #B8D8D4;}
+.b-ink{background:var(--ink);color:#FAF7F2;}
+
+/* ── TASK LIST ── */
+.filter-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px;align-items:center;}
+.filter-btn{font-size:11px;padding:5px 12px;border-radius:20px;border:1px solid var(--border);background:var(--white);cursor:pointer;font-weight:500;transition:all .15s;color:var(--muted);}
+.filter-btn:hover,.filter-btn.active{background:var(--ink);color:var(--white);border-color:var(--ink);}
+.filter-label{font-size:11px;color:var(--muted);margin-right:4px;}
+
+.task-row{display:flex;align-items:flex-start;gap:12px;padding:11px 14px;border-radius:8px;background:var(--white);border:1px solid var(--border);margin-bottom:7px;transition:all .15s;cursor:pointer;}
+.task-row:hover{border-color:var(--rose);box-shadow:0 2px 8px rgba(200,96,106,.08);}
+.task-row.done{opacity:.55;}
+.task-row.done .task-title{text-decoration:line-through;color:var(--muted);}
+.task-check{width:18px;height:18px;border-radius:4px;border:1.5px solid var(--border);flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-top:1px;transition:all .15s;}
+.task-row.done .task-check{background:var(--teal);border-color:var(--teal);}
+.task-check svg{display:none;}
+.task-row.done .task-check svg{display:block;}
+.task-body{flex:1;}
+.task-title{font-size:13px;font-weight:500;color:var(--ink);margin-bottom:3px;}
+.task-desc{font-size:12px;color:var(--muted);}
+.task-meta{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:6px;}
+.task-week{font-size:10px;color:var(--muted);background:var(--cream2);padding:2px 7px;border-radius:10px;}
+
+.week-group{margin-bottom:24px;}
+.week-header{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);padding:8px 0 10px;border-bottom:1px solid var(--border);margin-bottom:10px;display:flex;align-items:center;justify-content:space-between;}
+.week-count{font-size:10px;background:var(--cream2);padding:2px 8px;border-radius:10px;color:var(--muted);}
+
+/* ── BUDGET TABLE ── */
+.budget-table{width:100%;border-collapse:collapse;font-size:13px;}
+.budget-table th{text-align:left;padding:10px 14px;background:var(--ink);color:#EEBDC0;font-size:10px;text-transform:uppercase;letter-spacing:.08em;font-weight:400;}
+.budget-table td{padding:11px 14px;border-bottom:1px solid var(--border);vertical-align:middle;}
+.budget-table tr:last-child td{border-bottom:none;}
+.budget-table tr.subtotal td{background:var(--cream2);font-weight:500;}
+.budget-table tr.total td{background:var(--ink);color:var(--white);font-weight:500;}
+.budget-table tr.total td .amt{color:#EEBDC0;}
+.amt{font-family:'Playfair Display',serif;font-size:15px;}
+.type-badge{font-size:10px;padding:2px 8px;border-radius:10px;font-weight:500;}
+.type-onetime{background:#E8F5EA;color:#1A6B3A;border:1px solid #B8DEC8;}
+.type-monthly{background:#EAF0F5;color:#1B5E8C;border:1px solid #B8D0E8;}
+.type-adspend{background:#F5EDE2;color:#7A5A28;border:1px solid #DEC9A8;}
+.gst-note{font-size:11px;color:var(--muted);}
+
+/* ── KPI TABLE ── */
+.kpi-table{width:100%;border-collapse:collapse;font-size:13px;}
+.kpi-table th{text-align:left;padding:9px 12px;background:var(--cream2);font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);border-bottom:2px solid var(--border);font-weight:400;}
+.kpi-table td{padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:middle;}
+.kpi-table tr:last-child td{border-bottom:none;}
+.prog-track{height:5px;background:var(--cream3);border-radius:3px;overflow:hidden;width:80px;}
+.prog-bar{height:100%;border-radius:3px;}
+.pb-rose{background:var(--rose);}
+.pb-teal{background:var(--teal);}
+.pb-gold{background:var(--gold);}
+
+/* ── TIMELINE ── */
+.tl{position:relative;}
+.tl::before{content:'';position:absolute;left:18px;top:0;bottom:0;width:1px;background:var(--border);}
+.tl-item{display:flex;gap:20px;margin-bottom:24px;}
+.tl-dot{width:36px;height:36px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;z-index:1;}
+.tl-dot.rose{background:var(--rose);color:var(--white);}
+.tl-dot.teal{background:var(--teal);color:var(--white);}
+.tl-dot.gold{background:var(--gold);color:var(--white);}
+.tl-dot.ink{background:var(--ink);color:#EEBDC0;}
+.tl-body{flex:1;padding-top:6px;}
+.tl-phase{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:3px;}
+.tl-title{font-family:'Playfair Display',serif;font-size:17px;font-weight:500;margin-bottom:8px;}
+
+/* ── RISK TABLE ── */
+.risk-row{display:flex;gap:14px;padding:12px 14px;border-radius:8px;border:1px solid var(--border);background:var(--white);margin-bottom:8px;align-items:flex-start;}
+.risk-level{width:52px;flex-shrink:0;font-size:10px;font-weight:600;text-align:center;padding:4px 0;border-radius:6px;margin-top:2px;}
+.rl-high{background:#FDECEA;color:#C0392B;}
+.rl-med{background:#FDF5E4;color:#B87A1A;}
+.rl-low{background:#E4F5EA;color:#2D7A4F;}
+.risk-body .rt{font-size:13px;font-weight:500;margin-bottom:3px;}
+.risk-body .rd{font-size:12px;color:var(--muted);}
+.risk-body .rm{font-size:12px;color:var(--teal);margin-top:4px;}
+
+/* ── ACCORDION ── */
+.acc-item{border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:8px;}
+.acc-hdr{display:flex;align-items:center;justify-content:space-between;padding:13px 16px;cursor:pointer;background:var(--white);transition:background .15s;}
+.acc-hdr:hover{background:var(--cream2);}
+.acc-hdr-left{display:flex;align-items:center;gap:10px;}
+.acc-icon{font-size:16px;color:var(--muted);transition:transform .25s;}
+.acc-item.open .acc-icon{transform:rotate(45deg);}
+.acc-body{display:none;padding:0 16px 16px;font-size:13px;color:var(--ink2);line-height:1.8;}
+.acc-item.open .acc-body{display:block;}
+
+/* ── STRATEGY CARDS ── */
+.strategy-card{background:var(--white);border:1px solid var(--border);border-radius:10px;overflow:hidden;}
+.sc-header{padding:16px 18px;border-bottom:1px solid var(--border);}
+.sc-body{padding:16px 18px;}
+ul.dot-list{list-style:none;}
+ul.dot-list li{padding:4px 0 4px 14px;position:relative;font-size:13px;color:var(--ink2);}
+ul.dot-list li::before{content:'·';position:absolute;left:0;color:var(--rose);font-size:18px;line-height:1;}
+
+/* ── HIGHLIGHT BLOCKS ── */
+.hl{border-radius:10px;padding:18px;}
+.hl-rose{background:var(--rose-lt);border:1px solid #E8C4C8;}
+.hl-teal{background:var(--teal-lt);border:1px solid #B8D8D4;}
+.hl-gold{background:var(--gold-lt);border:1px solid #DEC9A8;}
+.hl-dark{background:var(--ink);color:#FAF7F2;border:1px solid var(--ink2);}
+.hl-dark h4{color:#EEBDC0;}
+.hl-dark p,.hl-dark li{color:#FFFFFF;}
+
+.divider{border:none;border-top:1px solid var(--border);margin:28px 0;}
+h4{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--rose-dk);margin-bottom:8px;font-weight:500;}
+</style>
+</head>
+<body>
+
+<!-- STICKY HEADER -->
+<header class="site-header">
+  <div class="hdr-brand">
+    <div class="hdr-logo">FLUMEN<span>X</span></div>
+    <div class="hdr-divider"></div>
+    <div class="hdr-client">TCGC · Dr. Amal Calist Bernard</div>
+  </div>
+  <div class="hdr-progress">
+    <div class="hdr-progress-label"><span>Overall Progress</span><span id="prog-pct">0%</span></div>
+    <div class="hdr-progress-track"><div class="hdr-progress-bar" id="prog-bar" style="width:0%"></div></div>
+  </div>
+  <div class="hdr-meta">
+    <div>Trivandrum Cosmetic Gynaecology Centre</div>
+    <div style="margin-top:2px;">Started: <span id="start-date">—</span></div>
+  </div>
+</header>
+
+<!-- TABS BAR -->
+<div class="tabs-bar" id="main-tabs">
+  <button class="tab-btn active" onclick="switchTab('strategy')">📋 Strategy</button>
+  <button class="tab-btn" onclick="switchTab('budget')">💰 Budget Plan</button>
+  <button class="tab-btn" onclick="switchTab('dm-tasks')">📱 DM Tasks</button>
+  <button class="tab-btn" onclick="switchTab('design-tasks')">🎨 Design Tasks</button>
+  <button class="tab-btn" onclick="switchTab('roadmap')">🗓 3-Month Roadmap</button>
+  <button class="tab-btn" onclick="switchTab('kpis')">📊 KPIs</button>
+  <button class="tab-btn" onclick="switchTab('risks')">⚠️ Risks</button>
+</div>
+
+<!-- ══════════════════════════════════════
+     TAB 1 · STRATEGY
+══════════════════════════════════════ -->
+<div id="tab-strategy" class="tab-panel active">
+  <div class="sec-tag">Project Overview</div>
+  <div class="sec-title">TCGC — <em>Execution Plan</em></div>
+  <div class="sec-sub">Trivandrum Cosmetic Gynaecology Centre · Dr. Amal Calist Bernard · Brand build, website, social media, SEO & paid ads — powered by FlumenX.</div>
+
+  <div class="card-grid g4" style="margin-bottom:28px;">
+    <div class="metric-card">
+      <div class="num num-rose">₹38k</div>
+      <div class="lbl">Social Media / GMB</div>
+      <div class="sub">Authority Builder + GST</div>
+    </div>
+    <div class="metric-card">
+      <div class="num num-ink">₹20k–35k</div>
+      <div class="lbl">Website</div>
+      <div class="sub">Basic dynamic or full redesign</div>
+    </div>
+    <div class="metric-card">
+      <div class="num num-gold">₹20k</div>
+      <div class="lbl">Google Ads Mgmt</div>
+      <div class="sub">Scale package + ad spend</div>
+    </div>
+    <div class="metric-card">
+      <div class="num num-teal">3</div>
+      <div class="lbl">Core Services</div>
+      <div class="sub">DM · Website · Ads</div>
+    </div>
+  </div>
+
+  <div class="card-grid g2" style="margin-bottom:24px;">
+    <div class="hl hl-dark">
+      <h4>Project Objective</h4>
+      <p style="font-size:13px;color:#FFFFFF;margin-bottom:10px;">Build TCGC as Kerala's first and most trusted dedicated cosmetic gynaecology brand — fully separate from Prims Hospital. Drive organic leads through SEO-optimised website, authoritative social media presence, and targeted Google Ads to generate consistent patient enquiries and procedure bookings.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;">
+        <span class="badge b-rose">Brand Authority</span>
+        <span class="badge b-teal">Organic Lead Gen</span>
+        <span class="badge b-gold">Paid Acquisition</span>
+        <span class="badge b-ink">Privacy-First</span>
+      </div>
+    </div>
+    <div class="card">
+      <h4>Scope of Work</h4>
+      <ul class="dot-list" style="margin-top:6px;">
+        <li><strong>Social Media + GMB</strong> — Authority Builder package: 12 posters, 8 reels/month, founder content, campaign planning, GMB optimisation, advanced analytics</li>
+        <li><strong>Website</strong> — Redesign tvmcosmeticgyn.com: basic dynamic (₹20k) OR full rebuild (₹30–35k) with all procedure pages, SEO-ready, mobile-first, WhatsApp CTA</li>
+        <li><strong>Google Ads</strong> — Scale package: multi-channel setup, advanced keyword research, 6 ad creatives, daily optimisation, CRO tracking + ad spend to Google direct</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card-grid g3">
+    <div class="strategy-card">
+      <div class="sc-header" style="border-left:3px solid var(--rose);">
+        <div style="font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--rose);margin-bottom:4px;">Service 1</div>
+        <div style="font-family:'Playfair Display',serif;font-size:17px;">Social Media + GMB</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:2px;">Authority Builder · ₹38,000 + GST/month</div>
+      </div>
+      <div class="sc-body">
+        <ul class="dot-list">
+          <li>12 branded posters/month</li>
+          <li>8 reels/month (educational + procedure)</li>
+          <li>Authority Narrative — Dr. Amal personal brand content</li>
+          <li>Founder/Vision content strategy</li>
+          <li>Advanced GMB management</li>
+          <li>Campaign planning (aligned to 90-day sprint)</li>
+          <li>Advanced analytics reporting</li>
+          <li>Community engagement + DM management</li>
+        </ul>
+      </div>
+    </div>
+    <div class="strategy-card">
+      <div class="sc-header" style="border-left:3px solid var(--teal);">
+        <div style="font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--teal);margin-bottom:4px;">Service 2</div>
+        <div style="font-family:'Playfair Display',serif;font-size:17px;">Website Build</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:2px;">Basic Dynamic ₹20k OR Full Redesign ₹30–35k</div>
+      </div>
+      <div class="sc-body">
+        <ul class="dot-list">
+          <li>Rebuild tvmcosmeticgyn.com from scratch</li>
+          <li>Homepage + 8–10 individual procedure pages</li>
+          <li>Doctor authority page (Dr. Amal credentials)</li>
+          <li>Pricing transparency page</li>
+          <li>WhatsApp CTA integration on every page</li>
+          <li>Mobile-first, fast loading (&lt;2.5s)</li>
+          <li>On-page SEO setup for all pages</li>
+          <li>Google Analytics + Search Console setup</li>
+        </ul>
+        <div class="hl hl-rose" style="margin-top:12px;padding:10px 12px;font-size:12px;">
+          <strong>Recommendation:</strong> Full redesign at ₹30–35k for better ROI — the website is the core conversion asset. Basic dynamic at ₹20k if budget needs to be phased.
+        </div>
+      </div>
+    </div>
+    <div class="strategy-card">
+      <div class="sc-header" style="border-left:3px solid var(--gold);">
+        <div style="font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--gold);margin-bottom:4px;">Service 3</div>
+        <div style="font-family:'Playfair Display',serif;font-size:17px;">Google Ads</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:2px;">Scale Package · ₹20,000/month + Ad Spend</div>
+      </div>
+      <div class="sc-body">
+        <ul class="dot-list">
+          <li>Campaign setup — multi-channel (Search + Display)</li>
+          <li>Keyword & audience strategy — advanced research</li>
+          <li>6 ad copy & creative variations</li>
+          <li>Continuous A/B testing</li>
+          <li>Conversion tracking — Advanced + CRO</li>
+          <li>Daily optimisation</li>
+          <li>Detailed monthly reports</li>
+          <li>2 strategy calls/month</li>
+        </ul>
+        <div class="hl hl-gold" style="margin-top:12px;padding:10px 12px;font-size:12px;">
+          <strong>Ad Spend:</strong> Paid directly by Dr. Amal to Google. Recommended starting budget: ₹15,000–20,000/month.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     TAB 2 · BUDGET PLAN
+══════════════════════════════════════ -->
+<div id="tab-budget" class="tab-panel">
+  <div class="sec-tag">Budget Plan</div>
+  <div class="sec-title">Investment <em>Breakdown</em></div>
+  <div class="sec-sub">Complete cost structure for TCGC marketing — one-time setup costs and ongoing monthly retainers. All prices in INR. GST @ 18% applicable on service fees.</div>
+
+  <!-- OPTION SELECTOR -->
+  <div style="display:flex;gap:10px;margin-bottom:24px;flex-wrap:wrap;">
+    <div style="font-size:12px;color:var(--muted);align-self:center;margin-right:4px;">Website Option:</div>
+    <button class="filter-btn active" id="opt-basic" onclick="setWebOption('basic')">Basic Dynamic ₹20,000</button>
+    <button class="filter-btn" id="opt-full" onclick="setWebOption('full')">Full Redesign ₹30,000–35,000</button>
+  </div>
+
+  <!-- ONE-TIME COSTS -->
+  <h4 style="margin-bottom:12px;">One-Time Setup Costs</h4>
+  <div style="overflow-x:auto;margin-bottom:32px;">
+    <table class="budget-table">
+      <thead><tr><th>Item</th><th>Description</th><th>Type</th><th>Amount (excl. GST)</th><th>GST 18%</th><th>Total</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Website Build</strong></td>
+          <td id="web-desc">Basic dynamic website — homepage, 6 procedure pages, doctor bio, contact with WhatsApp integration</td>
+          <td><span class="type-badge type-onetime">One-Time</span></td>
+          <td class="amt" id="web-base">₹20,000</td>
+          <td class="gst-note" id="web-gst">₹3,600</td>
+          <td class="amt" id="web-total" style="color:var(--rose-dk);font-weight:600;">₹23,600</td>
+        </tr>
+        <tr>
+          <td><strong>Brand Setup</strong></td>
+          <td>Logo refinement/adaptation for TCGC, brand kit (colours, fonts, templates), social media profile setup</td>
+          <td><span class="type-badge type-onetime">One-Time</span></td>
+          <td class="amt">₹0</td>
+          <td class="gst-note">Included</td>
+          <td class="amt" style="color:var(--teal);">Included in DM</td>
+        </tr>
+        <tr class="subtotal">
+          <td colspan="3"><strong>One-Time Total</strong></td>
+          <td class="amt" id="onetime-base">₹20,000</td>
+          <td class="gst-note" id="onetime-gst">₹3,600</td>
+          <td class="amt" id="onetime-total" style="color:var(--rose-dk);font-weight:600;">₹23,600</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- MONTHLY COSTS -->
+  <h4 style="margin-bottom:12px;">Monthly Retainer Costs</h4>
+  <div style="overflow-x:auto;margin-bottom:32px;">
+    <table class="budget-table">
+      <thead><tr><th>Service</th><th>Package</th><th>Type</th><th>Amount (excl. GST)</th><th>GST 18%</th><th>Monthly Total</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Social Media + GMB</strong></td>
+          <td>FlumenX Authority Builder — 12 posters, 8 reels, founder content, GMB, analytics</td>
+          <td><span class="type-badge type-monthly">Monthly</span></td>
+          <td class="amt">₹38,000</td>
+          <td class="gst-note">₹6,840</td>
+          <td class="amt" style="color:var(--rose-dk);font-weight:600;">₹44,840</td>
+        </tr>
+        <tr>
+          <td><strong>Google Ads Management</strong></td>
+          <td>FlumenX Scale — multi-channel, 6 creatives, daily optimisation, CRO tracking, 2 strategy calls</td>
+          <td><span class="type-badge type-monthly">Monthly</span></td>
+          <td class="amt">₹20,000</td>
+          <td class="gst-note">₹3,600</td>
+          <td class="amt" style="color:var(--rose-dk);font-weight:600;">₹23,600</td>
+        </tr>
+        <tr>
+          <td><strong>Ad Spend (Google)</strong></td>
+          <td>Paid directly by client to Google. Recommended starting budget — not a FlumenX fee</td>
+          <td><span class="type-badge type-adspend">Ad Spend</span></td>
+          <td class="amt">₹15,000–20,000</td>
+          <td class="gst-note">—</td>
+          <td class="amt" style="color:var(--gold);font-weight:600;">₹15–20k direct</td>
+        </tr>
+        <tr class="subtotal">
+          <td colspan="3"><strong>Monthly FlumenX Retainer (excl. ad spend)</strong></td>
+          <td class="amt">₹58,000</td>
+          <td class="gst-note">₹10,440</td>
+          <td class="amt" style="color:var(--rose-dk);font-weight:600;">₹68,440</td>
+        </tr>
+        <tr class="subtotal">
+          <td colspan="3"><strong>Monthly Total (incl. ad spend to Google)</strong></td>
+          <td class="amt">₹73,000–78,000</td>
+          <td class="gst-note">₹10,440</td>
+          <td class="amt" style="color:var(--rose-dk);font-weight:600;">₹83,440–88,440</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- FIRST MONTH PAYMENT -->
+  <h4 style="margin-bottom:12px;">First Month Payment Schedule</h4>
+  <div style="overflow-x:auto;margin-bottom:32px;">
+    <table class="budget-table">
+      <thead><tr><th>Payment</th><th>What It Covers</th><th>When</th><th>Amount</th></tr></thead>
+      <tbody>
+        <tr style="background:#FFFBF5;">
+          <td><strong>Payment 1 — Advance</strong></td>
+          <td>Website build (100%) + First month Social Media + First month Ads management — all 100% advance as per FlumenX retainer policy</td>
+          <td><strong>Before work begins</strong></td>
+          <td class="amt" id="p1-amt" style="color:var(--rose-dk);font-weight:600;">₹83,440–91,040</td>
+        </tr>
+        <tr style="background:#F5FAFB;">
+          <td><strong>Payment 2 onwards</strong></td>
+          <td>Monthly retainer (Social Media + Ads management) due by 5th of each month</td>
+          <td><strong>5th of every month</strong></td>
+          <td class="amt" style="color:var(--teal);font-weight:600;">₹68,440/month</td>
+        </tr>
+        <tr>
+          <td><strong>Ad Spend (separate)</strong></td>
+          <td>Paid directly by Dr. Amal to Google account — not to FlumenX</td>
+          <td><strong>As needed / prepaid to Google</strong></td>
+          <td class="amt" style="color:var(--gold);">₹15,000–20,000/month</td>
+        </tr>
+        <tr class="total">
+          <td colspan="3"><strong>Total First Month Investment (worst case)</strong></td>
+          <td class="amt" id="total-first" style="color:#EEBDC0;">₹1,08,440–1,11,040</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- PHASED OPTION -->
+  <div class="card-grid g2">
+    <div class="hl hl-rose">
+      <h4>Option A — Full Start (Recommended)</h4>
+      <p style="font-size:13px;margin-bottom:12px;">Start all three services simultaneously. Website + Social Media + Ads running from Day 1 means maximum momentum and fastest lead generation.</p>
+      <div style="font-family:'Playfair Display',serif;font-size:22px;color:var(--rose-dk);margin-bottom:4px;" id="optA-total">First Month: ~₹91,040–1,11,040</div>
+      <div style="font-size:12px;color:var(--muted);">Incl. GST on service fees + ad spend to Google</div>
+    </div>
+    <div class="hl hl-teal">
+      <h4>Option B — Phased Start (Budget-Friendly)</h4>
+      <p style="font-size:13px;margin-bottom:12px;">Month 1: Website + Social Media only. Add Google Ads in Month 2 once website is live. Reduces first-month cash outlay significantly.</p>
+      <div style="font-family:'Playfair Display',serif;font-size:22px;color:var(--teal);margin-bottom:4px;" id="optB-total">First Month: ~₹67,840–75,440</div>
+      <div style="font-size:12px;color:var(--muted);">Website + Social Media only · Ads added Month 2</div>
+    </div>
+  </div>
+
+  <!-- PAYMENT TERMS REMINDER -->
+  <div class="hl hl-dark" style="margin-top:24px;">
+    <h4>FlumenX Payment Terms</h4>
+    <div class="card-grid g2" style="margin-top:10px;">
+      <ul class="dot-list">
+        <li style="color:#FFFFFF;">100% advance payment required for first month of all retainer services</li>
+        <li style="color:#FFFFFF;">Website: full payment before work begins (one-time)</li>
+        <li style="color:#FFFFFF;">Subsequent months payable by <strong style="color:#EEBDC0;">5th of each month</strong></li>
+      </ul>
+      <ul class="dot-list">
+        <li style="color:#FFFFFF;">3-month minimum commitment recommended for best results</li>
+        <li style="color:#FFFFFF;">Ad spend paid <strong style="color:#EEBDC0;">directly to Google by client</strong> — not to FlumenX</li>
+        <li style="color:#FFFFFF;">Payment: bank transfer, UPI, or online. Invoices provided.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     TAB 3 · DM TASKS
+══════════════════════════════════════ -->
+<div id="tab-dm-tasks" class="tab-panel">
+  <div class="sec-tag">Digital Marketing Tasks</div>
+  <div class="sec-title">DM <em>Execution</em> — Week by Week</div>
+  <div class="sec-sub">Social media, GMB, content creation, and community management tasks. Click any task to mark complete. Filter by type or week.</div>
+
+  <div class="filter-bar">
+    <span class="filter-label">Filter:</span>
+    <button class="filter-btn active" onclick="filterTasks('dm','all')">All</button>
+    <button class="filter-btn" onclick="filterTasks('dm','pending')">Pending</button>
+    <button class="filter-btn" onclick="filterTasks('dm','done')">Done</button>
+    <span class="filter-label" style="margin-left:8px;">Week:</span>
+    <button class="filter-btn" onclick="filterWeek('dm','w1')">Week 1</button>
+    <button class="filter-btn" onclick="filterWeek('dm','w2')">Week 2</button>
+    <button class="filter-btn" onclick="filterWeek('dm','w3')">Week 3</button>
+    <button class="filter-btn" onclick="filterWeek('dm','w4')">Week 4</button>
+    <button class="filter-btn" onclick="filterWeek('dm','ongoing')">Ongoing</button>
+  </div>
+
+  <div id="dm-task-list">
+    <!-- WEEK 1 -->
+    <div class="week-group" data-week="w1">
+      <div class="week-header">Week 1 — Setup & Foundations <span class="week-count" id="dm-w1-count"></span></div>
+
+      <div class="task-row" onclick="toggleTask(this)" data-section="dm">
+        <div class="task-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="task-body">
+          <div class="task-title">WhatsApp Business Setup — dedicated TCGC number</div>
+          <div class="task-desc">Set up WhatsApp Business with auto-reply: "Welcome to TCGC. Your privacy is our priority. Our team will respond within 2 hours." Enable catalogue, quick replies for common procedures.</div>
+          <div class="task-meta"><span class="badge b-dm">DM</span><span class="badge b-ops">Ops</span><span class="task-week">Week 1</span></div>
+        </div>
+      </div>
+
+      <div class="task-row" onclick="toggleTask(this)" data-section="dm">
+        <div class="task-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="task-body">
+          <div class="task-title">Google Business Profile — full optimisation</div>
+          <div class="task-desc">Complete all GBP fields: categories (Gynecologist, Cosmetic Surgeon), all services listed individually, clinic photos (interior — clean, private, welcoming), WhatsApp number, FAQs pre-answered, service descriptions with keywords.</div>
+          <div class="task-meta"><span class="badge b-dm">DM</span><span class="task-week">Week 1</span></div>
+        </div>
+      </div>
+
+      <div class="task-row" onclick="toggleTask(this)" data-section="dm">
+        <div class="task-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="task-body">
+          <div class="task-title">Request 10 Google reviews from existing patients</div>
+          <div class="task-desc">Dr. Amal personally calls 10 existing satisfied patients. Send direct Google review link via WhatsApp. Target: 10 reviews in first 7 days. This is the fastest ranking boost available at zero cost.</div>
+          <div class="task-meta"><span class="badge b-client">Client</span><span class="badge b-dm">DM</span><span class="task-week">Week 1</span></div>
+        </div>
+      </div>
+
+      <div class="task-row" onclick="toggleTask(this)" data-section="dm">
+        <div class="task-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="task-body">
+          <div class="task-title">Instagram + Facebook rebrand for TCGC</div>
+          <div class="task-desc">Update all social bios: "Kerala's dedicated cosmetic gynaecology centre | Discreet & private | Led by Dr. Amal Calist Bernard | WhatsApp 👇 [link]". New profile photo (TCGC logo), highlight covers, link-in-bio setup.</div>
+          <div class="task-meta"><span class="badge b-dm">DM</span><span class="badge b-design">Design</span><span class="task-week">Week 1</span></div>
+        </div>
+      </div>
+
+      <div class="task-row" onclick="toggleTask(this)" data-section="dm">
+        <div class="task-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="task-body">
+          <div class="task-title">Content calendar — Month 1 planned</div>
+          <div class="task-desc">Plan all 12 posters + 8 reels for Month 1. Topics: what is cosmetic gynaecology, vaginal tightening explained, post-delivery changes, labiaplasty myths, privacy promise, Dr. Amal intro reel, patient FAQ reels. Submit to Dr. Amal for approval.</div>
+          <div class="task-meta"><span class="badge b-dm">DM</span><span class="badge b-design">Design</span><span class="task-week">Week 1</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- WEEK 2 -->
+    <div class="week-group" data-week="w2">
+      <div class="week-header">Week 2 — Content Goes Live <span class="week-count" id="dm-w2-count"></span></div>
+
+      <div class="task-row" onclick="toggleTask(this)" data-section="dm">
+        <div class="task-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="task-body">
+          <div class="task-title">Publish first 3 Instagram reels</div>
+          <div class="task-desc">Reel 1: "What is cosmetic gynaecology? — 3 things every Kerala woman should know" (Dr. Amal on camera, Malayalam). Reel 2: "3 changes after childbirth no one talks about" (motion graphic). Reel 3: "Is this treatment safe? Your questions answered."</div>
+          <div class="task-meta"><span class="badge b-dm">DM</span><span class="task-week">Week 2</span></div>
+        </div>
+      </div>
+
+      <div class="task-row" onclick="toggleTask(this)" data-section="dm">
+        <div class="task-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="task-body">
+          <div class="task-title">Update Practo, Justdial, Sulekha, Mappls profiles</div>
+          <div class="task-desc">All directories updated with TCGC brand, new photos, correct services, WhatsApp number, and accurate description. NAP (Name-Address-Phone) consistency across all listings is critical for local SEO.</div>
+          <div class="task-meta"><span class="badge b-dm">DM</span><span class="task-week">Week 2</span></div>
+        </div>
+      </div>
+
+      <div class="task-row" onclick="toggleTask(this)" data-section="dm">
+        <div class="task-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="task-body">
+          <div class="task-title">YouTube channel setup + first 2 videos</div>
+          <div class="task-desc">Create TCGC YouTube channel. Record Dr. Amal intro video: "Who I am and what TCGC does" (10 min, Malayalam). Video 2: "Everything about vaginal tightening — for Kerala women." SEO-optimised titles and descriptions.</div>
+          <div class="task-meta"><span class="badge b-dm">DM</span><span class="badge b-client">Client</span><span class="task-week">Week 2</span></div>
+        </div>
+      </div>
+
+      <div class="task-row" onclick="toggleTask(this)" data-section="dm">
+        <div class="task-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="task-body">
+          <div class="task-title">Doctor referral letters — draft and send to 20 OBGYNs</div>
+          <div class="task-desc">Professional letter introducing TCGC as a specialist referral destination for post-delivery intimate wellness. Include procedure list, Dr. Amal credentials, and direct WhatsApp contact for referrals. Target 20 gynecologists/obstetricians in Trivandrum.</div>
+          <div class="task-meta"><span class="badge b-dm">DM</span><span class="badge b-client">Client</span><span class="task-week">Week 2</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- WEEK 3 -->
+    <div class="week-group" data-week="w3">
+      <div class="week-header">Week 3 — Authority Building <span class="week-count" id="dm-w3-count"></span></div>
+
+      <div class="task-row" onclick="toggleTask(this)" data-section="dm">
+        <div class="task-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="task-body">
+          <div class="task-title">Publish 3 more reels + 4 posters</div>
+          <div class="task-desc">Reel 4: "Labiaplasty: what it is, who needs it, and is it painful?" Reel 5: "Urinary leakage after delivery — there is a solution." Reel 6: "5 myths about vaginal tightening debunked." 4 educational posters on procedure benefits, privacy guarantee, Dr. Amal credentials, cost transparency.</div>
+          <div class="task-meta"><span class="badge b-dm">DM</span><span class="task-week">Week 3</span></div>
+        </div>
+      </div>
+
+      <div class="task-row" onclick="toggleTask(this)" data-section="dm">
+        <div class="task-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="task-body">
+          <div class="task-title">GBP — first weekly post + Q&A setup</div>
+          <div class="task-desc">Publish first Google Business post (educational: "Did you know? Post-delivery vaginal changes are treatable."). Add 10 pre-answered Q&As to the GBP Questions section. These appear in search results and drive clicks.</div>
+          <div class="task-meta"><span class="badge b-dm">DM</span><span class="task-week">Week 3</span></div>
+        </div>
+      </div>
+
+      <div class="task-row" onclick="toggleTask(this)" data-section="dm">
+        <div class="task-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="task-body">
+          <div class="task-title">LinkedIn — Dr. Amal profile update + first post</div>
+          <div class="task-desc">Update Dr. Amal's LinkedIn profile with TCGC as current position. First post: "Announcing Trivandrum Cosmetic Gynaecology Centre — why I created Kerala's first dedicated cosmetic gynaecology centre." This builds referral network among medical peers.</div>
+          <div class="task-meta"><span class="badge b-dm">DM</span><span class="badge b-client">Client</span><span class="task-week">Week 3</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- WEEK 4 -->
+    <div class="week-group" data-week="w4">
+      <div class="week-header">Week 4 — Review & Prepare Month 2 <span class="week-count" id="dm-w4-count"></span></div>
+
+      <div class="task-row" onclick="toggleTask(this)" data-section="dm">
+        <div class="task-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="task-body">
+          <div class="task-title">First analytics review — GBP + Instagram + YouTube</div>
+          <div class="task-desc">Pull stats: GBP calls/direction requests, Instagram reach/saves/DMs, YouTube watch time. Identify which content format is performing best. Share with Dr. Amal. Adjust Month 2 content calendar accordingly.</div>
+          <div class="task-meta"><span class="badge b-dm">DM</span><span class="task-week">Week 4</span></div>
+        </div>
+      </div>
+
+      <div class="task-row" onclick="toggleTask(this)" data-section="dm">
+        <div class="task-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="task-body">
+          <div class="task-title">Collect first patient testimonials</div>
+          <div class="task-desc">Request written testimonials from 5 recent patients (anonymised — first name only or "Patient from Trivandrum"). For willing patients: 60-second voice note testimonial for website. Target: 3 testimonials ready for website launch.</div>
+          <div class="task-meta"><span class="badge b-client">Client</span><span class="badge b-dm">DM</span><span class="task-week">Week 4</span></div>
+        </div>
+      </div>
+
+      <div class="task-row" onclick="toggleTask(this)" data-section="dm">
+        <div class="task-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="task-body">
+          <div class="task-title">Month 1 report + Month 2 content calendar approval</div>
+          <div class="task-desc">Deliver Month 1 performance report. Present Month 2 content calendar (next 12 posters + 8 reels planned). Get approval from Dr. Amal. Month 2 focus: procedure-specific deep dives + NRI audience targeting.</div>
+          <div class="task-meta"><span class="badge b-dm">DM</span><span class="badge b-client">Client</span><span class="task-week">Week 4</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ONGOING -->
+    <div class="week-group" data-week="ongoing">
+      <div class="week-header">Ongoing — Every Month <span class="week-count" id="dm-ong-count"></span></div>
+
+      <div class="task-row" onclick="toggleTask(this)" data-section="dm">
+        <div class="task-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="task-body">
+          <div class="task-title">12 branded posters + 8 reels published monthly</div>
+          <div class="task-desc">Consistent publishing rhythm: 3 posters/week, 2 reels/week. Mix of: educational content, myth-busting, procedure explainers, Dr. Amal tips, patient journey stories (anonymised), seasonal/NRI-targeted campaigns.</div>
+          <div class="task-meta"><span class="badge b-dm">DM</span><span class="badge b-design">Design</span><span class="task-week">Ongoing</span></div>
+        </div>
+      </div>
+
+      <div class="task-row" onclick="toggleTask(this)" data-section="dm">
+        <div class="task-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="task-body">
+          <div class="task-title">WhatsApp DM management + lead response</div>
+          <div class="task-desc">Monitor and respond to all WhatsApp enquiries within 2 hours (business hours). Warm handover to Dr. Amal for medical questions. Track lead source, response time, and conversion to consultation. Weekly lead report.</div>
+          <div class="task-meta"><span class="badge b-dm">DM</span><span class="badge b-ops">Ops</span><span class="task-week">Ongoing</span></div>
+        </div>
+      </div>
+
+      <div class="task-row" onclick="toggleTask(this)" data-section="dm">
+        <div class="task-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="task-body">
+          <div class="task-title">Monthly analytics report + strategy review call</div>
+          <div class="task-desc">Deliver full analytics report: reach, engagement, lead count, WhatsApp conversions, GBP impressions/calls, top performing content. 45-min strategy call with Dr. Amal. Adjust next month's content plan based on data.</div>
+          <div class="task-meta"><span class="badge b-dm">DM</span><span class="task-week">Ongoing</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     TAB 4 · DESIGN TASKS
+══════════════════════════════════════ -->
+<div id="tab-design-tasks" class="tab-panel">
+  <div class="sec-tag">Design & Website Tasks</div>
+  <div class="sec-title">Design <em>Deliverables</em></div>
+  <div class="sec-sub">Website build, visual identity, and design deliverables. Click tasks to mark complete.</div>
+
+  <div class="filter-bar">
+    <span class="filter-label">Filter:</span>
+    <button class="filter-btn active" onclick="filterTasks('design','all')">All</button>
+    <button class="filter-btn" onclick="filterTasks('design','pending')">Pending</button>
+    <button class="filter-btn" onclick="filterTasks('design','done')">Done</button>
+  </div>
+
+  <div id="design-task-list">
+    <div class="week-group">
+      <div class="week-header">Phase 1 — Discovery & Brief (Week 1)</div>
+
+      <div class="task-row" onclick="toggleTask(this)" data-section="design">
+        <div class="task-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="task-body">
+          <div class="task-title">Website brief document — collect all content from Dr. Amal</div>
+          <div class="task-desc">Collect: doctor bio + credentials + photo, clinic photos (interior + exterior), list of all procedures offered, pricing ranges, existing patient testimonials, any competitor websites Dr. Amal likes, preferred colour/feel direction.</div>
+          <div class="task-meta"><span class="badge b-design">Design</span><span class="badge b-client">Client</span><span class="task-week">Week 1</span></div>
+        </div>
+      </div>
+
+      <div class="task-row" onclick="toggleTask(this)" data-section="design">
+        <div class="task-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="task-body">
+          <div class="task-title">TCGC brand identity / logo adaptation</div>
+          <div class="task-desc">Refine or create TCGC logo. Brand guidelines: primary colour palette (rose-gold, cream, deep green or ink), typography (serif for elegance), brand tone (luxury wellness meets medical trust). Deliver: logo variants, colour palette, typography guide.</div>
+          <div class="task-meta"><span class="badge b-design">Design</span><span class="task-week">Week 1–2</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="week-group">
+      <div class="week-header">Phase 2 — Design & Development (Week 2–4)</div>
+
+      <div class="task-row" onclick="toggleTask(this)" data-section="design">
+        <div class="task-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="task-body">
+          <div class="task-title">Website wireframe + design mockup (homepage + 2 procedure pages)</div>
+          <div class="task-desc">Create high-fidelity design mockup in Figma. Homepage must have: hero with WhatsApp CTA, procedure grid, doctor credentials section, privacy promise, testimonials, trust badges. Get Dr. Amal's approval before development begins.</div>
+          <div class="task-meta"><span class="badge b-design">Design</span><span class="task-week">Week 2</span></div>
+        </div>
+      </div>
+
+      <div class="task-row" onclick="toggleTask(this)" data-section="design">
+        <div class="task-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="task-body">
+          <div class="task-title">Write all website copy — procedure pages, doctor bio, FAQs</div>
+          <div class="task-desc">Write SEO-optimised copy for: Homepage, Vaginal Tightening, Labiaplasty, Vaginoplasty, Hymenoplasty, Laser Rejuvenation, Urinary Incontinence, Mommy Makeover, Doctor Bio, Pricing, Privacy Promise page. ~1500 words per procedure page.</div>
+          <div class="task-meta"><span class="badge b-design">Design</span><span class="badge b-dm">DM</span><span class="task-week">Week 2–3</span></div>
+        </div>
+      </div>
+
+      <div class="task-row" onclick="toggleTask(this)" data-section="design">
+        <div class="task-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="task-body">
+          <div class="task-title">Website development — full build</div>
+          <div class="task-desc">Develop on WordPress or custom CMS. Must be: mobile-first, fast loading (&lt;2.5s), WhatsApp float button on all pages, procedure pages with FAQ schema, Google Analytics + Search Console setup, SSL, basic on-page SEO for all pages.</div>
+          <div class="task-meta"><span class="badge b-design">Design</span><span class="task-week">Week 2–4</span></div>
+        </div>
+      </div>
+
+      <div class="task-row" onclick="toggleTask(this)" data-section="design">
+        <div class="task-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="task-body">
+          <div class="task-title">Social media templates — poster + reel templates</div>
+          <div class="task-desc">Create branded Canva/Figma templates: 4 poster templates (educational, myth-bust, procedure, testimonial formats), 2 reel cover templates, Instagram stories template, YouTube thumbnail template. All in TCGC brand identity.</div>
+          <div class="task-meta"><span class="badge b-design">Design</span><span class="task-week">Week 2</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="week-group">
+      <div class="week-header">Phase 3 — Launch & Review (Week 4–5)</div>
+
+      <div class="task-row" onclick="toggleTask(this)" data-section="design">
+        <div class="task-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="task-body">
+          <div class="task-title">Website review + client approval</div>
+          <div class="task-desc">Present completed website to Dr. Amal. Collect feedback. Make revisions (up to 2 rounds included). Final approval sign-off before going live.</div>
+          <div class="task-meta"><span class="badge b-design">Design</span><span class="badge b-client">Client</span><span class="task-week">Week 4</span></div>
+        </div>
+      </div>
+
+      <div class="task-row" onclick="toggleTask(this)" data-section="design">
+        <div class="task-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="task-body">
+          <div class="task-title">Website LIVE — tvmcosmeticgyn.com</div>
+          <div class="task-desc">DNS pointed, SSL live, all pages published, WhatsApp CTA tested across devices, forms tested, Google Analytics confirmed tracking, Search Console sitemap submitted. Post-launch checklist completed.</div>
+          <div class="task-meta"><span class="badge b-design">Design</span><span class="badge b-ops">Ops</span><span class="task-week">Week 5</span></div>
+        </div>
+      </div>
+
+      <div class="task-row" onclick="toggleTask(this)" data-section="design">
+        <div class="task-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="task-body">
+          <div class="task-title">Google Ads campaign setup — post website launch</div>
+          <div class="task-desc">Once website is live, set up Google Ads: campaign structure, keywords, ad copies (6 variations), conversion tracking to WhatsApp click + form submit, audience targeting (women 25–55 in Kerala + Gulf). Launch with ₹500/day test budget.</div>
+          <div class="task-meta"><span class="badge b-dm">DM</span><span class="badge b-design">Design</span><span class="task-week">Week 5</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     TAB 5 · 3-MONTH ROADMAP
+══════════════════════════════════════ -->
+<div id="tab-roadmap" class="tab-panel">
+  <div class="sec-tag">3-Month Roadmap</div>
+  <div class="sec-title">Phase-by-Phase <em>Execution</em></div>
+  <div class="sec-sub">A focused 90-day sprint to establish TCGC's digital presence, generate first organic leads, and build the foundation for long-term growth.</div>
+
+  <div class="tl">
+    <div class="tl-item">
+      <div class="tl-dot rose">M1</div>
+      <div class="tl-body">
+        <div class="tl-phase">Month 1 — Foundation</div>
+        <div class="tl-title">Build Everything from Zero</div>
+        <div class="card-grid g3" style="margin-top:12px;">
+          <div class="card">
+            <h4>Social Media + GMB</h4>
+            <ul class="dot-list">
+              <li>TCGC Instagram/Facebook rebranded</li>
+              <li>GBP fully optimised + 10 reviews</li>
+              <li>12 posters + 8 reels published</li>
+              <li>YouTube channel + 4 videos live</li>
+              <li>WhatsApp Business funnel active</li>
+              <li>Doctor referral letters sent (20)</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>Website</h4>
+            <ul class="dot-list">
+              <li>Brief + content collected from Dr. Amal</li>
+              <li>Brand identity / logo finalised</li>
+              <li>Design mockup approved</li>
+              <li>Development underway</li>
+              <li>All copy written (8–10 pages)</li>
+              <li>Target: live by end of Week 5</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>Month 1 Targets</h4>
+            <ul class="dot-list">
+              <li>25+ Google reviews</li>
+              <li>Instagram: 200+ followers gained</li>
+              <li>YouTube: 4 videos live</li>
+              <li>3–5 WhatsApp enquiries/week</li>
+              <li>Website design approved</li>
+              <li>Revenue from referrals + existing patients</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot teal">M2</div>
+      <div class="tl-body">
+        <div class="tl-phase">Month 2 — Authority</div>
+        <div class="tl-title">Website Live + Ads Running</div>
+        <div class="card-grid g3" style="margin-top:12px;">
+          <div class="card">
+            <h4>Social Media + GMB</h4>
+            <ul class="dot-list">
+              <li>Month 2 content: procedure deep-dives</li>
+              <li>NRI-targeted content begins</li>
+              <li>First influencer collaboration</li>
+              <li>WhatsApp Community launched</li>
+              <li>GBP: weekly posts routine</li>
+              <li>YouTube: 8 videos total</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>Website + Ads</h4>
+            <ul class="dot-list">
+              <li>Website LIVE (if not in Month 1)</li>
+              <li>Google Analytics confirmed tracking</li>
+              <li>Google Ads campaign launched</li>
+              <li>First 10 blog articles published</li>
+              <li>Ads test budget ₹15k to Google</li>
+              <li>Conversion tracking active</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>Month 2 Targets</h4>
+            <ul class="dot-list">
+              <li>50+ Google reviews</li>
+              <li>500+ website visitors</li>
+              <li>8–12 WhatsApp enquiries/week</li>
+              <li>First 3 procedure bookings from digital</li>
+              <li>Google Ads: first conversions tracked</li>
+              <li>Digital revenue: ₹2–3 lakh</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot gold">M3</div>
+      <div class="tl-body">
+        <div class="tl-phase">Month 3 — Momentum</div>
+        <div class="tl-title">Optimise, Scale, Review</div>
+        <div class="card-grid g3" style="margin-top:12px;">
+          <div class="card">
+            <h4>Social Media + GMB</h4>
+            <ul class="dot-list">
+              <li>Top-performing content doubled down</li>
+              <li>First video testimonials collected</li>
+              <li>Gulf NRI campaign launched</li>
+              <li>YouTube: 12+ videos, channel growing</li>
+              <li>Instagram: 1000+ followers</li>
+              <li>Press/media outreach — Kerala women's publications</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>Website + Ads</h4>
+            <ul class="dot-list">
+              <li>30+ blog articles indexed</li>
+              <li>First keyword rankings appearing</li>
+              <li>Google Ads budget scaled based on ROI</li>
+              <li>Ads optimised: cut low performers, scale winners</li>
+              <li>Pricing page added / updated</li>
+              <li>Testimonials added to website</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>Month 3 Targets</h4>
+            <ul class="dot-list">
+              <li>75+ Google reviews</li>
+              <li>1000+ website visitors/month</li>
+              <li>15–20 enquiries/week</li>
+              <li>5–8 procedures/month from digital</li>
+              <li>Digital revenue: ₹4–6 lakh/month</li>
+              <li>TCGC appearing Page 1 for key searches</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hl hl-dark" style="margin-top:8px;">
+    <h4>90-Day North Star</h4>
+    <p style="font-size:13px;color:#FFFFFF;margin-bottom:8px;">By the end of Month 3, TCGC should be generating 15–20 qualified patient enquiries per week organically through digital channels — WhatsApp messages, website contact forms, and Google calls. At 40% consultation conversion and 50% procedure booking rate, this translates to 3–4 procedures/week = ₹3–5 lakh/month from digital alone, growing every month as SEO compounds.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;">
+      <span class="badge b-rose">₹4–6L/month revenue by M3</span>
+      <span class="badge b-teal">Page 1 Google for key searches</span>
+      <span class="badge b-gold">1000+ website visitors/month</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     TAB 6 · KPIs
+══════════════════════════════════════ -->
+<div id="tab-kpis" class="tab-panel">
+  <div class="sec-tag">Key Performance Indicators</div>
+  <div class="sec-title">How We <em>Measure Success</em></div>
+  <div class="sec-sub">Monthly KPI targets for TCGC across all channels. Updated and reviewed at each monthly strategy call.</div>
+
+  <div class="card-grid g2" style="margin-bottom:24px;">
+    <div>
+      <h4 style="margin-bottom:12px;">Digital Marketing KPIs</h4>
+      <div style="overflow-x:auto;">
+        <table class="kpi-table">
+          <thead><tr><th>Metric</th><th>Month 1</th><th>Month 2</th><th>Month 3</th><th>Progress</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Google Reviews</strong></td><td>25+</td><td>50+</td><td>75+</td><td><div class="prog-track"><div class="prog-bar pb-rose" style="width:0%"></div></div></td></tr>
+            <tr><td><strong>Instagram Followers</strong></td><td>200+</td><td>500+</td><td>1,000+</td><td><div class="prog-track"><div class="prog-bar pb-rose" style="width:0%"></div></div></td></tr>
+            <tr><td><strong>YouTube Videos Live</strong></td><td>4</td><td>8</td><td>12+</td><td><div class="prog-track"><div class="prog-bar pb-gold" style="width:0%"></div></div></td></tr>
+            <tr><td><strong>GBP Profile Views/mo</strong></td><td>500+</td><td>1,000+</td><td>2,500+</td><td><div class="prog-track"><div class="prog-bar pb-teal" style="width:0%"></div></div></td></tr>
+            <tr><td><strong>Instagram Reach/month</strong></td><td>5,000+</td><td>12,000+</td><td>25,000+</td><td><div class="prog-track"><div class="prog-bar pb-rose" style="width:0%"></div></div></td></tr>
+            <tr><td><strong>Blog Articles Published</strong></td><td>10</td><td>20</td><td>30+</td><td><div class="prog-track"><div class="prog-bar pb-teal" style="width:0%"></div></div></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div>
+      <h4 style="margin-bottom:12px;">Lead & Revenue KPIs</h4>
+      <div style="overflow-x:auto;">
+        <table class="kpi-table">
+          <thead><tr><th>Metric</th><th>Month 1</th><th>Month 2</th><th>Month 3</th><th>Progress</th></tr></thead>
+          <tbody>
+            <tr><td><strong>WhatsApp Enquiries/week</strong></td><td>3–5</td><td>8–12</td><td>15–20</td><td><div class="prog-track"><div class="prog-bar pb-rose" style="width:0%"></div></div></td></tr>
+            <tr><td><strong>Website Visitors/month</strong></td><td>200+</td><td>500+</td><td>1,000+</td><td><div class="prog-track"><div class="prog-bar pb-teal" style="width:0%"></div></div></td></tr>
+            <tr><td><strong>Consultations from Digital</strong></td><td>5+</td><td>15+</td><td>30+</td><td><div class="prog-track"><div class="prog-bar pb-gold" style="width:0%"></div></div></td></tr>
+            <tr><td><strong>Procedures from Digital</strong></td><td>1–2</td><td>3–5</td><td>6–10</td><td><div class="prog-track"><div class="prog-bar pb-rose" style="width:0%"></div></div></td></tr>
+            <tr><td><strong>Digital Revenue (est.)</strong></td><td>₹1–2L</td><td>₹2–4L</td><td>₹4–6L</td><td><div class="prog-track"><div class="prog-bar pb-teal" style="width:0%"></div></div></td></tr>
+            <tr><td><strong>Marketing ROI</strong></td><td>0.5–1x</td><td>1.5–2x</td><td>3–4x</td><td><div class="prog-track"><div class="prog-bar pb-gold" style="width:0%"></div></div></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="hl hl-rose">
+    <h4>Conversion Funnel Benchmarks</h4>
+    <div class="card-grid g4" style="margin-top:12px;">
+      <div style="text-align:center;">
+        <div style="font-family:'Playfair Display',serif;font-size:24px;color:var(--rose-dk);">5–8%</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:3px;">Website visitor → WhatsApp</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="font-family:'Playfair Display',serif;font-size:24px;color:var(--rose-dk);">50–60%</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:3px;">WhatsApp → Consultation booked</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="font-family:'Playfair Display',serif;font-size:24px;color:var(--rose-dk);">60–70%</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:3px;">Consultation → Clinic visit</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="font-family:'Playfair Display',serif;font-size:24px;color:var(--rose-dk);">50–65%</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:3px;">Clinic visit → Procedure booked</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     TAB 7 · RISKS
+══════════════════════════════════════ -->
+<div id="tab-risks" class="tab-panel">
+  <div class="sec-tag">Risk Register</div>
+  <div class="sec-title">Risks & <em>Mitigations</em></div>
+  <div class="sec-sub">Known risks to the TCGC marketing plan and how we manage them proactively.</div>
+
+  <div class="risk-row">
+    <div class="risk-level rl-high">HIGH</div>
+    <div class="risk-body">
+      <div class="rt">Content restriction on Google/Meta ads for intimate health procedures</div>
+      <div class="rd">Google and Meta restrict advertising for intimate/sexual health content. Campaigns using explicit procedure terms can be disapproved or account flagged.</div>
+      <div class="rm">✓ Mitigation: Use condition-based keywords ("post-delivery intimate care", "urinary incontinence treatment") not procedure names. Lead with educational content in ads. Build strong organic channel so paid ads are a supplement not primary driver.</div>
+    </div>
+  </div>
+
+  <div class="risk-row">
+    <div class="risk-level rl-high">HIGH</div>
+    <div class="risk-body">
+      <div class="rt">Content approval delays from Dr. Amal — slowing publishing schedule</div>
+      <div class="rd">If Dr. Amal is too busy to review and approve content in time, the 3x/week posting schedule slips, reducing reach and momentum.</div>
+      <div class="rm">✓ Mitigation: Establish weekly 30-min content review slot (fixed day/time). Batch-approve 2 weeks of content at once. Define pre-approved content themes so minor variations don't need individual approval.</div>
+    </div>
+  </div>
+
+  <div class="risk-row">
+    <div class="risk-level rl-med">MED</div>
+    <div class="risk-body">
+      <div class="rt">Website launch delayed beyond Week 5 — ads can't run without live website</div>
+      <div class="rd">Google Ads requires a live, policy-compliant website. If website is delayed, the ads service cannot launch on schedule.</div>
+      <div class="rm">✓ Mitigation: Website brief collected in Week 1. Design mockup approved by end of Week 2. Development begins Week 2. Hard deadline: Week 5 launch. Phased option: run DM-only for Month 1, ads in Month 2.</div>
+    </div>
+  </div>
+
+  <div class="risk-row">
+    <div class="risk-level rl-med">MED</div>
+    <div class="risk-body">
+      <div class="rt">Patient privacy breach risk — any social media misstep can damage trust</div>
+      <div class="rd">A single post that inadvertently compromises patient identity (even anonymised testimonials with identifiable details) could seriously damage TCGC's reputation in this sensitive specialty.</div>
+      <div class="rm">✓ Mitigation: Strict content protocol — no patient details without written consent. All testimonials reviewed by Dr. Amal before publishing. Separate "patient consent for testimonial" form. No case photos without multiple layers of consent.</div>
+    </div>
+  </div>
+
+  <div class="risk-row">
+    <div class="risk-level rl-med">MED</div>
+    <div class="risk-body">
+      <div class="rt">Low ad spend budget limiting Google Ads effectiveness</div>
+      <div class="rd">At ₹15,000/month ad spend, the daily budget is ₹500 — which may run out by noon on competitive keywords in healthcare. Insufficient data for optimisation.</div>
+      <div class="rm">✓ Mitigation: Focus ad spend on 3–4 highest-converting keywords only. Use location targeting precisely (Trivandrum + 30km radius). Build negative keyword list aggressively. Scale budget as first conversions prove ROI. Organic channel handles awareness; ads handle high-intent searches only.</div>
+    </div>
+  </div>
+
+  <div class="risk-row">
+    <div class="risk-level rl-low">LOW</div>
+    <div class="risk-body">
+      <div class="rt">Competitor response — KJK or Smart Surgeons increase their digital investment</div>
+      <div class="rd">Competitors notice TCGC's growing digital presence and respond by increasing their own content/ad spend.</div>
+      <div class="rm">✓ Mitigation: TCGC's competitive advantage is being a dedicated centre with a specialist doctor — not a department within a general hospital. Content strategy and brand positioning should consistently reinforce this differentiation. First-mover advantage in personal brand content (Dr. Amal on camera) is very difficult for institutional competitors to replicate.</div>
+    </div>
+  </div>
+
+  <div class="risk-row">
+    <div class="risk-level rl-low">LOW</div>
+    <div class="risk-body">
+      <div class="rt">Location limitation — Kanjirampara not easily accessible for all patients</div>
+      <div class="rd">Dr. Amal has noted the current location may be limiting walk-in patient volume. Digital-first patients (who search, research, then come) are less location-sensitive than walk-in patients.</div>
+      <div class="rm">✓ Mitigation: Digital marketing specifically targets pre-research patients who will travel for the right specialist. Emphasise on website: "Worth the journey — Kerala's only dedicated cosmetic gynaecology centre." If relocation happens, update GMB and website immediately — local SEO signals update within days.</div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── TAB SWITCHING ──
+function switchTab(id) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  event.target.classList.add('active');
+  updateProgress();
+}
+
+// ── TOGGLE TASKS ──
+function toggleTask(row) {
+  row.classList.toggle('done');
+  updateProgress();
+  updateWeekCounts();
+}
+
+// ── FILTER TASKS ──
+function filterTasks(section, state) {
+  const list = document.getElementById(section+'-task-list') || document.getElementById('dm-task-list');
+  const rows = (section==='dm' ? document.querySelectorAll('#dm-task-list .task-row') : document.querySelectorAll('#design-task-list .task-row'));
+  rows.forEach(r => {
+    if(state==='all') r.style.display='';
+    else if(state==='done') r.style.display = r.classList.contains('done') ? '' : 'none';
+    else if(state==='pending') r.style.display = !r.classList.contains('done') ? '' : 'none';
+  });
+  // manage week groups visibility
+  document.querySelectorAll('#'+(section==='dm'?'dm':'design')+'-task-list .week-group').forEach(g=>{
+    const visible = [...g.querySelectorAll('.task-row')].some(r=>r.style.display!=='none');
+    g.style.display = visible ? '' : 'none';
+  });
+  event.target.closest('.filter-bar').querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  event.target.classList.add('active');
+}
+
+function filterWeek(section, week) {
+  const rows = document.querySelectorAll('#dm-task-list .task-row');
+  rows.forEach(r => {
+    const g = r.closest('.week-group');
+    const gWeek = g ? g.getAttribute('data-week') : '';
+    r.style.display = (gWeek===week) ? '' : 'none';
+  });
+  document.querySelectorAll('#dm-task-list .week-group').forEach(g=>{
+    g.style.display = g.getAttribute('data-week')===week ? '' : 'none';
+  });
+  event.target.closest('.filter-bar').querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  event.target.classList.add('active');
+}
+
+// ── PROGRESS ──
+function updateProgress() {
+  const allTasks = document.querySelectorAll('.task-row');
+  const done = document.querySelectorAll('.task-row.done').length;
+  const pct = allTasks.length ? Math.round((done/allTasks.length)*100) : 0;
+  document.getElementById('prog-pct').textContent = pct+'%';
+  document.getElementById('prog-bar').style.width = pct+'%';
+}
+
+function updateWeekCounts() {
+  ['w1','w2','w3','w4','ong'].forEach(w => {
+    const el = document.getElementById('dm-'+w+'-count');
+    if(!el) return;
+    const grp = document.querySelector('.week-group[data-week="'+(w==='ong'?'ongoing':w)+'"]');
+    if(!grp) return;
+    const total = grp.querySelectorAll('.task-row').length;
+    const done = grp.querySelectorAll('.task-row.done').length;
+    el.textContent = done+'/'+total+' done';
+  });
+}
+
+// ── WEBSITE OPTION ──
+function setWebOption(opt) {
+  document.getElementById('opt-basic').classList.toggle('active', opt==='basic');
+  document.getElementById('opt-full').classList.toggle('active', opt==='full');
+  if(opt==='basic') {
+    document.getElementById('web-desc').textContent='Basic dynamic website — homepage, 6 procedure pages, doctor bio, contact with WhatsApp integration';
+    document.getElementById('web-base').textContent='₹20,000';
+    document.getElementById('web-gst').textContent='₹3,600';
+    document.getElementById('web-total').textContent='₹23,600';
+    document.getElementById('onetime-base').textContent='₹20,000';
+    document.getElementById('onetime-gst').textContent='₹3,600';
+    document.getElementById('onetime-total').textContent='₹23,600';
+    document.getElementById('p1-amt').textContent='₹83,440–91,040';
+    document.getElementById('total-first').textContent='₹98,440–1,11,040';
+    document.getElementById('optA-total').textContent='First Month: ~₹91,040–1,11,040';
+    document.getElementById('optB-total').textContent='First Month: ~₹67,840–75,440';
+  } else {
+    document.getElementById('web-desc').textContent='Full website redesign — complete rebuild with 10+ procedure pages, pricing page, doctor authority page, blog setup, privacy page, SEO-optimised structure';
+    document.getElementById('web-base').textContent='₹30,000–35,000';
+    document.getElementById('web-gst').textContent='₹5,400–6,300';
+    document.getElementById('web-total').textContent='₹35,400–41,300';
+    document.getElementById('onetime-base').textContent='₹30,000–35,000';
+    document.getElementById('onetime-gst').textContent='₹5,400–6,300';
+    document.getElementById('onetime-total').textContent='₹35,400–41,300';
+    document.getElementById('p1-amt').textContent='₹1,03,840–1,09,740';
+    document.getElementById('total-first').textContent='₹1,18,840–1,29,740';
+    document.getElementById('optA-total').textContent='First Month: ~₹1,09,740–1,29,740';
+    document.getElementById('optB-total').textContent='First Month: ~₹79,240–86,840';
+  }
+}
+
+// ── ACCORDION ──
+document.querySelectorAll('.acc-hdr').forEach(hdr=>{
+  hdr.addEventListener('click',()=>hdr.closest('.acc-item').classList.toggle('open'));
+});
+
+// ── INIT ──
+document.getElementById('start-date').textContent = new Date().toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'});
+updateWeekCounts();
+updateProgress();
+</script>
+</body>
+</html>

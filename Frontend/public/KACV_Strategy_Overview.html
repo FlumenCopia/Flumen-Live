@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KACV · Digital Growth Strategy — A Strategic Overview</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest-deep: #0B1E14;
+    --forest: #122B1C;
+    --forest-mid: #1A3D28;
+    --forest-light: #234D34;
+    --moss: #2D6A4F;
+    --sage: #40916C;
+    --mint: #74C69D;
+    --pale: #D8F3DC;
+    --cream: #F8F4ED;
+    --parchment: #F0EAD6;
+    --gold: #C9A84C;
+    --gold-light: #E8C97A;
+    --text-dark: #1A2E1F;
+    --text-mid: #3D5A45;
+    --text-muted: #7A9E85;
+    --white: #FFFFFF;
+    --border: rgba(116,198,157,0.18);
+    --border-strong: rgba(116,198,157,0.32);
+    --accent-red: #C44B2A;
+  }
+  * { margin:0;padding:0;box-sizing:border-box; }
+  body {
+    -webkit-user-select:none;-moz-user-select:none;user-select:none;
+    background:var(--forest-deep);
+    color:var(--cream);
+    font-family:'Outfit',sans-serif;
+    font-size:15px;line-height:1.7;
+    overflow-x:hidden;
+  }
+
+  /* WATERMARK */
+  body::after {
+    content:'CONFIDENTIAL · KACV DIGITAL STRATEGY 2026';
+    position:fixed;top:50%;left:50%;
+    transform:translate(-50%,-50%) rotate(-30deg);
+    font-size:22px;color:rgba(116,198,157,0.04);
+    white-space:nowrap;pointer-events:none;z-index:9999;
+    letter-spacing:5px;font-family:'Outfit',sans-serif;font-weight:600;
+  }
+
+  /* ============ HERO ============ */
+  .hero {
+    background: linear-gradient(170deg, var(--forest-deep) 0%, var(--forest) 60%, var(--forest-mid) 100%);
+    padding: 80px 60px 70px;
+    border-bottom: 1px solid var(--border);
+    position:relative;overflow:hidden;
+  }
+  .hero::before {
+    content:'';position:absolute;top:-60px;right:-60px;
+    width:500px;height:500px;border-radius:50%;
+    background:radial-gradient(circle, rgba(64,145,108,0.1) 0%, transparent 65%);
+    pointer-events:none;
+  }
+  .hero::after {
+    content:'';position:absolute;bottom:-40px;left:20%;
+    width:300px;height:300px;border-radius:50%;
+    background:radial-gradient(circle, rgba(201,168,76,0.05) 0%, transparent 65%);
+    pointer-events:none;
+  }
+  .hero-inner { max-width:960px;margin:0 auto;position:relative;z-index:1; }
+  .chip {
+    display:inline-flex;align-items:center;gap:7px;
+    background:rgba(116,198,157,0.1);border:1px solid var(--border-strong);
+    color:var(--mint);font-size:11px;letter-spacing:2px;text-transform:uppercase;
+    padding:6px 16px;border-radius:20px;margin-bottom:28px;
+  }
+  .chip-dot { width:6px;height:6px;border-radius:50%;background:var(--mint);animation:pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.8)} }
+  .hero h1 {
+    font-family:'EB Garamond',serif;font-size:clamp(34px,4.5vw,58px);font-weight:600;
+    line-height:1.12;color:var(--cream);margin-bottom:20px;
+  }
+  .hero h1 .accent { color:var(--mint); }
+  .hero h1 .italic { font-style:italic;color:var(--gold-light); }
+  .hero-sub {
+    font-size:15px;color:var(--text-muted);max-width:560px;line-height:1.75;margin-bottom:44px;
+  }
+  .hero-meta {
+    display:flex;flex-wrap:wrap;gap:32px;
+    padding-top:28px;border-top:1px solid var(--border);
+  }
+  .meta-block strong { display:block;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:3px; }
+  .meta-block span { font-size:13px;color:var(--text-muted); }
+
+  /* ============ NAV ============ */
+  .sticky-nav {
+    position:sticky;top:0;z-index:100;
+    background:rgba(11,30,20,0.95);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+  }
+  .nav-scroll {
+    max-width:960px;margin:0 auto;padding:0 60px;
+    display:flex;gap:0;overflow-x:auto;scrollbar-width:none;
+  }
+  .nav-scroll::-webkit-scrollbar{display:none;}
+  .nav-btn {
+    padding:14px 18px;background:none;border:none;
+    color:var(--text-muted);font-family:'Outfit',sans-serif;
+    font-size:12px;letter-spacing:1px;text-transform:uppercase;
+    cursor:pointer;white-space:nowrap;
+    border-bottom:2px solid transparent;transition:all 0.2s;
+  }
+  .nav-btn:hover{color:var(--mint);}
+  .nav-btn.on{color:var(--mint);border-bottom-color:var(--mint);}
+
+  /* ============ LAYOUT ============ */
+  .wrap { max-width:960px;margin:0 auto;padding:0 60px; }
+  @media(max-width:700px){.wrap,.hero,.nav-scroll{padding-left:24px;padding-right:24px;}}
+  .section { display:none;padding:60px 0; }
+  .section.on { display:block; }
+  @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+  .section.on{animation:fadeUp .35s ease;}
+
+  /* TYPOGRAPHY */
+  .label { font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:8px; }
+  h2 { font-family:'EB Garamond',serif;font-size:clamp(26px,3vw,40px);font-weight:600;color:var(--cream);margin-bottom:8px; }
+  h3 { font-family:'EB Garamond',serif;font-size:22px;font-weight:600;color:var(--mint);margin:36px 0 12px; }
+  h4 { font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-muted);margin:20px 0 10px; }
+  p { color:#8BAF96;margin-bottom:14px; }
+  .lead { font-size:17px;color:#B0CCB8;line-height:1.75;margin-bottom:20px; }
+  .divider { height:1px;background:var(--border);margin:44px 0; }
+
+  /* STAT CARDS */
+  .stats-row { display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px;margin:28px 0; }
+  .stat {
+    background:var(--forest-mid);border:1px solid var(--border);
+    border-radius:10px;padding:18px 20px;
+    position:relative;overflow:hidden;
+  }
+  .stat::before {
+    content:'';position:absolute;top:0;left:0;
+    width:2px;height:100%;background:var(--sage);
+  }
+  .stat-n { font-family:'EB Garamond',serif;font-size:34px;font-weight:600;color:var(--mint);line-height:1; }
+  .stat-l { font-size:12px;color:var(--text-muted);margin-top:5px; }
+  .stat-c { font-size:11px;color:var(--sage);margin-top:3px; }
+
+  /* INFO BLOCKS */
+  .block {
+    background:var(--forest-mid);border:1px solid var(--border);
+    border-radius:10px;padding:22px 26px;margin-bottom:14px;
+  }
+  .block.gold-tint { border-color:rgba(201,168,76,0.25);background:rgba(201,168,76,0.05); }
+  .block.warn { border-left:3px solid var(--accent-red);border-radius:0 10px 10px 0;background:rgba(196,75,42,0.05); }
+  .block.ok { border-left:3px solid var(--sage);border-radius:0 10px 10px 0;background:rgba(64,145,108,0.05); }
+
+  /* TWO COL */
+  .two { display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0; }
+  @media(max-width:640px){.two{grid-template-columns:1fr;}}
+
+  /* BULLETS */
+  .pts { list-style:none;margin:10px 0; }
+  .pts li {
+    font-size:13px;color:#8BAF96;padding:5px 0;
+    padding-left:18px;position:relative;
+    border-bottom:1px solid rgba(255,255,255,0.04);
+  }
+  .pts li::before { content:'—';position:absolute;left:0;color:var(--sage); }
+
+  /* TABLES */
+  .tbl { width:100%;border-collapse:collapse;margin:16px 0;font-size:13px; }
+  .tbl th {
+    background:rgba(116,198,157,0.08);color:var(--mint);
+    font-size:10px;letter-spacing:1px;text-transform:uppercase;
+    padding:10px 14px;text-align:left;border-bottom:1px solid var(--border);
+  }
+  .tbl td { padding:10px 14px;border-bottom:1px solid rgba(255,255,255,0.04);color:#8BAF96; }
+  .tbl tr:hover td { background:rgba(116,198,157,0.03); }
+  .tbl td strong { color:var(--cream); }
+
+  /* BAR CHARTS */
+  .bars { margin:20px 0; }
+  .bar-r { display:flex;align-items:center;gap:12px;margin-bottom:9px; }
+  .bar-name { width:150px;font-size:12px;color:var(--text-muted);text-align:right;flex-shrink:0; }
+  .bar-track { flex:1;height:20px;background:rgba(255,255,255,0.04);border-radius:3px;overflow:hidden; }
+  .bar-fill { height:100%;border-radius:3px;transition:width 1.2s cubic-bezier(.22,1,.36,1);display:flex;align-items:center;padding-left:8px; }
+  .bf-forest { background:linear-gradient(90deg, var(--forest-light), var(--sage)); }
+  .bf-gold { background:linear-gradient(90deg, var(--gold), var(--gold-light)); }
+  .bf-mint { background:linear-gradient(90deg, var(--moss), var(--mint)); }
+  .bar-val { font-size:11px;color:var(--cream);font-weight:600; }
+  .bar-pct { font-size:12px;color:var(--text-muted);width:50px;flex-shrink:0; }
+
+  /* INSIGHT CALLOUT */
+  .callout {
+    background:rgba(116,198,157,0.07);border:1px solid var(--border-strong);
+    border-radius:10px;padding:20px 24px;margin:24px 0;
+    position:relative;
+  }
+  .callout::before {
+    content:'●';position:absolute;top:-10px;left:20px;
+    font-size:16px;color:var(--mint);
+    background:var(--forest-deep);padding:0 6px;
+  }
+  .callout p { color:var(--cream);margin:0;font-size:14px; }
+
+  /* PRICING SECTION */
+  .price-grid { display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;margin:28px 0; }
+  .price-card {
+    background:var(--forest-mid);border:1px solid var(--border);
+    border-radius:12px;padding:24px;position:relative;overflow:hidden;
+    transition:transform 0.2s,border-color 0.2s;
+  }
+  .price-card:hover { transform:translateY(-3px);border-color:var(--border-strong); }
+  .price-card.featured {
+    border-color:var(--sage);
+    background:linear-gradient(160deg, rgba(64,145,108,0.15) 0%, var(--forest-mid) 60%);
+  }
+  .price-card.featured::before {
+    content:'RECOMMENDED';
+    position:absolute;top:12px;right:12px;
+    font-size:9px;letter-spacing:2px;
+    background:rgba(64,145,108,0.2);color:var(--mint);
+    padding:4px 10px;border-radius:20px;border:1px solid var(--border-strong);
+  }
+  .price-name { font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px; }
+  .price-amount { font-family:'EB Garamond',serif;font-size:38px;font-weight:600;color:var(--cream);line-height:1; }
+  .price-amount sup { font-size:18px;vertical-align:super; }
+  .price-period { font-size:12px;color:var(--text-muted);margin-top:4px;margin-bottom:18px; }
+  .price-divider { height:1px;background:var(--border);margin:16px 0; }
+  .price-features { list-style:none; }
+  .price-features li {
+    font-size:13px;color:#8BAF96;padding:5px 0;
+    padding-left:20px;position:relative;
+    border-bottom:1px solid rgba(255,255,255,0.04);
+  }
+  .price-features li::before { content:'✓';position:absolute;left:0;color:var(--sage);font-size:12px; }
+  .price-features li.dim { color:var(--text-muted); }
+  .price-features li.dim::before { content:'–';color:rgba(255,255,255,0.15); }
+  .price-note { font-size:11px;color:var(--text-muted);margin-top:14px;padding-top:12px;border-top:1px solid var(--border); }
+
+  /* BADGE */
+  .badge {
+    display:inline-block;padding:3px 10px;border-radius:20px;
+    font-size:11px;font-weight:500;
+  }
+  .badge-green { background:rgba(64,145,108,0.15);color:var(--mint);border:1px solid var(--border); }
+  .badge-gold { background:rgba(201,168,76,0.12);color:var(--gold-light);border:1px solid rgba(201,168,76,0.25); }
+  .badge-red { background:rgba(196,75,42,0.12);color:#F0894A;border:1px solid rgba(196,75,42,0.25); }
+
+  /* FOOTER */
+  .footer {
+    background:var(--forest);border-top:1px solid var(--border);
+    padding:30px 60px;text-align:center;font-size:11px;color:var(--text-muted);letter-spacing:1px;
+  }
+  .confidential {
+    display:inline-block;border:1px solid rgba(196,75,42,0.4);
+    color:#F0894A;padding:4px 16px;font-size:10px;letter-spacing:3px;
+    text-transform:uppercase;margin-bottom:10px;border-radius:2px;
+  }
+
+  .protect-notice {
+    display:none;position:fixed;top:20px;left:50%;transform:translateX(-50%);
+    background:var(--forest);border:1px solid var(--border-strong);
+    color:var(--mint);padding:10px 24px;border-radius:6px;
+    font-size:12px;z-index:9999;letter-spacing:1px;
+  }
+  .protect-notice.show{display:block;}
+
+  .scroll-btn {
+    position:fixed;bottom:28px;right:28px;width:42px;height:42px;
+    background:var(--sage);border:none;border-radius:50%;
+    color:var(--forest-deep);font-size:18px;font-weight:700;
+    cursor:pointer;display:flex;align-items:center;justify-content:center;
+    opacity:0;transition:opacity 0.3s;z-index:200;
+  }
+  .scroll-btn.vis{opacity:1;}
+</style>
+</head>
+<body>
+
+<div class="protect-notice" id="pnotice">🔒 This document is protected.</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="chip"><span class="chip-dot"></span>Digital Strategy Overview · March 2026</div>
+    <h1>Where <span class="accent">Kerala Arts & Crafts Village</span><br>is <span class="italic">leaving opportunity</span> on the table</h1>
+    <p class="hero-sub">A data-backed review of KACV's current digital footprint, the market waiting to be captured, and a clear roadmap to convert reach into revenue.</p>
+    <div class="hero-meta">
+      <div class="meta-block"><strong>Prepared By</strong><span>Strategic Marketing Consultation</span></div>
+      <div class="meta-block"><strong>Data Sources</strong><span>Meta Ads, Instagram Insights, Kerala Tourism 2025</span></div>
+      <div class="meta-block"><strong>Focus</strong><span>Events · Tourism · Digital Advertising</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<div class="sticky-nav">
+  <div class="nav-scroll">
+    <button class="nav-btn on" onclick="show('overview',this)">Overview</button>
+    <button class="nav-btn" onclick="show('data',this)">Ad Data</button>
+    <button class="nav-btn" onclick="show('audience',this)">Audience</button>
+    <button class="nav-btn" onclick="show('market',this)">Market</button>
+    <button class="nav-btn" onclick="show('gaps',this)">Gaps & Wins</button>
+    <button class="nav-btn" onclick="show('roadmap',this)">Roadmap</button>
+    <button class="nav-btn" onclick="show('pricing',this)">Collaboration</button>
+  </div>
+</div>
+
+<!-- ===== OVERVIEW ===== -->
+<div class="section on" id="s-overview">
+<div class="wrap">
+  <div class="label">Section 01</div>
+  <h2>The Big Picture</h2>
+  <p class="lead">KACV is one of South Asia's most distinctive cultural venues — 8.5 acres, 100+ artisans, unmatched scale in Kerala. The product is extraordinary. The digital visibility is not matching the physical reality.</p>
+
+  <div class="stats-row">
+    <div class="stat"><div class="stat-n">2.58Cr</div><div class="stat-l">Kerala tourists in 2025</div><div class="stat-c">Record — highest ever</div></div>
+    <div class="stat"><div class="stat-n">4.37M</div><div class="stat-l">Trivandrum district visitors</div><div class="stat-c">3rd highest in Kerala</div></div>
+    <div class="stat"><div class="stat-n">582K</div><div class="stat-l">KACV Instagram views (30 days)</div><div class="stat-c">87.6% organic</div></div>
+    <div class="stat"><div class="stat-n">8.4%</div><div class="stat-l">Ad click-through rate</div><div class="stat-c">Industry avg = 1–2%</div></div>
+    <div class="stat"><div class="stat-n">144K</div><div class="stat-l">Accounts reached (30 days)</div><div class="stat-c">↑ 416% vs prior period</div></div>
+    <div class="stat"><div class="stat-n">0.4%</div><div class="stat-l">View-to-follower conversion</div><div class="stat-c">Structural gap — fixable</div></div>
+  </div>
+
+  <div class="callout">
+    <p><strong>The core insight:</strong> KACV has proven its content works brilliantly — 582K views, 53K+ interactions, a viral coefficient that most brands would pay for. The gap is not creativity. It is <em>precision targeting and conversion infrastructure</em>. The tourists are already coming to Kovalam. They just don't know KACV exists yet.</p>
+  </div>
+
+  <h3>Two Audiences. One Strategy.</h3>
+  <table class="tbl">
+    <thead><tr><th>Audience</th><th>Who They Are</th><th>What They Need</th><th>Potential</th></tr></thead>
+    <tbody>
+      <tr><td><span class="badge badge-green">Cultural Enthusiasts</span></td><td>Art lovers, students, creators — scattered across Kerala + TN</td><td>A destination for authentic craft experiences</td><td>Workshop bookings, repeat visits</td></tr>
+      <tr><td><span class="badge badge-gold">Tourists</span></td><td>Domestic + international visitors already in Kovalam</td><td>A unique experience beyond the beach</td><td>Day tickets, emporium, events</td></tr>
+      <tr><td><span class="badge badge-green">Tour Operators</span></td><td>Agencies bringing groups to Kerala from India + abroad</td><td>An itinerary-differentiating cultural stop</td><td>Group bookings — highest yield</td></tr>
+      <tr><td><span class="badge badge-gold">Event Seekers</span></td><td>Youth, couples, social groups in Trivandrum</td><td>Unique experiences with a sense of place</td><td>Event tickets, recurring attendance</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <p><strong>KACV's competitive moat:</strong> There is no comparable venue in Kerala. The closest equivalent — Dakshinachitra — is in Chennai, 700km away. KACV is the only large-scale, multi-artisan, experiential craft village in the state. That monopoly position is not being communicated in any of the current marketing.</p>
+  </div>
+</div>
+</div>
+
+<!-- ===== AD DATA ===== -->
+<div class="section" id="s-data">
+<div class="wrap">
+  <div class="label">Section 02</div>
+  <h2>What the Ad Data Actually Says</h2>
+  <p class="lead">Three campaigns ran for the Holi event (Feb 25 – Mar 19, 2026). The data reveals something important: the creative is performing well above industry standards. The problem is structural, not creative.</p>
+
+  <table class="tbl">
+    <thead><tr><th>Campaign</th><th>Reach</th><th>Impressions</th><th>Result Type</th><th>Results</th><th>CTR</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>Holi KACV Main Traffic</strong></td>
+        <td>1,21,342</td><td>2,33,153</td><td>Link Clicks</td>
+        <td><strong style="color:var(--mint)">10,204</strong></td>
+        <td><strong style="color:var(--mint)">8.4%</strong></td>
+        <td><span class="badge badge-red">Stopped</span></td>
+      </tr>
+      <tr>
+        <td>KACV Post Traffic</td>
+        <td>32,461</td><td>38,015</td><td>Link Clicks</td><td>1,378</td><td>3.6%</td>
+        <td><span class="badge badge-red">Inactive</span></td>
+      </tr>
+      <tr>
+        <td>KACV Holi Traffic</td>
+        <td>45,104</td><td>66,029</td><td>Landing Page Views</td>
+        <td>539</td><td>1.2%</td>
+        <td><span class="badge badge-red">Inactive</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="two">
+    <div class="block ok">
+      <h4>✓ What's working</h4>
+      <ul class="pts">
+        <li>8.4% CTR on the main campaign — industry average is 1–2%</li>
+        <li>1.21 lakh unique people reached with strong engagement</li>
+        <li>Creative quality is clearly resonating with audiences</li>
+        <li>Total combined reach across all campaigns: ~1.98 lakh</li>
+      </ul>
+    </div>
+    <div class="block warn">
+      <h4>✗ Where it's breaking</h4>
+      <ul class="pts">
+        <li>Campaigns are set to "Traffic" — not conversion optimisation</li>
+        <li>10,204 clicks landed on homepage, not a ticket page</li>
+        <li>No Meta Pixel — Meta cannot learn who buys, only who clicks</li>
+        <li>No retargeting — 10K+ warm leads are not being followed up</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout">
+    <p>The main campaign drove 10,204 clicks at an exceptional 8.4% rate. But the third campaign — the only one targeting landing page views — converted just 539 people from 45,104 reached. That means roughly <strong style="color:var(--mint)">₹X in ad spend is driving traffic that evaporates at the destination</strong>. Fixing the funnel after the click is the single highest-ROI action available right now.</p>
+  </div>
+
+  <h3>How the Ad Architecture Should Look</h3>
+  <table class="tbl">
+    <thead><tr><th>Campaign Layer</th><th>Objective</th><th>Audience Type</th><th>Expected Outcome</th></tr></thead>
+    <tbody>
+      <tr><td>Tourist Capture</td><td>Conversions (not Traffic)</td><td>People within 15km of Kovalam hotels</td><td>Direct ticket sales from in-destination visitors</td></tr>
+      <tr><td>Intent Targeting</td><td>Conversions</td><td>People who searched Kerala travel in past 30 days</td><td>Pre-arrival bookings</td></tr>
+      <tr><td>Cultural Audience</td><td>Conversions</td><td>Arts/crafts interests in Kerala, TN, Karnataka</td><td>Workshop + event bookings</td></tr>
+      <tr><td>Retargeting</td><td>Conversions</td><td>Website visitors + 90s+ video viewers</td><td>Convert warm audience — lowest cost/sale</td></tr>
+      <tr><td>International</td><td>Awareness + Conversions</td><td>UK, US, Germany — Kerala travel intent</td><td>International tourist pipeline</td></tr>
+    </tbody>
+  </table>
+</div>
+</div>
+
+<!-- ===== AUDIENCE ===== -->
+<div class="section" id="s-audience">
+<div class="wrap">
+  <div class="label">Section 03</div>
+  <h2>Audience Analytics — What the Data Reveals</h2>
+  <p class="lead">KACV's Instagram reached 144,251 accounts in the past 30 days — a 416% jump. The audience profile reveals exactly where the targeting needs to shift.</p>
+
+  <h3>Content Performance Breakdown</h3>
+  <div class="bars">
+    <div class="bar-r"><div class="bar-name">Reels — Views</div><div class="bar-track"><div class="bar-fill bf-mint" style="width:70.7%"><span class="bar-val">70.7%</span></div></div><div class="bar-pct">dominant</div></div>
+    <div class="bar-r"><div class="bar-name">Stories</div><div class="bar-track"><div class="bar-fill bf-forest" style="width:16.9%"><span class="bar-val">16.9%</span></div></div></div>
+    <div class="bar-r"><div class="bar-name">Posts</div><div class="bar-track"><div class="bar-fill bf-forest" style="width:12.4%"><span class="bar-val">12.4%</span></div></div></div>
+    <div class="bar-r"><div class="bar-name">Reels — Interactions</div><div class="bar-track"><div class="bar-fill bf-gold" style="width:93.9%"><span class="bar-val">93.9%</span></div></div><div class="bar-pct">of 53K</div></div>
+  </div>
+
+  <div class="two">
+    <div>
+      <h4>Audience by Country</h4>
+      <div class="bars">
+        <div class="bar-r"><div class="bar-name">India</div><div class="bar-track"><div class="bar-fill bf-mint" style="width:94.5%"><span class="bar-val">94.5%</span></div></div></div>
+        <div class="bar-r"><div class="bar-name">UAE</div><div class="bar-track"><div class="bar-fill bf-forest" style="width:2.1%"><span class="bar-val">2.1%</span></div></div></div>
+        <div class="bar-r"><div class="bar-name">UK</div><div class="bar-track"><div class="bar-fill bf-gold" style="width:0.5%"><span class="bar-val">0.5%</span></div></div></div>
+        <div class="bar-r"><div class="bar-name">Saudi Arabia</div><div class="bar-track"><div class="bar-fill bf-forest" style="width:0.5%"><span class="bar-val">0.5%</span></div></div></div>
+      </div>
+      <p style="font-size:12px;color:var(--accent-red);margin-top:6px">UK is Kerala's #1 international tourist source — but only 0.5% of KACV's audience</p>
+    </div>
+    <div>
+      <h4>Audience by Age</h4>
+      <div class="bars">
+        <div class="bar-r"><div class="bar-name">18–24</div><div class="bar-track"><div class="bar-fill bf-mint" style="width:45.8%"><span class="bar-val">45.8%</span></div></div></div>
+        <div class="bar-r"><div class="bar-name">25–34</div><div class="bar-track"><div class="bar-fill bf-mint" style="width:36.6%"><span class="bar-val">36.6%</span></div></div></div>
+        <div class="bar-r"><div class="bar-name">35–44</div><div class="bar-track"><div class="bar-fill bf-forest" style="width:11.3%"><span class="bar-val">11.3%</span></div></div></div>
+        <div class="bar-r"><div class="bar-name">45–54</div><div class="bar-track"><div class="bar-fill bf-forest" style="width:3.5%"><span class="bar-val">3.5%</span></div></div></div>
+      </div>
+      <p style="font-size:12px;color:var(--sage);margin-top:6px">Strong youth base — ideal for commercial events</p>
+    </div>
+  </div>
+
+  <h4>Top Cities Reaching KACV Content</h4>
+  <div class="bars">
+    <div class="bar-r"><div class="bar-name">Thiruvananthapuram</div><div class="bar-track"><div class="bar-fill bf-mint" style="width:22.3%"><span class="bar-val">22.3%</span></div></div></div>
+    <div class="bar-r"><div class="bar-name">Neyyattinkara</div><div class="bar-track"><div class="bar-fill bf-forest" style="width:6.8%"><span class="bar-val">6.8%</span></div></div></div>
+    <div class="bar-r"><div class="bar-name">Kochi</div><div class="bar-track"><div class="bar-fill bf-forest" style="width:6.6%"><span class="bar-val">6.6%</span></div></div></div>
+    <div class="bar-r"><div class="bar-name">Nedumangad</div><div class="bar-track"><div class="bar-fill bf-forest" style="width:5.0%"><span class="bar-val">5.0%</span></div></div></div>
+  </div>
+  <p style="font-size:12px;color:var(--text-muted)">Note: Chennai, Bangalore, Mumbai — major source states for Kerala tourists — appear minimally. These are untapped targeting opportunities.</p>
+
+  <div class="block gold-tint">
+    <h4>Profile Activity — The Intent Signal</h4>
+    <table class="tbl">
+      <thead><tr><th>Action</th><th>Count</th><th>Growth vs Prior Period</th><th>Meaning</th></tr></thead>
+      <tbody>
+        <tr><td>Profile visits</td><td>6,600</td><td style="color:var(--mint)">↑ 284.2%</td><td>High discovery interest</td></tr>
+        <tr><td>External link taps</td><td><strong>1,470</strong></td><td style="color:var(--mint)">↑ 3,318.6%</td><td>Booking intent is real</td></tr>
+        <tr><td>Business address taps</td><td>232</td><td style="color:var(--mint)">↑ 2,800%</td><td>People want to visit</td></tr>
+        <tr><td>New followers</td><td>590</td><td style="color:var(--mint)">Growing</td><td>0.4% of reached — bio CTA needed</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:13px;color:var(--cream);margin-top:8px">1,470 people tapped the external link — that is strong ticket-buying intent. If that link goes to a proper event booking page (not the homepage), conversion rates improve dramatically.</p>
+  </div>
+</div>
+</div>
+
+<!-- ===== MARKET ===== -->
+<div class="section" id="s-market">
+<div class="wrap">
+  <div class="label">Section 04</div>
+  <h2>The Market — What the Numbers Say</h2>
+  <p class="lead">Kerala's tourism is at an all-time high. Thiruvananthapuram is the 3rd most visited district in the state. Kovalam is within that district. The audience is right here — KACV just needs to be in their path.</p>
+
+  <div class="stats-row">
+    <div class="stat"><div class="stat-n">2.58Cr</div><div class="stat-l">Total Kerala tourists 2025</div><div class="stat-c">Highest in history</div></div>
+    <div class="stat"><div class="stat-n">8.21L</div><div class="stat-l">International tourists 2025</div><div class="stat-c">↑ 11.3% recovery</div></div>
+    <div class="stat"><div class="stat-n">₹45K Cr</div><div class="stat-l">Tourism revenue 2024</div><div class="stat-c">Economic anchor for Kerala</div></div>
+    <div class="stat"><div class="stat-n">4.37M</div><div class="stat-l">Trivandrum visitors 2025</div><div class="stat-c">Kovalam is its crown jewel</div></div>
+  </div>
+
+  <h3>International Source Markets — Kerala 2025</h3>
+  <p>These are the nationalities visiting Kerala — and arriving at Kovalam hotels. They are the highest-value audience for KACV cultural experiences.</p>
+  <div class="bars">
+    <div class="bar-r"><div class="bar-name">United Kingdom</div><div class="bar-track"><div class="bar-fill bf-mint" style="width:82%"><span class="bar-val">#1</span></div></div><div class="bar-pct">highest</div></div>
+    <div class="bar-r"><div class="bar-name">United States</div><div class="bar-track"><div class="bar-fill bf-mint" style="width:72%"><span class="bar-val">#2</span></div></div></div>
+    <div class="bar-r"><div class="bar-name">Germany</div><div class="bar-track"><div class="bar-fill bf-forest" style="width:62%"><span class="bar-val">#3</span></div></div></div>
+    <div class="bar-r"><div class="bar-name">France</div><div class="bar-track"><div class="bar-fill bf-forest" style="width:55%"><span class="bar-val">#4</span></div></div></div>
+    <div class="bar-r"><div class="bar-name">UAE (NRI)</div><div class="bar-track"><div class="bar-fill bf-gold" style="width:50%"><span class="bar-val">3.35%</span></div></div><div class="bar-pct">of intl.</div></div>
+    <div class="bar-r"><div class="bar-name">Canada</div><div class="bar-track"><div class="bar-fill bf-forest" style="width:42%"><span class="bar-val">2.32%</span></div></div></div>
+    <div class="bar-r"><div class="bar-name">Australia</div><div class="bar-track"><div class="bar-fill bf-forest" style="width:36%"><span class="bar-val">#7</span></div></div></div>
+  </div>
+
+  <h3>Domestic Source States</h3>
+  <div class="two">
+    <div class="block">
+      <h4>Priority Targeting States</h4>
+      <ul class="pts">
+        <li><strong>Tamil Nadu</strong> — #1 domestic source, 4-5hr drive to Kovalam</li>
+        <li><strong>Karnataka</strong> — Bangalore IT crowd, weekend trip audience</li>
+        <li><strong>Maharashtra</strong> — Mumbai/Pune, high-spend family tourists</li>
+        <li><strong>Andhra Pradesh</strong> — growing Kerala tourism market</li>
+        <li><strong>Gujarat</strong> — family holiday travelers</li>
+      </ul>
+    </div>
+    <div class="block">
+      <h4>Secondary Targets</h4>
+      <ul class="pts">
+        <li><strong>Telangana</strong> — Hyderabad professionals</li>
+        <li><strong>Delhi NCR</strong> — high-spend premium travelers</li>
+        <li><strong>West Bengal</strong> — culture-oriented audience</li>
+        <li><strong>Kerala itself</strong> — local day-trip + staycation</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout">
+    <p><strong>Tour Operator Opportunity:</strong> One tour operator bringing 10 groups/month of 30 people = 300 visitors/month from a single B2B relationship. With 20 operators, that's 6,000 guaranteed visitors/month — without a single ad spend. This channel is currently zero at KACV and represents one of the fastest paths to sustainable revenue.</p>
+  </div>
+</div>
+</div>
+
+<!-- ===== GAPS & WINS ===== -->
+<div class="section" id="s-gaps">
+<div class="wrap">
+  <div class="label">Section 05</div>
+  <h2>Gaps to Close. Wins to Scale.</h2>
+  <p class="lead">A clear-eyed assessment of what is working and what is holding KACV back — with the strategic path for each.</p>
+
+  <h3>Critical Gaps — Addressable Now</h3>
+  <div class="block warn">
+    <h4>No Conversion Tracking (Pixel)</h4>
+    <p style="font-size:13px;color:#B0CCB8;">Meta cannot learn who is buying tickets versus who is just clicking. Without a Pixel, every ad is flying blind. The algorithm cannot optimise for buyers — it is optimising for curiosity. Installing the Pixel and setting up purchase events costs nothing but changes everything.</p>
+  </div>
+  <div class="block warn">
+    <h4>Wrong Campaign Objective</h4>
+    <p style="font-size:13px;color:#B0CCB8;">All three Holi campaigns ran on "Traffic" objective. For ticket sales, the objective must be "Conversions" or "Sales". Traffic campaigns bring visitors. Conversion campaigns bring buyers. This single change is estimated to improve cost-per-ticket by 3–5x.</p>
+  </div>
+  <div class="block warn">
+    <h4>Zero Tourist Geo-Targeting</h4>
+    <p style="font-size:13px;color:#B0CCB8;">There are currently no campaigns specifically targeting people who are physically in or near Kovalam right now. A ₹500/day campaign targeting people within 15km of Kovalam hotels — who are there as tourists, not locals — is one of the highest-conversion ad strategies possible for an attraction venue.</p>
+  </div>
+  <div class="block warn">
+    <h4>No Retargeting Infrastructure</h4>
+    <p style="font-size:13px;color:#B0CCB8;">10,204 people clicked the Holi ad. None of them are being shown a follow-up ad. Industry data: 70–80% of purchases need 3+ touchpoints. All of this warm traffic is being left behind.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <h3>Proven Strengths — Build on These</h3>
+  <div class="block ok">
+    <h4>✓ Content formula is working</h4>
+    <p style="font-size:13px;color:#B0CCB8;">The 138K-view Reel (human face + Holi colours) proves the formula. Close-up authentic moments, event energy, artisan stories — this content type works. Systemise it: 3–4 Reels per week following the proven format.</p>
+  </div>
+  <div class="block ok">
+    <h4>✓ 16,651 shares in 30 days</h4>
+    <p style="font-size:13px;color:#B0CCB8;">This is an extraordinary organic sharing rate. It means the content is genuinely compelling and the algorithm is rewarding it. This is the foundation for a very efficient content-led growth strategy.</p>
+  </div>
+  <div class="block ok">
+    <h4>✓ Profile activity spiked 369%</h4>
+    <p style="font-size:13px;color:#B0CCB8;">8,302 profile actions including 1,470 external link taps shows that intent exists. People want to visit, book, and engage. The gap is simply converting that intent into action with better destination links and CTAs.</p>
+  </div>
+  <div class="block ok">
+    <h4>✓ Unmatched competitive position</h4>
+    <p style="font-size:13px;color:#B0CCB8;">There is no comparable venue in Kerala. This monopoly on the "authentic art village" category in the state is not being communicated in current marketing. Leading with "Kerala's only dedicated arts and crafts village" in every channel will convert curiosity into action.</p>
+  </div>
+
+  <h3>The Content Strategy in One Formula</h3>
+  <table class="tbl">
+    <thead><tr><th>Reel Type</th><th>Frequency</th><th>Proven Reach</th><th>Primary Goal</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Artisan face story</strong> — close-up, authentic, emotional</td><td>1/week</td><td>50K–138K+</td><td>Brand credibility + international audience</td></tr>
+      <tr><td><strong>Event energy</strong> — crowd, colour, music</td><td>1/week (event weeks)</td><td>30K–50K</td><td>FOMO + ticket sales</td></tr>
+      <tr><td><strong>Discovery hook</strong> — "Did you know KACV has..."</td><td>1/week</td><td>15K–40K</td><td>New audience reach + saves</td></tr>
+      <tr><td><strong>Behind-the-scenes</strong> — process, setup, making</td><td>1/week</td><td>10K–25K</td><td>Retention + workshop bookings</td></tr>
+    </tbody>
+  </table>
+</div>
+</div>
+
+<!-- ===== ROADMAP ===== -->
+<div class="section" id="s-roadmap">
+<div class="wrap">
+  <div class="label">Section 06</div>
+  <h2>The Roadmap — 90 Days to Revenue</h2>
+  <p class="lead">A practical, sequenced plan that prioritises the fastest revenue impact first, then builds the long-term growth foundation beneath it.</p>
+
+  <h3>Phase 1 — Fix the Funnel (Week 1–2)</h3>
+  <p>Before spending another rupee on ads, the conversion infrastructure must be in place. Otherwise the spend is wasted.</p>
+  <div class="block">
+    <ul class="pts">
+      <li>Install Meta Pixel + Google Tag Manager on kacvkovalam.org</li>
+      <li>Create dedicated event landing pages — not homepage links</li>
+      <li>Rewrite Instagram bio with clear booking call to action</li>
+      <li>Fully optimise Google My Business — photos, categories, booking button</li>
+      <li>Set up conversion tracking events: view content, add to cart, purchase</li>
+    </ul>
+  </div>
+
+  <h3>Phase 2 — Turn on the Tourist Funnel (Week 2–4)</h3>
+  <p>The fastest-converting audience is tourists already in Kovalam. This campaign can be live in 48 hours and will show results within 7–10 days.</p>
+  <div class="block">
+    <ul class="pts">
+      <li>Launch 15km tourist geo-targeting campaign — ₹500–800/day</li>
+      <li>Launch retargeting campaign — target all past video viewers and website visitors</li>
+      <li>Switch Holi campaign type to Conversions with proper audience layers</li>
+      <li>Begin top 5 Kovalam hotel concierge outreach — brochures + commission offer</li>
+      <li>Contact 5 Kerala inbound tour operators — pitch group booking package</li>
+    </ul>
+  </div>
+
+  <h3>Phase 3 — Build the Engine (Month 2–3)</h3>
+  <p>With the funnel working and tourist traffic beginning, focus shifts to building the sustainable monthly growth machine.</p>
+  <div class="block">
+    <ul class="pts">
+      <li>Systematise the weekly Reels calendar — 3–4 pieces/week minimum</li>
+      <li>Launch international audience campaign — UK, Germany, France pre-travel targeting</li>
+      <li>List KACV on GetYourGuide and Viator — free listings, international discovery</li>
+      <li>Begin monthly email newsletter to collected database</li>
+      <li>Google Search Ads — brand + tourist intent keywords</li>
+      <li>Monthly performance report — review and optimise all campaigns</li>
+    </ul>
+  </div>
+
+  <h3>Year 1 Targets</h3>
+  <div class="stats-row">
+    <div class="stat"><div class="stat-n">10K</div><div class="stat-l">Instagram followers target</div></div>
+    <div class="stat"><div class="stat-n">20+</div><div class="stat-l">Tour operator partnerships</div></div>
+    <div class="stat"><div class="stat-n">3x</div><div class="stat-l">Walk-in visitor growth</div></div>
+    <div class="stat"><div class="stat-n">4.5★</div><div class="stat-l">Google + TripAdvisor rating</div></div>
+  </div>
+
+  <div class="callout">
+    <p>The event framework, targeting architecture, tour operator B2B strategy, keyword research, and full 12-month content calendar are developed and ready to be deployed. The next step is beginning the engagement to activate them in sequence.</p>
+  </div>
+</div>
+</div>
+
+<!-- ===== PRICING ===== -->
+<div class="section" id="s-pricing">
+<div class="wrap">
+  <div class="label">Section 07</div>
+  <h2>Let's Collaborate</h2>
+  <p class="lead">Three clear options, built around what KACV actually needs — from a one-time knowledge transfer to a full ongoing strategic partnership. All packages include the research and strategy work done for this presentation.</p>
+
+  <div class="price-grid">
+
+    <!-- OPTION 1 -->
+    <div class="price-card">
+      <div class="price-name">Option A · One-Time</div>
+      <div class="price-amount"><sup>₹</sup>25,000</div>
+      <div class="price-period">One-time strategy transfer</div>
+      <div class="price-divider"></div>
+      <ul class="price-features">
+        <li>Full Market Intelligence Report (Doc 1)</li>
+        <li>Event Marketing Framework (Doc 2)</li>
+        <li>Complete keyword research + targeting specs</li>
+        <li>12-month event calendar template</li>
+        <li>Ad campaign architecture document</li>
+        <li>Tour operator B2B outreach strategy</li>
+        <li>1 handover session (2 hrs) to walk through everything</li>
+        <li class="dim">No ongoing support</li>
+        <li class="dim">No campaign management</li>
+        <li class="dim">No performance reviews</li>
+      </ul>
+      <div class="price-note">Best for: Teams ready to execute independently and need a complete strategic blueprint to start from.</div>
+    </div>
+
+    <!-- OPTION 2 - FEATURED -->
+    <div class="price-card featured">
+      <div class="price-name">Option B · Partnership</div>
+      <div class="price-amount"><sup>₹</sup>35,000</div>
+      <div class="price-period">per month + ₹15,000 setup (one-time)</div>
+      <div class="price-divider"></div>
+      <ul class="price-features">
+        <li>Everything in Option A included</li>
+        <li>Monthly strategy session (2 hrs)</li>
+        <li>Monthly performance report + recommendations</li>
+        <li>Ad campaign planning + briefs per event</li>
+        <li>Content calendar planning (weekly)</li>
+        <li>Targeting and audience updates each month</li>
+        <li>WhatsApp support for quick questions</li>
+        <li>Quarterly deep-dive review</li>
+        <li>Tour operator + hotel partnership support</li>
+        <li>Priority support for upcoming events</li>
+      </ul>
+      <div class="price-note">Best for: Ongoing strategic guidance with clear deliverables every month, while your team handles execution.</div>
+    </div>
+
+    <!-- OPTION 3 -->
+    <div class="price-card">
+      <div class="price-name">Option C · Full Management</div>
+      <div class="price-amount"><sup>₹</sup>65,000</div>
+      <div class="price-period">per month (ad spend billed separately)</div>
+      <div class="price-divider"></div>
+      <ul class="price-features">
+        <li>Everything in Option B included</li>
+        <li>Full Meta + Google campaign management</li>
+        <li>Campaign setup, launch, daily optimisation</li>
+        <li>Event marketing — end-to-end per event</li>
+        <li>Creative direction + content briefs</li>
+        <li>Pixel + GTM setup and management</li>
+        <li>Weekly performance reports</li>
+        <li>B2B outreach coordination</li>
+        <li>Bi-weekly strategy calls</li>
+        <li>All reporting and analytics dashboards</li>
+      </ul>
+      <div class="price-note">Best for: A complete outsourced marketing function — strategy and execution both handled by the consulting team.</div>
+    </div>
+
+  </div>
+
+  <div class="block gold-tint">
+    <h4>Add-On Options (available with any package)</h4>
+    <table class="tbl">
+      <thead><tr><th>Add-On</th><th>Price</th><th>What It Includes</th></tr></thead>
+      <tbody>
+        <tr><td>Per-Event Campaign Management</td><td>₹12,000 – ₹20,000 per event</td><td>Full ad setup, targeting, creative direction, post-event analysis</td></tr>
+        <tr><td>Team Training Session</td><td>₹15,000 per session</td><td>Half-day structured training — ads, content, analytics (2–10 people)</td></tr>
+        <tr><td>SEO + Content Setup</td><td>₹18,000 one-time</td><td>GMB optimisation, 4 SEO blog posts, keyword mapping on website</td></tr>
+        <tr><td>Tour Operator B2B Kit</td><td>₹10,000 one-time</td><td>Pitch deck, commission structure, operator contact database</td></tr>
+        <tr><td>International Listing Setup</td><td>₹8,000 one-time</td><td>GetYourGuide, Viator, and TripAdvisor profile optimisation</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout">
+    <p><strong>How to begin:</strong> Regardless of the option chosen, the most effective starting point is the same — fix the pixel, create the event landing page, and launch the tourist geo-targeting campaign. Results from week one will demonstrate the direction clearly. The strategy is ready. The execution can start immediately.</p>
+  </div>
+
+  <div class="block">
+    <h4>A Note on This Work</h4>
+    <p style="font-size:14px;color:var(--cream);">This presentation represents a significant body of research — Kerala Tourism data, a deep audit of your Meta ad campaigns, Instagram analytics review, competitor landscape mapping, keyword research, and strategic framework development. The intent in sharing this is straightforward: to demonstrate the quality of thinking available, and to show what a structured approach to KACV's marketing looks like when it is data-led and strategically planned.</p>
+    <p style="font-size:14px;color:#8BAF96;">The full implementation documents — detailed campaign specs, the complete 12-month calendar, keyword lists, tour operator outreach scripts, and technical setup guides — are delivered as part of the engagement. The direction is clear. The question is how fast we move on it.</p>
+  </div>
+
+</div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="confidential">Confidential</div><br>
+  Kerala Arts & Crafts Village · Digital Growth Strategy Consultation · March 2026<br>
+  <span style="margin-top:6px;display:block;font-size:10px;">Research compiled from KACV Meta Ads data, Instagram Professional Insights, and Kerala Tourism official statistics 2025–26</span>
+</div>
+
+<button class="scroll-btn" id="scrollBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+function show(id, btn) {
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('on'));
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('on'));
+  document.getElementById('s-'+id).classList.add('on');
+  btn.classList.add('on');
+  const nav = document.querySelector('.sticky-nav');
+  window.scrollTo({top:nav.offsetTop-10,behavior:'smooth'});
+  setTimeout(animateBars, 120);
+}
+
+function animateBars(){
+  document.querySelectorAll('.bar-fill').forEach(b=>{
+    const w=b.style.width; b.style.width='0';
+    setTimeout(()=>b.style.width=w, 30);
+  });
+}
+setTimeout(animateBars, 400);
+
+document.addEventListener('copy',e=>{e.preventDefault();flash();});
+document.addEventListener('contextmenu',e=>{e.preventDefault();flash();});
+document.addEventListener('keydown',e=>{
+  if((e.ctrlKey||e.metaKey)&&['c','a','s','p','u'].includes(e.key.toLowerCase())){e.preventDefault();flash();}
+  if(e.key==='PrintScreen'){e.preventDefault();flash();}
+});
+function flash(){
+  const n=document.getElementById('pnotice');
+  n.classList.add('show');
+  setTimeout(()=>n.classList.remove('show'),2200);
+}
+window.addEventListener('scroll',()=>{
+  document.getElementById('scrollBtn').classList.toggle('vis',window.scrollY>300);
+});
+</script>
+</body>
+</html>

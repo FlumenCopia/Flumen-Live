@@ -1,0 +1,1659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fi-Tec Group — Master Business Strategy 2026 | FlumenX</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --dk:#071810; --dk2:#0D2B1F; --dk3:#122B20; --dm:#1A4A32;
+  --gm:#4A7A62; --gl:#6B9E84; --gp:#E8F4EE; --gbg:#F2F8F5;
+  --gold:#C9A84C; --gl2:#E8C97A; --gp2:#FDF6E3; --gm2:#A68A38;
+  --yw:#F5C842; --cream:#FAF9F6; --white:#fff;
+  --tx:#1A1A1A; --tx2:#4A4A4A; --tx3:#777;
+  --bdr:rgba(201,168,76,.2); --bdrg:rgba(74,122,98,.25);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"DM Sans",sans-serif;background:var(--cream);color:var(--tx);font-size:15px;line-height:1.75;}
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(7,24,16,.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,168,76,.15);padding:0 40px;}
+.nav-inner{max-width:1120px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:56px;}
+.nav-logo{display:flex;align-items:center;gap:10px;}
+.nav-logo-icon{width:28px;height:28px;background:var(--yw);clip-path:polygon(50% 0%,100% 38%,82% 100%,18% 100%,0% 38%);display:inline-block;}
+.nav-logo-text{font-family:"Playfair Display",serif;font-weight:900;font-size:17px;color:#fff;letter-spacing:1px;}
+.nav-logo-text span{color:var(--yw);}
+.nav-links{display:flex;gap:6px;}
+.nav-links a{color:rgba(255,255,255,.55);font-size:12px;font-weight:500;letter-spacing:.5px;padding:6px 12px;border-radius:20px;text-decoration:none;transition:all .2s;}
+.nav-links a:hover{color:var(--gl2);background:rgba(201,168,76,.08);}
+/* COVER */
+.cover{min-height:100vh;background:linear-gradient(135deg,#040F08 0%,#071810 30%,#0D2B1F 60%,#081510 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 40px;position:relative;overflow:hidden;}
+.cover::before{content:'';position:absolute;top:-120px;right:-80px;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,.08) 0%,transparent 65%);}
+.cover::after{content:'';position:absolute;bottom:-180px;left:-80px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(74,122,98,.1) 0%,transparent 65%);}
+.cover-inner{position:relative;z-index:2;text-align:center;width:100%;max-width:960px;}
+.cover-badge{background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.3);color:var(--gl2);padding:8px 26px;border-radius:30px;font-size:11px;letter-spacing:3px;text-transform:uppercase;margin-bottom:40px;font-weight:600;display:inline-block;}
+.cover-prep{margin-bottom:36px;display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap;}
+.prep-brand{display:flex;align-items:center;gap:8px;}
+.prep-icon{width:24px;height:24px;background:var(--yw);clip-path:polygon(50% 0%,100% 38%,82% 100%,18% 100%,0% 38%);}
+.prep-name{font-family:"Playfair Display",serif;font-weight:900;font-size:16px;color:#fff;letter-spacing:.5px;}<br>.prep-name span{color:var(--yw);}
+.prep-sep{width:1px;height:28px;background:rgba(255,255,255,.18);}
+.prep-by{font-size:11px;color:rgba(255,255,255,.38);letter-spacing:2px;text-transform:uppercase;line-height:1.4;}
+.cover-title{font-family:"Playfair Display",serif;font-size:76px;font-weight:900;color:#fff;line-height:1.0;letter-spacing:-2px;margin-bottom:12px;}
+.cover-title span{color:var(--yw);}
+.cover-sub{font-family:"Cormorant Garamond",serif;font-size:26px;color:var(--gl2);font-style:italic;margin-bottom:16px;}
+.cover-city{font-size:11px;letter-spacing:6px;color:rgba(255,255,255,.35);text-transform:uppercase;margin-bottom:50px;}
+.cover-div{width:100px;height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent);margin:0 auto 48px;}
+.cover-verticals{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:50px;}
+.cv-pill{padding:10px 22px;border-radius:30px;font-size:12px;font-weight:700;letter-spacing:.5px;border:1px solid;}
+.cv-1{background:rgba(37,99,235,.12);border-color:rgba(37,99,235,.35);color:#93C5FD;}
+.cv-2{background:rgba(79,70,229,.12);border-color:rgba(79,70,229,.35);color:#A5B4FC;}
+.cv-3{background:rgba(234,88,12,.12);border-color:rgba(234,88,12,.35);color:#FCA47A;}
+.cover-stats{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-bottom:50px;}
+.cs{background:rgba(255,255,255,.04);border:1px solid rgba(201,168,76,.2);border-radius:14px;padding:18px 24px;min-width:130px;text-align:center;backdrop-filter:blur(6px);}
+.cs-val{font-family:"Playfair Display",serif;font-size:28px;font-weight:700;color:var(--gl2);display:block;}
+.cs-lbl{font-size:10px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:1.5px;margin-top:4px;}
+.cover-meta{display:flex;border:1px solid rgba(255,255,255,.08);border-radius:14px;overflow:hidden;max-width:720px;margin:0 auto;}
+.cm{flex:1;padding:18px 24px;text-align:center;}
+.cm:not(:last-child){border-right:1px solid rgba(255,255,255,.08);}
+.cm-lbl{font-size:10px;color:rgba(255,255,255,.32);letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;}
+.cm-val{font-size:13px;color:#fff;font-weight:500;}
+/* SECTION */
+.section{padding:80px 64px;max-width:1120px;margin:0 auto;}
+.section-w{background:#fff;}
+.section-c{background:var(--cream);}
+.section-g{background:var(--dk2);}
+.section-gm{background:var(--dm);}
+.sec-lbl{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:12px;}
+.sec-lbl::before{content:"";width:28px;height:2px;background:var(--gold);display:inline-block;}
+.sec-lbl.wt{color:var(--gl2);}
+.sec-lbl.wt::before{background:var(--gl2);}
+.sec-ttl{font-family:"Playfair Display",serif;font-size:42px;font-weight:700;color:var(--tx);line-height:1.15;margin-bottom:16px;}
+.sec-ttl.wt{color:#fff;}
+.sec-sub{font-size:16px;color:var(--tx2);max-width:680px;line-height:1.75;margin-bottom:48px;}
+.sec-sub.wt{color:rgba(255,255,255,.6);}
+.h2{font-family:"Playfair Display",serif;font-size:28px;font-weight:700;color:var(--tx);margin:56px 0 16px;}
+.h2.wt{color:#fff;}
+.h2.gold{color:var(--gl2);}
+.h3{font-family:"Playfair Display",serif;font-size:20px;font-weight:700;color:var(--tx);margin:32px 0 10px;}
+.h3.wt{color:#fff;}
+.h3.gold{color:var(--gl2);}
+.divider{height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent);margin:56px 0;}
+.divider-g{height:1px;background:linear-gradient(to right,transparent,var(--gm),transparent);margin:50px 0;}
+/* INSIGHT */
+.insight{background:var(--gp2);border-left:4px solid var(--gold);border-radius:0 12px 12px 0;padding:22px 26px;margin:24px 0;font-size:14.5px;color:#5C3A00;line-height:1.75;}
+.insight-g{background:var(--gp);border-left:4px solid var(--gm);border-radius:0 12px 12px 0;padding:22px 26px;margin:24px 0;font-size:14.5px;color:#1A4A32;line-height:1.75;}
+.insight-dk{background:rgba(255,255,255,.05);border-left:4px solid var(--gold);border-radius:0 12px 12px 0;padding:22px 26px;margin:24px 0;font-size:14.5px;color:rgba(255,255,255,.78);line-height:1.75;}
+/* KPI */
+.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin:36px 0;}
+.kpi{background:#fff;border-radius:16px;padding:26px 20px;border:1px solid var(--bdrg);position:relative;overflow:hidden;box-shadow:0 2px 16px rgba(13,43,31,.07);}
+.kpi::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--dm),var(--gm),var(--gold));}
+.kpi-n{font-family:"Playfair Display",serif;font-size:34px;font-weight:700;color:var(--tx);line-height:1;}
+.kpi-u{font-size:14px;color:var(--gold);font-weight:600;}
+.kpi-l{font-size:12px;color:var(--tx2);margin-top:6px;line-height:1.5;}
+.kpi.dk{background:rgba(255,255,255,.04);border:1px solid rgba(201,168,76,.2);}
+.kpi.dk .kpi-n{color:var(--gl2);}
+.kpi.dk .kpi-l{color:rgba(255,255,255,.5);}
+/* TABLE */
+.tbl{width:100%;border-collapse:collapse;margin:28px 0;border-radius:14px;overflow:hidden;box-shadow:0 2px 20px rgba(0,0,0,.06);}
+.tbl thead tr{background:var(--dk2);}
+.tbl th{color:#fff;font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:14px 16px;text-align:left;}
+.tbl td{padding:12px 16px;font-size:13.5px;border-bottom:1px solid #EEF5F1;vertical-align:top;}
+.tbl tbody tr:nth-child(even) td{background:#F8FCF9;}
+.tbl tbody tr:hover td{background:var(--gp);}
+.tbl .hl{color:#7D5000;font-weight:600;}
+.tbl .hlg{color:var(--dm);font-weight:600;}
+.tbl .hlb{color:#1A3C8A;font-weight:700;font-size:15px;}
+/* 3-COL GROUP */
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin:36px 0;}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:36px 0;}
+/* VERTICAL CARDS */
+.vert-card{border-radius:20px;padding:32px 26px;position:relative;overflow:hidden;}
+.vc-infra{background:linear-gradient(135deg,#0A1B3A,#1A3A8F);}
+.vc-tm{background:linear-gradient(135deg,#1A0D3A,#4F46E5);}
+.vc-pm{background:linear-gradient(135deg,#3A1000,#EA580C);}
+.vc-head{font-family:"Playfair Display",serif;font-size:18px;font-weight:700;color:#fff;margin-bottom:4px;}
+.vc-sub{font-size:11px;color:rgba(255,255,255,.5);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:18px;}
+.vc-div{height:1px;background:rgba(255,255,255,.1);margin-bottom:16px;}
+.vc-item{font-size:12px;color:rgba(255,255,255,.7);padding:4px 0 4px 16px;position:relative;border-bottom:1px solid rgba(255,255,255,.06);}
+.vc-item::before{content:"▸";position:absolute;left:0;color:var(--gl2);font-size:10px;}
+.vc-foot{font-size:10px;color:var(--gl2);letter-spacing:2px;text-transform:uppercase;margin-top:16px;}
+/* SERVICE GRID */
+.svc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin:32px 0;}
+.svc{background:#fff;border-radius:16px;padding:26px;border:1px solid var(--bdrg);box-shadow:0 2px 12px rgba(0,0,0,.05);}
+.svc-icon{font-size:28px;margin-bottom:10px;}
+.svc-name{font-family:"Playfair Display",serif;font-size:17px;font-weight:700;color:var(--tx);margin-bottom:8px;}
+.svc-list{list-style:none;}
+.svc-list li{font-size:13px;color:var(--tx2);padding:4px 0 4px 16px;position:relative;border-bottom:1px solid #F0F5F2;line-height:1.55;}
+.svc-list li::before{content:"→";position:absolute;left:0;color:var(--gm);font-size:11px;}
+.svc-list li:last-child{border-bottom:none;}
+/* BRAND PORTFOLIO */
+.brand-pills{display:flex;flex-wrap:wrap;gap:10px;margin:24px 0;}
+.bp{padding:10px 18px;border-radius:10px;font-size:12px;font-weight:700;text-align:center;}
+.bp-1{background:linear-gradient(135deg,#0A1B3A,#1A3A8F);color:#93C5FD;}
+.bp-2{background:linear-gradient(135deg,#0A2010,#1A5C32);color:#6EE7B7;}
+.bp-3{background:linear-gradient(135deg,#200A00,#7C2D12);color:#FCA47A;}
+.bp-4{background:linear-gradient(135deg,#1A0A00,#92400E);color:#FDE68A;}
+.bp-5{background:linear-gradient(135deg,#1A1A2E,#4A4A80);color:#C4B5FD;}
+.bp sub{font-size:10px;font-weight:400;opacity:.7;display:block;margin-top:2px;}
+/* MARKET STATS */
+.mkt-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:30px 0;}
+.mkt{border-radius:14px;padding:22px 18px;text-align:center;}
+.mkt-dc{background:linear-gradient(135deg,#071810,#0D2B1F);border:1px solid rgba(201,168,76,.25);}
+.mkt-kt{background:linear-gradient(135deg,#3A1000,#7C2D12);border:1px solid rgba(234,88,12,.3);}
+.mkt-it{background:linear-gradient(135deg,#1A0D3A,#3730A3);border:1px solid rgba(99,102,241,.3);}
+.mkt-val{font-family:"Playfair Display",serif;font-size:30px;font-weight:700;color:var(--gl2);}
+.mkt-lbl{font-size:11px;color:rgba(255,255,255,.5);margin-top:5px;line-height:1.4;}
+/* FUNNEL TABLE */
+.funnel-tbl{width:100%;border-collapse:collapse;margin:28px 0;}
+.funnel-tbl tr{border-bottom:1px solid #EEF5F1;}
+.funnel-tbl td{padding:16px 18px;font-size:13.5px;vertical-align:top;}
+.f-stage{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:4px 12px;border-radius:20px;white-space:nowrap;}
+.f-aw{background:#D1FAE5;color:#064E3B;}
+.f-in{background:#DBEAFE;color:#1E3A8A;}
+.f-de{background:#FEF3C7;color:#7D5000;}
+.f-ac{background:linear-gradient(135deg,#0D2B1F,#1A4A32);color:var(--gl2);}
+.f-re{background:#EDE9FE;color:#3730A3;}
+/* SMM CARDS */
+.smm-g{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin:32px 0;}
+.smm-c{background:#fff;border-radius:18px;padding:28px 22px;border:1px solid var(--bdrg);box-shadow:0 2px 14px rgba(0,0,0,.05);position:relative;overflow:hidden;}
+.smm-c::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;}
+.smm-c.li::before{background:linear-gradient(to right,#0077B5,#00A0DC);}
+.smm-c.ig::before{background:linear-gradient(to right,#E1306C,#FFDC80,#833AB4);}
+.smm-c.fb::before{background:linear-gradient(to right,#1877F2,#42A5F5);}
+.smm-icon{font-size:28px;margin-bottom:12px;}
+.smm-name{font-family:"Playfair Display",serif;font-size:18px;font-weight:700;color:var(--tx);margin-bottom:8px;}
+.smm-brand{font-size:12px;color:var(--gold);font-weight:600;letter-spacing:.5px;margin-bottom:14px;}
+.smm-list{list-style:none;}
+.smm-list li{font-size:12.5px;color:var(--tx2);padding:5px 0 5px 16px;position:relative;border-bottom:1px solid #F0F5F2;line-height:1.55;}
+.smm-list li::before{content:"→";position:absolute;left:0;color:var(--gm);font-size:10px;}
+.smm-list li:last-child{border-bottom:none;}
+/* ROADMAP */
+.roadmap{margin:40px 0;position:relative;padding-left:48px;}
+.roadmap::before{content:"";position:absolute;left:16px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--dm),var(--gold),rgba(201,168,76,.15));}
+.rm-phase{margin-bottom:28px;position:relative;}
+.rm-dot{width:34px;height:34px;border-radius:50%;position:absolute;left:-51px;top:12px;z-index:2;display:flex;align-items:center;justify-content:center;font-family:"Playfair Display",serif;font-weight:700;font-size:14px;color:#fff;box-shadow:0 0 0 4px #fff,0 0 0 6px var(--dm);}
+.rm-card{background:#fff;border-radius:16px;padding:26px 28px;box-shadow:0 2px 16px rgba(0,0,0,.06);border:1px solid var(--bdrg);}
+.rm-lbl{font-size:10px;letter-spacing:3px;text-transform:uppercase;font-weight:700;color:var(--gold);margin-bottom:5px;}
+.rm-ttl{font-family:"Playfair Display",serif;font-size:20px;font-weight:700;color:var(--tx);margin-bottom:2px;}
+.rm-per{font-size:12px;color:var(--tx3);margin-bottom:14px;}
+.rm-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.rm-col-hd{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;padding-bottom:6px;border-bottom:2px solid;}
+.rm-col-infra .rm-col-hd{color:#1A3A8F;border-color:#1A3A8F;}
+.rm-col-tm .rm-col-hd{color:#4F46E5;border-color:#4F46E5;}
+.rm-col-pm .rm-col-hd{color:#EA580C;border-color:#EA580C;}
+.rm-item{font-size:12px;color:var(--tx2);padding:4px 0 4px 14px;position:relative;line-height:1.55;}
+.rm-item::before{content:"▸";position:absolute;left:0;color:var(--gm);font-size:10px;}
+/* MONTHLY TABLE */
+.mo-tbl{width:100%;border-collapse:collapse;margin:16px 0;}
+.mo-tbl .mo-hdr td{background:var(--dk2);color:#fff;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:12px 14px;}
+.mo-row{border-bottom:1px solid #EEF5F1;}
+.mo-row:nth-child(even) td{background:#F8FCF9;}
+.mo-row:hover td{background:var(--gp);}
+.mo-row td{padding:12px 14px;font-size:13px;vertical-align:top;}
+.mo-tag{display:inline-block;padding:3px 10px;border-radius:6px;font-size:10px;font-weight:700;letter-spacing:.5px;}
+.mt-fn{background:var(--gp2);color:#7D5000;}
+.mt-di{background:#DBEAFE;color:#1E3A8A;}
+.mt-co{background:#D1FAE5;color:#064E3B;}
+.mt-lg{background:#EDE9FE;color:#3730A3;}
+.mt-ba{background:linear-gradient(135deg,#0D2B1F,#1A4A32);color:var(--gl2);}
+.mt-sc{background:#FEF3C7;color:#7D5000;}
+.mt-au{background:#FCE7F3;color:#831843;}
+.mt-cv{background:linear-gradient(135deg,#1A0D3A,#3730A3);color:#C4B5FD;}
+.mt-yp{background:#FEF9C3;color:#713F12;}
+.mt-tl{background:#F0FDF4;color:#14532D;}
+.mt-yl{background:linear-gradient(135deg,#071810,#0D2B1F);color:var(--gl2);}
+/* SPRINT */
+.sprint{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin:36px 0;}
+.sp-card{border-radius:16px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.09);}
+.sp-hdr{padding:22px 26px;}
+.sp-hdr.h1{background:linear-gradient(135deg,#071810,#1A4A32);}
+.sp-hdr.h2b{background:linear-gradient(135deg,#0A1B3A,#1A3A8F);}
+.sp-hdr.h3b{background:linear-gradient(135deg,#1A0D3A,#4F46E5);}
+.sp-hdr.h4b{background:linear-gradient(135deg,#3A1000,#EA580C);}
+.sp-hdr h3{font-family:"Playfair Display",serif;font-size:18px;font-weight:700;color:#fff;margin-bottom:4px;}
+.sp-hdr p{font-size:11px;color:rgba(255,255,255,.55);}
+.sp-body{background:#fff;padding:24px;}
+.sp-wk{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin:14px 0 7px;}
+.sp-wk:first-child{margin-top:0;}
+.sp-task{font-size:12.5px;color:var(--tx2);padding:5px 0 5px 18px;position:relative;border-bottom:1px solid #F0F5F2;line-height:1.55;}
+.sp-task::before{content:"→";position:absolute;left:0;color:var(--gm);font-weight:700;}
+/* REVENUE */
+.rev-g{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:32px 0;}
+.rev{border-radius:18px;padding:28px 22px;text-align:center;}
+.rev-1{background:linear-gradient(135deg,#0A1B3A,#1A3A8F);border:1px solid rgba(37,99,235,.4);}
+.rev-2{background:linear-gradient(135deg,#1A0D3A,#4F46E5);border:1px solid rgba(99,102,241,.4);}
+.rev-3{background:linear-gradient(135deg,#3A1000,#EA580C);border:1px solid rgba(234,88,12,.4);}
+.rev-4{background:linear-gradient(135deg,#071810,#0D2B1F);border:2px solid var(--gold);}
+.rev-lbl{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:10px;}
+.rev-amt{font-family:"Playfair Display",serif;font-size:28px;font-weight:700;color:#fff;line-height:1;}
+.rev-yr{font-size:11px;color:rgba(255,255,255,.45);margin:4px 0 16px;}
+.rev-rows{text-align:left;}
+.rev-row{display:flex;justify-content:space-between;font-size:11.5px;color:rgba(255,255,255,.65);padding:5px 0;border-bottom:1px solid rgba(255,255,255,.08);}
+.rev-row span:last-child{font-weight:700;color:rgba(255,255,255,.88);}
+/* KPI TABLE */
+.kpi-tbl{width:100%;border-collapse:collapse;margin:28px 0;border-radius:14px;overflow:hidden;box-shadow:0 2px 20px rgba(0,0,0,.06);}
+.kpi-tbl thead tr{background:var(--dk2);}
+.kpi-tbl th{color:#fff;font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:13px 16px;text-align:left;}
+.kpi-tbl td{padding:11px 16px;font-size:13px;border-bottom:1px solid #EEF5F1;vertical-align:middle;}
+.kpi-tbl tbody tr:nth-child(even) td{background:#F8FCF9;}
+.kpi-tbl tbody tr:hover td{background:var(--gp);}
+.kpi-pill{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600;}
+/* CLOSING */
+.closing{background:linear-gradient(160deg,#040F08 0%,#071810 50%,#040F08 100%);padding:100px 60px;text-align:center;position:relative;overflow:hidden;}
+.closing::before{content:"";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,.06) 0%,transparent 70%);}
+.closing *{position:relative;z-index:1;}
+.cl-q{font-family:"Cormorant Garamond",serif;font-size:30px;font-style:italic;color:rgba(255,255,255,.85);max-width:680px;margin:0 auto 14px;line-height:1.55;}
+.cl-by{font-size:12px;color:rgba(255,255,255,.35);letter-spacing:2px;margin-bottom:48px;}
+.cl-div{width:80px;height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent);margin:0 auto 40px;}
+.cl-logos{display:flex;align-items:center;justify-content:center;gap:24px;margin:0 0 32px;}
+.cl-logo{display:flex;align-items:center;gap:8px;}
+.cl-icon{width:36px;height:36px;background:var(--yw);clip-path:polygon(50% 0%,100% 38%,82% 100%,18% 100%,0% 38%);}
+.cl-nm{font-family:"Playfair Display",serif;font-weight:900;font-size:22px;color:#fff;}
+.cl-nm span{color:var(--yw);}
+.cl-sep{width:1px;height:36px;background:rgba(255,255,255,.15);}
+.cl-contact{display:flex;max-width:720px;margin:0 auto 40px;border:1px solid rgba(255,255,255,.08);border-radius:14px;overflow:hidden;}
+.cc{flex:1;padding:18px 20px;text-align:center;border-right:1px solid rgba(255,255,255,.08);}
+.cc:last-child{border-right:none;}
+.cc-lbl{font-size:10px;color:rgba(255,255,255,.3);letter-spacing:2px;text-transform:uppercase;margin-bottom:5px;}
+.cc-val{font-size:13px;color:rgba(255,255,255,.7);}
+.cl-foot{font-size:11px;color:rgba(255,255,255,.2);max-width:680px;margin:0 auto;line-height:1.7;}
+/* UTILITY */
+ul.ul{list-style:none;padding:0;}
+ul.ul li{padding:5px 0 5px 20px;position:relative;font-size:14px;color:var(--tx2);line-height:1.65;border-bottom:1px solid rgba(0,0,0,.04);}
+ul.ul li::before{content:"▸";position:absolute;left:0;color:var(--gm);font-size:11px;}
+ul.ul.wt li{color:rgba(255,255,255,.72);}
+ul.ul.wt li::before{color:var(--gl2);}
+ul.ul li:last-child{border-bottom:none;}
+.p-body{font-size:15px;color:var(--tx2);line-height:1.8;margin-bottom:18px;}
+.p-body.wt{color:rgba(255,255,255,.68);}
+.badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600;}
+.b-gn{background:#D1FAE5;color:#064E3B;}
+.b-or{background:#FEF3C7;color:#7D5000;}
+.b-bl{background:#DBEAFE;color:#1E3A8A;}
+.b-pu{background:#EDE9FE;color:#3730A3;}
+.b-rd{background:#FEE2E2;color:#7F1D1D;}
+/* RESPONSIVE */
+@media(max-width:900px){
+  .cover{padding:50px 24px;}
+  .cover-title{font-size:48px;letter-spacing:-1px;}
+  .cover-sub{font-size:20px;}
+  .cover-stats{gap:10px;}
+  .cs{min-width:90px;padding:14px 16px;}
+  .cs-val{font-size:22px;}
+  .cover-meta{flex-direction:column;}
+  .cm:not(:last-child){border-right:none;border-bottom:1px solid rgba(255,255,255,.08);}
+  .section{padding:52px 24px;}
+  .sec-ttl{font-size:30px;}
+  .g3,.smm-g,.rev-g,.kpi-row,.mkt-row{grid-template-columns:1fr 1fr;}
+  .g2,.sprint{grid-template-columns:1fr;}
+  .rm-cols{grid-template-columns:1fr;}
+  .cover-verticals{gap:8px;}
+  nav{padding:0 16px;}
+  .nav-links{display:none;}
+  .tbl th,.tbl td{padding:10px 10px;font-size:12px;}
+}
+@media(max-width:600px){
+  .cover-title{font-size:36px;}
+  .g3,.smm-g,.rev-g,.kpi-row,.mkt-row,.svc-grid{grid-template-columns:1fr;}
+  .closing{padding:60px 24px;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+<div class="nav-inner">
+  <div class="nav-logo">
+    <div class="nav-logo-icon"></div>
+    <div class="nav-logo-text">FLUME<span>N</span>X</div>
+  </div>
+  <div class="nav-links">
+    <a href="#exec">Executive Summary</a>
+    <a href="#arch">Architecture</a>
+    <a href="#infra">Fi-Tec Infra</a>
+    <a href="#tm">Tec Mates</a>
+    <a href="#pm">Polemarks</a>
+    <a href="#market">Market Data</a>
+    <a href="#digital">Digital Marketing</a>
+    <a href="#roadmap">Roadmap</a>
+    <a href="#monthly">12-Month Plan</a>
+    <a href="#kpis">KPIs</a>
+    <a href="#packages">Packages</a>
+  </div>
+</div>
+</nav>
+
+<!-- COVER -->
+<div class="cover" id="top">
+<div class="cover-inner">
+  <div class="cover-badge">Strategic Growth & Execution Proposal · BNI Thiruvananthapuram</div>
+  <div class="cover-prep">
+    <div class="prep-brand">
+      <div class="prep-icon"></div>
+      <div class="prep-name">FLUME<span>N</span>X</div>
+    </div>
+    <div class="prep-sep"></div>
+    <div class="prep-by">Prepared by<br><strong style="color:rgba(255,255,255,.72);font-size:13px;">Anoop Krishna VA · MiscArchive</strong></div>
+    <div class="prep-sep"></div>
+    <div class="prep-by">Prepared for<br><strong style="color:rgba(255,255,255,.72);font-size:13px;">Mr. Jayachandran KP · Fi-Tec Group</strong></div>
+  </div>
+  <div class="cover-title">FI-TEC<br><span>GROUP</span></div>
+  <div class="cover-sub">Master Business Architecture, Brand Strategy<br>& Digital Marketing Execution Plan</div>
+  <div class="cover-city">Thiruvananthapuram · Kerala · India · February 2026</div>
+  <div class="cover-div"></div>
+  <div class="cover-verticals">
+    <div class="cv-pill cv-1">⬡ Fi-Tec Infra Solutions &nbsp;·&nbsp; Infrastructure</div>
+    <div class="cv-pill cv-2">⬡ Tec Mates &nbsp;·&nbsp; IT & Infocom</div>
+    <div class="cv-pill cv-3">⬡ Polemarks &nbsp;·&nbsp; Commercial Kitchen</div>
+  </div>
+  <div class="cover-stats">
+    <div class="cs"><span class="cs-val">2012</span><div class="cs-lbl">Founded · TVM</div></div>
+    <div class="cs"><span class="cs-val">14+</span><div class="cs-lbl">Years of Excellence</div></div>
+    <div class="cs"><span class="cs-val">3</span><div class="cs-lbl">Business Verticals</div></div>
+    <div class="cs"><span class="cs-val">Diamond</span><div class="cs-lbl">Vertiv Partner</div></div>
+    <div class="cs"><span class="cs-val">₹100Cr+</span><div class="cs-lbl">2030 Revenue Goal</div></div>
+  </div>
+  <div class="cover-meta">
+    <div class="cm"><div class="cm-lbl">Offices</div><div class="cm-val">Thiruvananthapuram · Kochi · Calicut</div></div>
+    <div class="cm"><div class="cm-lbl">Certifications</div><div class="cm-val">ISO 9001:2015 · MSME · NSIC</div></div>
+    <div class="cm"><div class="cm-lbl">Partnership</div><div class="cm-val">Vertiv Energy Diamond Partner</div></div>
+  </div>
+</div>
+</div>
+
+<!-- SECTION 01: EXECUTIVE SUMMARY -->
+<div style="background:#fff;" id="exec">
+<div class="section">
+  <div class="sec-lbl">01 — Executive Summary</div>
+  <div class="sec-ttl">The Origin Story — Five Technocrats Who Changed Kerala's Infrastructure</div>
+  <div class="sec-sub">In 2012, Kerala's technology infrastructure sector had a fundamental problem: no single company could deliver a complete, integrated end-to-end infrastructure solution. Fi-Tec was the answer.</div>
+
+  <div class="p-body">In 2012, Kerala's technology infrastructure sector had a fundamental problem: no single company could deliver a complete, integrated end-to-end infrastructure solution. Critical projects were fragmented across multiple vendors — a UPS company here, a cabling firm there, a data centre consultant elsewhere. This fragmentation created accountability gaps, coordination nightmares, and costly inefficiencies for every hospital, bank, and government office trying to build reliable digital infrastructure.</div>
+  <div class="p-body">Into this gap stepped five IT professionals — each a specialist in a different technical discipline — with a deceptively simple idea: what if one company could do it all? Bring together expertise in power systems, networking, data centre design, cooling, fire safety, and security surveillance under a single roof, with a single point of accountability. The name they chose: <strong>Fi-Tec — Five Technocrats.</strong></div>
+
+  <div class="insight"><strong>The Founding Philosophy:</strong> Fi-Tec was never just a company — it was an ecosystem play from Day 1. Where others sold components, Fi-Tec sold complete outcomes. Where others offered single-point solutions, Fi-Tec offered fully integrated systems. This DNA of completeness and single-source accountability is the strategic foundation upon which the Fi-Tec Group of 2026 is being built.</div>
+
+  <div class="h2">14 Years Building Kerala's Digital Backbone</div>
+  <div class="p-body">Fi-Tec Power Solutions Pvt. Ltd. — now rebranded as Fi-Tec Infra Solutions Pvt. Ltd. — steadily earned every credential that matters in the critical infrastructure space. ISO 9001:2015 certification. MSME and NSIC registration. And most significantly, Diamond Business Partnership status with Vertiv Energy Pvt. Ltd. — one of the world's leading critical digital infrastructure companies.</div>
+
+  <div class="kpi-row">
+    <div class="kpi"><div class="kpi-n">2012</div><div class="kpi-l">Founded in Thiruvananthapuram</div></div>
+    <div class="kpi"><div class="kpi-n" style="font-size:22px;">ISO 9001</div><div class="kpi-l">Quality Management Certified</div></div>
+    <div class="kpi"><div class="kpi-n" style="font-size:22px;">Diamond</div><div class="kpi-l">Vertiv Energy Partner Status</div></div>
+    <div class="kpi"><div class="kpi-n">3</div><div class="kpi-l">Cities: TVM · Kochi · Calicut</div></div>
+  </div>
+
+  <div class="h2">The 2026 Strategic Inflection Point</div>
+  <div class="p-body">Three powerful developments are converging in 2026, creating the most important strategic moment in Fi-Tec's history. This document is the blueprint for capitalising on all three simultaneously:</div>
+
+  <div style="display:flex;flex-direction:column;gap:14px;margin:24px 0;">
+    <div style="display:flex;gap:18px;align-items:flex-start;background:#F8FCF9;border-radius:14px;padding:20px 22px;border-left:4px solid #1A3A8F;">
+      <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#1A3A8F,#2563EB);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:16px;color:#fff;flex-shrink:0;">1</div>
+      <div><strong style="color:#1A3A8F;">Fi-Tec Infra Solutions</strong> has reached maturity enabling geographic expansion to Tamil Nadu while deepening Kerala dominance through formalised service divisions — MCD projects, ELV systems, FMC fire solutions, and Power Solutions.</div>
+    </div>
+    <div style="display:flex;gap:18px;align-items:flex-start;background:#F5F3FF;border-radius:14px;padding:20px 22px;border-left:4px solid #4F46E5;">
+      <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#4F46E5,#7C3AED);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:16px;color:#fff;flex-shrink:0;">2</div>
+      <div><strong style="color:#4F46E5;">Tec Mates</strong> has been created as a deliberately separate IT and Infocom services entity — a strategic "firewall brand" that serves the IT needs of the same ecosystem without creating client conflicts.</div>
+    </div>
+    <div style="display:flex;gap:18px;align-items:flex-start;background:#FFF7ED;border-radius:14px;padding:20px 22px;border-left:4px solid #EA580C;">
+      <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#EA580C,#F97316);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:16px;color:#fff;flex-shrink:0;">3</div>
+      <div><strong style="color:#EA580C;">Polemarks</strong> — a premium commercial kitchen equipment supplier in Trivandrum — has been fully acquired and is being relaunched as the third strategic vertical, tapping into Kerala's ₹800+ Crore hospitality sector.</div>
+    </div>
+  </div>
+
+  <div class="insight" style="margin-top:32px;"><strong>2030 Vision Statement:</strong> "To be Kerala's most trusted multi-vertical technology and solutions conglomerate — powering digital infrastructure through Fi-Tec Infra, delivering intelligent IT services through Tec Mates, and elevating commercial kitchens through Polemarks — all united under the Fi-Tec Group banner. By 2030, Fi-Tec Group will exceed ₹100 Crore in group revenue and be the definitive name in Kerala's technology and solutions landscape."</div>
+</div>
+</div>
+
+<!-- SECTION 02: ARCHITECTURE -->
+<div style="background:var(--cream);" id="arch">
+<div class="section">
+  <div class="sec-lbl">02 — Corporate Architecture</div>
+  <div class="sec-ttl">The Montfort Model — Distinct Brands, Unified Strength</div>
+  <div class="sec-sub">A structured multi-brand conglomerate designed to eliminate channel conflict, maximise cross-referrals, and compound revenue without compounding client acquisition costs.</div>
+
+  <!-- Group diagram -->
+  <div style="background:linear-gradient(135deg,#071810,#0D2B1F);border-radius:20px;padding:32px;border:1px solid rgba(201,168,76,.25);margin:32px 0;">
+    <div style="text-align:center;margin-bottom:8px;"><span style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.45);">Holding Entity</span></div>
+    <div style="text-align:center;margin-bottom:4px;font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#fff;">FI-TEC GROUP HOLDINGS</div>
+    <div style="text-align:center;font-size:13px;color:rgba(255,255,255,.5);margin-bottom:28px;">Mr. Jayachandran KP — Founder & Managing Director</div>
+    <div class="g3">
+      <div class="vert-card vc-infra">
+        <div class="vc-head">Fi-Tec Infra Solutions</div>
+        <div class="vc-sub">Infrastructure Division</div>
+        <div class="vc-div"></div>
+        <div class="vc-item">Data Center · MCD Projects</div>
+        <div class="vc-item">ELV & Security Systems</div>
+        <div class="vc-item">Power & UPS Solutions</div>
+        <div class="vc-item">FMC Fire & Safety</div>
+        <div class="vc-item">Solar Power Solutions</div>
+        <div class="vc-foot">A Fi-Tec Group Company</div>
+      </div>
+      <div class="vert-card vc-tm">
+        <div class="vc-head">Tec Mates</div>
+        <div class="vc-sub">IT & Infocom Division</div>
+        <div class="vc-div"></div>
+        <div class="vc-item">IT Managed Services</div>
+        <div class="vc-item">Networking & Infocom</div>
+        <div class="vc-item">Cloud & Cybersecurity</div>
+        <div class="vc-item">VDI & Software</div>
+        <div class="vc-item">TP-Link Distribution</div>
+        <div class="vc-foot">A Fi-Tec Group Company</div>
+      </div>
+      <div class="vert-card vc-pm">
+        <div class="vc-head">Polemarks</div>
+        <div class="vc-sub">Commercial Kitchen Division</div>
+        <div class="vc-div"></div>
+        <div class="vc-item">Cooking Equipment</div>
+        <div class="vc-item">Refrigeration & Cold Rooms</div>
+        <div class="vc-item">Warewashing Systems</div>
+        <div class="vc-item">Custom SS Fabrication</div>
+        <div class="vc-item">Bakery & Display</div>
+        <div class="vc-foot">A Fi-Tec Group Company</div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:24px;padding:14px;border:1px solid rgba(255,255,255,.08);border-radius:10px;">
+      <span style="font-size:11px;color:rgba(255,255,255,.45);letter-spacing:2px;">SHARED GROUP SERVICES: Finance · HR & Talent · Digital Marketing · Legal · Strategic Planning</span>
+    </div>
+  </div>
+
+  <div class="h2">Why the Tec Mates Separation Is Critical</div>
+  <div class="p-body">Of all the structural decisions in this plan, the deliberate separation of IT services into the Tec Mates brand is the most strategically nuanced. Consider: a nationalised bank engages Fi-Tec Infra to build their data centre. If Fi-Tec Infra also offered IT managed services, the bank's IT team would feel their vendor is encroaching on their domain. Tec Mates — introduced as a separate specialist — is welcomed as a partner, not feared as a competitor.</div>
+
+  <table class="tbl">
+    <thead><tr><th>Dimension</th><th>Fi-Tec Infra Solutions</th><th>Tec Mates</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Core Identity</strong></td><td>Physical infrastructure builder — design, build, maintain critical physical layers</td><td>Digital operations manager — manage, support, optimise IT systems inside infrastructure</td></tr>
+      <tr><td><strong>Revenue Model</strong></td><td>Project-based (build) + recurring O&M/AMC</td><td>Primarily recurring — managed service contracts, SLA retainers (target 70%)</td></tr>
+      <tr><td><strong>Client Relationship</strong></td><td>Contractor — formal tenders, project delivery</td><td>Partner — ongoing, embedded, trusted advisor</td></tr>
+      <tr><td><strong>Conflict Prevention</strong></td><td>Infrastructure contractor ≠ IT operations competitor</td><td>Independent IT brand avoids "vendor inside our IT ops" discomfort</td></tr>
+      <tr><td><strong>Synergy Mechanism</strong></td><td>Builds the infrastructure Tec Mates manages</td><td>Receives warm introductions; sends infra upgrade referrals back</td></tr>
+      <tr><td><strong>Voice & Tone</strong></td><td class="hlg">"We deliver engineering excellence"</td><td class="hlg">"We keep your technology working, always"</td></tr>
+    </tbody>
+  </table>
+
+  <div class="h2">Cross-Vertical Synergy Matrix</div>
+  <div class="p-body">Every client relationship across the group becomes a warm referral for the other two verticals — multiplying revenue without multiplying acquisition costs.</div>
+
+  <table class="tbl">
+    <thead><tr><th>Client Scenario</th><th style="color:#93C5FD;">Fi-Tec Infra Wins</th><th style="color:#C4B5FD;">Tec Mates Wins</th><th style="color:#FCA47A;">Polemarks Wins</th></tr></thead>
+    <tbody>
+      <tr><td><strong>New 5-Star Hotel</strong></td><td>Server room, CCTV, fire suppression, BMS, UPS, ELV</td><td>Managed IT, Wi-Fi, POS integration, cloud backup</td><td>Complete commercial kitchen — ovens, refrigeration, dishwashers</td></tr>
+      <tr><td><strong>Hospital Expansion</strong></td><td>Data centre, UPS, precision cooling, fire safety, surveillance</td><td>EMR/HIS IT support, network management, cybersecurity</td><td>Canteen kitchen equipment, cafeteria refrigeration</td></tr>
+      <tr><td><strong>Government Secretariat</strong></td><td>Server room, power systems, networking, security, fire safety</td><td>IT managed services, email setup, compliance IT</td><td>Staff canteen kitchen — bulk cooking, refrigeration</td></tr>
+      <tr><td><strong>Technopark Office</strong></td><td>Server room, structured cabling, fire suppression, cooling</td><td>Managed IT, cloud management, security monitoring</td><td>Office cafeteria equipment — coffee machines, mini-kitchens</td></tr>
+      <tr><td><strong>Educational Campus</strong></td><td>Server room, CCTV, fire safety, PA system, networking</td><td>Campus Wi-Fi, student labs, ERP, IT AMC</td><td>Canteen & mess kitchen — large-volume cooking & refrigeration</td></tr>
+    </tbody>
+  </table>
+</div>
+</div>
+
+<!-- SECTION 03: FI-TEC INFRA -->
+<div style="background:#fff;" id="infra">
+<div class="section">
+  <div class="sec-lbl">03 — Fi-Tec Infra Solutions</div>
+  <div class="sec-ttl">Kerala's Premier End-to-End Critical Infrastructure Company</div>
+  <div class="sec-sub">14 years. ISO 9001. Diamond Vertiv Partner. Tier I–IV capability. The only company in Kerala that can deliver every infrastructure system from a single contract.</div>
+
+  <div class="insight-g"><strong>The Competitive Moat:</strong> Fi-Tec Infra is the only company in Kerala that can say: "We deliver every infrastructure system — power, cooling, networking, security surveillance, fire safety, building automation, and data centre — from a single contract, single project manager, and single warranty." This single-source advantage wins government tenders consistently.</div>
+
+  <div class="h2">Division A: Data Center & MCD Projects</div>
+  <div class="p-body">The Data Centre division is Fi-Tec Infra's flagship differentiator. Capability spans Tier I to Tier IV including both conventional constructed data centres and Modular Data Centers (MCD) — a rapidly growing segment driven by edge computing and 5G rollout.</div>
+
+  <div class="g2">
+    <div style="background:#F0F8FF;border-radius:16px;padding:26px;border:1px solid #BFDBFE;">
+      <div class="h3" style="color:#1A3A8F;margin-top:0;">Modular Data Centers (MCD)</div>
+      <div class="p-body" style="font-size:13.5px;">Factory-prefabricated, self-contained DC units deployable in a fraction of conventional build time. Key markets:</div>
+      <ul class="ul">
+        <li>Edge computing at tier-2 cities and remote locations</li>
+        <li>Temporary capacity during conventional DC construction</li>
+        <li>Government and defence rapid deployment</li>
+        <li>Disaster recovery sites needing fast commissioning</li>
+        <li>Telecom and 5G core network facilities</li>
+      </ul>
+    </div>
+    <div style="background:#F0FDF4;border-radius:16px;padding:26px;border:1px solid #BBF7D0;">
+      <div class="h3" style="color:#14532D;margin-top:0;">Complete DC Service Stack</div>
+      <ul class="ul">
+        <li>Site feasibility assessment and load calculations</li>
+        <li>Architecture design: electrical, mechanical, civil</li>
+        <li>Power distribution: UPS, PDU, ATS, bypass switching</li>
+        <li>Precision cooling: in-row, overhead, perimeter units</li>
+        <li>FM-200/NOVEC fire suppression systems</li>
+        <li>Physical security: biometric access, CCTV, mantraps</li>
+        <li>Commissioning, testing, documentation, and handover</li>
+        <li>O&M (24/7 SLA options) and AMC with SLA tiers</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="h2">Division B: ELV — Extra Low Voltage Systems</div>
+  <div class="g3" style="margin-top:20px;">
+    <div class="svc" style="border-top:3px solid #1A3A8F;">
+      <div class="svc-name" style="color:#1A3A8F;">🔒 Security Surveillance</div>
+      <ul class="svc-list">
+        <li>IP CCTV systems — Hikvision, Dahua, Axis</li>
+        <li>AI video analytics (face recognition)</li>
+        <li>Access Control — biometric, RFID, face recognition</li>
+        <li>Boom Barriers & gate automation (ANPR integration)</li>
+        <li>Intrusion detection systems</li>
+        <li>Visitor management systems</li>
+      </ul>
+    </div>
+    <div class="svc" style="border-top:3px solid var(--gm);">
+      <div class="svc-name" style="color:var(--dm);">📡 Voice, Data & Image (VDI)</div>
+      <ul class="svc-list">
+        <li>Structured cabling — Cat6/6A/7, OM3/OM4 fibre</li>
+        <li>IP-PBX and unified communications</li>
+        <li>Video conferencing (Polycom, Crestron)</li>
+        <li>PAVA — Public Address & Voice Evacuation</li>
+        <li>IPTV and digital signage systems</li>
+        <li>Nurse call systems (healthcare)</li>
+      </ul>
+    </div>
+    <div class="svc" style="border-top:3px solid var(--gold);">
+      <div class="svc-name" style="color:#7D5000;">🌐 Network Infrastructure</div>
+      <ul class="svc-list">
+        <li>Enterprise switches — Cisco, HPE Aruba, TP-Link</li>
+        <li>Enterprise Wi-Fi (TP-Link Omada, Aruba)</li>
+        <li>Firewalls: Fortinet, Cisco, Sophos</li>
+        <li>TP-Link Regional Distribution rights</li>
+        <li>SD-WAN and MPLS connectivity</li>
+        <li>Network rack and cabinet supply</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="h2">Division C: Power Solutions (Vertiv Diamond Partner)</div>
+  <div class="g2">
+    <div>
+      <div class="h3 gold" style="margin-top:0;">Online UPS Systems</div>
+      <div class="p-body" style="font-size:13.5px;">Vertiv's Liebert series — the global standard for critical UPS. Fi-Tec Infra, as Diamond Partner, delivers the complete Liebert range:</div>
+      <ul class="ul">
+        <li>Liebert GXT5 (1–10 kVA) — Server rooms, small offices</li>
+        <li>Liebert EXM2 (10–200 kVA) — Medium data centres</li>
+        <li>Liebert EXL-S1 (100–1200 kVA) — Large enterprise DC</li>
+        <li>Liebert HPL (200–1000 kVA) — Modular scalable UPS</li>
+        <li>VRLA, Li-Ion, and VLA battery systems</li>
+      </ul>
+    </div>
+    <div>
+      <div class="h3 gold" style="margin-top:0;">Electrical & Solar</div>
+      <ul class="ul">
+        <li>HT/LT electrical substation design and installation</li>
+        <li>Generator sets (DG sets) — supply, install, maintain</li>
+        <li>Power & Signal Automation — BMS, SCADA, smart metering</li>
+        <li>Grid-tied rooftop solar systems (5 kW to 500 kW+)</li>
+        <li>Solar-UPS hybrid systems for critical installations</li>
+        <li>Earthing and lightning protection systems</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="h2">Division D: FMC — Fire Detection & Suppression</div>
+  <div class="g2">
+    <div style="background:#FFF7ED;border-radius:16px;padding:24px;border:1px solid #FED7AA;">
+      <div class="h3" style="color:#9A3412;margin-top:0;">Fire Detection & Alarm</div>
+      <ul class="ul">
+        <li>Addressable FACP — Notifier, Hochiki, Bosch</li>
+        <li>Multi-criteria smoke, heat, and CO detectors</li>
+        <li>Aspirating smoke detection (VESDA) for data centres</li>
+        <li>Linear heat detection for cable trays</li>
+        <li>Integration with BMS and PAVA systems</li>
+        <li>24/7 remote monitoring connectivity</li>
+      </ul>
+    </div>
+    <div style="background:#FFF1F2;border-radius:16px;padding:24px;border:1px solid #FECDD3;">
+      <div class="h3" style="color:#9F1239;margin-top:0;">Fire Suppression</div>
+      <ul class="ul">
+        <li>FM-200 (HFC-227ea) — data centres, server rooms</li>
+        <li>NOVEC 1230 — environmentally preferred option</li>
+        <li>CO2 total-flooding — industrial/electrical hazards</li>
+        <li>Pre-action sprinklers — data centres (dual-interlock)</li>
+        <li>Wet/dry pipe sprinklers — commercial buildings</li>
+        <li>Hydrant & hose reel systems (NBC compliant)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="kpi-row" style="margin-top:40px;">
+    <div class="kpi"><div class="kpi-n" style="font-size:20px;">ISO 9001</div><div class="kpi-l">Quality Management System Certified</div></div>
+    <div class="kpi"><div class="kpi-n" style="font-size:18px;">Diamond</div><div class="kpi-l">Vertiv Energy — Highest Partner Tier</div></div>
+    <div class="kpi"><div class="kpi-n" style="font-size:18px;">MSME/NSIC</div><div class="kpi-l">Government Tender Registered</div></div>
+    <div class="kpi"><div class="kpi-n" style="font-size:18px;">Tier I–IV</div><div class="kpi-l">Full Data Centre Capability</div></div>
+  </div>
+</div>
+</div>
+
+<!-- SECTION 04: TEC MATES -->
+<div style="background:var(--cream);" id="tm">
+<div class="section">
+  <div class="sec-lbl">04 — Tec Mates</div>
+  <div class="sec-ttl">IT & Infocom Services — Your Always-On Technology Growth Partner</div>
+  <div class="sec-sub">Built from Day 1 as a recurring revenue business. Target: 70% managed service contracts, 30% project revenue. Warm leads from 14 years of Fi-Tec Group relationships.</div>
+
+  <div class="insight" style="margin-bottom:32px;"><strong>The Recurring Revenue Imperative:</strong> Unlike Fi-Tec Infra (project-based), Tec Mates must generate 70% recurring revenue — managed services, AMC, cloud subscriptions — from Day 1. Recurring revenue means predictable cash flow, compounding growth, and a business that compounds in enterprise value.</div>
+
+  <div class="svc-grid">
+    <div class="svc">
+      <div class="svc-name">🖥️ Managed IT Services</div>
+      <ul class="svc-list">
+        <li>Remote Monitoring & Management (RMM)</li>
+        <li>IT Helpdesk: L1/L2/L3 — SLA tiers (8x5 to 24x7)</li>
+        <li>Server management: patching, performance monitoring</li>
+        <li>Backup & Disaster Recovery (cloud + on-premise)</li>
+        <li>Monthly IT health reports and executive dashboards</li>
+      </ul>
+    </div>
+    <div class="svc">
+      <div class="svc-name">☁️ Cloud Services</div>
+      <ul class="svc-list">
+        <li>Microsoft Azure migration and management</li>
+        <li>AWS setup, migration, and management</li>
+        <li>Microsoft 365 licensing, migration, and support</li>
+        <li>Virtual Desktop Infrastructure (Azure VDI)</li>
+        <li>Cloud cost optimisation and spend management</li>
+      </ul>
+    </div>
+    <div class="svc">
+      <div class="svc-name">🔐 Cybersecurity</div>
+      <ul class="svc-list">
+        <li>Network security assessment and vulnerability scanning</li>
+        <li>Firewall management: Fortinet, Sophos, Cisco</li>
+        <li>Security Operations Centre (SOC) as a Service</li>
+        <li>Penetration testing (web, network, internal)</li>
+        <li>ISO 27001 gap assessment and implementation</li>
+      </ul>
+    </div>
+    <div class="svc">
+      <div class="svc-name">📡 Voice, Data & Infocom</div>
+      <ul class="svc-list">
+        <li>Structured cabling design and installation</li>
+        <li>IP-PBX and unified communications</li>
+        <li>Enterprise Wi-Fi (TP-Link Omada, Aruba, Meraki)</li>
+        <li>CCTV for small-to-medium enterprises</li>
+        <li>TP-Link product distribution and channel management</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="h2">Target Client Segments & Warm Lead Strategy</div>
+  <table class="tbl">
+    <thead><tr><th>Segment</th><th>Priority</th><th>Opportunity</th><th>Lead Source</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Fi-Tec Infra Clients</strong></td><td><span class="badge b-gn">HIGHEST</span></td><td>Banks, hospitals, govt agencies that trust Fi-Tec for infra need IT managed services</td><td>Direct warm introduction from JC — near-zero acquisition cost</td></tr>
+      <tr><td><strong>Technopark, Infopark, Cyberpark</strong></td><td><span class="badge b-bl">HIGH</span></td><td>1,200+ companies needing managed services without full in-house IT teams</td><td>LinkedIn targeting; Technopark admin referrals; targeted canvassing</td></tr>
+      <tr><td><strong>Healthcare Sector</strong></td><td><span class="badge b-bl">HIGH</span></td><td>EMR/HIS IT support, network management, cybersecurity</td><td>Fi-Tec Infra hospital relationships</td></tr>
+      <tr><td><strong>Hotels & Hospitality</strong></td><td><span class="badge b-or">MED-HIGH</span></td><td>PMS, Wi-Fi, POS integration, digital signage IT needs</td><td>Polemarks kitchen client cross-referrals</td></tr>
+      <tr><td><strong>SMEs & Startups</strong></td><td><span class="badge b-or">MEDIUM</span></td><td>All-in-one IT support, cloud setup, affordable managed services</td><td>Google Ads, SEO, Facebook; self-qualification via pricing pages</td></tr>
+      <tr><td><strong>Educational Institutions</strong></td><td><span class="badge b-or">MEDIUM</span></td><td>Campus Wi-Fi, student labs, ERP support, security systems</td><td>Fi-Tec Infra education sector relationships</td></tr>
+    </tbody>
+  </table>
+</div>
+</div>
+
+<!-- SECTION 05: POLEMARKS -->
+<div style="background:#fff;" id="pm">
+<div class="section">
+  <div class="sec-lbl">05 — Polemarks</div>
+  <div class="sec-ttl">Commercial Kitchen Solutions — Acquired. Relaunched. Kerala's Premium Kitchen Partner.</div>
+  <div class="sec-sub">Polemarks Commercial Kitchen Suppliers, Kazhakoottam, Trivandrum — acquired by Mr. Jayachandran KP, relaunched under Fi-Tec Group with a full premium brand portfolio and hospitality sector strategy.</div>
+
+  <div class="insight"><strong>Polemarks UVP:</strong> "The only commercial kitchen solutions provider in Kerala that offers the complete kitchen ecosystem — from the first stainless steel work station to the final smart oven, from the Hoshizaki ice machine to the Fagor combi oven. Backed by the world's most trusted brands and Fi-Tec Group's 14 years of service excellence."</div>
+
+  <div class="h2">Premium Brand Portfolio</div>
+  <div class="brand-pills">
+    <div class="bp bp-1">FAGOR Professional<sub>Spain · Smart Ovens & Cooking</sub></div>
+    <div class="bp bp-2">HOSHIZAKI<sub>Japan · Ice Machines & Refrigeration</sub></div>
+    <div class="bp bp-3">CELFROST · Middleby USA<sub>50+ Sub-brands · Complete Range</sub></div>
+    <div class="bp bp-4">WESTERN<sub>India #1 · Full Refrigeration Range</sub></div>
+    <div class="bp bp-5">WILLIAMS<sub>UK · Premium Display Cases</sub></div>
+    <div class="bp" style="background:linear-gradient(135deg,#1A0A20,#5B21B6);color:#DDD6FE;">ASBER by ONNERA<sub>Poland · Warewashing Systems</sub></div>
+    <div class="bp" style="background:linear-gradient(135deg,#1A1A0A,#713F12);color:#FDE68A;">iKORE OVENS<sub>Fagor Smart Range · Combi & Convection</sub></div>
+    <div class="bp" style="background:linear-gradient(135deg,#0A1A0A,#14532D);color:#BBF7D0;">MYSON Food Care<sub>Bakery Display Systems</sub></div>
+  </div>
+  <div style="font-size:12px;color:var(--tx3);margin-top:-8px;margin-bottom:28px;">Middleby Corporation sub-brands include: AGA, Blodgett, Pitco, Turbochef, Taylor, Josper, Viking, and 45+ more premium global kitchen brands</div>
+
+  <div class="h2">Complete Product Catalogue</div>
+  <div class="g3">
+    <div style="background:#FFF7ED;border-radius:16px;padding:24px;border:1px solid #FED7AA;">
+      <div class="h3" style="color:#9A3412;margin-top:0;">🔥 Cooking & Baking</div>
+      <ul class="ul">
+        <li>iKORE smart combi ovens — precision steam/convection</li>
+        <li>Deck ovens: Sveba-Dahlen, Fagor baking systems</li>
+        <li>Induction cooking ranges — single to 6-burner</li>
+        <li>Chinese wok ranges and ring burners</li>
+        <li>Cook Woks — automated high-volume cooking</li>
+        <li>Tandoor ovens and Al-Faham display units</li>
+        <li>Fryers, salamanders, bratt pans, grills</li>
+      </ul>
+    </div>
+    <div style="background:#EFF6FF;border-radius:16px;padding:24px;border:1px solid #BFDBFE;">
+      <div class="h3" style="color:#1E3A8A;margin-top:0;">❄️ Refrigeration & Cold Chain</div>
+      <ul class="ul">
+        <li>Cold rooms: design, fabrication, and installation</li>
+        <li>Blast chillers / Cook & Chill systems</li>
+        <li>Walk-in chillers and blast freezers</li>
+        <li>Visi coolers: single, double, and triple door</li>
+        <li>Hoshizaki ice makers: 22 kg to 500+ kg/day</li>
+        <li>Celfrost flake and nugget ice machines</li>
+        <li>Wine coolers and beverage display units</li>
+      </ul>
+    </div>
+    <div style="background:#F0FDF4;border-radius:16px;padding:24px;border:1px solid #BBF7D0;">
+      <div class="h3" style="color:#14532D;margin-top:0;">🧼 Warewashing & Fabrication</div>
+      <ul class="ul">
+        <li>Asber pass-through dishwashers (hood type)</li>
+        <li>Fagor undercounter dishwashers</li>
+        <li>Glasswashers: GE-400 and bar glasswashers</li>
+        <li>Custom SS304 work tables, sinks, hoods</li>
+        <li>Myson bakery display cases</li>
+        <li>Williams chilled and ambient display cases</li>
+        <li>Tea carts and mobile food stations</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="h2">Go-to-Market Strategy</div>
+  <table class="tbl">
+    <thead><tr><th>Client Segment</th><th>Opportunity</th><th>Polemarks Approach</th></tr></thead>
+    <tbody>
+      <tr><td><strong>5-Star Hotels & Resorts</strong></td><td>Complete multi-department kitchen — main, bakery, bar, room service</td><td>Direct F&B Director approach; group-funded showroom visits; Fagor/Hoshizaki premium emphasis</td></tr>
+      <tr><td><strong>Restaurant Chains & QSRs</strong></td><td>Standardised equipment for rapid rollout; volume pricing</td><td>Corporate procurement proposal; franchise-ready equipment packages; multi-location SLA</td></tr>
+      <tr><td><strong>Artisan Bakeries</strong></td><td>Deck ovens, blast chillers, display cases — complete artisan bakery</td><td>Instagram content targeting bakery owners; Fagor deck oven demo events</td></tr>
+      <tr><td><strong>Healthcare Hospitals</strong></td><td>Large-capacity bulk cooking, cold storage, institutional dishwashers</td><td>Leverage Fi-Tec Infra hospital relationships; healthcare tender strategy</td></tr>
+      <tr><td><strong>Cloud Kitchens</strong></td><td>Space-efficient, high-output cooking; blast chillers; smart ovens</td><td>Digital marketing on Swiggy/Zomato partner channels; LinkedIn targeting food entrepreneurs</td></tr>
+      <tr><td><strong>Govt & Institutional Canteens</strong></td><td>Bulk cooking, refrigeration, dishwashers — government specs</td><td>Kerala e-procurement tender strategy; institutional pricing; Kerala PSU procurement</td></tr>
+    </tbody>
+  </table>
+</div>
+</div>
+
+<!-- SECTION 06: MARKET DATA -->
+<div style="background:var(--dk2);" id="market">
+<div class="section">
+  <div class="sec-lbl wt">06 — Market Intelligence</div>
+  <div class="sec-ttl wt">Data-Backed Evidence — Why Now Is the Right Time</div>
+  <div class="sec-sub wt">Three high-growth markets converging simultaneously — Fi-Tec Group is positioned at the intersection of all three.</div>
+
+  <div class="h2 wt">India Data Centre Market — The Infrastructure Supercycle</div>
+  <div class="mkt-row">
+    <div class="mkt mkt-dc"><div class="mkt-val">$6.5B</div><div class="mkt-lbl">India DC Market 2024 (Arizton)</div></div>
+    <div class="mkt mkt-dc"><div class="mkt-val">$17.6B</div><div class="mkt-lbl">Projected 2030 — 20.5% CAGR</div></div>
+    <div class="mkt mkt-dc"><div class="mkt-val">1,600MW</div><div class="mkt-lbl">India Operational DC Capacity 2024</div></div>
+    <div class="mkt mkt-dc"><div class="mkt-val">85%</div><div class="mkt-lbl">Capacity Expansion Expected by 2027</div></div>
+  </div>
+  <ul class="ul wt">
+    <li>AWS committed $8.3 Billion in Indian cloud infrastructure at WEF Davos 2026 — requiring massive DC expansion including in Tier-2 capitals like Thiruvananthapuram and Kochi</li>
+    <li>India's Digital Personal Data Protection Act 2023 mandates data localisation — sustained policy-driven demand for new DC capacity</li>
+    <li>NASSCOM/Statista identifies Kerala as an EMERGING DATA CENTRE HUB — Kochi and Thiruvananthapuram are priority edge DC deployment cities</li>
+    <li>ICRA projects India's edge DC capacity to triple from 60-70 MW (2024) to 200+ MW by 2027 — Fi-Tec Infra's MCD division is the ideal solution</li>
+  </ul>
+  <div class="insight-dk"><strong>Kerala First-Mover Advantage:</strong> Fi-Tec Infra is the only Diamond-certified, full-stack DC construction company in Kerala with offices in all three major cities — Thiruvananthapuram, Kochi, and Kozhikode. This first-mover advantage is worth more than any marketing spend.</div>
+
+  <div class="divider" style="margin:40px 0;"></div>
+
+  <div class="h2 wt">India Commercial Kitchen Market</div>
+  <div class="mkt-row">
+    <div class="mkt mkt-kt"><div class="mkt-val">$9.4B</div><div class="mkt-lbl">India Kitchen Appliances 2024 (IMARC)</div></div>
+    <div class="mkt mkt-kt"><div class="mkt-val">$14.3B</div><div class="mkt-lbl">Projected 2033 — 4.3% CAGR</div></div>
+    <div class="mkt mkt-kt"><div class="mkt-val">₹546Cr</div><div class="mkt-lbl">India Commercial Cooking Equip 2023</div></div>
+    <div class="mkt mkt-kt"><div class="mkt-val">₹1,020Cr</div><div class="mkt-lbl">Projected 2030 — 8.8% CAGR</div></div>
+  </div>
+  <ul class="ul wt">
+    <li>Kerala is India's #1 domestic tourism destination — 200+ new hotel and resort projects in pipeline (Kerala Tourism Dept. 2025)</li>
+    <li>Cloud kitchen market growing at 12% CAGR — high-output, space-efficient equipment where Polemarks' iKORE and Celfrost excel</li>
+    <li>India's HORECA sector: $68B → $90B+ by 2028 — fastest growing: premium full-service restaurants (Polemarks' primary target)</li>
+    <li>South India commercial kitchen equipment market: ₹800 Crore+ per year — under-penetrated digital buying channels Polemarks can dominate</li>
+  </ul>
+
+  <div class="divider" style="margin:40px 0;"></div>
+
+  <div class="h2 wt">Kerala IT Services Market</div>
+  <div class="mkt-row">
+    <div class="mkt mkt-it"><div class="mkt-val">1,200+</div><div class="mkt-lbl">IT Companies at Kerala Tech Parks</div></div>
+    <div class="mkt mkt-it"><div class="mkt-val">150K+</div><div class="mkt-lbl">IT Professionals in Kerala</div></div>
+    <div class="mkt mkt-it"><div class="mkt-val">3</div><div class="mkt-lbl">Major IT Parks: TVM, Kochi, Calicut</div></div>
+    <div class="mkt mkt-it"><div class="mkt-val">12-15%</div><div class="mkt-lbl">India Managed IT Services CAGR</div></div>
+  </div>
+  <ul class="ul wt">
+    <li>Most IT park companies are mid-size to SME operations that cannot afford full in-house IT teams — perfect managed services market for Tec Mates</li>
+    <li>Healthcare digitalisation accelerating: eSanjeevani telemedicine, EMR/HIS adoption, Kerala health tech ambitions all create IT support demand</li>
+    <li>KFON (Kerala Fibre Optical Network) and K-DISC digital agendas creating institutional IT support demand at scale</li>
+    <li>Rising cybersecurity threats make IT security services an urgent priority for Kerala businesses — Tec Mates can lead here</li>
+  </ul>
+</div>
+</div>
+
+<!-- SECTION 07: BRAND ARCHITECTURE -->
+<div style="background:#fff;" id="brand">
+<div class="section">
+  <div class="sec-lbl">07 — Brand Architecture</div>
+  <div class="sec-ttl">Endorsed Brand Model — Independent Identities, Shared Trust</div>
+  <div class="sec-sub">The Tata Group model. The Montfort Group model. Independent brands with shared trust equity — the group's 14-year credibility elevates every new brand launched under the Fi-Tec banner.</div>
+
+  <table class="tbl">
+    <thead><tr><th>Element</th><th style="color:#93C5FD;">Fi-Tec Infra Solutions</th><th style="color:#C4B5FD;">Tec Mates</th><th style="color:#FCA47A;">Polemarks</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Brand Tagline</strong></td><td class="hlg">"Powering Tomorrow's Infrastructure"</td><td class="hlg">"Your IT Growth Partner"</td><td class="hlg">"Smart Commercial Kitchen Solutions"</td></tr>
+      <tr><td><strong>Brand Promise</strong></td><td>We build the infrastructure your world runs on — and keep it running, always</td><td>We are your always-on IT team — so you can focus entirely on your business</td><td>We equip your kitchen with the world's finest — so your food tells your story</td></tr>
+      <tr><td><strong>Primary Audience</strong></td><td>CIOs, IT Heads, Facility Managers, Govt Procurement, Project Engineers</td><td>IT Managers, SME Owners, Startup Founders, Technopark Companies</td><td>F&B Directors, Hotel GMs, Restaurant Owners, Executive Chefs</td></tr>
+      <tr><td><strong>Tone of Voice</strong></td><td>Authoritative, precise — "the expert your board trusts"</td><td>Friendly expert — "the tech team you wish you had in-house"</td><td>Passionate, premium, aspirational — food-forward, chef-friendly</td></tr>
+      <tr><td><strong>Colour Identity</strong></td><td>Navy Blue #0D1B4B + Steel Blue + Cyan</td><td>Indigo #4F46E5 + Purple</td><td>Warm Orange #EA580C + Gold</td></tr>
+      <tr><td><strong>Digital Priority</strong></td><td>LinkedIn-first; case studies; technical white papers</td><td>LinkedIn + Blog + Email; SME IT guides; comparison content</td><td>Instagram-first; kitchen photography; Reels; before-and-after</td></tr>
+      <tr><td><strong>Key Differentiator</strong></td><td>Only Diamond-certified, ISO-validated, full-stack infra company in Kerala</td><td>Warm group introduction + independent IT expertise; technology-agnostic</td><td>Only multi-brand premium kitchen solutions provider in Kerala</td></tr>
+    </tbody>
+  </table>
+
+  <div class="h2">Website Architecture — Hub and Spoke</div>
+  <table class="tbl">
+    <thead><tr><th>Brand</th><th>Domain</th><th>Purpose</th><th>Priority Actions 2026</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Fi-Tec Group (Hub)</strong></td><td class="hl">fitecgroup.com</td><td>Group overview; leadership; all verticals; investor/partner trust signal</td><td>New build; Montfort-style design; hero video; links to all vertical sites</td></tr>
+      <tr><td><strong>Fi-Tec Infra (Spoke 1)</strong></td><td class="hl">fitecinfra.com</td><td>Services; project portfolio; certifications; case studies; tender support</td><td>Full redesign; case studies; mobile-first; SEO blog; project gallery</td></tr>
+      <tr><td><strong>Tec Mates (Spoke 2)</strong></td><td class="hl">tecmates.in</td><td>IT services; managed service pricing; cloud; cybersecurity; free IT audit</td><td>New build; conversational tone; clear pricing; free consultation CTA</td></tr>
+      <tr><td><strong>Polemarks (Spoke 3)</strong></td><td class="hl">polemarks.in</td><td>Product catalogue; brand portfolio; kitchen gallery; design services</td><td>New build; strong visual identity; product catalogue; WhatsApp enquiry</td></tr>
+    </tbody>
+  </table>
+</div>
+</div>
+
+<!-- SECTION 08: DIGITAL MARKETING -->
+<div style="background:var(--cream);" id="digital">
+<div class="section">
+  <div class="sec-lbl">08 — Digital Marketing Master Plan</div>
+  <div class="sec-ttl">SEO · GEO (SAG-EO) · PPC · SMM · Content · Email · WhatsApp</div>
+  <div class="sec-sub">A systematic, measurable marketing machine — not "doing social media" but building a full-funnel lead engine that generates predictable revenue across all three verticals.</div>
+
+  <div class="h2">The Full-Funnel Approach</div>
+  <table class="funnel-tbl">
+    <tr><td style="width:120px;"><span class="f-stage f-aw">AWARENESS</span></td><td><strong>Make target audiences aware of Fi-Tec Group brands and category leadership</strong><br><span style="font-size:13px;color:var(--tx3);">SEO · GEO/SAG-EO · LinkedIn Organic · Instagram · Google Display · PR & Trade Press · Trade Shows</span></td></tr>
+    <tr><td><span class="f-stage f-in">INTEREST</span></td><td><strong>Engage with valuable content positioning each brand as authoritative</strong><br><span style="font-size:13px;color:var(--tx3);">Blog & Case Studies · YouTube Videos · LinkedIn Articles · Instagram Reels · Email Newsletters</span></td></tr>
+    <tr><td><span class="f-stage f-de">DESIRE</span></td><td><strong>Convert interest into intent — make prospects want Fi-Tec Group brands specifically</strong><br><span style="font-size:13px;color:var(--tx3);">Client Testimonials · Project Case Studies · ROI Calculators · Free Consultation Offers · Social Proof</span></td></tr>
+    <tr><td><span class="f-stage f-ac">ACTION</span></td><td><strong style="color:var(--gl2);">Capture leads and convert enquiries to quotes to contracts</strong><br><span style="font-size:13px;color:rgba(255,255,255,.5);">Google Ads (PPC) · Meta Ads · LinkedIn InMail · WhatsApp Business · Contact Forms · Retargeting</span></td></tr>
+    <tr><td><span class="f-stage f-re">RETENTION</span></td><td><strong>Keep existing clients engaged, upsell, and generate referrals</strong><br><span style="font-size:13px;color:var(--tx3);">Monthly Newsletters · WhatsApp Broadcasts · AMC Renewal Campaigns · Referral Programmes</span></td></tr>
+  </table>
+
+  <div class="h2">Channel 1: SEO & GEO (SAG-EO)</div>
+  <div class="p-body">SEO is the highest long-term ROI digital channel for B2B companies — it creates permanent, compounding assets that generate leads for years. <strong>GEO (Generative Engine Optimisation)</strong> — also called SAG-EO — is the emerging practice of optimising content to appear in AI-generated search results (Google AI Overviews, ChatGPT search, Perplexity). Both must be implemented simultaneously.</div>
+
+  <div class="g3" style="margin-top:20px;">
+    <div style="background:#F0F8FF;border-radius:16px;padding:22px;border:1px solid #BFDBFE;">
+      <div class="h3" style="color:#1A3A8F;margin-top:0;font-size:16px;">Fi-Tec Infra Keywords</div>
+      <ul class="ul">
+        <li>"data center construction Kerala" — high intent</li>
+        <li>"server room setup Trivandrum / Kochi"</li>
+        <li>"UPS installation Kerala" — direct product</li>
+        <li>"CCTV installation Kochi" — ELV lead</li>
+        <li>"Vertiv dealer Kerala" — branded capture</li>
+        <li>"data center company India" — national reach</li>
+      </ul>
+    </div>
+    <div style="background:#F5F3FF;border-radius:16px;padding:22px;border:1px solid #DDD6FE;">
+      <div class="h3" style="color:#3730A3;margin-top:0;font-size:16px;">Tec Mates Keywords</div>
+      <ul class="ul">
+        <li>"IT support Trivandrum / Kochi"</li>
+        <li>"managed IT services Kerala"</li>
+        <li>"network setup Kochi"</li>
+        <li>"cybersecurity company Kerala"</li>
+        <li>"IT AMC Kerala" — recurring lead</li>
+        <li>"cloud migration India"</li>
+      </ul>
+    </div>
+    <div style="background:#FFF7ED;border-radius:16px;padding:22px;border:1px solid #FED7AA;">
+      <div class="h3" style="color:#9A3412;margin-top:0;font-size:16px;">Polemarks Keywords</div>
+      <ul class="ul">
+        <li>"commercial kitchen equipment Kerala"</li>
+        <li>"restaurant equipment Trivandrum"</li>
+        <li>"Fagor oven distributor India"</li>
+        <li>"Hoshizaki ice machine Kerala"</li>
+        <li>"hotel kitchen setup Kerala"</li>
+        <li>"bakery equipment Kochi"</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="insight-g" style="margin-top:24px;"><strong>GEO/SAG-EO Implementation:</strong> Create authoritative content with clear headings and factual statements · Use FAQ schema markup on all service pages · Build backlinks from Kerala-specific authority websites · Attribute content to named experts (JC personal brand is critical) · Monitor AI overview appearance via SEMrush AI visibility tracking</div>
+
+  <div class="h2">Channel 2: Social Media Marketing — Platform by Platform</div>
+  <div class="smm-g">
+    <div class="smm-c li">
+      <div class="smm-icon">💼</div>
+      <div class="smm-name">LinkedIn</div>
+      <div class="smm-brand">Fi-Tec Infra · Priority Platform</div>
+      <ul class="smm-list">
+        <li>3 posts/week: project updates, technical insights</li>
+        <li>Monthly LinkedIn Article from JC</li>
+        <li>Project showcase: completed DC photos + outcomes</li>
+        <li>"Did You Know" series for procurement audiences</li>
+        <li>Vertiv co-marketing posts for brand credibility</li>
+        <li><strong>JC Personal Brand:</strong> 3 posts/week · Target 5,000+ followers by end 2026</li>
+        <li>Speak at CII Kerala, Technopark events — post clips</li>
+      </ul>
+    </div>
+    <div class="smm-c ig">
+      <div class="smm-icon">📸</div>
+      <div class="smm-name">Instagram</div>
+      <div class="smm-brand">Polemarks · Priority Platform</div>
+      <ul class="smm-list">
+        <li>30% — Kitchen transformation Reels (before/after)</li>
+        <li>25% — Equipment showcases: iKORE, Hoshizaki, Fagor</li>
+        <li>20% — Behind-the-scenes: chef stories, kitchen culture</li>
+        <li>15% — Client testimonials and project reveals</li>
+        <li>10% — Educational: maintenance tips, buying guides</li>
+        <li>Meta Ads: hotel/restaurant owners in Kerala & TN</li>
+        <li>Story ads with "DM for a quote" CTA</li>
+      </ul>
+    </div>
+    <div class="smm-c fb">
+      <div class="smm-icon">🌐</div>
+      <div class="smm-name">LinkedIn + Facebook</div>
+      <div class="smm-brand">Tec Mates · Dual Platform</div>
+      <ul class="smm-list">
+        <li>"IT Tip Tuesday" — weekly practical IT advice</li>
+        <li>Cybersecurity alerts: "New threat targeting Indian businesses"</li>
+        <li>Success stories: "How we helped [company]"</li>
+        <li>"IT vs In-house" explainer posts</li>
+        <li>TP-Link product highlight posts</li>
+        <li>LinkedIn: Sponsored posts — Technopark IT heads</li>
+        <li>Facebook: SME audience targeting in Kerala</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="h2">Channel 3: PPC — Google Ads & Meta Ads</div>
+  <table class="tbl">
+    <thead><tr><th>Brand</th><th>Campaign Type</th><th>Target Keywords / Audience</th><th>Monthly Budget</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Fi-Tec Infra</strong></td><td>Google Search</td><td>"data center Kerala," "server room construction," "UPS system supplier," "CCTV installation Kochi"</td><td class="hl">₹5,000–₹10,000/mo</td></tr>
+      <tr><td><strong>Fi-Tec Infra</strong></td><td>Google Display + Remarketing</td><td>Remarketing to website visitors; IT industry and Kerala business news sites</td><td class="hl">₹2,000–₹5,000/mo</td></tr>
+      <tr><td><strong>Tec Mates</strong></td><td>Google Search</td><td>"IT support Kerala," "managed IT services," "cybersecurity Kerala," "IT AMC Kerala"</td><td class="hl">₹8,000–₹10,000/mo</td></tr>
+      <tr><td><strong>Tec Mates</strong></td><td>LinkedIn Ads</td><td>IT managers and business owners at Technopark, Infopark, Cyberpark companies</td><td class="hl">₹5,000–₹10,000/mo</td></tr>
+      <tr><td><strong>Polemarks</strong></td><td>Google Search</td><td>"commercial kitchen equipment Kerala," "restaurant equipment Trivandrum," "Fagor oven distributor"</td><td class="hl">₹5,000–₹10,000/mo</td></tr>
+      <tr><td><strong>Polemarks</strong></td><td>Meta Ads (Instagram + Facebook)</td><td>Hotel/restaurant owners and F&B professionals in Kerala; lookalike audiences; Story ads with DM CTA</td><td class="hl">₹12,000–₹20,000/mo</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>PPC Principle:</strong> Never run PPC without dedicated landing pages. Every ad → specific landing page → one clear CTA (WhatsApp, call, or form). Track every lead in HubSpot from click to contract. Start with ₹10,000/month per vertical, run 60 days, analyse cost-per-lead (Fi-Tec Infra &lt;₹3,000; Tec Mates &lt;₹2,000; Polemarks &lt;₹2,500), then double budget on what works.</div>
+
+  <div class="h2">Channel 4: Content Marketing Strategy</div>
+  <div class="g3" style="margin-top:20px;">
+    <div style="background:#F0F8FF;border-radius:16px;padding:22px;border:1px solid #BFDBFE;">
+      <div class="h3" style="color:#1A3A8F;margin-top:0;font-size:16px;">Fi-Tec Infra</div>
+      <ul class="ul"><li>2 blog posts/month: technical authority content</li><li>"Kerala Data Centre Report 2026" — annual PR piece</li><li>Monthly YouTube: "Behind the Build" DC project tour</li><li>Quarterly case study with photos + metrics</li><li>Monthly LinkedIn Article by JC</li></ul>
+    </div>
+    <div style="background:#F5F3FF;border-radius:16px;padding:22px;border:1px solid #DDD6FE;">
+      <div class="h3" style="color:#3730A3;margin-top:0;font-size:16px;">Tec Mates</div>
+      <ul class="ul"><li>2 blog posts/month: practical IT guides for SMEs</li><li>"Kerala Business IT Security Report" — annual piece</li><li>Monthly YouTube: IT tip or product demo (60-90s)</li><li>LinkedIn Newsletter: "Tech Insider Kerala"</li><li>"Kerala Hotel Kitchen Guide 2026" lead magnet PDF</li></ul>
+    </div>
+    <div style="background:#FFF7ED;border-radius:16px;padding:22px;border:1px solid #FED7AA;">
+      <div class="h3" style="color:#9A3412;margin-top:0;font-size:16px;">Polemarks</div>
+      <ul class="ul"><li>4-5 Instagram posts/week (Reels prioritised)</li><li>"Kitchen Reveal" Reel series — full transformation</li><li>"Chef's Kitchen" — chef interviews at installed kitchens</li><li>Monthly YouTube: hotel kitchen walkthrough</li><li>"Kitchen Brief" monthly email newsletter</li></ul>
+    </div>
+  </div>
+
+  <div class="h2">Channel 5: WhatsApp & Email Marketing</div>
+  <div class="g2">
+    <div>
+      <div class="h3" style="margin-top:0;">WhatsApp Business (98%+ Open Rate)</div>
+      <ul class="ul">
+        <li>Official WhatsApp Business accounts for all three brands</li>
+        <li>Product/service catalogues within WhatsApp app</li>
+        <li>Automated welcome messages, FAQ chatbots, quick replies</li>
+        <li>Broadcast lists: segment by client type (hotels, contractors, IT firms)</li>
+        <li>Scale with API via Interakt or WATI beyond 256 contacts</li>
+        <li>Target: &lt;2 hour response time during business hours</li>
+      </ul>
+    </div>
+    <div>
+      <div class="h3" style="margin-top:0;">Email Marketing Programme</div>
+      <ul class="ul">
+        <li>Fi-Tec Infra: "Infrastructure Intelligence" monthly newsletter</li>
+        <li>Tec Mates: "Tech Insider Kerala" — IT tips and security alerts</li>
+        <li>Polemarks: "Kitchen Brief" — new arrivals, chef features</li>
+        <li>Automated 5-email drip sequence for new leads (14 days)</li>
+        <li>AMC renewal sequences: 60, 30, 14, 7-day automated reminders</li>
+        <li>Target: 35%+ open rate via excellent subject lines and list hygiene</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- SECTION 09: ROADMAP -->
+<div style="background:var(--dk2);" id="roadmap">
+<div class="section">
+  <div class="sec-lbl wt">09 — Expansion Roadmap</div>
+  <div class="sec-ttl wt">2026–2030: Four Strategic Phases to ₹100 Crore Conglomerate</div>
+  <div class="sec-sub wt">Each phase builds the platform for the next. Speed can be accelerated but sequence should not be skipped.</div>
+
+  <div class="roadmap" style="--road-bg:#fff;">
+    <!-- Phase 1 -->
+    <div class="rm-phase">
+      <div class="rm-dot" style="background:linear-gradient(135deg,#1A4A32,#4A7A62);">1</div>
+      <div class="rm-card">
+        <div class="rm-lbl">Phase 1 · 2026</div>
+        <div class="rm-ttl">Foundation — "Get the structure right. Build the launchpads."</div>
+        <div class="rm-per">January – December 2026</div>
+        <div class="rm-cols">
+          <div class="rm-col rm-col-infra">
+            <div class="rm-col-hd">Fi-Tec Infra</div>
+            <div class="rm-item">Complete brand migration to Fi-Tec Infra Solutions</div>
+            <div class="rm-item">Launch redesigned fitecinfra.com with case studies</div>
+            <div class="rm-item">Formalise MCD division with named capability</div>
+            <div class="rm-item">Hire/Assign Business Development Manager</div>
+            <div class="rm-item">Submit for ISO 27001 certification</div>
+            <div class="rm-item">Target: 2,000+ LinkedIn followers; 10+ leads/mo</div>
+          </div>
+          <div class="rm-col rm-col-tm">
+            <div class="rm-col-hd">Tec Mates</div>
+            <div class="rm-item">Build and launch tecmates.in website</div>
+            <div class="rm-item">Onboard 15 managed service clients</div>
+            <div class="rm-item">Establish TP-Link distribution channel</div>
+            <div class="rm-item">LinkedIn page: 500+ followers in 6 months</div>
+            <div class="rm-item">Revenue target: ₹50–75 Lakhs Year 1</div>
+          </div>
+          <div class="rm-col rm-col-pm">
+            <div class="rm-col-hd">Polemarks</div>
+            <div class="rm-item">Complete acquisition; relaunch polemarks.in</div>
+            <div class="rm-item">Hire 2 hospitality sales executives</div>
+            <div class="rm-item">Instagram: 5,000 followers by year end</div>
+            <div class="rm-item">Attend FHW or Hotel India exhibition 2026</div>
+            <div class="rm-item">Win first 5-star hotel kitchen project</div>
+            <div class="rm-item">Revenue target: ₹75 Lakhs – ₹1 Crore</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phase 2 -->
+    <div class="rm-phase">
+      <div class="rm-dot" style="background:linear-gradient(135deg,#1A3A8F,#2563EB);">2</div>
+      <div class="rm-card">
+        <div class="rm-lbl">Phase 2 · 2027</div>
+        <div class="rm-ttl">Growth Engine — "Scale what works. Expand the map."</div>
+        <div class="rm-per">January – December 2027</div>
+        <div class="rm-cols">
+          <div class="rm-col rm-col-infra">
+            <div class="rm-col-hd">Fi-Tec Infra</div>
+            <div class="rm-item">Revenue target: ₹20-28 Crore (45% growth)</div>
+            <div class="rm-item">Expand to Tamil Nadu — Chennai office</div>
+            <div class="rm-item">Launch "Fi-Tec Academy" DC certification</div>
+            <div class="rm-item">Achieve ISO 27001 certification</div>
+            <div class="rm-item">3+ major govt tender wins</div>
+          </div>
+          <div class="rm-col rm-col-tm">
+            <div class="rm-col-hd">Tec Mates</div>
+            <div class="rm-item">Expand to Kochi — dedicated IT team</div>
+            <div class="rm-item">Launch Cybersecurity Assessment (₹25K)</div>
+            <div class="rm-item">50 active recurring managed clients</div>
+            <div class="rm-item">Microsoft Azure or AWS partner status</div>
+            <div class="rm-item">Revenue: ₹2-3 Crore ARR</div>
+          </div>
+          <div class="rm-col rm-col-pm">
+            <div class="rm-col-hd">Polemarks</div>
+            <div class="rm-item">Open Kochi showroom</div>
+            <div class="rm-item">Launch Kitchen Design Service (₹50K)</div>
+            <div class="rm-item">10+ five-star hotel projects</div>
+            <div class="rm-item">Tamil Nadu market entry</div>
+            <div class="rm-item">Revenue: ₹3-5 Crore · Instagram: 20K+</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phase 3 -->
+    <div class="rm-phase">
+      <div class="rm-dot" style="background:linear-gradient(135deg,#7C3AED,#A855F7);">3</div>
+      <div class="rm-card">
+        <div class="rm-lbl">Phase 3 · 2028</div>
+        <div class="rm-ttl">Scale & Consolidate — "Lead the market. Build defensible advantages."</div>
+        <div class="rm-per">2028</div>
+        <div class="rm-item">Fi-Tec Group formally recognised as a South Indian technology conglomerate</div>
+        <div class="rm-item">Total group revenue target: ₹40-55 Crore</div>
+        <div class="rm-item">Consider external PE/VC investment for accelerated national expansion</div>
+        <div class="rm-item">Launch Fi-Tec Group Annual Summit — 100+ industry leaders</div>
+        <div class="rm-item">Explore BSE SME Platform listing for Fi-Tec Infra Solutions</div>
+        <div class="rm-item">Fourth vertical: Real Estate Tech / Smart Buildings or EV Infrastructure</div>
+      </div>
+    </div>
+
+    <!-- Phase 4 -->
+    <div class="rm-phase">
+      <div class="rm-dot" style="background:linear-gradient(135deg,var(--gold),var(--gl2));">4</div>
+      <div class="rm-card" style="border:2px solid var(--gold);">
+        <div class="rm-lbl">Phase 4 · 2029–2030</div>
+        <div class="rm-ttl">Conglomerate Status — "₹100 Crore. Kerala's Premier Tech Group."</div>
+        <div class="rm-per">2029–2030</div>
+        <div class="rev-g" style="margin-top:16px;">
+          <div class="rev rev-1"><div class="rev-lbl">Fi-Tec Infra</div><div class="rev-amt">₹60-70Cr</div><div class="rev-yr">2030 Revenue</div></div>
+          <div class="rev rev-2"><div class="rev-lbl">Tec Mates</div><div class="rev-amt">₹15-20Cr</div><div class="rev-yr">2030 Revenue</div></div>
+          <div class="rev rev-3"><div class="rev-lbl">Polemarks</div><div class="rev-amt">₹20-25Cr</div><div class="rev-yr">2030 Revenue</div></div>
+          <div class="rev rev-4"><div class="rev-lbl">Group Total</div><div class="rev-amt">₹100Cr+</div><div class="rev-yr">2030 Target</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- SECTION 10: 12-MONTH PLAN -->
+<div style="background:#fff;" id="monthly">
+<div class="section">
+  <div class="sec-lbl">10 — 12-Month Execution Plan</div>
+  <div class="sec-ttl">Month-by-Month Brand, Marketing & Business Development Roadmap 2026</div>
+  <div class="sec-sub">Strategy without an execution calendar is just a wish list. Every month has a primary focus, specific actions, and measurable KPIs reviewed in the monthly management meeting.</div>
+
+  <table class="mo-tbl">
+    <tr class="mo-hdr"><td style="width:90px;">Month</td><td style="width:130px;">Focus</td><td>Key Actions — All Verticals</td><td style="width:200px;">Target KPIs</td></tr>
+    <tr class="mo-row"><td><strong>Mar</strong><br><span style="font-size:11px;color:var(--tx3);">2026</span></td><td><span class="mo-tag mt-fn">Foundations Sprint</span></td><td><ul class="ul" style="margin:0;"><li>Register fitecgroup.com, polemarks.in, tecmates.in — Day 1</li><li>Brief web agency for fitecgroup.com + polemarks.in builds</li><li>Set up HubSpot CRM — import all existing contacts</li><li>Create LinkedIn, Instagram (@polemarkskerala), Facebook pages for all brands</li><li>JC: Write and post first 3 LinkedIn thought-leadership articles</li></ul></td><td style="font-size:12px;color:var(--tx2);">✓ 3 domains registered<br>✓ CRM live & populated<br>✓ All social pages created<br>✓ JC: 3 LinkedIn posts live</td></tr>
+    <tr class="mo-row"><td><strong>Apr</strong><br><span style="font-size:11px;color:var(--tx3);">2026</span></td><td><span class="mo-tag mt-di">Digital Infrastructure</span></td><td><ul class="ul" style="margin:0;"><li>Launch fitecinfra.com redesign with project gallery and case studies</li><li>Install GA4 + Search Console on all websites</li><li>Optimise all 3 Google My Business profiles: photos, services, posts</li><li>Launch Polemarks Instagram with first 9-post grid</li><li>Commission professional photography across all three brands</li></ul></td><td style="font-size:12px;color:var(--tx2);">✓ 3 GMB profiles optimised<br>✓ Instagram: 9-post grid live<br>✓ SEO keywords documented<br>✓ Photography commissioned</td></tr>
+    <tr class="mo-row"><td><strong>May</strong><br><span style="font-size:11px;color:var(--tx3);">2026</span></td><td><span class="mo-tag mt-co">Content Launch</span></td><td><ul class="ul" style="margin:0;"><li>Publish first 2 SEO blog posts on fitecinfra.com</li><li>Launch polemarks.in website (beta) with product catalogue</li><li>First Polemarks Instagram Reels — iKORE oven or Hoshizaki demo</li><li>Launch Polemarks Google Ads test campaign (₹10,000 budget)</li><li>Polemarks: First 10 outreach calls to hotel F&B directors</li></ul></td><td style="font-size:12px;color:var(--tx2);">✓ 2 blog posts live<br>✓ polemarks.in: LIVE<br>✓ Polemarks Reels: 2 published<br>✓ Google Ads running</td></tr>
+    <tr class="mo-row"><td><strong>Jun</strong><br><span style="font-size:11px;color:var(--tx3);">2026</span></td><td><span class="mo-tag mt-lg">Lead Generation</span></td><td><ul class="ul" style="margin:0;"><li>Launch Fi-Tec Infra Google Ads — data center and UPS keywords</li><li>Launch tecmates.in website (soft launch, core service pages)</li><li>First HubSpot pipeline review: analyse, score, and assign leads</li><li>Tec Mates: Contact first 10 warm leads from Fi-Tec Infra client base</li><li>Send first "Infrastructure Intelligence" email newsletter</li></ul></td><td style="font-size:12px;color:var(--tx2);">✓ tecmates.in: LIVE<br>✓ Leads in CRM: 20+<br>✓ Tec Mates warm leads: 10<br>✓ Instagram: 500+ followers</td></tr>
+    <tr class="mo-row"><td><strong>Jul</strong><br><span style="font-size:11px;color:var(--tx3);">2026</span></td><td><span class="mo-tag mt-ba">Brand Amplification</span></td><td><ul class="ul" style="margin:0;"><li>Launch fitecgroup.com — Montfort-inspired group holding website</li><li>Publish first full case study on fitecinfra.com (major project with outcomes)</li><li>Polemarks: Attend hospitality trade networking event in Kochi or TVM</li><li>Tec Mates: Onboard first 5 managed IT service clients</li><li>Launch Meta Ads for Polemarks: ₹15,000/month test budget</li><li>JC Personal LinkedIn: Target 500+ followers by end of July</li></ul></td><td style="font-size:12px;color:var(--tx2);">✓ fitecgroup.com: LIVE<br>✓ 1 case study published<br>✓ Tec Mates: 5 clients<br>✓ JC LinkedIn: 500+</td></tr>
+    <tr class="mo-row"><td><strong>Sep</strong><br><span style="font-size:11px;color:var(--tx3);">2026</span></td><td><span class="mo-tag mt-sc">Digital Scaling</span></td><td><ul class="ul" style="margin:0;"><li>Increase Google Ads budgets 50% on best-performing campaigns</li><li>Launch LinkedIn Ads for Tec Mates — Technopark IT decision-makers</li><li>Polemarks Instagram: Target 2,000 followers growth push</li><li>Launch Polemarks YouTube channel: first 2 videos</li><li>Set up retargeting on Google and Meta for all three brands</li><li>JC Personal LinkedIn: Target 1,000+ followers milestone</li></ul></td><td style="font-size:12px;color:var(--tx2);">✓ Ads budgets increased<br>✓ Polemarks Instagram: 2,000+<br>✓ Polemarks YouTube: live<br>✓ JC LinkedIn: 1,000+</td></tr>
+    <tr class="mo-row"><td><strong>Oct</strong><br><span style="font-size:11px;color:var(--tx3);">2026</span></td><td><span class="mo-tag mt-cv">Conversion Push</span></td><td><ul class="ul" style="margin:0;"><li>Focus: Convert warm leads to proposals; proposals to signed contracts</li><li>Polemarks: Target 5,000 Instagram followers; Story ads with DM CTA</li><li>Fi-Tec Infra: Update all sales decks with new case studies</li><li>Tec Mates: Cumulative target 15 managed service clients</li><li>Quarterly newsletter: All three brands — October edition</li><li>JC: Speak at 1 Kerala technology event; post video content</li></ul></td><td style="font-size:12px;color:var(--tx2);">✓ Polemarks Instagram: 5,000+<br>✓ Tec Mates clients: 15<br>✓ SEO: Page 1 rankings visible<br>✓ JC: 1 speaking engagement</td></tr>
+    <tr class="mo-row"><td><strong>Nov</strong><br><span style="font-size:11px;color:var(--tx3);">2026</span></td><td><span class="mo-tag mt-yp">Year-End Prep</span></td><td><ul class="ul" style="margin:0;"><li>Polemarks: Year-end hotel refurbishment season — peak buying period</li><li>Launch "Year-End Kitchen Upgrade" campaign for hotels and restaurants</li><li>Fi-Tec Infra: Follow up all Q1-Q3 proposals; push to close before year-end</li><li>Tec Mates: "Year-End IT Audit" offer for new managed service sign-ups</li><li>JC: Target 2,000+ personal LinkedIn followers by end of November</li></ul></td><td style="font-size:12px;color:var(--tx2);">✓ Polemarks campaign active<br>✓ Proposals: Close drive on<br>✓ Google Reviews: 10+ new<br>✓ JC LinkedIn: 2,000+</td></tr>
+    <tr class="mo-row"><td><strong>Dec</strong><br><span style="font-size:11px;color:var(--tx3);">2026</span></td><td><span class="mo-tag mt-tl">Thought Leadership</span></td><td><ul class="ul" style="margin:0;"><li>Publish "State of Data Centres in Kerala 2026" — Fi-Tec Infra flagship report</li><li>Publish "Kerala Business IT Report 2026" — Tec Mates authority content</li><li>Polemarks: Target 8,000 Instagram followers; chef/food influencer assessment</li><li>HR review: Identify talent gaps; begin 2027 hiring planning</li><li>Review CRM: identify top-performing lead sources; plan 2027 budget</li></ul></td><td style="font-size:12px;color:var(--tx2);">✓ 2 industry reports published<br>✓ Polemarks Instagram: 8,000+<br>✓ 2027 plan: Draft started<br>✓ Talent gaps: Identified</td></tr>
+    <tr class="mo-row" style="background:linear-gradient(135deg,#F0F8FF,#F0FDF4);"><td><strong>Year-End</strong></td><td><span class="mo-tag mt-yl">Annual Review</span></td><td><ul class="ul" style="margin:0;"><li>Full 12-month KPI review: every metric measured and documented</li><li>Finalise 2027 marketing budget and strategy based on 2026 performance data</li><li>JC: Year-end LinkedIn post — "2026 in Review: What Fi-Tec Group Built"</li><li>Fi-Tec Infra: AMC renewal campaign for all maintenance contract clients</li><li>Plan Fi-Tec Group Q1 2027 Kickoff Event for team + key clients</li></ul></td><td style="font-size:12px;color:var(--tx2);">✓ Full-year KPI: Complete<br>✓ 2027 strategy: Approved<br>✓ JC year-end post: Published<br>✓ AMC renewals: Completed</td></tr>
+  </table>
+</div>
+</div>
+
+<!-- SECTION 11 + 12: KPIs + ORG + 90 DAYS -->
+<div style="background:var(--cream);" id="kpis">
+<div class="section">
+  <div class="sec-lbl">11 & 12 — KPIs, Org Structure & 90-Day Sprint</div>
+  <div class="sec-ttl">What Gets Measured Gets Managed</div>
+  <div class="sec-sub">Monthly · Quarterly · Annual measurement framework with clear targets for all three verticals and the group as a whole.</div>
+
+  <table class="kpi-tbl">
+    <thead><tr><th>KPI Metric</th><th>Vertical</th><th>Year 1 Target (2026)</th><th>Year 2 Target (2027)</th></tr></thead>
+    <tbody>
+      <tr><td>Monthly website organic traffic (all sites)</td><td><span class="kpi-pill b-bl">Group</span></td><td>3,000/month by Dec 2026</td><td>10,000+/month</td></tr>
+      <tr><td>Qualified leads/month from digital</td><td><span class="kpi-pill b-bl">Group</span></td><td>20/month by Q4 2026</td><td>80+/month</td></tr>
+      <tr><td>LinkedIn followers — Fi-Tec Infra Page</td><td><span class="kpi-pill" style="background:#DBEAFE;color:#1A3A8F;">Infra</span></td><td>2,000 by Dec 2026</td><td>8,000+</td></tr>
+      <tr><td>JC personal LinkedIn followers</td><td><span class="kpi-pill b-bl">Group</span></td><td>2,000 by Dec 2026</td><td>10,000+</td></tr>
+      <tr><td>Instagram followers — Polemarks</td><td><span class="kpi-pill" style="background:#FEF3C7;color:#7D5000;">Polemarks</span></td><td>8,000 by Dec 2026</td><td>20,000+</td></tr>
+      <tr><td>Tec Mates active managed service clients</td><td><span class="kpi-pill" style="background:#EDE9FE;color:#3730A3;">TM</span></td><td>15 clients by Dec 2026</td><td>50+ clients</td></tr>
+      <tr><td>Polemarks confirmed kitchen project contracts</td><td><span class="kpi-pill" style="background:#FEF3C7;color:#7D5000;">Polemarks</span></td><td>10 projects in 2026</td><td>30+ projects</td></tr>
+      <tr><td>Fi-Tec Infra Google Ads cost-per-lead</td><td><span class="kpi-pill" style="background:#DBEAFE;color:#1A3A8F;">Infra</span></td><td>&lt;₹3,000/lead</td><td>&lt;₹1,500/lead</td></tr>
+      <tr><td>Email newsletter open rate (all brands)</td><td><span class="kpi-pill b-bl">Group</span></td><td>35%+ open rate</td><td>40%+</td></tr>
+      <tr><td>Google My Business enquiries/month</td><td><span class="kpi-pill b-bl">Group</span></td><td>15/month by Q3 2026</td><td>50+/month</td></tr>
+      <tr><td>CRM lead-to-quote conversion rate</td><td><span class="kpi-pill b-bl">Group</span></td><td>15% conversion</td><td>30%+ conversion</td></tr>
+      <tr><td style="font-weight:700;">Group annual revenue</td><td><span class="kpi-pill b-bl">Group</span></td><td style="font-weight:700;color:var(--dm);">₹14-17 Crore</td><td style="font-weight:700;color:var(--dm);">₹25-36 Crore</td></tr>
+    </tbody>
+  </table>
+
+  <div style="font-size:13px;color:var(--tx3);text-align:center;margin-top:-16px;margin-bottom:36px;">Review Cadence: Weekly team check-in · Monthly performance report to JC · Quarterly strategy review · Annual plan refresh</div>
+
+  <div class="h2">Priority Hires — Year 1 (2026)</div>
+  <table class="tbl">
+    <thead><tr><th>Role</th><th>Vertical</th><th>Key Responsibilities</th><th>Timeline</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Group Digital Marketing Exec</strong></td><td><span class="badge b-bl">Group</span></td><td>Social media, SEO content, email newsletters, Google Ads across all 3 brands; CRM; monthly KPI reports</td><td class="hl">Month 1-2 · URGENT</td></tr>
+      <tr><td><strong>Business Development Manager</strong></td><td><span class="badge b-gn">Fi-Tec Infra</span></td><td>Government tender monitoring and submission; enterprise prospecting; proposal writing; client relationship mgmt</td><td class="hl">Month 1-3</td></tr>
+      <tr><td><strong>IT Service Engineers (x2)</strong></td><td><span class="badge b-pu">Tec Mates</span></td><td>Managed service delivery; remote monitoring; L1/L2/L3 helpdesk; network setup; cloud support</td><td class="hl">Month 1-2</td></tr>
+      <tr><td><strong>Sales Executive (Hospitality)</strong></td><td><span class="badge b-or">Polemarks</span></td><td>Hotel/restaurant client prospecting; site visits; product demonstrations; quote follow-up; relationship mgmt</td><td class="hl">Month 1-2</td></tr>
+      <tr><td><strong>Tec Mates IT Director</strong></td><td><span class="badge b-pu">Tec Mates</span></td><td>IT service delivery management; SLA ownership; client escalations; team leadership</td><td class="hl">Month 2-4</td></tr>
+      <tr><td><strong>Project Engineer (Data Centre)</strong></td><td><span class="badge b-gn">Fi-Tec Infra</span></td><td>On-site project management; commissioning; documentation; client handover; O&M supervision</td><td class="hl">H2 2026</td></tr>
+    </tbody>
+  </table>
+
+  <div class="h2">First 90 Days — Priority Action Sprint</div>
+  <div class="sprint">
+    <div class="sp-card">
+      <div class="sp-hdr h1"><h3>Days 1–10: Registration & Setup</h3><p>The non-negotiable digital foundation</p></div>
+      <div class="sp-body">
+        <div class="sp-wk">Domains & Accounts</div>
+        <div class="sp-task">Register fitecgroup.com, polemarks.in, tecmates.in — Day 1</div>
+        <div class="sp-task">Create business email accounts on all new domains</div>
+        <div class="sp-task">Create LinkedIn Pages: Fi-Tec Infra, Tec Mates, Polemarks</div>
+        <div class="sp-task">Create Instagram @polemarkskerala Business Account</div>
+        <div class="sp-task">Create Facebook Business Pages for all three brands</div>
+        <div class="sp-task">Set up WhatsApp Business for all three brands</div>
+        <div class="sp-wk">Analytics Foundation</div>
+        <div class="sp-task">Install Google Analytics 4 on fitecinfra.com immediately</div>
+        <div class="sp-task">Set up Google Search Console for fitecinfra.com</div>
+        <div class="sp-task">Brief web developer for fitecgroup.com and polemarks.in</div>
+      </div>
+    </div>
+    <div class="sp-card">
+      <div class="sp-hdr h2b"><h3>Days 11–30: CRM & Brand Setup</h3><p>Contacts, content, and credibility foundations</p></div>
+      <div class="sp-body">
+        <div class="sp-wk">CRM & Data</div>
+        <div class="sp-task">Install and configure HubSpot CRM — set up 3 vertical pipelines</div>
+        <div class="sp-task">Import ALL existing contacts from all entities into HubSpot</div>
+        <div class="sp-task">Create contact segments: clients, AMC clients, prospects, partners</div>
+        <div class="sp-wk">Content & Photography</div>
+        <div class="sp-task">Commission professional photography: project sites, products, team</div>
+        <div class="sp-task">Prepare Polemarks 9-post Instagram grid (9 hero product images)</div>
+        <div class="sp-task">JC: Write and publish first 3 LinkedIn articles</div>
+        <div class="sp-task">Begin keyword research for all three brands</div>
+        <div class="sp-task">Begin Polemarks acquisition legal documentation</div>
+      </div>
+    </div>
+    <div class="sp-card">
+      <div class="sp-hdr h3b"><h3>Days 31–60: Website Launches & First Campaigns</h3><p>Go live and start generating leads</p></div>
+      <div class="sp-body">
+        <div class="sp-wk">Website Launches</div>
+        <div class="sp-task">Launch polemarks.in (beta) with product catalogue and enquiry form</div>
+        <div class="sp-task">Launch Polemarks Instagram: 9-post grid + first 3 Reels</div>
+        <div class="sp-task">Set up lead capture forms on all websites with CRM integration</div>
+        <div class="sp-wk">First Campaigns</div>
+        <div class="sp-task">Launch Fi-Tec Infra Google Ads — ₹10,000 test budget</div>
+        <div class="sp-task">Publish first 2 SEO blog posts on fitecinfra.com</div>
+        <div class="sp-task">Optimise all 3 GMB profiles: photos, services, Q&A, posts</div>
+        <div class="sp-task">Tec Mates: Identify and contact first 10 warm leads</div>
+        <div class="sp-task">Polemarks: First 10 outreach calls to hotel F&B directors</div>
+      </div>
+    </div>
+    <div class="sp-card">
+      <div class="sp-hdr h4b"><h3>Days 61–90: Scale, Review & Optimise</h3><p>Build the full group presence</p></div>
+      <div class="sp-body">
+        <div class="sp-wk">Complete Digital Presence</div>
+        <div class="sp-task">Launch fitecinfra.com redesign with new photography and case studies</div>
+        <div class="sp-task">Launch fitecgroup.com group holding page</div>
+        <div class="sp-task">Launch tecmates.in website (soft launch)</div>
+        <div class="sp-wk">Review & Optimise</div>
+        <div class="sp-task">First HubSpot pipeline review — score all leads, identify top prospects</div>
+        <div class="sp-task">First Google Ads review — pause underperforming keywords</div>
+        <div class="sp-task">Tec Mates: Onboard first 3-5 managed IT service clients</div>
+        <div class="sp-task">Polemarks: Confirm first product sale or kitchen project</div>
+        <div class="sp-task">Hold first monthly group marketing KPI review — all brand leads present</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="insight" style="margin-top:32px;font-size:15px;"><strong>The Most Important Thing:</strong> Execution beats planning. A mediocre strategy executed with intensity and discipline will always outperform a brilliant strategy that sits in a folder. This document is your blueprint — but the blueprint only becomes a building when people pick up tools and start building. The first 90 days will tell you everything about whether this plan will succeed. Start Day 1 with urgency, measure weekly, and adjust constantly.</div>
+</div>
+</div>
+
+<!-- FLUMENX SERVICES SECTION -->
+<div style="background:var(--dk2);" id="packages">
+<div class="section" style="max-width:1120px;margin:0 auto;padding:80px 56px;">
+  <div class="sl-num">15</div>
+  <div class="section-label"><span></span>Flumenx Services for Fi-Tec Group</div>
+  <h2 class="section-title white">Recommended Service Packages</h2>
+  <p class="section-sub white">Flumenx & MiscArchive will execute the digital strategy described in this proposal. Here are the specific service packages recommended for Fi-Tec Group across all three verticals.</p>
+
+  <!-- SAG-EO -->
+  <div style="margin-bottom:48px;">
+    <div style="display:flex;align-items:center;gap:14px;margin-bottom:8px;">
+      <div style="background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.35);color:var(--gl2);font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 14px;border-radius:20px;font-family:'Playfair Display',serif;">✦ EXCLUSIVE PRODUCT</div>
+    </div>
+    <h3 style="font-family:'Playfair Display',serif;font-size:34px;font-weight:900;color:#fff;margin-bottom:4px;">SAG-EO</h3>
+    <p style="font-size:16px;color:var(--gl2);font-weight:600;margin-bottom:6px;">Strategy Augmented Growth Engine for Organic Search</p>
+    <p style="font-size:14px;color:rgba(255,255,255,.55);margin-bottom:28px;">Next-gen Search Optimization for Google AI Overviews + Chat/AI Search + Traditional Rankings. Search behaviour has shifted from keywords to conversations. Be cited, not just ranked.</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:20px;">
+      <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:20px;"><div style="font-size:11px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;font-weight:700;margin-bottom:8px;">SEO</div><p style="font-size:13px;color:rgba(255,255,255,.6);">Rank on Google/Bing with technical optimization, content excellence, and authority building</p></div>
+      <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:20px;"><div style="font-size:11px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;font-weight:700;margin-bottom:8px;">AEO</div><p style="font-size:13px;color:rgba(255,255,255,.6);">Become "the answer" in snippets, voice search, AI summaries, and direct Q&A results</p></div>
+      <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:20px;"><div style="font-size:11px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;font-weight:700;margin-bottom:8px;">GEO</div><p style="font-size:13px;color:rgba(255,255,255,.6);">Get cited in AI engines like Gemini, ChatGPT, Copilot, and Perplexity</p></div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:3px;border-radius:16px;overflow:hidden;">
+      <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:28px 24px;">
+        <div style="font-size:18px;font-weight:700;color:#fff;margin-bottom:4px;">SAG-EO Core</div>
+        <div style="font-family:'Playfair Display',serif;font-size:36px;font-weight:900;color:var(--gl2);margin-bottom:4px;">₹35,000</div>
+        <div style="font-size:12px;color:rgba(255,255,255,.4);margin-bottom:20px;">per month</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;">
+          <li style="font-size:13px;color:rgba(255,255,255,.7);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>Technical SEO Audit + Fixes</li>
+          <li style="font-size:13px;color:rgba(255,255,255,.7);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>Information Architecture <span style="font-size:11px;color:var(--gold);">Basic clustering</span></li>
+          <li style="font-size:13px;color:rgba(255,255,255,.7);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>Schema/Structured Data <span style="font-size:11px;color:var(--gold);">Essential types</span></li>
+          <li style="font-size:13px;color:rgba(255,255,255,.7);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>Question Inventory <span style="font-size:11px;color:var(--gold);">50 questions</span></li>
+          <li style="font-size:13px;color:rgba(255,255,255,.7);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>Answer-First Pages <span style="font-size:11px;color:var(--gold);">5 pages/month</span></li>
+          <li style="font-size:13px;color:rgba(255,255,255,.7);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>Citable Content Upgrades <span style="font-size:11px;color:var(--gold);">2 pieces/month</span></li>
+          <li style="font-size:13px;color:rgba(255,255,255,.7);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>Brand Entity Footprint <span style="font-size:11px;color:var(--gold);">Basic setup</span></li>
+          <li style="font-size:13px;color:rgba(255,255,255,.7);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>AI Visibility Tracking <span style="font-size:11px;color:var(--gold);">Monthly report</span></li>
+          <li style="font-size:13px;color:rgba(255,255,255,.7);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>Rankings & Traffic Reports</li>
+        </ul>
+      </div>
+      <div style="background:rgba(255,255,255,.07);border:2px solid var(--gold);border-radius:0;padding:28px 24px;position:relative;">
+        <div style="position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--gold);color:#071810;font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:5px 16px;border-radius:0 0 10px 10px;">BEST VALUE</div>
+        <div style="font-size:18px;font-weight:700;color:var(--gl2);margin-bottom:4px;margin-top:8px;">SAG-EO Scale</div>
+        <div style="font-family:'Playfair Display',serif;font-size:36px;font-weight:900;color:var(--gl2);margin-bottom:4px;">₹55,000</div>
+        <div style="font-size:12px;color:rgba(255,255,255,.4);margin-bottom:20px;">per month</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;">
+          <li style="font-size:13px;color:rgba(255,255,255,.85);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>Technical SEO Audit + Fixes</li>
+          <li style="font-size:13px;color:rgba(255,255,255,.85);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>Information Architecture <span style="font-size:11px;color:var(--gold);">Complete clustering</span></li>
+          <li style="font-size:13px;color:rgba(255,255,255,.85);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>Schema/Structured Data <span style="font-size:11px;color:var(--gold);">All relevant types</span></li>
+          <li style="font-size:13px;color:rgba(255,255,255,.85);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>Question Inventory <span style="font-size:11px;color:var(--gold);">150 questions</span></li>
+          <li style="font-size:13px;color:rgba(255,255,255,.85);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>Answer-First Pages <span style="font-size:11px;color:var(--gold);">10 pages/month</span></li>
+          <li style="font-size:13px;color:rgba(255,255,255,.85);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>Citable Content Upgrades <span style="font-size:11px;color:var(--gold);">5 pieces/month</span></li>
+          <li style="font-size:13px;color:rgba(255,255,255,.85);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>Brand Entity Footprint <span style="font-size:11px;color:var(--gold);">Complete setup</span></li>
+          <li style="font-size:13px;color:rgba(255,255,255,.85);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>AI Visibility Tracking <span style="font-size:11px;color:var(--gold);">Bi-weekly report</span></li>
+          <li style="font-size:13px;color:rgba(255,255,255,.85);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>Rankings & Traffic Reports</li>
+        </ul>
+      </div>
+      <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:28px 24px;">
+        <div style="font-size:18px;font-weight:700;color:#fff;margin-bottom:4px;">SAG-EO Dominance</div>
+        <div style="font-family:'Playfair Display',serif;font-size:36px;font-weight:900;color:var(--gl2);margin-bottom:4px;">₹85,000</div>
+        <div style="font-size:12px;color:rgba(255,255,255,.4);margin-bottom:20px;">per month</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;">
+          <li style="font-size:13px;color:rgba(255,255,255,.7);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>Technical SEO Audit + Fixes</li>
+          <li style="font-size:13px;color:rgba(255,255,255,.7);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>Information Architecture <span style="font-size:11px;color:var(--gold);">Advanced clustering</span></li>
+          <li style="font-size:13px;color:rgba(255,255,255,.7);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>Schema/Structured Data <span style="font-size:11px;color:var(--gold);">All types + custom</span></li>
+          <li style="font-size:13px;color:rgba(255,255,255,.7);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>Question Inventory <span style="font-size:11px;color:var(--gold);">Unlimited questions</span></li>
+          <li style="font-size:13px;color:rgba(255,255,255,.7);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>Answer-First Pages <span style="font-size:11px;color:var(--gold);">20 pages/month</span></li>
+          <li style="font-size:13px;color:rgba(255,255,255,.7);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>Citable Content Upgrades <span style="font-size:11px;color:var(--gold);">10 pieces/month</span></li>
+          <li style="font-size:13px;color:rgba(255,255,255,.7);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>Brand Entity Footprint <span style="font-size:11px;color:var(--gold);">Premium setup</span></li>
+          <li style="font-size:13px;color:rgba(255,255,255,.7);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>AI Visibility Tracking <span style="font-size:11px;color:var(--gold);">Weekly report</span></li>
+          <li style="font-size:13px;color:rgba(255,255,255,.7);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>Rankings & Traffic Reports</li>
+        </ul>
+      </div>
+    </div>
+    <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:20px 24px;margin-top:16px;">
+      <div style="font-size:12px;font-weight:700;color:var(--gold);margin-bottom:12px;letter-spacing:1px;text-transform:uppercase;">Important Notes</div>
+      <ul style="list-style:disc;padding-left:20px;display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+        <li style="font-size:13px;color:rgba(255,255,255,.55);">3-month minimum recommended (systems need time to build authority)</li>
+        <li style="font-size:13px;color:rgba(255,255,255,.55);">AI feature inclusion is not guaranteed, but we optimise for eligibility</li>
+        <li style="font-size:13px;color:rgba(255,255,255,.55);">Content volume & backlinks vary by industry competitiveness</li>
+        <li style="font-size:13px;color:rgba(255,255,255,.55);">SAG-EO is exclusive to FlumenX clients only</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- SEO PACKAGES -->
+  <div style="margin-bottom:48px;padding-top:48px;border-top:1px solid rgba(201,168,76,.15);">
+    <h3 style="font-family:'Playfair Display',serif;font-size:30px;font-weight:900;color:#fff;margin-bottom:4px;">Strategic SEO Services</h3>
+    <p style="font-size:14px;color:rgba(255,255,255,.5);margin-bottom:28px;">SEO that builds authority, not just rankings. Data-driven strategies for sustainable organic growth.</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:3px;border-radius:16px;overflow:hidden;">
+      <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:28px 24px;">
+        <div style="font-size:16px;font-weight:700;color:#fff;margin-bottom:4px;">Launch</div>
+        <div style="font-family:'Playfair Display',serif;font-size:36px;font-weight:900;color:var(--gl2);margin-bottom:4px;">₹15,000</div>
+        <div style="font-size:12px;color:rgba(255,255,255,.4);margin-bottom:20px;">per month</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:9px;">
+          <li style="font-size:13px;color:rgba(255,255,255,.65);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>Business & Market Study</li>
+          <li style="font-size:13px;color:rgba(255,255,255,.65);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>Keyword Strategy <span style="font-size:11px;color:var(--gold);">20-30 keywords</span></li>
+          <li style="font-size:13px;color:rgba(255,255,255,.65);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>On-Page SEO <span style="font-size:11px;color:var(--gold);">10 pages</span></li>
+          <li style="font-size:13px;color:rgba(255,255,255,.65);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>Technical SEO <span style="font-size:11px;color:var(--gold);">Basic audit & fixes</span></li>
+          <li style="font-size:13px;color:rgba(255,255,255,.65);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>Content Planning <span style="font-size:11px;color:var(--gold);">2 blogs/month</span></li>
+          <li style="font-size:13px;color:rgba(255,255,255,.65);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>High-Quality Backlinks <span style="font-size:11px;color:var(--gold);">5/month</span></li>
+          <li style="font-size:13px;color:rgba(255,255,255,.65);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>Monthly Reports <span style="font-size:11px;color:var(--gold);">Standard</span></li>
+          <li style="font-size:13px;color:rgba(255,255,255,.65);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>Strategy Calls <span style="font-size:11px;color:var(--gold);">1/month</span></li>
+        </ul>
+      </div>
+      <div style="background:rgba(255,255,255,.07);border:2px solid var(--gold);padding:28px 24px;position:relative;">
+        <div style="position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--gold);color:#071810;font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:5px 16px;border-radius:0 0 10px 10px;">BEST VALUE</div>
+        <div style="font-size:16px;font-weight:700;color:var(--gl2);margin-bottom:4px;margin-top:8px;">Growth</div>
+        <div style="font-family:'Playfair Display',serif;font-size:36px;font-weight:900;color:var(--gl2);margin-bottom:4px;">₹28,000</div>
+        <div style="font-size:12px;color:rgba(255,255,255,.4);margin-bottom:20px;">per month</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:9px;">
+          <li style="font-size:13px;color:rgba(255,255,255,.85);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>Business & Market Study</li>
+          <li style="font-size:13px;color:rgba(255,255,255,.85);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>Keyword Strategy <span style="font-size:11px;color:var(--gold);">40-60 keywords</span></li>
+          <li style="font-size:13px;color:rgba(255,255,255,.85);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>On-Page SEO <span style="font-size:11px;color:var(--gold);">20 pages</span></li>
+          <li style="font-size:13px;color:rgba(255,255,255,.85);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>Technical SEO <span style="font-size:11px;color:var(--gold);">Complete audit & fixes</span></li>
+          <li style="font-size:13px;color:rgba(255,255,255,.85);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>Content Planning <span style="font-size:11px;color:var(--gold);">4 blogs/month</span></li>
+          <li style="font-size:13px;color:rgba(255,255,255,.85);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>High-Quality Backlinks <span style="font-size:11px;color:var(--gold);">10/month</span></li>
+          <li style="font-size:13px;color:rgba(255,255,255,.85);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>UX & CRO Insights</li>
+          <li style="font-size:13px;color:rgba(255,255,255,.85);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>Monthly Reports <span style="font-size:11px;color:var(--gold);">Detailed</span></li>
+          <li style="font-size:13px;color:rgba(255,255,255,.85);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>Strategy Calls <span style="font-size:11px;color:var(--gold);">2/month</span></li>
+        </ul>
+      </div>
+      <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:28px 24px;">
+        <div style="font-size:16px;font-weight:700;color:#fff;margin-bottom:4px;">Authority</div>
+        <div style="font-family:'Playfair Display',serif;font-size:36px;font-weight:900;color:var(--gl2);margin-bottom:4px;">₹45,000</div>
+        <div style="font-size:12px;color:rgba(255,255,255,.4);margin-bottom:20px;">per month</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:9px;">
+          <li style="font-size:13px;color:rgba(255,255,255,.65);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>Business & Market Study</li>
+          <li style="font-size:13px;color:rgba(255,255,255,.65);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>Keyword Strategy <span style="font-size:11px;color:var(--gold);">80+ keywords</span></li>
+          <li style="font-size:13px;color:rgba(255,255,255,.65);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>On-Page SEO <span style="font-size:11px;color:var(--gold);">Unlimited pages</span></li>
+          <li style="font-size:13px;color:rgba(255,255,255,.65);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>Technical SEO <span style="font-size:11px;color:var(--gold);">Advanced monitoring</span></li>
+          <li style="font-size:13px;color:rgba(255,255,255,.65);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>Content Planning <span style="font-size:11px;color:var(--gold);">8 blogs/month</span></li>
+          <li style="font-size:13px;color:rgba(255,255,255,.65);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>High-Quality Backlinks <span style="font-size:11px;color:var(--gold);">20/month</span></li>
+          <li style="font-size:13px;color:rgba(255,255,255,.65);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>UX & CRO Insights</li>
+          <li style="font-size:13px;color:rgba(255,255,255,.65);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>Monthly Reports <span style="font-size:11px;color:var(--gold);">Comprehensive</span></li>
+          <li style="font-size:13px;color:rgba(255,255,255,.65);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>Strategy Calls <span style="font-size:11px;color:var(--gold);">Weekly</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- GOOGLE ADS PACKAGES -->
+  <div style="margin-bottom:48px;padding-top:48px;border-top:1px solid rgba(201,168,76,.15);">
+    <div style="display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:6px 16px;margin-bottom:16px;">
+      <span style="font-size:11px;color:rgba(255,255,255,.6);letter-spacing:1px;text-transform:uppercase;">GOOGLE ADS</span>
+    </div>
+    <h3 style="font-family:'Playfair Display',serif;font-size:30px;font-weight:900;color:#fff;margin-bottom:4px;">Performance Marketing</h3>
+    <p style="font-size:14px;color:rgba(255,255,255,.5);margin-bottom:28px;">Ads that grow business, not just clicks. Strategic campaign management with data-driven optimization.</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:3px;border-radius:16px;overflow:hidden;">
+      <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:28px 24px;">
+        <div style="font-size:16px;font-weight:700;color:#fff;margin-bottom:4px;">Launch</div>
+        <div style="font-family:'Playfair Display',serif;font-size:36px;font-weight:900;color:var(--gl2);margin-bottom:4px;">₹12,000</div>
+        <div style="font-size:12px;color:rgba(255,255,255,.4);margin-bottom:20px;">per month + Ad Spend</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:9px;">
+          <li style="font-size:13px;color:rgba(255,255,255,.65);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>Campaign Setup <span style="font-size:11px;color:var(--gold);">Search + Display</span></li>
+          <li style="font-size:13px;color:rgba(255,255,255,.65);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>Keyword & Audience Strategy <span style="font-size:11px;color:var(--gold);">Basic research</span></li>
+          <li style="font-size:13px;color:rgba(255,255,255,.65);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>Ad Copy & Creatives <span style="font-size:11px;color:var(--gold);">3 variations</span></li>
+          <li style="font-size:13px;color:rgba(255,255,255,.65);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>A/B Testing <span style="font-size:11px;color:var(--gold);">Basic tests</span></li>
+          <li style="font-size:13px;color:rgba(255,255,255,.65);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>Conversion Tracking <span style="font-size:11px;color:var(--gold);">Standard setup</span></li>
+          <li style="font-size:13px;color:rgba(255,255,255,.65);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>Optimization <span style="font-size:11px;color:var(--gold);">Weekly</span></li>
+          <li style="font-size:13px;color:rgba(255,255,255,.65);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>Monthly Reports <span style="font-size:11px;color:var(--gold);">Standard</span></li>
+          <li style="font-size:13px;color:rgba(255,255,255,.65);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>Strategy Calls <span style="font-size:11px;color:var(--gold);">1/month</span></li>
+        </ul>
+      </div>
+      <div style="background:rgba(255,255,255,.07);border:2px solid var(--gold);padding:28px 24px;position:relative;">
+        <div style="position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--gold);color:#071810;font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:5px 16px;border-radius:0 0 10px 10px;">BEST VALUE</div>
+        <div style="font-size:16px;font-weight:700;color:var(--gl2);margin-bottom:4px;margin-top:8px;">Scale</div>
+        <div style="font-family:'Playfair Display',serif;font-size:36px;font-weight:900;color:var(--gl2);margin-bottom:4px;">₹20,000</div>
+        <div style="font-size:12px;color:rgba(255,255,255,.4);margin-bottom:20px;">per month + Ad Spend</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:9px;">
+          <li style="font-size:13px;color:rgba(255,255,255,.85);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>Campaign Setup <span style="font-size:11px;color:var(--gold);">Multi-channel</span></li>
+          <li style="font-size:13px;color:rgba(255,255,255,.85);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>Keyword & Audience Strategy <span style="font-size:11px;color:var(--gold);">Advanced research</span></li>
+          <li style="font-size:13px;color:rgba(255,255,255,.85);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>Ad Copy & Creatives <span style="font-size:11px;color:var(--gold);">6 variations</span></li>
+          <li style="font-size:13px;color:rgba(255,255,255,.85);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>A/B Testing <span style="font-size:11px;color:var(--gold);">Continuous</span></li>
+          <li style="font-size:13px;color:rgba(255,255,255,.85);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>Conversion Tracking <span style="font-size:11px;color:var(--gold);">Advanced + CRO</span></li>
+          <li style="font-size:13px;color:rgba(255,255,255,.85);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>Optimization <span style="font-size:11px;color:var(--gold);">Daily</span></li>
+          <li style="font-size:13px;color:rgba(255,255,255,.85);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>Monthly Reports <span style="font-size:11px;color:var(--gold);">Detailed</span></li>
+          <li style="font-size:13px;color:rgba(255,255,255,.85);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>Strategy Calls <span style="font-size:11px;color:var(--gold);">2/month</span></li>
+        </ul>
+      </div>
+      <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:28px 24px;">
+        <div style="font-size:16px;font-weight:700;color:#fff;margin-bottom:4px;">Dominate</div>
+        <div style="font-family:'Playfair Display',serif;font-size:36px;font-weight:900;color:var(--gl2);margin-bottom:4px;">₹35,000</div>
+        <div style="font-size:12px;color:rgba(255,255,255,.4);margin-bottom:20px;">per month + Ad Spend</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:9px;">
+          <li style="font-size:13px;color:rgba(255,255,255,.65);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>Campaign Setup <span style="font-size:11px;color:var(--gold);">Full-funnel</span></li>
+          <li style="font-size:13px;color:rgba(255,255,255,.65);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>Keyword & Audience Strategy <span style="font-size:11px;color:var(--gold);">Premium research</span></li>
+          <li style="font-size:13px;color:rgba(255,255,255,.65);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>Ad Copy & Creatives <span style="font-size:11px;color:var(--gold);">12+ variations</span></li>
+          <li style="font-size:13px;color:rgba(255,255,255,.65);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>A/B Testing <span style="font-size:11px;color:var(--gold);">Advanced multivariate</span></li>
+          <li style="font-size:13px;color:rgba(255,255,255,.65);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>Conversion Tracking <span style="font-size:11px;color:var(--gold);">Complete attribution</span></li>
+          <li style="font-size:13px;color:rgba(255,255,255,.65);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>Optimization <span style="font-size:11px;color:var(--gold);">Real-time</span></li>
+          <li style="font-size:13px;color:rgba(255,255,255,.65);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>Monthly Reports <span style="font-size:11px;color:var(--gold);">Comprehensive</span></li>
+          <li style="font-size:13px;color:rgba(255,255,255,.65);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span>Strategy Calls <span style="font-size:11px;color:var(--gold);">Weekly</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- BRANDING PACKAGES -->
+  <div style="padding-top:48px;border-top:1px solid rgba(201,168,76,.15);">
+    <h3 style="font-family:'Playfair Display',serif;font-size:30px;font-weight:900;color:#fff;margin-bottom:4px;">Premium Brand Building</h3>
+    <p style="font-size:14px;color:rgba(255,255,255,.5);margin-bottom:28px;">FlumenX builds brands that last, scale, and grow. Strategic, long-term brand building with comprehensive deliverables.</p>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:3px;border-radius:16px;overflow:hidden;">
+      <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:26px 20px;">
+        <div style="font-size:16px;font-weight:700;color:#fff;margin-bottom:4px;">Starter</div>
+        <div style="font-family:'Playfair Display',serif;font-size:30px;font-weight:900;color:var(--gl2);margin-bottom:4px;">₹9,999</div>
+        <div style="font-size:11px;color:rgba(255,255,255,.4);margin-bottom:16px;">One-time investment</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;">
+          <li style="font-size:12.5px;color:rgba(255,255,255,.6);padding-left:18px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);font-size:11px;">✓</span>Logo Concepts <span style="font-size:11px;color:var(--gold);">2</span></li>
+          <li style="font-size:12.5px;color:rgba(255,255,255,.6);padding-left:18px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);font-size:11px;">✓</span>Logo Formats <span style="font-size:11px;color:var(--gold);">JPG, PNG, SVG</span></li>
+          <li style="font-size:12.5px;color:rgba(255,255,255,.6);padding-left:18px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);font-size:11px;">✓</span>Brand Colors & Fonts</li>
+          <li style="font-size:12.5px;color:rgba(255,255,255,.6);padding-left:18px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);font-size:11px;">✓</span>Business Card</li>
+          <li style="font-size:12.5px;color:rgba(255,255,255,.6);padding-left:18px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);font-size:11px;">✓</span>Letterhead</li>
+          <li style="font-size:12.5px;color:rgba(255,255,255,.6);padding-left:18px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);font-size:11px;">✓</span>ID Card</li>
+        </ul>
+      </div>
+      <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:26px 20px;">
+        <div style="font-size:16px;font-weight:700;color:#fff;margin-bottom:4px;">Pro</div>
+        <div style="font-family:'Playfair Display',serif;font-size:30px;font-weight:900;color:var(--gl2);margin-bottom:4px;">₹18,999</div>
+        <div style="font-size:11px;color:rgba(255,255,255,.4);margin-bottom:16px;">One-time investment</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;">
+          <li style="font-size:12.5px;color:rgba(255,255,255,.6);padding-left:18px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);font-size:11px;">✓</span>Logo Concepts <span style="font-size:11px;color:var(--gold);">3</span></li>
+          <li style="font-size:12.5px;color:rgba(255,255,255,.6);padding-left:18px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);font-size:11px;">✓</span>Logo Formats <span style="font-size:11px;color:var(--gold);">JPG, PNG, SVG, AI</span></li>
+          <li style="font-size:12.5px;color:rgba(255,255,255,.6);padding-left:18px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);font-size:11px;">✓</span>Brand Colors & Fonts</li>
+          <li style="font-size:12.5px;color:rgba(255,255,255,.6);padding-left:18px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);font-size:11px;">✓</span>Business Card + Letterhead</li>
+          <li style="font-size:12.5px;color:rgba(255,255,255,.6);padding-left:18px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);font-size:11px;">✓</span>Social Media Brand Kit</li>
+          <li style="font-size:12.5px;color:rgba(255,255,255,.6);padding-left:18px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);font-size:11px;">✓</span>Brochure/Profile <span style="font-size:11px;color:var(--gold);">1 Design</span></li>
+          <li style="font-size:12.5px;color:rgba(255,255,255,.6);padding-left:18px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);font-size:11px;">✓</span>Brand Manual + Rollout</li>
+        </ul>
+      </div>
+      <div style="background:rgba(255,255,255,.07);border:2px solid var(--gold);padding:26px 20px;position:relative;">
+        <div style="position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--gold);color:#071810;font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:4px 14px;border-radius:0 0 8px 8px;">RECOMMENDED</div>
+        <div style="font-size:16px;font-weight:700;color:var(--gl2);margin-bottom:4px;margin-top:8px;">Signature</div>
+        <div style="font-family:'Playfair Display',serif;font-size:30px;font-weight:900;color:var(--gl2);margin-bottom:4px;">₹29,999</div>
+        <div style="font-size:11px;color:rgba(255,255,255,.4);margin-bottom:16px;">One-time investment</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;">
+          <li style="font-size:12.5px;color:rgba(255,255,255,.85);padding-left:18px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);font-size:11px;">✓</span>Logo Concepts <span style="font-size:11px;color:var(--gold);">4</span></li>
+          <li style="font-size:12.5px;color:rgba(255,255,255,.85);padding-left:18px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);font-size:11px;">✓</span>Logo Formats <span style="font-size:11px;color:var(--gold);">JPG, PNG, SVG, AI, PSD</span></li>
+          <li style="font-size:12.5px;color:rgba(255,255,255,.85);padding-left:18px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);font-size:11px;">✓</span>Brand Colors & Fonts</li>
+          <li style="font-size:12.5px;color:rgba(255,255,255,.85);padding-left:18px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);font-size:11px;">✓</span>Business Card + Letterhead + ID</li>
+          <li style="font-size:12.5px;color:rgba(255,255,255,.85);padding-left:18px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);font-size:11px;">✓</span>Social Media Brand Kit</li>
+          <li style="font-size:12.5px;color:rgba(255,255,255,.85);padding-left:18px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);font-size:11px;">✓</span>Brochure/Profile <span style="font-size:11px;color:var(--gold);">2 Designs</span></li>
+          <li style="font-size:12.5px;color:rgba(255,255,255,.85);padding-left:18px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);font-size:11px;">✓</span>Brand Manual <span style="font-size:11px;color:var(--gold);">Basic</span></li>
+          <li style="font-size:12.5px;color:rgba(255,255,255,.85);padding-left:18px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);font-size:11px;">✓</span>Rollout Support</li>
+        </ul>
+      </div>
+      <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:26px 20px;">
+        <div style="font-size:16px;font-weight:700;color:#fff;margin-bottom:4px;">Master Brand</div>
+        <div style="font-family:'Playfair Display',serif;font-size:30px;font-weight:900;color:var(--gl2);margin-bottom:4px;">₹45,000</div>
+        <div style="font-size:11px;color:rgba(255,255,255,.4);margin-bottom:16px;">One-time investment</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;">
+          <li style="font-size:12.5px;color:rgba(255,255,255,.6);padding-left:18px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);font-size:11px;">✓</span>Logo Concepts <span style="font-size:11px;color:var(--gold);">5</span></li>
+          <li style="font-size:12.5px;color:rgba(255,255,255,.6);padding-left:18px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);font-size:11px;">✓</span>Logo Formats <span style="font-size:11px;color:var(--gold);">All Formats + Source</span></li>
+          <li style="font-size:12.5px;color:rgba(255,255,255,.6);padding-left:18px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);font-size:11px;">✓</span>Brand Colors & Fonts</li>
+          <li style="font-size:12.5px;color:rgba(255,255,255,.6);padding-left:18px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);font-size:11px;">✓</span>Business Card + Letterhead + ID</li>
+          <li style="font-size:12.5px;color:rgba(255,255,255,.6);padding-left:18px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);font-size:11px;">✓</span>Social Media Brand Kit</li>
+          <li style="font-size:12.5px;color:rgba(255,255,255,.6);padding-left:18px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);font-size:11px;">✓</span>Brochure/Profile <span style="font-size:11px;color:var(--gold);">3 Designs</span></li>
+          <li style="font-size:12.5px;color:rgba(255,255,255,.6);padding-left:18px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);font-size:11px;">✓</span>Brand Manual <span style="font-size:11px;color:var(--gold);">Complete</span></li>
+          <li style="font-size:12.5px;color:rgba(255,255,255,.6);padding-left:18px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);font-size:11px;">✓</span>Rollout Support</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- PAYMENT TERMS -->
+<div style="background:var(--dk3);" id="payment">
+<div class="section" style="max-width:1120px;margin:0 auto;padding:80px 56px;">
+  <h2 style="font-family:'Playfair Display',serif;font-size:40px;font-weight:900;color:#fff;text-align:center;margin-bottom:8px;">Payment Terms &amp; Important Notes</h2>
+  <p style="font-size:14px;color:rgba(255,255,255,.45);text-align:center;margin-bottom:48px;">Please review these terms before proceeding</p>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:24px;">
+    <div style="border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:32px;">
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:24px;">
+        <div style="width:44px;height:44px;background:rgba(201,168,76,.12);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;">📄</div>
+        <div style="font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--gl2);">Branding Projects</div>
+      </div>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:14px;">
+        <li style="display:flex;align-items:flex-start;gap:10px;font-size:14px;color:rgba(255,255,255,.7);">
+          <span style="color:var(--gold);margin-top:2px;flex-shrink:0;">⊙</span>
+          <span><strong style="color:var(--gl2);">50% advance payment</strong> required to initiate the project</span>
+        </li>
+        <li style="display:flex;align-items:flex-start;gap:10px;font-size:14px;color:rgba(255,255,255,.7);">
+          <span style="color:var(--gold);margin-top:2px;flex-shrink:0;">⊙</span>
+          <span><strong style="color:var(--gl2);">50% balance payment</strong> due upon final delivery and approval</span>
+        </li>
+        <li style="display:flex;align-items:flex-start;gap:10px;font-size:14px;color:rgba(255,255,255,.7);">
+          <span style="color:var(--gold);margin-top:2px;flex-shrink:0;">⊙</span>
+          <span>Source files released only after full payment</span>
+        </li>
+      </ul>
+    </div>
+    <div style="border:1px solid rgba(201,168,76,.25);border-radius:16px;padding:32px;">
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:24px;">
+        <div style="width:44px;height:44px;background:rgba(201,168,76,.12);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;">📅</div>
+        <div style="font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--gl2);">Monthly Retainers</div>
+      </div>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:14px;">
+        <li style="display:flex;align-items:flex-start;gap:10px;font-size:14px;color:rgba(255,255,255,.7);">
+          <span style="color:var(--gold);margin-top:2px;flex-shrink:0;">⊙</span>
+          <span><strong style="color:var(--gl2);">100% advance payment</strong> required for first month (SEO, Ads, SAG-EO)</span>
+        </li>
+        <li style="display:flex;align-items:flex-start;gap:10px;font-size:14px;color:rgba(255,255,255,.7);">
+          <span style="color:var(--gold);margin-top:2px;flex-shrink:0;">⊙</span>
+          <span>Subsequent months payable by <strong style="color:var(--gl2);">5th of each month</strong></span>
+        </li>
+        <li style="display:flex;align-items:flex-start;gap:10px;font-size:14px;color:rgba(255,255,255,.7);">
+          <span style="color:var(--gold);margin-top:2px;flex-shrink:0;">⊙</span>
+          <span>3-month minimum commitment recommended for best results</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div style="border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:32px;background:rgba(255,255,255,.03);">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px;">
+      <span style="font-size:18px;">⚠️</span>
+      <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--gl2);">Important Notes</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+      <div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:rgba(255,255,255,.65);">
+        <span style="color:var(--gold);flex-shrink:0;margin-top:2px;">•</span>
+        <span><strong style="color:rgba(255,255,255,.85);">Ad spend</strong> is paid directly by client to Google/Meta (not included in our service fee)</span>
+      </div>
+      <div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:rgba(255,255,255,.65);">
+        <span style="color:var(--gold);flex-shrink:0;margin-top:2px;">•</span>
+        <span>All prices are in <strong style="color:rgba(255,255,255,.85);">INR (₹)</strong> and exclude applicable taxes</span>
+      </div>
+      <div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:rgba(255,255,255,.65);">
+        <span style="color:var(--gold);flex-shrink:0;margin-top:2px;">•</span>
+        <span><strong style="color:rgba(255,255,255,.85);">Print costs</strong> for business cards, brochures, etc. are extra and billed separately</span>
+      </div>
+      <div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:rgba(255,255,255,.65);">
+        <span style="color:var(--gold);flex-shrink:0;margin-top:2px;">•</span>
+        <span>Payment via <strong style="color:rgba(255,255,255,.85);">bank transfer, UPI, or online payment</strong> accepted</span>
+      </div>
+      <div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:rgba(255,255,255,.65);">
+        <span style="color:var(--gold);flex-shrink:0;margin-top:2px;">•</span>
+        <span><strong style="color:rgba(255,255,255,.85);">Third-party costs</strong> like domain, hosting, premium tools are not included</span>
+      </div>
+      <div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:rgba(255,255,255,.65);">
+        <span style="color:var(--gold);flex-shrink:0;margin-top:2px;">•</span>
+        <span>Invoices will be provided for all payments</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:flex;align-items:center;justify-content:center;gap:32px;margin-top:56px;flex-wrap:wrap;">
+    <div style="display:flex;align-items:center;gap:10px;">
+      <div style="width:26px;height:26px;background:var(--yw);clip-path:polygon(50% 0%,100% 38%,82% 100%,18% 100%,0% 38%);flex-shrink:0;"></div>
+      <span style="font-family:'Playfair Display',serif;font-size:22px;font-weight:900;color:#fff;letter-spacing:1px;">FLUME<span style="color:var(--yw);">N</span>X</span>
+    </div>
+    <div style="width:40px;height:1px;background:var(--gold);"></div>
+    <div style="background:#fff;border-radius:12px;padding:12px 20px;text-align:center;">
+      <div style="font-size:11px;color:#666;letter-spacing:1px;text-transform:uppercase;margin-bottom:3px;">MiscArchive</div>
+      <div style="font-size:13px;color:#1A1A1A;font-weight:600;">Creative Studio</div>
+    </div>
+  </div>
+  <p style="text-align:center;font-size:13px;color:rgba(255,255,255,.3);margin-top:24px;">Have questions? Contact us for customized packages and consultation.</p>
+</div>
+</div>
+
+<!-- CLOSING -->
+<div class="closing">
+  <div class="cl-q">"From Five Technocrats to Kerala's Premier Technology Conglomerate — the next chapter begins now."</div>
+  <div class="cl-by">Fi-Tec Group · 2026 Master Strategy</div>
+  <div class="cl-div"></div>
+  <div class="cl-logos">
+    <div class="cl-logo">
+      <div class="cl-icon"></div>
+      <div class="cl-nm">FLUME<span>N</span>X</div>
+    </div>
+    <div class="cl-sep"></div>
+    <div style="text-align:center;">
+      <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#fff;">FI-TEC GROUP</div>
+      <div style="font-size:11px;color:rgba(255,255,255,.35);letter-spacing:2px;">THIRUVANANTHAPURAM · KERALA</div>
+    </div>
+  </div>
+  <div class="cl-contact">
+    <div class="cc"><div class="cc-lbl">Prepared By</div><div class="cc-val">Anoop Krishna VA · FlumenX & MiscArchive</div></div>
+    <div class="cc"><div class="cc-lbl">Prepared For</div><div class="cc-val">Mr. Jayachandran KP · Fi-Tec Group</div></div>
+    <div class="cc"><div class="cc-lbl">BNI Member</div><div class="cc-val">Thiruvananthapuram Chapter · Feb 2026</div></div>
+    <div class="cc"><div class="cc-lbl">Website</div><div class="cc-val">fitecinfra.com · fitecgroup.com</div></div>
+  </div>
+  <div class="cl-foot">Confidential Strategic Document · Prepared exclusively for Mr. Jayachandran KP · Fi-Tec Infra Solutions Pvt. Ltd. (CIN: U52334KL2012PTC030424) · Thiruvananthapuram, Kerala · © 2026 Fi-Tec Group — All Rights Reserved · For queries, contact FlumenX: Anoop Krishna VA</div>
+</div>
+
+</body>
+</html>
