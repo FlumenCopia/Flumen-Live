@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Polemarks — Execution Dashboard | Flumenx</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* Backgrounds — deep forest greens */
+  --bg:    #071A12;
+  --bg2:   #0B2016;
+  --bg3:   #0F261A;
+  --card:  #0D2218;
+  --card2: #11281D;
+
+  /* Borders */
+  --b1: rgba(255,255,255,0.07);
+  --b2: rgba(255,255,255,0.04);
+
+  /* Brand accent — muted gold (primary CTA) */
+  --gold:  #B8923A;
+  --gold2: #D4A843;
+  --gold3: rgba(184,146,58,0.12);
+
+  /* Soft warm text tones */
+  --t1: rgba(255,255,255,0.88);
+  --t2: rgba(255,255,255,0.55);
+  --t3: rgba(255,255,255,0.3);
+
+  /* Polemarks orange — toned down, used sparingly */
+  --po:    #C05020;
+  --po2:   #D9703A;
+  --po3:   rgba(192,80,32,0.1);
+
+  /* Status muted tones */
+  --ok:    rgba(74,163,105,0.18);
+  --ok-t:  #6BBF8A;
+  --warn:  rgba(190,140,60,0.18);
+  --warn-t:#C9A050;
+  --err:   rgba(185,80,70,0.18);
+  --err-t: #C87065;
+
+  --r: 12px;
+  --r2: 8px;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  font-family:'DM Sans',sans-serif;
+  background:var(--bg);
+  color:var(--t1);
+  line-height:1.65;
+  font-size:14px;
+  -webkit-font-smoothing:antialiased;
+}
+::-webkit-scrollbar { width:3px; }
+::-webkit-scrollbar-track { background:var(--bg); }
+::-webkit-scrollbar-thumb { background:rgba(255,255,255,0.08); border-radius:3px; }
+
+/* ── NAV ── */
+.nav {
+  position:sticky; top:0; z-index:100;
+  background:rgba(7,26,18,0.94);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--b1);
+  height:56px; padding:0 40px;
+  display:flex; align-items:center; justify-content:space-between;
+}
+.nav-left  { display:flex; align-items:center; gap:16px; }
+.nav-logo img { height:26px; display:block; opacity:0.9; }
+.nav-sep   { width:1px; height:20px; background:var(--b1); }
+.nav-label { font-size:11.5px; color:var(--t3); letter-spacing:0.3px; }
+.nav-label strong { color:var(--gold2); font-weight:500; }
+.nav-links { display:flex; gap:4px; }
+.nl {
+  font-size:11px; font-weight:600; letter-spacing:0.4px;
+  padding:5px 13px; border-radius:20px;
+  text-decoration:none; transition:all 0.18s;
+  border:1px solid transparent; color:var(--t3);
+}
+.nl:hover { color:var(--t1); background:rgba(255,255,255,0.05); border-color:var(--b1); }
+.nl.active { color:var(--gold2); background:var(--gold3); border-color:rgba(184,146,58,0.2); }
+
+/* ── HERO ── */
+.hero {
+  background:linear-gradient(160deg, #050F09 0%, #071A12 45%, #0B2016 100%);
+  padding:64px 40px 56px;
+  position:relative; overflow:hidden;
+  border-bottom:1px solid var(--b1);
+}
+.hero::before {
+  content:''; position:absolute; top:-80px; right:-40px;
+  width:440px; height:440px; border-radius:50%;
+  background:radial-gradient(circle, rgba(192,80,32,0.055) 0%, transparent 65%);
+  pointer-events:none;
+}
+.hero-inner { max-width:1160px; margin:0 auto; position:relative; z-index:1; }
+.hero-top { display:flex; align-items:flex-start; justify-content:space-between; gap:40px; flex-wrap:wrap; margin-bottom:48px; }
+.hero-tag {
+  display:inline-flex; align-items:center; gap:8px;
+  border:1px solid rgba(192,80,32,0.25);
+  background:rgba(192,80,32,0.07);
+  color:var(--po2); font-size:11px; font-weight:600; letter-spacing:1.2px;
+  text-transform:uppercase; padding:5px 14px; border-radius:20px; margin-bottom:18px;
+}
+.hero-tag::before {
+  content:''; width:5px; height:5px; border-radius:50%;
+  background:var(--po2); animation:blink 2.2s infinite;
+}
+@keyframes blink { 0%,100%{opacity:1;} 55%{opacity:0.3;} }
+.hero-h1 {
+  font-family:'Syne',sans-serif;
+  font-size:38px; font-weight:800;
+  line-height:1.06; letter-spacing:-1.2px;
+  color:#fff; margin-bottom:12px;
+}
+.hero-h1 em { color:var(--po2); font-style:normal; }
+.hero-p { font-size:14.5px; color:var(--t2); max-width:500px; line-height:1.72; }
+.hero-meta { display:flex; flex-direction:column; gap:8px; padding-top:6px; }
+.hm {
+  font-size:12px; padding:8px 14px; border-radius:var(--r2);
+  display:flex; align-items:center; gap:9px;
+  background:rgba(255,255,255,0.04); border:1px solid var(--b1);
+  white-space:nowrap; color:var(--t2);
+}
+.hm-dot { width:7px; height:7px; border-radius:50%; flex-shrink:0; }
+
+.hero-stats {
+  display:grid; grid-template-columns:repeat(5,1fr);
+  gap:1px; border-radius:var(--r); overflow:hidden;
+  border:1px solid var(--b1);
+}
+.hs {
+  padding:20px 16px; text-align:center;
+  background:rgba(255,255,255,0.025);
+}
+.hs + .hs { border-left:1px solid var(--b1); }
+.hs-v {
+  font-family:'Syne',sans-serif;
+  font-size:21px; font-weight:800; display:block;
+  line-height:1; margin-bottom:6px;
+}
+.hs-l { font-size:10.5px; color:var(--t3); line-height:1.4; }
+
+/* ── MAIN ── */
+.main {
+  max-width:1160px; margin:0 auto;
+  padding:56px 40px;
+  display:flex; flex-direction:column;
+  gap:72px;
+}
+
+/* ── SECTION HEADER ── */
+.sh {
+  display:flex; align-items:center; gap:12px;
+  margin-bottom:28px;
+  padding-bottom:20px;
+  border-bottom:1px solid var(--b1);
+}
+.sh-n {
+  font-family:'Syne',sans-serif; font-size:10px; font-weight:700;
+  letter-spacing:2px; color:var(--t3);
+  background:rgba(255,255,255,0.05); padding:3px 9px; border-radius:5px;
+}
+.sh-title { font-family:'Syne',sans-serif; font-size:17px; font-weight:700; color:#fff; }
+.sh-line  { height:1px; background:var(--b1); flex:1; }
+.sh-sub   { font-size:12px; color:var(--t3); }
+
+/* ── CARD ── */
+.card {
+  background:var(--card); border:1px solid var(--b1);
+  border-radius:var(--r); padding:24px;
+}
+.card-h {
+  display:flex; align-items:center; justify-content:space-between;
+  margin-bottom:18px;
+}
+.card-title { font-family:'Syne',sans-serif; font-size:13px; font-weight:700; color:#fff; }
+
+/* ── GRID HELPERS ── */
+.g2 { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+.g3 { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+@media(max-width:860px){ .g2,.g3 { grid-template-columns:1fr; } }
+
+/* ── AUDIT SCORE ── */
+.score-ring { display:flex; align-items:center; gap:28px; padding:20px 0; }
+.ring-wrap  { position:relative; width:110px; height:110px; flex-shrink:0; }
+.ring-wrap svg { transform:rotate(-90deg); }
+.ring-mid   { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+.ring-v     { font-family:'Syne',sans-serif; font-size:26px; font-weight:800; line-height:1; }
+.ring-l     { font-size:9px; color:var(--t3); letter-spacing:1px; text-transform:uppercase; }
+.score-info h4 { font-family:'Syne',sans-serif; font-size:14px; font-weight:700; color:var(--warn-t); margin-bottom:6px; }
+.score-info p  { font-size:13px; color:var(--t2); line-height:1.6; max-width:320px; }
+
+.audit-list { display:flex; flex-direction:column; gap:10px; margin-top:4px; }
+.al-item {
+  display:flex; align-items:flex-start; gap:12px;
+  padding:12px 14px; border-radius:var(--r2);
+}
+.al-item.pass { background:var(--ok); }
+.al-item.warn { background:var(--warn); }
+.al-item.fail { background:var(--err); }
+.al-icon {
+  width:26px; height:26px; border-radius:6px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:12px; font-weight:700; flex-shrink:0;
+}
+.al-item.pass .al-icon { background:rgba(107,191,138,0.15); color:var(--ok-t); }
+.al-item.warn .al-icon { background:rgba(201,160,80,0.15); color:var(--warn-t); }
+.al-item.fail .al-icon { background:rgba(200,112,101,0.15); color:var(--err-t); }
+.al-title { font-size:12.5px; font-weight:600; color:var(--t1); margin-bottom:2px; }
+.al-desc  { font-size:12px; color:var(--t2); line-height:1.5; }
+
+/* ── VERDICT ── */
+.verdict {
+  border-radius:var(--r); padding:18px 22px;
+  display:flex; align-items:flex-start; gap:16px;
+  border:1px solid;
+}
+.v-action { background:rgba(184,146,58,0.06); border-color:rgba(184,146,58,0.2); }
+.v-note   { background:rgba(192,80,32,0.06); border-color:rgba(192,80,32,0.18); }
+.verdict-ico { font-size:26px; flex-shrink:0; line-height:1.2; }
+.verdict-body h4 { font-family:'Syne',sans-serif; font-size:14px; font-weight:700; margin-bottom:5px; }
+.v-action h4 { color:var(--gold2); }
+.v-note h4   { color:var(--po2); }
+.verdict-body p { font-size:13px; color:var(--t2); line-height:1.65; }
+
+/* ── INSIGHT ── */
+.ins {
+  border-radius:var(--r2); padding:13px 16px;
+  border-left:2px solid; font-size:13px; line-height:1.65;
+  display:flex; align-items:flex-start; gap:10px;
+}
+.ins.gold   { background:rgba(184,146,58,0.06); border-color:var(--gold2); color:var(--t2); }
+.ins.orange { background:rgba(192,80,32,0.06); border-color:var(--po2); color:var(--t2); }
+.ins.green  { background:rgba(74,163,105,0.07); border-color:var(--ok-t); color:var(--t2); }
+.ins.muted  { background:rgba(255,255,255,0.03); border-color:rgba(255,255,255,0.12); color:var(--t2); }
+.ins strong { color:var(--t1); }
+.ins-ico { font-size:15px; flex-shrink:0; margin-top:1px; }
+
+/* ── TAG / BADGE ── */
+.tag {
+  display:inline-block; font-size:10.5px; font-weight:600; letter-spacing:0.3px;
+  padding:2px 9px; border-radius:5px;
+}
+.t-hi   { background:rgba(185,80,70,0.12); color:var(--err-t); }
+.t-med  { background:rgba(190,140,60,0.12); color:var(--warn-t); }
+.t-lo   { background:rgba(74,163,105,0.12); color:var(--ok-t); }
+.t-gold { background:rgba(184,146,58,0.12); color:var(--gold2); }
+.t-dim  { background:rgba(255,255,255,0.05); color:var(--t3); }
+.t-active { background:rgba(192,80,32,0.1); color:var(--po2); }
+
+/* ── TABLE ── */
+.tbl { width:100%; border-collapse:collapse; }
+.tbl th {
+  font-family:'Syne',sans-serif; font-size:10px; font-weight:700;
+  letter-spacing:1px; text-transform:uppercase; color:var(--t3);
+  padding:9px 13px; text-align:left;
+  background:rgba(255,255,255,0.02);
+  border-bottom:1px solid var(--b1);
+}
+.tbl td {
+  padding:11px 13px; font-size:12.5px; color:var(--t2);
+  border-bottom:1px solid var(--b2); vertical-align:top; line-height:1.5;
+}
+.tbl tr:last-child td { border-bottom:none; }
+.tbl tr:hover td { background:rgba(255,255,255,0.015); }
+.td-name { color:var(--t1); font-weight:500; }
+
+/* ── CHECKBOX ── */
+.chk {
+  width:16px; height:16px; border-radius:4px;
+  border:1.5px solid rgba(255,255,255,0.15);
+  display:inline-flex; align-items:center; justify-content:center;
+  cursor:pointer; transition:all 0.18s; background:transparent; flex-shrink:0;
+}
+.chk.done { background:var(--gold2); border-color:var(--gold2); }
+.chk.done::after { content:'✓'; font-size:10px; color:var(--bg); font-weight:700; }
+
+/* ── TIMELINE ── */
+.timeline {
+  display:grid; grid-template-columns:repeat(6,1fr);
+  border:1px solid var(--b1); border-radius:var(--r); overflow:hidden;
+}
+.tl {
+  padding:18px 16px;
+  border-right:1px solid var(--b1);
+  position:relative;
+}
+.tl:last-child { border-right:none; }
+.tl.now { background:rgba(184,146,58,0.04); }
+.tl-wk {
+  font-size:9.5px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase;
+  color:var(--t3); margin-bottom:9px; display:block;
+}
+.tl.now .tl-wk { color:var(--gold2); }
+.tl-dot {
+  width:7px; height:7px; border-radius:50%;
+  background:rgba(255,255,255,0.1); margin-bottom:9px;
+}
+.tl.now .tl-dot { background:var(--gold2); box-shadow:0 0 7px rgba(212,168,67,0.4); }
+.tl-name { font-family:'Syne',sans-serif; font-size:11.5px; font-weight:700; color:var(--t1); margin-bottom:7px; line-height:1.3; }
+.tl-items { list-style:none; display:flex; flex-direction:column; gap:4px; }
+.tl-items li {
+  font-size:11px; color:var(--t3); padding-left:10px;
+  position:relative; line-height:1.45;
+}
+.tl-items li::before { content:'·'; position:absolute; left:0; color:var(--po2); font-size:13px; line-height:1; }
+
+/* ── PHASE ACCORDION ── */
+.phase { border:1px solid var(--b1); border-radius:var(--r); overflow:hidden; }
+.phase + .phase { margin-top:10px; }
+.phase-hd {
+  padding:16px 22px; display:flex; align-items:center; gap:12px;
+  cursor:pointer; user-select:none; transition:background 0.18s; flex-wrap:wrap;
+}
+.phase-hd:hover { background:rgba(255,255,255,0.02); }
+.phase-n { font-family:'Syne',sans-serif; font-size:10px; font-weight:700; letter-spacing:1.5px; padding:3px 9px; border-radius:5px; background:rgba(255,255,255,0.05); color:var(--t3); }
+.phase-title { font-family:'Syne',sans-serif; font-size:14px; font-weight:700; color:#fff; }
+.phase-period { font-size:12px; color:var(--t3); }
+.phase-arr { margin-left:auto; font-size:11px; color:var(--t3); transition:transform 0.25s; }
+.phase-arr.open { transform:rotate(180deg); }
+.phase-bd { padding:0 22px 20px; display:none; }
+.phase-bd.open { display:block; }
+
+/* ── KPI SECTION ── */
+.kpi-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+@media(max-width:860px){ .kpi-grid { grid-template-columns:1fr 1fr; } }
+@media(max-width:500px){ .kpi-grid { grid-template-columns:1fr; } }
+.kpi {
+  background:var(--card2); border:1px solid var(--b1);
+  border-radius:var(--r); padding:20px 18px;
+  position:relative; overflow:hidden;
+}
+.kpi::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:2px;
+}
+.kpi.k1::before { background:linear-gradient(to right, var(--po), var(--po2)); }
+.kpi.k2::before { background:linear-gradient(to right, #2A6B45, #4A9E6A); }
+.kpi.k3::before { background:linear-gradient(to right, var(--gold), var(--gold2)); }
+.kpi.k4::before { background:linear-gradient(to right, #2A4A7A, #4A7AB0); }
+.kpi-v {
+  font-family:'Syne',sans-serif; font-size:24px; font-weight:800;
+  line-height:1; margin-bottom:5px; display:block;
+}
+.kpi-l { font-size:12px; color:var(--t2); margin-bottom:6px; display:block; }
+.kpi-note { font-size:11px; color:var(--t3); display:block; line-height:1.45; }
+.kpi-badge {
+  display:inline-flex; align-items:center; gap:4px;
+  font-size:10.5px; font-weight:600; padding:2px 9px; border-radius:10px; margin-top:8px;
+  background:rgba(255,255,255,0.05); color:var(--t3);
+}
+
+/* ── BUDGET TABLE ── */
+.btbl { width:100%; border-collapse:collapse; }
+.btbl th {
+  font-family:'Syne',sans-serif; font-size:10px; font-weight:700;
+  letter-spacing:1px; text-transform:uppercase; color:var(--t3);
+  padding:10px 15px; text-align:left;
+  background:rgba(255,255,255,0.03);
+  border-bottom:1px solid var(--b1);
+}
+.btbl td {
+  padding:13px 15px; font-size:13px; color:var(--t2);
+  border-bottom:1px solid var(--b2); vertical-align:middle;
+}
+.btbl tr:last-child td { border-bottom:none; }
+.btbl .tr-total td {
+  background:rgba(184,146,58,0.05);
+  border-top:1px solid rgba(184,146,58,0.15);
+  color:#fff; font-weight:600;
+}
+.b-name { color:#fff; font-weight:500; }
+.b-svc  { color:var(--gold2); font-family:'Syne',sans-serif; font-weight:700; }
+.b-ad   { color:var(--po2); font-family:'Syne',sans-serif; font-weight:700; }
+.b-tot  { color:var(--ok-t); font-family:'Syne',sans-serif; font-size:15px; font-weight:700; }
+
+/* ── WEBSITE PRICING CALLOUT ── */
+.ws-price {
+  border:1px solid rgba(184,146,58,0.22);
+  border-radius:var(--r); padding:22px 24px;
+  background:rgba(184,146,58,0.04);
+  margin-top:20px;
+}
+.ws-price h4 { font-family:'Syne',sans-serif; font-size:14px; font-weight:700; color:var(--gold2); margin-bottom:10px; }
+.ws-options { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:14px; }
+.ws-opt {
+  padding:14px 16px; border-radius:var(--r2);
+  border:1px solid var(--b1); background:rgba(255,255,255,0.03);
+}
+.ws-opt-name { font-size:12.5px; font-weight:600; color:#fff; margin-bottom:4px; }
+.ws-opt-price { font-family:'Syne',sans-serif; font-size:18px; font-weight:800; color:var(--gold2); }
+.ws-opt-note { font-size:11px; color:var(--t3); margin-top:4px; line-height:1.5; }
+@media(max-width:600px){ .ws-options { grid-template-columns:1fr; } }
+
+/* ── ADD-ONS ── */
+.addon-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+@media(max-width:860px){ .addon-grid { grid-template-columns:1fr; } }
+.addon {
+  border-radius:var(--r); padding:22px; border:1px solid var(--b1);
+  background:var(--card);
+}
+.addon.featured { border-color:rgba(184,146,58,0.22); background:rgba(184,146,58,0.03); }
+.addon-ey {
+  font-size:10px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase;
+  color:var(--gold2); margin-bottom:8px; display:flex; align-items:center; gap:7px;
+}
+.addon-ey::before { content:'✦'; font-size:9px; }
+.addon-name { font-family:'Syne',sans-serif; font-size:17px; font-weight:800; color:#fff; margin-bottom:5px; }
+.addon-desc { font-size:13px; color:var(--t2); line-height:1.65; margin-bottom:14px; }
+.addon-price { font-family:'Syne',sans-serif; font-size:24px; font-weight:800; color:var(--gold2); }
+.addon-pnote { font-size:11px; color:var(--t3); }
+.addon-ul { list-style:none; display:flex; flex-direction:column; gap:7px; margin-top:14px; }
+.addon-ul li { font-size:12.5px; color:var(--t2); padding-left:16px; position:relative; }
+.addon-ul li::before { content:'▸'; position:absolute; left:0; color:var(--t3); font-size:10px; top:2px; }
+
+/* ── CHANNEL CARDS ── */
+.ch-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+@media(max-width:860px){ .ch-grid { grid-template-columns:1fr; } }
+.ch {
+  border-radius:var(--r); padding:20px; border:1px solid var(--b1);
+  background:var(--card);
+}
+.ch::before { content:''; display:block; height:2px; border-radius:2px; margin-bottom:16px; }
+.ch.meta::before { background:linear-gradient(to right,#A01848,#602080,#A07820); }
+.ch.gads::before { background:linear-gradient(to right,#2850A0,#208040,#A07010,#A02020); }
+.ch.seo::before  { background:linear-gradient(to right,#2A6B45,var(--gold2)); }
+.ch-name { font-family:'Syne',sans-serif; font-size:13.5px; font-weight:700; color:#fff; margin-bottom:6px; }
+.ch-desc { font-size:12.5px; color:var(--t2); margin-bottom:12px; line-height:1.6; }
+.ch-kpis { display:flex; gap:8px; flex-wrap:wrap; }
+.ck { background:rgba(255,255,255,0.04); border-radius:7px; padding:7px 11px; text-align:center; border:1px solid var(--b2); }
+.ck-v { font-weight:700; font-size:12px; color:#fff; display:block; }
+.ck-l { font-size:10px; color:var(--t3); }
+
+/* ── CHECKLIST SECTION ── */
+.cl-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+@media(max-width:860px){ .cl-grid { grid-template-columns:1fr; } }
+.cl-item {
+  display:flex; gap:10px; align-items:flex-start;
+  padding:11px 13px; border-radius:var(--r2); border:1px solid var(--b2);
+  background:rgba(255,255,255,0.02);
+}
+.cl-text { font-size:13px; color:var(--t2); line-height:1.55; }
+.cl-text strong { color:var(--t1); }
+
+/* ── CTA ── */
+.cta-strip {
+  border-radius:var(--r); padding:32px 36px;
+  background:linear-gradient(135deg, rgba(192,80,32,0.07), rgba(7,26,18,0.5));
+  border:1px solid rgba(192,80,32,0.18);
+  display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;
+}
+.cta-body h3 { font-family:'Syne',sans-serif; font-size:19px; font-weight:800; color:#fff; margin-bottom:6px; }
+.cta-body p  { font-size:13px; color:var(--t2); max-width:460px; }
+.cta-btns { display:flex; gap:10px; flex-wrap:wrap; }
+.btn {
+  display:inline-flex; align-items:center; gap:7px;
+  font-family:'Syne',sans-serif; font-size:12px; font-weight:700; letter-spacing:0.3px;
+  padding:11px 20px; border-radius:24px;
+  text-decoration:none; cursor:pointer; border:none;
+  transition:all 0.18s; white-space:nowrap;
+}
+.btn-main { background:var(--po); color:#fff; }
+.btn-main:hover { background:var(--po2); transform:translateY(-1px); box-shadow:0 6px 20px rgba(192,80,32,0.25); }
+.btn-ghost { background:rgba(255,255,255,0.05); color:var(--t1); border:1px solid var(--b1); }
+.btn-ghost:hover { background:rgba(255,255,255,0.09); transform:translateY(-1px); }
+.btn-gold { background:var(--gold2); color:var(--bg); }
+.btn-gold:hover { filter:brightness(1.08); transform:translateY(-1px); box-shadow:0 6px 20px rgba(212,168,67,0.22); }
+
+/* ── DIVIDER ── */
+.divider { height:1px; background:var(--b1); }
+
+/* ── FOOTER ── */
+.foot {
+  border-top:1px solid var(--b1); padding:24px 40px;
+  display:flex; align-items:center; justify-content:space-between;
+  max-width:1160px; margin:0 auto; flex-wrap:wrap; gap:14px;
+}
+.foot-left { display:flex; align-items:center; gap:12px; }
+.foot-logo img { height:20px; opacity:0.55; }
+.foot-copy { font-size:11px; color:var(--t3); }
+.foot-links { display:flex; gap:18px; }
+.foot-links a { font-size:11px; color:var(--t3); text-decoration:none; transition:color 0.18s; }
+.foot-links a:hover { color:var(--gold2); }
+
+/* ── SCROLL PROGRESS ── */
+#sbar { position:fixed; top:56px; left:0; height:2px; background:var(--gold2); z-index:200; width:0; transition:width 0.04s; pointer-events:none; }
+
+/* ── RESPONSIVE ── */
+@media(max-width:860px){
+  .nav-links { display:none; }
+  .hero { padding:44px 24px 40px; }
+  .hero-h1 { font-size:28px; }
+  .hero-stats { grid-template-columns:repeat(3,1fr); }
+  .main { padding:40px 24px; gap:56px; }
+  .timeline { grid-template-columns:repeat(3,1fr); }
+  .cta-strip { flex-direction:column; }
+  .foot { flex-direction:column; align-items:flex-start; }
+}
+@media(max-width:540px){
+  .hero-stats { grid-template-columns:repeat(2,1fr); }
+  .timeline { grid-template-columns:repeat(2,1fr); }
+}
+</style>
+</head>
+<body>
+<div id="sbar"></div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-left">
+    <div class="nav-logo"><img src="data:image/png;base64,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HRGu5GMNqbWto1k1bpqG2W2luMUzKtsxdURsa3dDXD715OfOHRarREarWKxiGa7IdW23SF7q665Q1csc1N4pop2tc4HeaeO84cOCyLattJsWq9Li126kuUUwqGS708bA3ABzyeTnj2LVCiJNImcmVmWyLVVu0hqOpuNyhqpYpaR0DRTta528Xsdk7zhww0rDURZjMYbb2pbTLDqnSb7Tb6S5RTumZIHTxsDcNPHiHk/ItY2O63CyXOG5WypfT1MRy17eo6gjkQewr4URK1iIw3tpvbfbpYWR6gts9NNyMtL58Z790kFvyr3ptsWiWRb7amsld7xtM7Py4HyrmpFGZ0qtyat23TVFO6n01b30pcMeU1WC9v8A6sGQD3kn0LWFiuxptW2+93F89QYa6KqndnekfuvDnczxJweZXlKI1FYiNm/rntq0tU22qpo6C8h8sL2NLoYsAkEcfsi0AiIVrFej7tP1kVvv1ur5mvdFTVUUzwwAuIa8E4z14LelZtt0pNSTQtt96DnxuaMwxYyRj8IufCiFqRbq2jsG1NoLR1xlv2po7hVXVhLKNkNO18cDSOL8lwy88Ry4DPbw3V/CN2ffgb3+qs/fXIi/K87zDsxwfMNadbXm0z89o9I2fqcPzPW4encpEY+TPNte0Oq2g6oNU0SQWmlzHQU7ubW9XuHLedgZ7AAOOMnKPBe2yy7L9SyUV2fPNpe4u+24mDeNPJjDZmN7eQcBzGOZa0LTai/a4XhtLhdGujpRitej49TWvqXnUtO8v9Bv4U2x/wDG1x/u6T/Zc2+FVqXZPrq4Q6r0TcKll9kcI7hTyUT42VLAMNl3iMB7cAH3wxyLeOilCvoSbzMYkREUYfaiItMCIiAiIiiIogqiFREVREQEREUREQFMoiAoqiCIiIGVERQERQoBUREBEUKAiKKAVERVUKIURUUVUUBCiIPtREWmREUQVRERBFEQEREUREQERRAREQFERAQohQTKIigIihQCoiICIiAVERQFChUVWBCihQFERRQqKlRAUKqhQfciItMIiIgivREQQIiIoiIgKFEQEREEVREEREQFDzREBERZBflEVBERQFCiKgiIgh5qIiKKFEQgURFFQoiIChREH//Z" alt="Flumenx"></div>
+    <div class="nav-sep"></div>
+    <div class="nav-label">Execution Dashboard &nbsp;·&nbsp; <strong>Polemarks</strong></div>
+  </div>
+  <div class="nav-links">
+    <a href="#website" class="nl">Website</a>
+    <a href="#plan" class="nl">Execution Plan</a>
+    <a href="#budget" class="nl">Budget</a>
+    <a href="#kpis" class="nl active">KPIs</a>
+    <a href="#addons" class="nl">Add-Ons</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-top">
+      <div>
+        <div class="hero-tag">Active Project &nbsp;·&nbsp; March 2026</div>
+        <h1 class="hero-h1">Polemarks<br><em>Digital Launch</em></h1>
+        <p class="hero-p">Execution dashboard for Polemarks Commercial Kitchen Solutions — social media, Google Ads, SEO, and full digital brand launch under the Fi-Tec Group umbrella.</p>
+      </div>
+      <div class="hero-meta">
+        <div class="hm"><span class="hm-dot" style="background:var(--gold2);"></span>Service Package: ₹38,000 + GST / month</div>
+        <div class="hm"><span class="hm-dot" style="background:var(--po2);"></span>Ad Budget: ₹15,000–₹20,000 / month (client-managed)</div>
+        <div class="hm"><span class="hm-dot" style="background:var(--ok-t);"></span>Prepared by: Anoop Krishna VA · Flumenx</div>
+        <div class="hm"><span class="hm-dot" style="background:rgba(255,255,255,0.25);"></span>Client: Mr. Jayachandran KP · Fi-Tec Group</div>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="hs"><span class="hs-v" style="color:var(--po2);">90 Days</span><div class="hs-l">To Measurable Results</div></div>
+      <div class="hs"><span class="hs-v" style="color:var(--gold2);">2,000+</span><div class="hs-l">Instagram Followers (Month 3)</div></div>
+      <div class="hs"><span class="hs-v" style="color:var(--ok-t);">10–15</span><div class="hs-l">Qualified Leads/Month</div></div>
+      <div class="hs"><span class="hs-v" style="color:var(--gold2);">₹38K</span><div class="hs-l">Monthly Service Fee</div></div>
+      <div class="hs"><span class="hs-v" style="color:rgba(255,255,255,0.5);">3</span><div class="hs-l">Active Channels</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ MAIN ═══════════════════════════ -->
+<div class="main">
+
+<!-- ──────────────────────────────────────────────
+     01 · WEBSITE AUDIT & RECOMMENDATION
+────────────────────────────────────────────── -->
+<section id="website">
+  <div class="sh">
+    <span class="sh-n">01</span>
+    <span class="sh-title">Website Audit &amp; Recommendation</span>
+    <div class="sh-line"></div>
+    <span class="sh-sub">polemarks.in — Before Any Paid Ads Go Live</span>
+  </div>
+
+  <div class="ins orange" style="margin-bottom:24px;">
+    <span class="ins-ico">⚠️</span>
+    <span><strong>Rule #1:</strong> Before spending on ads, the website must be ready to convert visitors into enquiries. Running paid traffic to a weak website is money down the drain. We audit first, fix or rebuild, then launch campaigns.</span>
+  </div>
+
+  <div class="g2">
+    <!-- Left: score + audit items -->
+    <div class="card">
+      <div class="card-h">
+        <span class="card-title">Current Website Health</span>
+      </div>
+      <div class="score-ring">
+        <div class="ring-wrap">
+          <svg width="110" height="110" viewBox="0 0 110 110">
+            <circle cx="55" cy="55" r="46" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="9"/>
+            <circle cx="55" cy="55" r="46" fill="none" stroke="var(--warn-t)" stroke-width="9"
+              stroke-dasharray="289" stroke-dashoffset="145" stroke-linecap="round"/>
+          </svg>
+          <div class="ring-mid">
+            <span class="ring-v" style="color:var(--warn-t);">50</span>
+            <span class="ring-l">/ 100</span>
+          </div>
+        </div>
+        <div class="score-info">
+          <h4>Needs Significant Improvement</h4>
+          <p>The current site has the basics but is missing critical conversion elements. It's not ready to receive paid traffic — we'd be paying for clicks that go nowhere.</p>
+        </div>
+      </div>
+      <div class="audit-list" style="margin-top:20px;">
+        <div class="al-item pass">
+          <div class="al-icon">✓</div>
+          <div><div class="al-title">Domain &amp; Hosting Active</div><div class="al-desc">polemarks.in is live — solid foundation to build on</div></div>
+        </div>
+        <div class="al-item fail">
+          <div class="al-icon">✗</div>
+          <div><div class="al-title">Not Mobile-Optimised</div><div class="al-desc">78% of Indian buyers browse on mobile. A non-responsive site loses them instantly</div></div>
+        </div>
+        <div class="al-item fail">
+          <div class="al-icon">✗</div>
+          <div><div class="al-title">No Lead Capture / WhatsApp CTA</div><div class="al-desc">No visible enquiry form, no WhatsApp button, no clear call-to-action above the fold</div></div>
+        </div>
+        <div class="al-item fail">
+          <div class="al-icon">✗</div>
+          <div><div class="al-title">No Product Category Pages</div><div class="al-desc">Ads have no specific landing page — product-based searches have nowhere relevant to land</div></div>
+        </div>
+        <div class="al-item warn">
+          <div class="al-icon">~</div>
+          <div><div class="al-title">Brand Consistency Needed</div><div class="al-desc">Needs Fi-Tec Group endorsement and a unified premium visual identity</div></div>
+        </div>
+        <div class="al-item fail">
+          <div class="al-icon">✗</div>
+          <div><div class="al-title">Slow Page Load</div><div class="al-desc">Directly hurts Google Ads Quality Score — increases cost-per-click unnecessarily</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: recommendation + scope -->
+    <div style="display:flex;flex-direction:column;gap:16px;">
+      <div class="verdict v-action">
+        <div class="verdict-ico">🛠</div>
+        <div class="verdict-body">
+          <h4>Recommendation: Rebuild with Targeted Landing Pages</h4>
+          <p>Do not run paid ads to the current site. A focused rebuild — product pages, strong CTAs, WhatsApp integration, mobile-first design — will significantly reduce cost-per-lead and improve conversion. This is the first priority before any campaign launches.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-h">
+          <span class="card-title">Website Rebuild Scope</span>
+          <span class="tag t-active">Week 1–2 Priority</span>
+        </div>
+        <table class="tbl">
+          <thead><tr><th>Page / Feature</th><th>Purpose</th><th>Priority</th></tr></thead>
+          <tbody>
+            <tr><td class="td-name">Homepage (Rebuilt)</td><td>Premium hero, product overview, WhatsApp CTA</td><td><span class="tag t-hi">Urgent</span></td></tr>
+            <tr><td class="td-name">Product Category Pages</td><td>Cooking, Refrigeration, Warewash — SEO landing pages</td><td><span class="tag t-hi">Urgent</span></td></tr>
+            <tr><td class="td-name">Enquiry Form + WhatsApp Button</td><td>Lead capture on every product page</td><td><span class="tag t-hi">Urgent</span></td></tr>
+            <tr><td class="td-name">Brand Portfolio Page</td><td>Fagor, Hoshizaki, Celfrost, Western — trust builder</td><td><span class="tag t-med">High</span></td></tr>
+            <tr><td class="td-name">About / Fi-Tec Endorsement</td><td>"A Fi-Tec Group Company" credibility signal</td><td><span class="tag t-med">High</span></td></tr>
+            <tr><td class="td-name">GA4 + Search Console Setup</td><td>Track all traffic &amp; conversions from Day 1</td><td><span class="tag t-hi">Urgent</span></td></tr>
+          </tbody>
+        </table>
+
+        <!-- Website Pricing Callout — separate from package -->
+        <div class="ws-price">
+          <h4>Website Rebuild — Separate from the ₹38,000 Monthly Package</h4>
+          <p style="font-size:13px;color:var(--t2);line-height:1.65;">The ₹38,000/month service fee covers digital marketing management only. If a website rebuild or modification is needed (which we strongly recommend), it will be scoped and priced separately. Two options below — choose based on current site condition:</p>
+          <div class="ws-options">
+            <div class="ws-opt">
+              <div class="ws-opt-name">Option A — Modify Existing Site</div>
+              <div class="ws-opt-price">₹8,000–₹12,000</div>
+              <div class="ws-opt-note">If the current polemarks.in is built on WordPress/Wix — we add product pages, WhatsApp CTAs, lead forms, and mobile fixes. One-time cost. Delivery: 7–10 working days.</div>
+            </div>
+            <div class="ws-opt" style="border-color:rgba(184,146,58,0.2);">
+              <div class="ws-opt-name">Option B — Full Rebuild</div>
+              <div class="ws-opt-price">₹18,000–₹25,000</div>
+              <div class="ws-opt-note">Complete new build — premium design, full product catalogue, SEO-ready structure, fast loading, brand-consistent. One-time cost. Delivery: 12–16 working days.</div>
+            </div>
+          </div>
+          <div class="ins gold" style="margin-top:14px;">
+            <span class="ins-ico">💡</span>
+            <span><strong>Our suggestion:</strong> Option B full rebuild for best campaign results. It's a one-time investment that pays for itself in reduced ad cost within the first month.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ──────────────────────────────────────────────
+     02 · EXECUTION PLAN
+────────────────────────────────────────────── -->
+<section id="plan">
+  <div class="sh">
+    <span class="sh-n">02</span>
+    <span class="sh-title">Step-by-Step Execution Plan</span>
+    <div class="sh-line"></div>
+    <span class="sh-sub">12-Week Sprint — Foundation to First Results</span>
+  </div>
+
+  <!-- Timeline Strip -->
+  <div class="card" style="padding:0;overflow:hidden;margin-bottom:24px;">
+    <div style="padding:14px 20px;border-bottom:1px solid var(--b1);display:flex;align-items:center;justify-content:space-between;">
+      <span style="font-family:'Syne',sans-serif;font-size:12.5px;font-weight:700;color:#fff;">12-Week Sprint Timeline</span>
+      <span class="tag t-gold">Ads live from Week 5</span>
+    </div>
+    <div class="timeline">
+      <div class="tl now">
+        <div class="tl-dot"></div>
+        <span class="tl-wk">Week 1–2</span>
+        <div class="tl-name">Foundation Sprint</div>
+        <ul class="tl-items">
+          <li>Website rebuild starts</li>
+          <li>Instagram + FB setup</li>
+          <li>Google My Business</li>
+          <li>Keyword research</li>
+        </ul>
+      </div>
+      <div class="tl">
+        <div class="tl-dot"></div>
+        <span class="tl-wk">Week 3–4</span>
+        <div class="tl-name">Website Live + Content</div>
+        <ul class="tl-items">
+          <li>New site goes live</li>
+          <li>9-post hero grid live</li>
+          <li>First Reels published</li>
+          <li>Tracking verified</li>
+        </ul>
+      </div>
+      <div class="tl">
+        <div class="tl-dot"></div>
+        <span class="tl-wk">Week 5–6</span>
+        <div class="tl-name">Campaigns Launch</div>
+        <ul class="tl-items">
+          <li>Meta Ads go live</li>
+          <li>Google Search Ads</li>
+          <li>WhatsApp setup done</li>
+          <li>Content calendar set</li>
+        </ul>
+      </div>
+      <div class="tl">
+        <div class="tl-dot"></div>
+        <span class="tl-wk">Week 7–8</span>
+        <div class="tl-name">Optimise &amp; Learn</div>
+        <ul class="tl-items">
+          <li>First campaign review</li>
+          <li>Pause low performers</li>
+          <li>Scale winning ad sets</li>
+          <li>First lead reports</li>
+        </ul>
+      </div>
+      <div class="tl">
+        <div class="tl-dot"></div>
+        <span class="tl-wk">Week 9–10</span>
+        <div class="tl-name">Growth Push</div>
+        <ul class="tl-items">
+          <li>Instagram 500+ followers</li>
+          <li>Reel engagement boost</li>
+          <li>Retargeting live</li>
+          <li>BD outreach support</li>
+        </ul>
+      </div>
+      <div class="tl">
+        <div class="tl-dot"></div>
+        <span class="tl-wk">Week 11–12</span>
+        <div class="tl-name">Month 3 Review</div>
+        <ul class="tl-items">
+          <li>Full 90-day review</li>
+          <li>First case study live</li>
+          <li>Month 4+ strategy</li>
+          <li>Budget reallocation</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Phase Accordions -->
+  <div>
+
+    <div class="phase" style="border-color:rgba(192,80,32,0.2);">
+      <div class="phase-hd" onclick="toggle(this)" style="background:rgba(192,80,32,0.04);">
+        <span class="phase-n">PHASE 01</span>
+        <span class="phase-title">Foundation — Website, Accounts &amp; Content Setup</span>
+        <span class="phase-period">Week 1–4</span>
+        <span class="tag t-active" style="margin-left:6px;">Active Now</span>
+        <span class="phase-arr open">▼</span>
+      </div>
+      <div class="phase-bd open">
+        <table class="tbl">
+          <thead><tr><th style="width:28px;"></th><th>Task</th><th>Detail</th><th>Owner</th><th>When</th></tr></thead>
+          <tbody>
+            <tr><td><div class="chk" onclick="check(this)"></div></td><td class="td-name">Instagram Business Account</td><td>@polemarkskerala — bio, highlights, link-in-bio, contact buttons, brand kit</td><td><span class="tag t-gold">Flumenx</span></td><td><span class="tag t-dim">W1</span></td></tr>
+            <tr><td><div class="chk" onclick="check(this)"></div></td><td class="td-name">Facebook Business Page</td><td>Full page setup, cover, services, products catalogue, Meta Business Suite</td><td><span class="tag t-gold">Flumenx</span></td><td><span class="tag t-dim">W1</span></td></tr>
+            <tr><td><div class="chk" onclick="check(this)"></div></td><td class="td-name">Google My Business Setup</td><td>Verified GMB — category: Commercial Kitchen Equipment Supplier, Kerala targeting</td><td><span class="tag t-gold">Flumenx</span></td><td><span class="tag t-dim">W1</span></td></tr>
+            <tr><td><div class="chk" onclick="check(this)"></div></td><td class="td-name">WhatsApp Business Account</td><td>Business profile, product catalogue in WA, auto-reply and quick reply templates</td><td><span class="tag t-gold">Flumenx</span></td><td><span class="tag t-dim">W1</span></td></tr>
+            <tr><td><div class="chk" onclick="check(this)"></div></td><td class="td-name">GA4 + Search Console</td><td>Analytics live on website — track all traffic, form fills, WhatsApp clicks from Day 1</td><td><span class="tag t-gold">Flumenx</span></td><td><span class="tag t-dim">W2</span></td></tr>
+            <tr><td><div class="chk" onclick="check(this)"></div></td><td class="td-name">9-Post Instagram Hero Grid</td><td>9 high-quality product/kitchen images — Fagor, Hoshizaki, iKORE, cold rooms — premium look</td><td><span class="tag t-gold">Flumenx</span></td><td><span class="tag t-dim">W2–3</span></td></tr>
+            <tr><td><div class="chk" onclick="check(this)"></div></td><td class="td-name">Keyword Research + Content Plan</td><td>Target keywords for Kerala commercial kitchen equipment — 3-month content calendar</td><td><span class="tag t-gold">Flumenx</span></td><td><span class="tag t-dim">W1–2</span></td></tr>
+            <tr><td><div class="chk" onclick="check(this)"></div></td><td class="td-name">Product Images + Asset Collection</td><td>Collect brand images from Fagor, Celfrost, Hoshizaki, Western. Real installation photos from client</td><td><span class="tag" style="background:rgba(167,139,250,0.1);color:#C4B5FD;">Client</span></td><td><span class="tag t-dim">W1</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-hd" onclick="toggle(this)">
+        <span class="phase-n">PHASE 02</span>
+        <span class="phase-title">Campaign Launch — Meta Ads + Google Ads + Instagram Content</span>
+        <span class="phase-period">Week 5–8</span>
+        <span class="tag t-med" style="margin-left:6px;">Upcoming</span>
+        <span class="phase-arr">▼</span>
+      </div>
+      <div class="phase-bd">
+        <table class="tbl">
+          <thead><tr><th style="width:28px;"></th><th>Task</th><th>Detail</th><th>Owner</th><th>When</th></tr></thead>
+          <tbody>
+            <tr><td><div class="chk" onclick="check(this)"></div></td><td class="td-name">Meta Ads — Campaign Setup</td><td>3 ad sets: Hotel/Resort owners, Restaurant owners, Bakery owners in Kerala + Tamil Nadu. Formats: product carousel + transformation Reels</td><td><span class="tag t-gold">Flumenx</span></td><td><span class="tag t-dim">W5</span></td></tr>
+            <tr><td><div class="chk" onclick="check(this)"></div></td><td class="td-name">Google Search Ads</td><td>Keywords: "commercial kitchen equipment Kerala," "restaurant equipment Trivandrum," "Fagor oven," "Hoshizaki Kerala." Dedicated landing pages per campaign group</td><td><span class="tag t-gold">Flumenx</span></td><td><span class="tag t-dim">W5</span></td></tr>
+            <tr><td><div class="chk" onclick="check(this)"></div></td><td class="td-name">Instagram Reels — First 4 Videos</td><td>iKORE oven demo, cold room installation, kitchen transformation before/after, Hoshizaki ice machine</td><td><span class="tag t-gold">Flumenx</span></td><td><span class="tag t-dim">W5–6</span></td></tr>
+            <tr><td><div class="chk" onclick="check(this)"></div></td><td class="td-name">Story Ads with WhatsApp CTA</td><td>"DM for a free kitchen consultation" — targeting F&amp;B decision-makers in Kerala</td><td><span class="tag t-gold">Flumenx</span></td><td><span class="tag t-dim">W6</span></td></tr>
+            <tr><td><div class="chk" onclick="check(this)"></div></td><td class="td-name">Conversion Tracking Setup</td><td>WhatsApp clicks, form submissions, call clicks tracked in both Google Ads + Meta — every rupee traced to a lead</td><td><span class="tag t-gold">Flumenx</span></td><td><span class="tag t-dim">W5</span></td></tr>
+            <tr><td><div class="chk" onclick="check(this)"></div></td><td class="td-name">First Weekly Performance Report</td><td>Impressions, clicks, CPL, WhatsApp enquiries, Instagram reach — shared every Monday morning</td><td><span class="tag t-gold">Flumenx</span></td><td><span class="tag t-dim">W6+</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-hd" onclick="toggle(this)">
+        <span class="phase-n">PHASE 03</span>
+        <span class="phase-title">Scale &amp; Optimise — Double Down on What Works</span>
+        <span class="phase-period">Week 9–12</span>
+        <span class="tag t-lo" style="margin-left:6px;">Month 3</span>
+        <span class="phase-arr">▼</span>
+      </div>
+      <div class="phase-bd">
+        <table class="tbl">
+          <thead><tr><th style="width:28px;"></th><th>Task</th><th>Detail</th><th>Owner</th><th>When</th></tr></thead>
+          <tbody>
+            <tr><td><div class="chk" onclick="check(this)"></div></td><td class="td-name">Budget Reallocation</td><td>Pause underperforming ad sets, increase budget on highest-converting audiences and creatives by 50%</td><td><span class="tag t-gold">Flumenx</span></td><td><span class="tag t-dim">W9</span></td></tr>
+            <tr><td><div class="chk" onclick="check(this)"></div></td><td class="td-name">Retargeting Campaigns</td><td>Re-target website visitors who didn't enquire. Typically 2–3× higher conversion vs cold audiences</td><td><span class="tag t-gold">Flumenx</span></td><td><span class="tag t-dim">W9</span></td></tr>
+            <tr><td><div class="chk" onclick="check(this)"></div></td><td class="td-name">First Case Study Published</td><td>First installed kitchen documented — photos, context, outcome. Used for ads + SEO + trust-building</td><td><span class="tag" style="background:rgba(167,139,250,0.1);color:#C4B5FD;">Both</span></td><td><span class="tag t-dim">W10</span></td></tr>
+            <tr><td><div class="chk" onclick="check(this)"></div></td><td class="td-name">Instagram Follower Growth Push</td><td>Target 1,500–2,000 followers by Week 12 via Reel boosts and targeted engagement campaigns</td><td><span class="tag t-gold">Flumenx</span></td><td><span class="tag t-dim">W9–12</span></td></tr>
+            <tr><td><div class="chk" onclick="check(this)"></div></td><td class="td-name">90-Day Full Review</td><td>Complete KPI review — leads, cost per lead, Instagram growth, website traffic, conversions. Month 4+ strategy</td><td><span class="tag t-gold">Flumenx</span></td><td><span class="tag t-dim">W12</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Content Calendar -->
+    <div class="phase" style="border-color:rgba(184,146,58,0.18);">
+      <div class="phase-hd" onclick="toggle(this)" style="background:rgba(184,146,58,0.03);">
+        <span class="phase-n">ONGOING</span>
+        <span class="phase-title">Monthly Content Calendar — Instagram &amp; Facebook</span>
+        <span class="phase-period">Every Month</span>
+        <span class="phase-arr">▼</span>
+      </div>
+      <div class="phase-bd">
+        <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:1px;border-radius:8px;overflow:hidden;margin-bottom:16px;border:1px solid var(--b1);">
+          <div style="padding:18px 14px;background:rgba(255,255,255,0.025);">
+            <div style="font-size:9.5px;letter-spacing:1.5px;color:var(--t3);text-transform:uppercase;margin-bottom:8px;">30%</div>
+            <div style="font-size:18px;margin-bottom:8px;">🍳</div>
+            <div style="font-family:'Syne',sans-serif;font-size:12px;font-weight:700;color:#fff;margin-bottom:5px;">Kitchen Transformations</div>
+            <div style="font-size:11px;color:var(--t3);line-height:1.5;">Before/after Reels of installed kitchens — highest organic reach</div>
+          </div>
+          <div style="padding:18px 14px;background:rgba(255,255,255,0.025);border-left:1px solid var(--b1);">
+            <div style="font-size:9.5px;letter-spacing:1.5px;color:var(--t3);text-transform:uppercase;margin-bottom:8px;">25%</div>
+            <div style="font-size:18px;margin-bottom:8px;">⭐</div>
+            <div style="font-family:'Syne',sans-serif;font-size:12px;font-weight:700;color:var(--gold2);margin-bottom:5px;">Brand Showcases</div>
+            <div style="font-size:11px;color:var(--t3);line-height:1.5;">Fagor, iKORE, Hoshizaki hero shots and product demos</div>
+          </div>
+          <div style="padding:18px 14px;background:rgba(255,255,255,0.025);border-left:1px solid var(--b1);">
+            <div style="font-size:9.5px;letter-spacing:1.5px;color:var(--t3);text-transform:uppercase;margin-bottom:8px;">20%</div>
+            <div style="font-size:18px;margin-bottom:8px;">👨‍🍳</div>
+            <div style="font-family:'Syne',sans-serif;font-size:12px;font-weight:700;color:var(--po2);margin-bottom:5px;">Behind the Scenes</div>
+            <div style="font-size:11px;color:var(--t3);line-height:1.5;">Chef stories, installation process, kitchen culture</div>
+          </div>
+          <div style="padding:18px 14px;background:rgba(255,255,255,0.025);border-left:1px solid var(--b1);">
+            <div style="font-size:9.5px;letter-spacing:1.5px;color:var(--t3);text-transform:uppercase;margin-bottom:8px;">15%</div>
+            <div style="font-size:18px;margin-bottom:8px;">💬</div>
+            <div style="font-family:'Syne',sans-serif;font-size:12px;font-weight:700;color:var(--ok-t);margin-bottom:5px;">Testimonials</div>
+            <div style="font-size:11px;color:var(--t3);line-height:1.5;">Client reveals, project outcomes, video quotes</div>
+          </div>
+          <div style="padding:18px 14px;background:rgba(255,255,255,0.025);border-left:1px solid var(--b1);">
+            <div style="font-size:9.5px;letter-spacing:1.5px;color:var(--t3);text-transform:uppercase;margin-bottom:8px;">10%</div>
+            <div style="font-size:18px;margin-bottom:8px;">📚</div>
+            <div style="font-family:'Syne',sans-serif;font-size:12px;font-weight:700;color:rgba(255,255,255,0.4);margin-bottom:5px;">Educational</div>
+            <div style="font-size:11px;color:var(--t3);line-height:1.5;">Buying guides, maintenance tips, comparisons</div>
+          </div>
+        </div>
+        <div class="ins muted">
+          <span class="ins-ico">📱</span>
+          <span><strong>4–5 posts/week.</strong> Reels are prioritised by the Instagram algorithm — 3–5× more reach than static posts. Every Reel should end with a "DM for a quote" or WhatsApp call-to-action.</span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /phases -->
+</section>
+
+<!-- ──────────────────────────────────────────────
+     03 · CHANNELS
+────────────────────────────────────────────── -->
+<section>
+  <div class="sh">
+    <span class="sh-n">03</span>
+    <span class="sh-title">Active Marketing Channels</span>
+    <div class="sh-line"></div>
+  </div>
+  <div class="ch-grid">
+    <div class="ch meta">
+      <div class="ch-name">Meta Ads (Instagram + Facebook)</div>
+      <div class="ch-desc">Primary awareness and lead generation. Targeting hotel/restaurant owners, F&amp;B directors, bakery owners, cloud kitchen entrepreneurs in Kerala and Tamil Nadu. Carousel ads + Reel boosts + Story ads with WhatsApp CTA.</div>
+      <div class="ch-kpis">
+        <div class="ck"><span class="ck-v">₹300–600</span><span class="ck-l">Target CPL</span></div>
+        <div class="ck"><span class="ck-v">₹10–15K</span><span class="ck-l">Monthly Budget</span></div>
+        <div class="ck"><span class="ck-v">8–12/mo</span><span class="ck-l">Leads Expected</span></div>
+      </div>
+    </div>
+    <div class="ch gads">
+      <div class="ch-name">Google Search Ads</div>
+      <div class="ch-desc">High-intent capture — buyers actively searching for commercial kitchen equipment in Kerala. Best for closing leads who already know what they want. Lower volume but higher quality enquiries.</div>
+      <div class="ch-kpis">
+        <div class="ck"><span class="ck-v">₹600–1,200</span><span class="ck-l">Target CPL</span></div>
+        <div class="ck"><span class="ck-v">₹5–8K</span><span class="ck-l">Monthly Budget</span></div>
+        <div class="ck"><span class="ck-v">3–6/mo</span><span class="ck-l">Leads Expected</span></div>
+      </div>
+    </div>
+    <div class="ch seo">
+      <div class="ch-name">SEO + Google My Business</div>
+      <div class="ch-desc">Long-term organic foundation. GMB is active from Day 1 for local search visibility. SEO blog content starts Month 2. Takes 3–4 months to rank — but once it does, leads are free and permanent.</div>
+      <div class="ch-kpis">
+        <div class="ck"><span class="ck-v">₹0</span><span class="ck-l">Per Organic Lead</span></div>
+        <div class="ck"><span class="ck-v">3–4 mo</span><span class="ck-l">To Rank</span></div>
+        <div class="ck"><span class="ck-v">Ongoing</span><span class="ck-l">Compounding Value</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ──────────────────────────────────────────────
+     04 · BUDGET
+────────────────────────────────────────────── -->
+<section id="budget">
+  <div class="sh">
+    <span class="sh-n">04</span>
+    <span class="sh-title">Budget Breakdown</span>
+    <div class="sh-line"></div>
+    <span class="sh-sub">Service Fee + Ad Spend — Full Transparency</span>
+  </div>
+
+  <div class="g2">
+    <div class="card">
+      <div class="card-h">
+        <span class="card-title">Monthly Investment Summary</span>
+        <span class="tag t-gold">Agreed Package</span>
+      </div>
+      <table class="btbl">
+        <thead><tr><th>Item</th><th>Type</th><th>Monthly Cost</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><div class="b-name">Flumenx Service Fee</div><div style="font-size:11px;color:var(--t3);margin-top:3px;">SMM, Google Ads management, SEO, GMB, content — everything managed by Flumenx</div></td>
+            <td><span class="tag t-gold">Service</span></td>
+            <td><span class="b-svc">₹38,000</span></td>
+          </tr>
+          <tr>
+            <td><div class="b-name">Meta Ads Spend (Instagram + Facebook)</div><div style="font-size:11px;color:var(--t3);margin-top:3px;">Paid directly to Meta by you. We manage and optimise the campaigns</div></td>
+            <td><span class="tag t-active">Ad Spend</span></td>
+            <td><span class="b-ad">₹10,000–₹15,000</span></td>
+          </tr>
+          <tr>
+            <td><div class="b-name">Google Ads Spend (Search + Display)</div><div style="font-size:11px;color:var(--t3);margin-top:3px;">Paid directly to Google by you. You own the account and control the budget</div></td>
+            <td><span class="tag t-active">Ad Spend</span></td>
+            <td><span class="b-ad">₹5,000–₹8,000</span></td>
+          </tr>
+          <tr>
+            <td style="color:var(--t3);font-size:12px;">GST @ 18% on service fee only</td>
+            <td><span class="tag t-dim">Tax</span></td>
+            <td style="color:var(--t2);font-family:'Syne',sans-serif;font-size:12px;font-weight:600;">₹6,840</td>
+          </tr>
+          <tr class="tr-total">
+            <td>Total Monthly Investment (approx.)</td>
+            <td></td>
+            <td><span class="b-tot">₹59,840–₹67,840</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="ins gold" style="margin-top:16px;">
+        <span class="ins-ico">ℹ️</span>
+        <span><strong>Ad spend is fully in your control.</strong> You top up your own Google and Meta accounts directly. We manage and optimise. You can increase or decrease at any time based on results and season.</span>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:16px;">
+      <div class="card">
+        <div class="card-h"><span class="card-title">What the ₹38,000 Covers</span></div>
+        <div style="display:flex;flex-direction:column;gap:9px;">
+          <div class="cl-item"><div class="chk done"></div><div class="cl-text"><strong>Instagram &amp; Facebook management</strong> — 4–5 posts/week, Reels, Stories, engagement</div></div>
+          <div class="cl-item"><div class="chk done"></div><div class="cl-text"><strong>Meta Ads management</strong> — campaign setup, creative, optimisation, reporting</div></div>
+          <div class="cl-item"><div class="chk done"></div><div class="cl-text"><strong>Google Ads management</strong> — search campaigns, keyword strategy, landing pages</div></div>
+          <div class="cl-item"><div class="chk done"></div><div class="cl-text"><strong>Basic SEO + GMB</strong> — Google My Business, on-page SEO, 2 blog posts/month</div></div>
+          <div class="cl-item"><div class="chk done"></div><div class="cl-text"><strong>WhatsApp Business setup</strong> — catalogue, templates, CTA integration</div></div>
+          <div class="cl-item"><div class="chk done"></div><div class="cl-text"><strong>Weekly performance reports</strong> — every Monday, full metrics</div></div>
+          <div class="cl-item"><div class="chk done"></div><div class="cl-text"><strong>Monthly strategy call</strong> — 30-min review with JC + Anoop</div></div>
+        </div>
+        <div class="ins orange" style="margin-top:14px;">
+          <span class="ins-ico">⚠️</span>
+          <span><strong>Website rebuild is NOT included</strong> in the ₹38,000 service fee. See Section 01 for website pricing options (₹8K–₹25K, one-time, separate invoice).</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-h"><span class="card-title">Recommended Ad Spend Scaling</span></div>
+        <table class="btbl" style="font-size:12px;">
+          <thead><tr><th>Month</th><th>Meta Ads</th><th>Google Ads</th><th>Expected Leads</th></tr></thead>
+          <tbody>
+            <tr><td style="color:#fff;">Month 1 (Test)</td><td>₹8,000</td><td>₹5,000</td><td style="color:var(--ok-t);">8–12 leads</td></tr>
+            <tr><td style="color:#fff;">Month 2 (Optimise)</td><td>₹12,000</td><td>₹6,000</td><td style="color:var(--ok-t);">10–16 leads</td></tr>
+            <tr><td style="color:#fff;">Month 3 (Scale)</td><td>₹15,000</td><td>₹8,000</td><td style="color:var(--ok-t);">12–20 leads</td></tr>
+            <tr><td style="color:#fff;">Month 4+ (Growth)</td><td>₹20,000+</td><td>₹10,000+</td><td style="color:var(--ok-t);">20–35 leads</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ──────────────────────────────────────────────
+     05 · KPIs
+────────────────────────────────────────────── -->
+<section id="kpis">
+  <div class="sh">
+    <span class="sh-n">05</span>
+    <span class="sh-title">KPIs &amp; Success Metrics</span>
+    <div class="sh-line"></div>
+    <span class="sh-sub">Realistic Targets — Reviewed Every Month</span>
+  </div>
+
+  <div class="ins muted" style="margin-bottom:24px;">
+    <span class="ins-ico">📊</span>
+    <span>These are <strong>honest, achievable targets</strong> based on typical performance for a new B2B product brand in Kerala with this budget. Month 1 is always a learning phase — we set benchmarks. Months 2–3 is where we optimise and improve. <strong>Review cadence:</strong> Weekly report · Monthly call · 90-day full review.</span>
+  </div>
+
+  <div class="kpi-grid">
+    <div class="kpi k1">
+      <span class="kpi-v" style="color:var(--po2);">8–15</span>
+      <span class="kpi-l">Qualified Leads / Month</span>
+      <span class="kpi-note">Month 1: 5–8 leads (learning phase). Month 2: 8–12. Month 3 target: 12–15. A "lead" = genuine enquiry from a hotel owner, restaurant, or bakery — not just a click.</span>
+      <span class="kpi-badge">Realistic by Month 3</span>
+    </div>
+    <div class="kpi k2">
+      <span class="kpi-v" style="color:var(--ok-t);">1,500–2,000</span>
+      <span class="kpi-l">Instagram Followers (Month 3)</span>
+      <span class="kpi-note">Month 1: 200–500 followers. Month 2: 700–1,000. Month 3: 1,500–2,000. Organic + promoted growth. 5,000 is a 6–9 month target with consistent content.</span>
+      <span class="kpi-badge">Realistic by Month 3</span>
+    </div>
+    <div class="kpi k3">
+      <span class="kpi-v" style="color:var(--gold2);">₹600–1,200</span>
+      <span class="kpi-l">Blended Cost Per Lead</span>
+      <span class="kpi-note">Month 1 CPL may be ₹1,500–2,000 as we learn the audience. We expect CPL to drop to ₹600–1,200 by Month 3 after optimisation. Lower in Meta, higher in Google Search.</span>
+      <span class="kpi-badge">Target: Month 3</span>
+    </div>
+    <div class="kpi k4">
+      <span class="kpi-v" style="color:#7AB0D8;">500–1,000</span>
+      <span class="kpi-l">Monthly Website Visitors</span>
+      <span class="kpi-note">Month 1 (post rebuild): 200–400 visitors from ads + GMB. Month 3: 500–1,000. Organic search adds more from Month 4+ as SEO builds.</span>
+      <span class="kpi-badge">Target: Month 2–3</span>
+    </div>
+    <div class="kpi k1">
+      <span class="kpi-v" style="color:var(--po2);">4+</span>
+      <span class="kpi-l">Reels Published / Month</span>
+      <span class="kpi-note">1 Reel per week minimum. Kitchen transformations and product demos consistently perform best. Each Reel gets a 3–5 day boost budget of ₹500–1,000 if it performs well organically.</span>
+      <span class="kpi-badge">Ongoing from Week 4</span>
+    </div>
+    <div class="kpi k2">
+      <span class="kpi-v" style="color:var(--ok-t);">5–10</span>
+      <span class="kpi-l">WhatsApp Enquiries / Month</span>
+      <span class="kpi-note">Tracked via WhatsApp click events in Meta and Google Ads. Strong WhatsApp CTAs in ads and Reels can generate 5–10 direct messages per month by Month 2.</span>
+      <span class="kpi-badge">Target: Month 2</span>
+    </div>
+    <div class="kpi k3">
+      <span class="kpi-v" style="color:var(--gold2);">3–5</span>
+      <span class="kpi-l">GMB Enquiries / Month</span>
+      <span class="kpi-note">Calls + direction clicks + website clicks from Google My Business. Modest but highly relevant — these are people searching specifically for kitchen equipment in the area.</span>
+      <span class="kpi-badge">Target: Month 2</span>
+    </div>
+    <div class="kpi k4">
+      <span class="kpi-v" style="color:#7AB0D8);">1</span>
+      <span class="kpi-l">Project Closed from Digital</span>
+      <span class="kpi-note">Even 1 hotel kitchen project from digital = ₹5–15 Lakh revenue for Polemarks. That alone justifies the entire 3-month investment. Month 2–3 is a realistic first-close target.</span>
+      <span class="kpi-badge">Target: Month 2–3</span>
+    </div>
+  </div>
+
+  <div class="ins green" style="margin-top:20px;">
+    <span class="ins-ico">💬</span>
+    <span><strong>Speed of follow-up is everything.</strong> Digital generates enquiries — converting them to sales is the Polemarks team's job. Every WhatsApp message and form submission should be followed up within 2 hours during business hours. No digital strategy can overcome slow response.</span>
+  </div>
+</section>
+
+<!-- ──────────────────────────────────────────────
+     06 · WHAT WE NEED FROM CLIENT
+────────────────────────────────────────────── -->
+<section>
+  <div class="sh">
+    <span class="sh-n">06</span>
+    <span class="sh-title">What We Need from Polemarks — Day 1</span>
+    <div class="sh-line"></div>
+    <span class="sh-sub">Your Side of the Launch Checklist</span>
+  </div>
+  <div class="g2">
+    <div class="card">
+      <div class="card-h"><span class="card-title">Immediate Requirements (Week 1)</span></div>
+      <table class="tbl">
+        <thead><tr><th style="width:28px;"></th><th>Item</th><th>Why It's Needed</th></tr></thead>
+        <tbody>
+          <tr><td><div class="chk" onclick="check(this)"></div></td><td class="td-name">Domain / hosting access (polemarks.in)</td><td>To rebuild or modify the website</td></tr>
+          <tr><td><div class="chk" onclick="check(this)"></div></td><td class="td-name">Product images from brand suppliers</td><td>Fagor, Hoshizaki, Celfrost, Western, Williams — for grid and website</td></tr>
+          <tr><td><div class="chk" onclick="check(this)"></div></td><td class="td-name">Any existing installation photos</td><td>Real photos of installed kitchens = best-performing content by far</td></tr>
+          <tr><td><div class="chk" onclick="check(this)"></div></td><td class="td-name">Dedicated phone for WhatsApp Business</td><td>Business number for WhatsApp Business account</td></tr>
+          <tr><td><div class="chk" onclick="check(this)"></div></td><td class="td-name">Business email — sales@polemarks.in</td><td>Professional email for enquiry forms and communications</td></tr>
+          <tr><td><div class="chk" onclick="check(this)"></div></td><td class="td-name">Google account for GMB verification</td><td>To claim and verify Google My Business listing</td></tr>
+          <tr><td><div class="chk" onclick="check(this)"></div></td><td class="td-name">Meta Business Account (Facebook)</td><td>To run Instagram + Facebook Ads — we guide setup if needed</td></tr>
+          <tr><td><div class="chk" onclick="check(this)"></div></td><td class="td-name">Google Ads account</td><td>Create at ads.google.com — we manage, you own and control billing</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px;">
+      <div class="card" style="background:rgba(74,163,105,0.04);border-color:rgba(74,163,105,0.15);">
+        <div class="card-h"><span class="card-title" style="color:var(--ok-t);">Flumenx Delivers</span></div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div class="cl-item"><div class="chk done"></div><div class="cl-text">All social media content creation — graphics, copy, Reels editing</div></div>
+          <div class="cl-item"><div class="chk done"></div><div class="cl-text">Ad creative design + copywriting</div></div>
+          <div class="cl-item"><div class="chk done"></div><div class="cl-text">Campaign setup, targeting, and daily monitoring</div></div>
+          <div class="cl-item"><div class="chk done"></div><div class="cl-text">Weekly performance reports + monthly strategy calls</div></div>
+          <div class="cl-item"><div class="chk done"></div><div class="cl-text">SEO setup, GMB management, keyword tracking</div></div>
+          <div class="cl-item"><div class="chk done"></div><div class="cl-text">WhatsApp Business configuration and templates</div></div>
+        </div>
+      </div>
+      <div class="verdict v-action">
+        <div class="verdict-ico">📅</div>
+        <div class="verdict-body">
+          <h4>Fastest Start: Share Access in Week 1</h4>
+          <p>The sooner we get the domain access, product images, and account credentials, the faster we launch. Every day of delay in Week 1 pushes the ad launch date further into Week 6+. Fastest possible ad launch: Day 30 from kickoff.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ──────────────────────────────────────────────
+     07 · ADD-ONS
+────────────────────────────────────────────── -->
+<section id="addons">
+  <div class="sh">
+    <span class="sh-n">07</span>
+    <span class="sh-title">Optional Add-Ons — When You're Ready</span>
+    <div class="sh-line"></div>
+  </div>
+
+  <div class="ins muted" style="margin-bottom:24px;">
+    <span class="ins-ico">✅</span>
+    <span>The ₹38,000 package gives you a strong foundation and will deliver real, measurable results in 60–90 days. These upgrades are optional — no pressure to take any immediately. They can be added in Month 2, 3, or whenever the foundation is delivering and you want to accelerate. <strong>Think of them as gear shifts, not requirements.</strong></span>
+  </div>
+
+  <div class="addon-grid">
+    <div class="addon featured">
+      <div class="addon-ey">Exclusive Flumenx Product</div>
+      <div class="addon-name">SAG-EO — Core</div>
+      <div class="addon-desc">Get Polemarks cited in AI-generated search results — Google AI Overviews, ChatGPT Search, Perplexity, Gemini. When a hotel GM asks an AI "best commercial kitchen equipment supplier in Kerala," this is what gets Polemarks into that answer.</div>
+      <div><span class="addon-price">₹35,000</span> <span class="addon-pnote">/ month — add-on to existing package</span></div>
+      <ul class="addon-ul">
+        <li>Technical SEO audit + fixes (site speed, structure, health)</li>
+        <li>Information architecture — topic clustering for kitchen equipment</li>
+        <li>FAQ schema markup on all product pages (Answer Engine Optimisation)</li>
+        <li>50 question inventory — AI citation-focused queries</li>
+        <li>5 Answer-First Pages/month — structured to be cited by AI</li>
+        <li>Brand Entity Footprint — establish Polemarks in AI knowledge graphs</li>
+        <li>Monthly AI visibility tracking — appearing in Gemini, ChatGPT, Perplexity?</li>
+      </ul>
+    </div>
+
+    <div class="addon">
+      <div class="addon-ey" style="color:var(--ok-t);">Good Starting Point for SEO</div>
+      <div class="addon-name">SEO Growth Package</div>
+      <div class="addon-desc">Traditional SEO for sustainable organic growth — without the AI optimisation layer of SAG-EO. A practical, cost-effective option if SAG-EO feels like too much too soon. Can upgrade to SAG-EO anytime.</div>
+      <div><span class="addon-price" style="color:var(--gold2);">₹15,000</span> <span class="addon-pnote">/ month — add-on</span></div>
+      <ul class="addon-ul">
+        <li>20–30 keyword strategy for Kerala kitchen equipment market</li>
+        <li>On-page SEO for 10 product pages/month</li>
+        <li>Technical SEO: basic audit and fixes</li>
+        <li>2 SEO blog posts/month (e.g., "Best commercial ovens for Kerala hotels")</li>
+        <li>5 high-quality backlinks/month</li>
+        <li>Monthly rankings + traffic report</li>
+      </ul>
+    </div>
+
+    <div class="addon" style="border-color:rgba(107,191,138,0.15);">
+      <div class="addon-ey" style="color:var(--ok-t);">AEO — Answer Engine Optimisation</div>
+      <div class="addon-name">AEO Standalone</div>
+      <div class="addon-desc">A lighter version of SAG-EO focused specifically on being cited in voice search, featured snippets, and AI summaries. Good for brands that want AI visibility without the full SEO overhaul commitment.</div>
+      <div><span class="addon-price" style="color:var(--ok-t);">₹18,000</span> <span class="addon-pnote">/ month — add-on</span></div>
+      <ul class="addon-ul">
+        <li>FAQ schema markup on all service and product pages</li>
+        <li>25 question inventory for kitchen equipment category</li>
+        <li>3 Answer-First Pages/month</li>
+        <li>Voice search optimisation</li>
+        <li>Google AI Overview tracking</li>
+      </ul>
+    </div>
+
+    <div class="addon" style="border-color:rgba(184,146,58,0.15);">
+      <div class="addon-ey" style="color:var(--gold2);">Content Upgrade</div>
+      <div class="addon-name">Premium Content Package</div>
+      <div class="addon-desc">Upgrade content production — YouTube channel, professional kitchen video editing, and a monthly email newsletter to the hospitality contacts list.</div>
+      <div><span class="addon-price" style="color:var(--gold2);">₹12,000</span> <span class="addon-pnote">/ month — add-on</span></div>
+      <ul class="addon-ul">
+        <li>YouTube channel setup + 1 video/month (if shoot is done, we edit + grade)</li>
+        <li>"Brand Spotlight" monthly deep-dive video for one premium brand</li>
+        <li>Professional product image post-processing</li>
+        <li>Email newsletter — "Kitchen Brief" — monthly to hospitality subscriber list</li>
+        <li>WhatsApp broadcast campaign — new arrivals and promotions</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-strip">
+  <div class="cta-body">
+    <h3>Ready to Launch Polemarks Digitally?</h3>
+    <p>The plan is agreed. The first step is sharing domain access and product images in Week 1 so we can start the website and content builds in parallel. Campaigns go live as soon as the new site is ready — typically 30 days from kickoff.</p>
+  </div>
+  <div class="cta-btns">
+    <a href="https://wa.me/918592929394?text=Hi%20Anoop%2C%20we%27re%20ready%20to%20kick%20off%20the%20Polemarks%20digital%20launch." class="btn btn-main" target="_blank">💬 WhatsApp to Kickoff</a>
+    <a href="mailto:anoop@flumenx.com?subject=Polemarks%20Launch%20Kickoff" class="btn btn-ghost" target="_blank">📧 Email Anoop</a>
+    <a href="#plan" class="btn btn-gold">📋 View Execution Plan</a>
+  </div>
+</div>
+
+</div><!-- /main -->
+
+<!-- FOOTER -->
+<div style="border-top:1px solid var(--b1);">
+  <div class="foot">
+    <div class="foot-left">
+      <div class="foot-logo"><img src="data:image/png;base64,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HRGu5GMNqbWto1k1bpqG2W2luMUzKtsxdURsa3dDXD715OfOHRarREarWKxiGa7IdW23SF7q665Q1csc1N4pop2tc4HeaeO84cOCyLattJsWq9Li126kuUUwqGS708bA3ABzyeTnj2LVCiJNImcmVmWyLVVu0hqOpuNyhqpYpaR0DRTta528Xsdk7zhww0rDURZjMYbb2pbTLDqnSb7Tb6S5RTumZIHTxsDcNPHiHk/ItY2O63CyXOG5WypfT1MRy17eo6gjkQewr4URK1iIw3tpvbfbpYWR6gts9NNyMtL58Z790kFvyr3ptsWiWRb7amsld7xtM7Py4HyrmpFGZ0qtyat23TVFO6n01b30pcMeU1WC9v8A6sGQD3kn0LWFiuxptW2+93F89QYa6KqndnekfuvDnczxJweZXlKI1FYiNm/rntq0tU22qpo6C8h8sL2NLoYsAkEcfsi0AiIVrFej7tP1kVvv1ur5mvdFTVUUzwwAuIa8E4z14LelZtt0pNSTQtt96DnxuaMwxYyRj8IufCiFqRbq2jsG1NoLR1xlv2po7hVXVhLKNkNO18cDSOL8lwy88Ry4DPbw3V/CN2ffgb3+qs/fXIi/K87zDsxwfMNadbXm0z89o9I2fqcPzPW4encpEY+TPNte0Oq2g6oNU0SQWmlzHQU7ubW9XuHLedgZ7AAOOMnKPBe2yy7L9SyUV2fPNpe4u+24mDeNPJjDZmN7eQcBzGOZa0LTai/a4XhtLhdGujpRitej49TWvqXnUtO8v9Bv4U2x/wDG1x/u6T/Zc2+FVqXZPrq4Q6r0TcKll9kcI7hTyUT42VLAMNl3iMB7cAH3wxyLeOilCvoSbzMYkREUYfaiItMCIiAiIiiIogqiFREVREQEREUREQFMoiAoqiCIiIGVERQERQoBUREBEUKAiKKAVERVUKIURUUVUUBCiIPtREWmREUQVRERBFEQEREUREQERRAREQFERAQohQTKIigIihQCoiICIiAVERQFChUVWBCihQFERRQqKlRAUKqhQfciItMIiIgivREQQIiIoiIgKFEQEREEVREEREQFDzREBERZBflEVBERQFCiKgiIgh5qIiKKFEQgURFFQoiIChREH//Z" alt="Flumenx"></div>
+      <span class="foot-copy">Execution Dashboard · Polemarks Commercial Kitchen Solutions · Flumenx &amp; MiscArchive · 2026</span>
+    </div>
+    <div class="foot-links">
+      <a href="#website">Website</a>
+      <a href="#plan">Plan</a>
+      <a href="#budget">Budget</a>
+      <a href="#kpis">KPIs</a>
+      <a href="#addons">Add-Ons</a>
+    </div>
+  </div>
+</div>
+
+<script>
+function toggle(el) {
+  const bd = el.nextElementSibling;
+  const arr = el.querySelector('.phase-arr');
+  bd.classList.toggle('open');
+  arr.classList.toggle('open');
+}
+function check(el) {
+  el.classList.toggle('done');
+  const row = el.closest('tr');
+  const name = row.querySelector('.td-name');
+  if (el.classList.contains('done')) {
+    row.style.opacity = '0.45';
+    if (name) name.style.textDecoration = 'line-through';
+  } else {
+    row.style.opacity = '1';
+    if (name) name.style.textDecoration = 'none';
+  }
+}
+
+// Scroll progress
+const sb = document.getElementById('sbar');
+window.addEventListener('scroll', () => {
+  const h = document.documentElement.scrollHeight - window.innerHeight;
+  sb.style.width = (window.scrollY / h * 100) + '%';
+});
+
+// Nav active state on scroll
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nl');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      navLinks.forEach(l => l.classList.remove('active'));
+      const active = document.querySelector(`.nl[href="#${e.target.id}"]`);
+      if (active) active.classList.add('active');
+    }
+  });
+}, { rootMargin: '-40% 0px -55% 0px' });
+sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>

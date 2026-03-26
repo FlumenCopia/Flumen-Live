@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FlumenX × KACV — Growth Partnership Proposal</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;0,700;1,300;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --deep:#0B1E14;--forest:#122B1C;--forest2:#1A3D28;--forest3:#234D34;
+  --sage:#3D7A5A;--mint:#6BAF8A;--pale:#C8E6D8;
+  --rg:#C9956A;--rg2:#E8B990;--rg3:#F5D4B0;--rg-deep:#8B5E3C;
+  --cream:#F8F3EC;--parchment:#EEE5D4;
+  --text:#E8E0D4;--muted:#8BA898;--border:rgba(107,175,138,0.18);--border2:rgba(201,149,106,0.25);
+  --white:#fff;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  background:var(--deep);color:var(--text);
+  font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;line-height:1.7;
+  -webkit-user-select:none;-moz-user-select:none;user-select:none;
+  overflow-x:hidden;
+}
+body::after{
+  content:'CONFIDENTIAL · FLUMENX × KACV PROPOSAL 2026';
+  position:fixed;top:50%;left:50%;
+  transform:translate(-50%,-50%) rotate(-30deg);
+  font-size:20px;color:rgba(107,175,138,0.04);
+  white-space:nowrap;pointer-events:none;z-index:9999;
+  letter-spacing:5px;font-weight:600;
+}
+
+/* ── HERO ── */
+.hero{
+  background:linear-gradient(160deg,var(--deep) 0%,var(--forest) 55%,var(--forest2) 100%);
+  padding:64px 60px 56px;border-bottom:1px solid var(--border);
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;top:-80px;right:-80px;
+  width:480px;height:480px;border-radius:50%;
+  background:radial-gradient(circle,rgba(201,149,106,0.08) 0%,transparent 65%);
+  pointer-events:none;
+}
+.hero::after{
+  content:'';position:absolute;bottom:-40px;left:15%;
+  width:320px;height:320px;border-radius:50%;
+  background:radial-gradient(circle,rgba(107,175,138,0.07) 0%,transparent 65%);
+  pointer-events:none;
+}
+.hero-in{max-width:980px;margin:0 auto;position:relative;z-index:1;}
+.logo-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:44px;flex-wrap:wrap;gap:16px;}
+.logo-bar img{height:38px;}
+.proposal-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(201,149,106,0.12);border:1px solid var(--border2);
+  color:var(--rg2);font-size:11px;letter-spacing:2px;text-transform:uppercase;
+  padding:7px 18px;border-radius:20px;
+}
+.badge-dot{width:6px;height:6px;border-radius:50%;background:var(--rg2);animation:blink 2s infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.4}}
+.hero h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(32px,4vw,56px);font-weight:700;line-height:1.1;
+  color:var(--cream);margin-bottom:16px;
+}
+.hero h1 .g{color:var(--mint);} .hero h1 .r{color:var(--rg2);font-style:italic;}
+.hero-sub{font-size:15px;color:var(--muted);max-width:580px;line-height:1.75;margin-bottom:44px;}
+.hero-meta{
+  display:flex;flex-wrap:wrap;gap:28px;
+  padding-top:24px;border-top:1px solid var(--border);
+}
+.hm strong{display:block;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--rg);margin-bottom:3px;}
+.hm span{font-size:13px;color:var(--muted);}
+
+/* ── NAV ── */
+.nav{
+  position:sticky;top:0;z-index:100;
+  background:rgba(11,30,20,0.96);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+}
+.nav-in{
+  max-width:980px;margin:0 auto;padding:0 60px;
+  display:flex;gap:0;overflow-x:auto;scrollbar-width:none;
+}
+.nav-in::-webkit-scrollbar{display:none;}
+.nb{
+  padding:14px 16px;background:none;border:none;
+  color:var(--muted);font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:11px;letter-spacing:1.5px;text-transform:uppercase;
+  cursor:pointer;white-space:nowrap;
+  border-bottom:2px solid transparent;transition:all .2s;
+}
+.nb:hover{color:var(--rg2);}
+.nb.on{color:var(--rg2);border-bottom-color:var(--rg2);}
+
+/* ── LAYOUT ── */
+.wrap{max-width:980px;margin:0 auto;padding:0 60px;}
+@media(max-width:700px){.wrap,.hero,.nav-in{padding-left:22px;padding-right:22px;}}
+.sec{display:none;padding:60px 0;}
+.sec.on{display:block;}
+@keyframes up{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.sec.on{animation:up .35s ease;}
+
+/* TYPOGRAPHY */
+.lbl{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--rg);margin-bottom:8px;}
+h2{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3vw,40px);font-weight:700;color:var(--cream);margin-bottom:6px;}
+h3{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:500;color:var(--rg2);margin:34px 0 12px;}
+h4{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin:20px 0 10px;}
+p{color:#8BA898;margin-bottom:13px;}
+.lead{font-size:16px;color:#B5C8BE;line-height:1.8;margin-bottom:18px;}
+.hr{height:1px;background:var(--border);margin:44px 0;}
+
+/* STAT CARDS */
+.sg{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:13px;margin:24px 0;}
+.sc{
+  background:var(--forest2);border:1px solid var(--border);
+  border-radius:10px;padding:18px 20px;position:relative;overflow:hidden;
+}
+.sc::before{content:'';position:absolute;top:0;left:0;width:2px;height:100%;background:var(--sage);}
+.sc.gold::before{background:var(--rg);}
+.sc-n{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:700;color:var(--mint);line-height:1;}
+.sc.gold .sc-n{color:var(--rg2);}
+.sc-l{font-size:12px;color:var(--muted);margin-top:5px;}
+.sc-s{font-size:11px;color:var(--sage);margin-top:3px;}
+
+/* BLOCKS */
+.blk{background:var(--forest2);border:1px solid var(--border);border-radius:10px;padding:22px 26px;margin-bottom:14px;}
+.blk.rg{border-color:var(--border2);background:rgba(201,149,106,0.05);}
+.blk.ok{border-left:3px solid var(--sage);border-radius:0 10px 10px 0;background:rgba(61,122,90,0.06);}
+.blk.warn{border-left:3px solid var(--rg);border-radius:0 10px 10px 0;background:rgba(139,94,60,0.06);}
+
+/* TWO COL */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0;}
+@media(max-width:640px){.two{grid-template-columns:1fr;}}
+
+/* TABLE */
+.tbl{width:100%;border-collapse:collapse;margin:16px 0;font-size:13px;}
+.tbl th{
+  background:rgba(201,149,106,0.1);color:var(--rg2);
+  font-size:10px;letter-spacing:1px;text-transform:uppercase;
+  padding:10px 14px;text-align:left;border-bottom:1px solid var(--border2);
+}
+.tbl td{padding:10px 14px;border-bottom:1px solid rgba(255,255,255,0.04);color:#8BA898;vertical-align:top;}
+.tbl tr:hover td{background:rgba(201,149,106,0.03);}
+.tbl td strong{color:var(--cream);}
+
+/* BULLETS */
+.pts{list-style:none;margin:10px 0;}
+.pts li{
+  font-size:13px;color:#8BA898;padding:5px 0 5px 20px;
+  border-bottom:1px solid rgba(255,255,255,0.04);position:relative;
+}
+.pts li::before{content:'›';position:absolute;left:0;color:var(--rg);font-size:16px;line-height:1.4;}
+.pts li strong{color:var(--cream);}
+
+/* CALLOUT */
+.callout{
+  background:rgba(201,149,106,0.07);border:1px solid var(--border2);
+  border-radius:10px;padding:20px 24px;margin:22px 0;position:relative;
+}
+.callout::before{
+  content:'◆';position:absolute;top:-10px;left:20px;
+  font-size:14px;color:var(--rg2);background:var(--deep);padding:0 6px;
+}
+.callout p{color:var(--cream);margin:0;font-size:14px;}
+
+/* ── OPTION CARDS ── */
+.opt-wrap{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:28px 0;}
+@media(max-width:700px){.opt-wrap{grid-template-columns:1fr;}}
+.opt{
+  background:var(--forest2);border:1px solid var(--border);
+  border-radius:14px;padding:28px;position:relative;overflow:hidden;
+  transition:transform .2s,border-color .2s;
+}
+.opt:hover{transform:translateY(-3px);border-color:var(--border2);}
+.opt.feat{
+  border-color:var(--rg);
+  background:linear-gradient(150deg,rgba(139,94,60,0.12) 0%,var(--forest2) 55%);
+}
+.opt.feat::before{
+  content:'RECOMMENDED';
+  position:absolute;top:14px;right:14px;
+  font-size:9px;letter-spacing:2px;
+  background:rgba(201,149,106,0.15);color:var(--rg2);
+  padding:4px 12px;border-radius:20px;border:1px solid var(--border2);
+}
+.opt-badge{
+  display:inline-block;
+  font-size:10px;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--rg);margin-bottom:12px;
+}
+.opt h3{margin:0 0 6px;color:var(--cream);font-size:20px;font-family:'Cormorant Garamond',serif;font-weight:700;}
+.opt-tagline{font-size:13px;color:var(--muted);margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--border);}
+.opt-section{margin:16px 0;}
+.opt-section-title{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--rg2);margin-bottom:8px;}
+.opt-item{display:flex;justify-content:space-between;align-items:baseline;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:13px;}
+.opt-item-name{color:#8BA898;}
+.opt-item-price{color:var(--cream);font-weight:600;white-space:nowrap;margin-left:12px;}
+.opt-item-price.big{color:var(--rg2);font-family:'Cormorant Garamond',serif;font-size:18px;}
+.opt-total{
+  display:flex;justify-content:space-between;align-items:baseline;
+  padding:14px 0 0;margin-top:10px;
+  border-top:1px solid var(--border2);
+}
+.opt-total-lbl{font-size:12px;color:var(--rg2);letter-spacing:1px;text-transform:uppercase;}
+.opt-total-price{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;color:var(--rg2);}
+.opt-note{font-size:11px;color:var(--muted);margin-top:10px;padding-top:10px;border-top:1px solid var(--border);}
+.opt-incl{margin-top:16px;}
+.incl-item{display:flex;align-items:flex-start;gap:10px;padding:5px 0;font-size:13px;color:#8BA898;border-bottom:1px solid rgba(255,255,255,0.04);}
+.incl-item::before{content:'✓';color:var(--sage);flex-shrink:0;font-size:12px;margin-top:2px;}
+.incl-item.rg::before{content:'◆';color:var(--rg);font-size:8px;margin-top:5px;}
+
+/* PRICE GRID (packages) */
+.pg{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin:24px 0;}
+.pc{
+  background:var(--forest2);border:1px solid var(--border);
+  border-radius:12px;padding:22px;position:relative;overflow:hidden;
+  transition:transform .2s;
+}
+.pc:hover{transform:translateY(-3px);border-color:var(--border2);}
+.pc.feat{border-color:var(--rg);background:linear-gradient(150deg,rgba(139,94,60,0.12) 0%,var(--forest2) 60%);}
+.pc.feat::before{content:'BEST VALUE';position:absolute;top:12px;right:12px;font-size:9px;letter-spacing:2px;background:rgba(201,149,106,0.15);color:var(--rg2);padding:4px 10px;border-radius:20px;border:1px solid var(--border2);}
+.pc-name{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+.pc-price{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:700;color:var(--cream);line-height:1;}
+.pc-price sup{font-size:16px;vertical-align:super;}
+.pc-period{font-size:12px;color:var(--muted);margin-top:4px;margin-bottom:16px;}
+.pc-div{height:1px;background:var(--border);margin:14px 0;}
+.pc-feats{list-style:none;}
+.pc-feats li{font-size:12px;color:#8BA898;padding:4px 0 4px 18px;border-bottom:1px solid rgba(255,255,255,0.04);position:relative;}
+.pc-feats li::before{content:'✓';position:absolute;left:0;color:var(--sage);font-size:11px;}
+.pc-feats li.sub{font-size:11px;color:var(--text-muted);padding-left:18px;}
+.pc-feats li.sub::before{content:'';}
+.pc-note{font-size:11px;color:var(--muted);margin-top:12px;padding-top:10px;border-top:1px solid var(--border);}
+
+/* PAYMENT TERMS */
+.pt-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0;}
+@media(max-width:640px){.pt-grid{grid-template-columns:1fr;}}
+.pt-card{background:var(--forest2);border:1px solid var(--border);border-radius:10px;padding:22px;}
+.pt-card.rg{border-color:var(--border2);}
+.pt-card h4{color:var(--rg2);margin-top:0;}
+.pt-item{font-size:13px;color:#8BA898;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.04);}
+.pt-item em{color:var(--rg2);font-style:normal;font-weight:600;}
+
+/* CTA SECTION */
+.cta-bar{
+  background:linear-gradient(135deg,var(--forest2) 0%,var(--forest3) 100%);
+  border:1px solid var(--border2);border-radius:14px;
+  padding:36px 40px;margin:32px 0;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;
+}
+.cta-text h3{margin:0 0 6px;color:var(--cream);font-family:'Cormorant Garamond',serif;font-size:24px;}
+.cta-text p{margin:0;font-size:14px;color:var(--muted);}
+.cta-btns{display:flex;gap:12px;flex-wrap:wrap;}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:12px 22px;border-radius:8px;
+  font-size:13px;font-weight:600;letter-spacing:.5px;
+  text-decoration:none;cursor:pointer;border:none;
+  transition:transform .15s,opacity .15s;
+}
+.btn:hover{transform:translateY(-1px);opacity:.9;}
+.btn.gold{background:var(--rg);color:var(--cream);}
+.btn.outline{background:transparent;border:1px solid var(--border2);color:var(--rg2);}
+
+/* CONTACT */
+.contact-row{display:flex;flex-wrap:wrap;gap:16px;margin:20px 0;}
+.contact-card{
+  background:var(--forest2);border:1px solid var(--border);border-radius:10px;
+  padding:16px 20px;flex:1;min-width:180px;
+}
+.contact-card .type{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--rg);margin-bottom:6px;}
+.contact-card .val{font-size:14px;color:var(--cream);font-weight:500;}
+
+/* BADGE PILLS */
+.pill{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:500;margin:2px;}
+.pill-g{background:rgba(61,122,90,0.15);color:var(--mint);border:1px solid var(--border);}
+.pill-r{background:rgba(201,149,106,0.12);color:var(--rg2);border:1px solid var(--border2);}
+
+/* FOOT */
+.footer{
+  background:var(--forest);border-top:1px solid var(--border);
+  padding:28px 60px;text-align:center;font-size:11px;color:var(--muted);letter-spacing:1px;
+}
+.conf{
+  display:inline-block;border:1px solid rgba(201,149,106,.4);
+  color:var(--rg);padding:4px 16px;font-size:10px;letter-spacing:3px;text-transform:uppercase;margin-bottom:10px;border-radius:2px;
+}
+
+.pnotice{
+  display:none;position:fixed;top:20px;left:50%;transform:translateX(-50%);
+  background:var(--forest2);border:1px solid var(--border2);
+  color:var(--rg2);padding:10px 24px;border-radius:6px;
+  font-size:12px;z-index:9999;letter-spacing:1px;
+}
+.pnotice.on{display:block;}
+.scroll-up{
+  position:fixed;bottom:28px;right:28px;width:42px;height:42px;
+  background:var(--rg);border:none;border-radius:50%;
+  color:var(--cream);font-size:18px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;transition:opacity .3s;z-index:200;
+}
+.scroll-up.v{opacity:1;}
+</style>
+</head>
+<body>
+
+<div class="pnotice" id="pn">🔒 This document is protected.</div>
+
+<!-- HERO -->
+<div class="hero">
+<div class="hero-in">
+  <div class="logo-bar">
+    <img src="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCACEAUADASIAAhEBAxEB/8QAHQABAQADAQEBAQEAAAAAAAAAAAEGBwgFBAIDCf/EAFEQAAEDAwEFAgYJDg0FAAAAAAEAAgMEBREGBxIhMUFRYQgTFCJxgRYyNlJ0kaGxsxUXIyQ3QlNVVmJ1lLLSGCYzNWVzk5WjpMHR00NUY3Lh/8QAGwEBAQEBAQEBAQAAAAAAAAAAAAECAwYEBQf/xAAuEQEAAgECAwUHBQEAAAAAAAAAAQIRAyEEBTEGEhNRYRQiMnGRwdEjM0FSoeH/2gAMAwEAAhEDEQA/AOZUURHwqiiIKoiIKiiICqiICIiAiIgIiICIiAiIgIimUFRREDKZURBUUTKAiiILlRFEBMqKEoqkqEoVCgEr8lCoVBCV+Cv0V+Ciw+9ERVkREQEREBERAREQEREBFMogqZURARREFUREFUREBEyogqmURARRMoCFTKICKZRFCVEyogFQlCVFAK/JVK/JRUKhVK/JUV6CIi0wIiiCoohQVFEQCiKIKoiICIiAiIgIimUFTKiICIiGBEUygqhKiIBRERRTKKIKohUQFChUUFUKEqIIVCihUVFFSoivvRRVaYdAbHtL6duWz631lwstDVVD3S70ssIc44kcBx9AWX+wnSH5N2v9XauWYLhXwRCKCuqooxyayVzQPUCvsp6jUdQzfp5rtM33zHSOHyI5TpzM5y6a9hOkPybtf6u1PYTpD8m7X+rtXNP8av6a/wAVP41f01/ioz4c+bItltst9ftR8graOCopd6o+wyMBbwDscO5Zbt90/Y7Rpqgntdqo6OV9ZuOfDEGkjcccHHoWKbCN765lLv53vFTZzzzuFZ94SnuUt3w4fRuRZ+OGg0REdhdO2PQej5rJQzS2CjfJJTRuc4tOSS0EnmuYl2Dpz3PW34JF+wEcdWZjDlbW1NBR6wvFJSxNighrpo42N5NaHkABeOvc2he7y/fpGf8AbK8JHWOjprTWhdI1OnLZUT2Cjkllo4nvcWnLnFgJPPtWiNW2hz9oVxs1moi4+Wvip6eId/ADuXS2m54aXRVsqaiRsUMVuifI9xwGtEYJJ9S8LZ7p2mjuFx1fPTubWXeZ80DZB50MDjlox0c4YJ7OA6FHCt8ZmXh6F2QWm307KnUYbca08fEhxEMfd0Lj6eHd1WdQ6W0zC3di09aWDrijj4/Isa2qa3m03bp4bTEyauYGCSV/FlPv53QR1eQCQ3sBJ6A6FqdX6pqao1MuoboZN7eG7UvaAe4AgD1BFitr7zLferdlml73A51JSstVXjzJaVoazP5zORHowe9Y9oHY9S0hdV6qDauZshEdNG8+K3QeDnEYJzzx2c+wfdsM1rcdRQ1dqvEvj6qla2SOcgBz2E4IdjqDjj1ysq2lajfpbSNVdIWNfU5bFA1w83fccAnuAyfUjObRPdfdFpnTkUYjjsFqa0cgKSP/AGWOau2XaYvlO40tJHaqzHmTUrA1ufzmDgR6MHvWgq3WGqayrNXNqC5eNzkblQ5gHoDSAPUFuPYVre5ag8rs14m8oqaaMTRTkYc5mQCHY5kEt49/FFmlq75aU1VYbjpu8y2q5xBk0fFrm8WyNPJzT1B/+L++i9MXPVd4bbrcwDA3ppn+0ib2n/QdVuHwkrVFPpqiu4aPH0tR4ou7WPB4fG0fGV72xGxxWbQdJNuYqbgPKpXdSHe0Ho3cesntRvxPdy/npvZPpK0xNNVSG6VI9tLUnzc9zB5uPTn0r3Z9F6Rmj8W/TVpA/MpWMPxgArHdqlXr2V7bZpG2TthLMzVrHsDiT96zJyMdTz7MY460ptP7YKeobURfVsSA5ya8Oz6QX4PrRiIm28yzXWuxq1VdM+o0y40FU0ZEEjy6KTuyclp+MdwWirjQ1dur5qCtp3wVML9ySNw4tK6p2f1+o62zbuqbWaK4Qu3S8Fu7MOjgGk4PaPi54HkR2K16k2jS6ifRxvgtTfJmSY4VFS08XEdRH7XPvs+9CLXUmNpYPs42QeWU0Vz1V42JjwHR0LDuuI/8h5j0Dj3jktrUGj9K0MIiptPWxrR1dTte4+lzgSfjX9dUXtlmpYxHH4+sqCW08GcbxAy5zj0Y0cSf9SAuZ75r7V13qnzTX2shY48IqaQwsA7MNPz5PehEW1N3RV70JpK70zoamxUUZI4S08Qikb37zcfLkLQe1DQFbo2qZNHI6qtc7t2GcjDmu57jx0PYeRx6l7GyXaHfaTU1DabnXz19BWTNgxO8vdG5xw1wceOMkZHLC3br+1RXrRt1t8rQd+me6Mn717RvNPxgIRNtOcS0t4P+ptKW++fULWVhstbQVzx4mtrKKKR1NIeADnOaTuHgOxp48ASupvYFoX8i9N/3XD+6uBl074Mm1X6owQ6J1DUfbkTd221Dz/LMA/knH3wHLtAxzHHwHa7lGv3Z43hbTt8URM/WPv8AXzen5RxennwNWI9J+34YT4Smy8aWuZ1NYaUMsdY/EsMbcNpJT0AHJjunQHhw81ex4Guye2a71LVaj1AKWqtFleweQPLXGomcCW+MZ+DABPHg48OIDguk7zbaG8Wqptdyp2VNHVRmOaJ/JzT8x7+hXKtJVak8HPbHFXUvjauz1GRuk4bXUhI3mE8hI3hx6EA8nYP0dke0Htmn7Lrz+pXpP9o/Mf7G/mzzXl8aF/FpHuz19J/Dto7L9mYGTs70h/ctP+4uIfCl1joi8am9jmz7TGnbdarbIRNX0FthhfWTDgd17Gg+LbxAwcOOTxG6tp+FL4RFuuGlINLbPrj476rUrZbhXRnBhheM+IHZIQcP96PN5k7vIa9tL8i9o6QFRCijm+5ERaYbg2CaLobjTy6ju1MyoayUxUkUgyzIxl5HXngZ7D3Lbd01Fp+0TiluN4oKOXdBEUkzWuA6cM5AWP7D2gbMLSQMEmYnv+zPWhdpMj5df310jy4iulbknoHYA9QACPnx37Tl0f7N9IflJa/1hqezfSH5SWv9YauT0RrwYbF2NPbJtcEjHBzXGoLSORBDlm/hKe5O3fDh9G9a22KVkVHtJtZmcGtlL4cn3zmEN+M4HrW59sml7hqnS8VNa9x1VT1AmbG926JBuuaQCeAPHPHsRLbXhzKos0+tXrz8Rf5uD99PrV68/EP+bg/fR170ebC12Fpvjp624/7SL9gLljVGlL/pkU5vdB5IKgu8V9mY/e3cZ9q445jmuh9kF+gvuh6HdkaaijjbTVDM8WlgwCfSAD8fYjnq7xmHPW0MEa8v36Qn/bK8Jb02obKqy83ua9WCenbJUedPTzOLfOxjeacHn1Bxxzx44WK2XY1qiqq2tuT6S304d57zKJHEfmhvAn0kI3W9cdWzKAjUFusmm48uo6Wjpp7q4ciAxpjg9Ljhzh70Y++WT6pu7bJZpKwRGeckRUsDec0zjhjB6T8Qyei/VitVu07Zm0dLiKniBfJLK7i883Pe49e0/wCgWE6T1JS612k1L4gX2+zwE0WeT5HHddKR24yB2A9pRw6/J422W1vtOy6ljqZRPXT3Nk9ZN+EmcyTePoHAAdAAtHErobwj/cHTfpGP6ORc8I7ac5q2t4NPusuXwE/SMWbeET9z5vw2P5nLCPBp91ly+An6Rizfwifuft+Gx/M5GLfuOc1tDwa/dvXfo1/0sa1etoeDX7t679Gv+ljR11PhlsHwg/udS/CovnKyvRTmP0bZHR+0Nvg3fR4tqxPwg/ucy/CovnK/hsA1JDdNJtsssgFbbct3SeL4ictcPRnd7sDtRwx7mWQ3raFpCzXOa2XK7mnq4CBJGaWZ27kAjiGkHgRyXx/XV0F+Pv8AKT/uLztq+zVurKht1ttTHS3JkYY4SD7HMByyRxBHbg9AtYt2Pa2NQIjTUbWE48aalu6O/t+RFrWkxvLbFbtDtF5iFp0hXGtvFWfFQfa8jWwg+2lcXNAw0ZOOvBZfZ6ClstmgoIDuU9LFjeeeJxxLnHtJySe0lY1sz0FQaOpHSb4qrlO3E1QRgAe8YOjc+s/EB5u1DVNKLta9E08m/NdKuGGvLHYMUD3tDm56OcDj0Z7QjOImcVejbWG7W676sqGn7bpZYre1wx4ulAOD6ZD557t0dFy4ux7yxkWnq2ONjWMZSSNa1owAAw4AXG6OulOcvW0Z7sbL+kIPpGrrm5fzdU/1L/mK5G0Z7sbL+kIPpGrrm5fzdU/1L/mKJrdYcXlevoyzXm/6ooLXYWyG4yygwvY4t8URx3y4e1DcZz0wvLpYJ6uqipaaF808zxHHGxuXPcTgAAcySuz9guzSDQWn/KK1jJL9WsBq5Bx8U3mImnsHUjme4Bef7Qc70+VcN3ut7bVj7z6R/wAfrcv4K3FamOkR1lsG0Q1dNaqSnr6vyyrihYyeo3AzxrwAHO3RyycnC0x4XV+09T6NgsFZTx1V5qZGzUgDsOpmg4dKe4jLQOuT71bO2javtuiNK1N9uTg4RjcghDsOnlPtWD09T0AJ6LSHg5bO7lto2i1m0HWrRPZKSpDpI3DzKqYYLYGg/wDTYN3e7t1vHeJHg+yHJtTjOKjjL7UpOdtsz5R6R/P0eg5txcaWn4Fd5n/Ic8XChrbfM2GvpJ6WV8bJmsmjLHFj2hzHAHo5pBB6ggr5l/oj4UGxql2naWFba4YYtUW2M+Qy8G+UM5mneeWCclpPtXHoHOX+elbTVNFWT0dZBLT1MEjopoZWFr43tOHNcDxBBBBBX9beUtXuy/giIoy+5EUWmG49nW1LT+nNG0FmrqO6SVFP4zfdDFGWHekc4YJeDycOi1hqu4Q3XU1yudM2RkNVVSTMbIAHAOcSM4JGfWvLRGYrETlVERGn6ikkhlZLE9zJGODmuacFpHIhbq0xttpmUDIdRW2pfUsGDNSBpEneWuIwfQfiWk0RLUi3V0H9e7Sn4vvX9jF/yJ9e7Sn4vvX9jF/yLnxEZ8KrYe2LXFp1jHa22ynrYTSGUyeUMa3O9uYxuuPvSsV0jqW66Xugr7XPuuIxJE/jHK3scOvp5heMojUViIw6Asu2vT9RC0XShraKbHnbjRKz1HIPyL7q/bFo6ngL6eStrH9GR05afWXYC5xURjwqs62gbTLzqmN9DE0W+2O5wRuy6Ts33dfQMD0r87INX23R91rqq5wVczKiARsFOxriCHZ47zgsHRGu5GMNqbWto1k1bpqG2W2luMUzKtsxdURsa3dDXD715OfOHRarREarWKxiGa7IdW23SF7q665Q1csc1N4pop2tc4HeaeO84cOCyLattJsWq9Li126kuUUwqGS708bA3ABzyeTnj2LVCiJNImcmVmWyLVVu0hqOpuNyhqpYpaR0DRTta528Xsdk7zhww0rDURZjMYbb2pbTLDqnSb7Tb6S5RTumZIHTxsDcNPHiHk/ItY2O63CyXOG5WypfT1MRy17eo6gjkQewr4URK1iIw3tpvbfbpYWR6gts9NNyMtL58Z790kFvyr3ptsWiWRb7amsld7xtM7Py4HyrmpFGZ0qtyat23TVFO6n01b30pcMeU1WC9v8A6sGQD3kn0LWFiuxptW2+93F89QYa6KqndnekfuvDnczxJweZXlKI1FYiNm/rntq0tU22qpo6C8h8sL2NLoYsAkEcfsi0AiIVrFej7tP1kVvv1ur5mvdFTVUUzwwAuIa8E4z14LelZtt0pNSTQtt96DnxuaMwxYyRj8IufCiFqRbq2jsG1NoLR1xlv2po7hVXVhLKNkNO18cDSOL8lwy88Ry4DPbw3V/CN2ffgb3+qs/fXIi/K87zDsxwfMNadbXm0z89o9I2fqcPzPW4encpEY+TPNte0Oq2g6oNU0SQWmlzHQU7ubW9XuHLedgZ7AAOOMnKPBe2yy7L9SyUV2fPNpe4u+24mDeNPJjDZmN7eQcBzGOZa0LTai/a4XhtLhdGujpRitej49TWvqXnUtO8v9Bv4U2x/wDG1x/u6T/Zc2+FVqXZPrq4Q6r0TcKll9kcI7hTyUT42VLAMNl3iMB7cAH3wxyLeOilCvoSbzMYkREUYfaiItMCIiAiIiiIogqiFREVREQEREUREQFMoiAoqiCIiIGVERQERQoBUREBEUKAiKKAVERVUKIURUUVUUBCiIPtREWmREUQVRERBFEQEREUREQERRAREQFERAQohQTKIigIihQCoiICIiAVERQFChUVWBCihQFERRQqKlRAUKqhQfciItMIiIgivREQQIiIoiIgKFEQEREEVREEREQFDzREBERZBflEVBERQFCiKgiIgh5qIiKKFEQgURFFQoiIChREH//Z" alt="FlumenX">
+    <div class="proposal-badge"><span class="badge-dot"></span>Official Partnership Proposal</div>
+  </div>
+  <h1>Digital Growth Partnership<br><span class="g">Kerala Arts</span> & <span class="r">Crafts Village</span></h1>
+  <p class="hero-sub">A complete digital infrastructure and growth strategy — website, social media, SEO, AI search visibility, and paid advertising — built to convert Kovalam's tourism traffic into consistent revenue for KACV.</p>
+  <div class="hero-meta">
+    <div class="hm"><strong>Prepared By</strong><span>FlumenX Digital</span></div>
+    <div class="hm"><strong>Prepared For</strong><span>KACV, Kovalam</span></div>
+    <div class="hm"><strong>Date</strong><span>March 2026</span></div>
+    <div class="hm"><strong>Two Engagement Models</strong><span>Full-Service · Content Partnership</span></div>
+  </div>
+</div>
+</div>
+
+<!-- NAV -->
+<div class="nav">
+<div class="nav-in">
+  <button class="nb on" onclick="show('scope',this)">Scope</button>
+  <button class="nb" onclick="show('options',this)">Two Models</button>
+  <button class="nb" onclick="show('website',this)">Website</button>
+  <button class="nb" onclick="show('social',this)">Social Media</button>
+  <button class="nb" onclick="show('seo',this)">SEO + SAG-EO</button>
+  <button class="nb" onclick="show('ads',this)">Paid Ads</button>
+  <button class="nb" onclick="show('terms',this)">Terms</button>
+  <button class="nb" onclick="show('contact',this)">Contact</button>
+</div>
+</div>
+
+<!-- ===== SCOPE ===== -->
+<div class="sec on" id="s-scope">
+<div class="wrap">
+  <div class="lbl">Section 01</div>
+  <h2>What We're Building Together</h2>
+  <p class="lead">KACV is one of Kerala's most impressive cultural venues — 8.5 acres, 100+ artisans, an unmatched experience. This proposal covers a complete digital ecosystem to bring that venue to the audience it deserves: local enthusiasts, domestic tourists, and international visitors arriving at Kovalam every day.</p>
+
+  <div class="sg">
+    <div class="sc gold"><div class="sc-n">₹48K</div><div class="sc-l">Website (one-time)</div><div class="sc-s">+ GST + hosting/domain</div></div>
+    <div class="sc gold"><div class="sc-n">₹50K</div><div class="sc-l">Social Media / month</div><div class="sc-s">Full-service model</div></div>
+    <div class="sc gold"><div class="sc-n">₹40K</div><div class="sc-l">Social Media / month</div><div class="sc-s">Content partnership model</div></div>
+    <div class="sc"><div class="sc-n">₹35K+</div><div class="sc-l">SAG-EO / month</div><div class="sc-s">AI + organic search</div></div>
+    <div class="sc"><div class="sc-n">30%</div><div class="sc-l">Ads management fee</div><div class="sc-s">Of monthly ad budget</div></div>
+    <div class="sc gold"><div class="sc-n">₹15K</div><div class="sc-l">Annual Master Plan</div><div class="sc-s">One-time strategy document</div></div>
+  </div>
+
+  <h3>Why KACV Needs This Now</h3>
+  <div class="two">
+    <div class="blk warn">
+      <h4>Current Digital Gaps</h4>
+      <ul class="pts">
+        <li>Website status unclear — no confirmed access or control</li>
+        <li>No Meta Pixel — ad spend cannot optimise for ticket buyers</li>
+        <li>Zero tourist geo-targeting despite Kovalam hotel proximity</li>
+        <li>94.5% of Instagram audience is India-only — UK (Kerala's #1 tourist source) is 0.5%</li>
+        <li>1,470 link taps/month with very few ticket conversions — broken funnel</li>
+        <li>No GMB booking button, no SEO content, no AI search presence</li>
+      </ul>
+    </div>
+    <div class="blk ok">
+      <h4>Strengths to Capitalise On</h4>
+      <ul class="pts">
+        <li>582K Instagram views in 30 days — content formula works</li>
+        <li>8.4% ad CTR — well above industry average of 1–2%</li>
+        <li>16,651 organic shares — high viral coefficient</li>
+        <li>2.58 Cr Kerala tourists in 2025 — record year</li>
+        <li>Trivandrum is 3rd most visited district in Kerala</li>
+        <li>No comparable venue exists in Kerala — genuine monopoly position</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout">
+    <p><strong>The core opportunity:</strong> KACV sits 2km from Kovalam — one of India's most iconic beach destinations receiving 4.37 million visitors annually. International tourists from UK, US, and Germany are already in those hotels. They are not finding KACV because there is no digital infrastructure pointing them here. This proposal fixes that — completely.</p>
+  </div>
+
+  <h3>What This Engagement Covers</h3>
+  <table class="tbl">
+    <thead><tr><th>Service</th><th>What It Includes</th><th>Type</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Dynamic Website</strong></td><td>8–12 page Python-built website, SEO-ready, lead funnel, event booking, scalable</td><td><span class="pill pill-r">One-Time</span></td></tr>
+      <tr><td><strong>Social Media Management</strong></td><td>Posters, Reels, profile handling, community engagement, GMB, analytics</td><td><span class="pill pill-g">Monthly</span></td></tr>
+      <tr><td><strong>SAG-EO (AI + Organic Search)</strong></td><td>Google ranking + AI citation (ChatGPT, Gemini, Perplexity) + AEO</td><td><span class="pill pill-g">Monthly</span></td></tr>
+      <tr><td><strong>Paid Advertising</strong></td><td>Meta + Google campaign management, tourist geo-targeting, retargeting</td><td><span class="pill pill-g">Monthly</span></td></tr>
+      <tr><td><strong>Annual Strategy Plan</strong></td><td>12-month calendar, market research, event frameworks, keyword map</td><td><span class="pill pill-r">One-Time</span></td></tr>
+    </tbody>
+  </table>
+</div>
+</div>
+
+<!-- ===== OPTIONS ===== -->
+<div class="sec" id="s-options">
+<div class="wrap">
+  <div class="lbl">Section 02</div>
+  <h2>Choose Your Engagement Model</h2>
+  <p class="lead">Two clearly structured options — same quality of strategy and execution, adapted to how much creative content KACV's team wants to handle internally.</p>
+
+  <div class="opt-wrap">
+    <!-- OPTION 1 -->
+    <div class="opt feat">
+      <div class="opt-badge">Model A · Full-Service</div>
+      <h3>Everything Handled by FlumenX</h3>
+      <div class="opt-tagline">We own the strategy, content creation, execution, and reporting. KACV approves and grows.</div>
+
+      <div class="opt-section">
+        <div class="opt-section-title">One-Time Investment</div>
+        <div class="opt-item"><span class="opt-item-name">Dynamic Website (8–12 pages, Python)</span><span class="opt-item-price big">₹48,000</span></div>
+        <div class="opt-item"><span class="opt-item-name" style="font-size:11px;color:var(--muted)">+ GST · Hosting, domain & server billed separately</span><span class="opt-item-price" style="font-size:11px;color:var(--muted)">~₹8–15K/yr</span></div>
+        <div class="opt-item"><span class="opt-item-name">Annual Master Strategy Plan</span><span class="opt-item-price big">₹15,000</span></div>
+      </div>
+
+      <div class="opt-section">
+        <div class="opt-section-title">Monthly Retainer</div>
+        <div class="opt-item"><span class="opt-item-name">Social Media Management (Full)</span><span class="opt-item-price big">₹50,000</span></div>
+        <div class="opt-item"><span class="opt-item-name" style="font-size:11px;color:var(--muted)">10 posters · 8 Reels · GMB · All platforms · Analytics</span><span class="opt-item-price"></span></div>
+        <div class="opt-item"><span class="opt-item-name">SAG-EO Core (SEO + AI + AEO)</span><span class="opt-item-price big">₹35,000</span></div>
+        <div class="opt-item"><span class="opt-item-name">Paid Ads Management</span><span class="opt-item-price big">30% of budget</span></div>
+        <div class="opt-item"><span class="opt-item-name" style="font-size:11px;color:var(--muted)">Meta + Google · Tourist targeting · Retargeting · Reporting</span><span class="opt-item-price"></span></div>
+      </div>
+
+      <div class="opt-total">
+        <span class="opt-total-lbl">Monthly Total (excl. ads)</span>
+        <span class="opt-total-price">₹85,000 /mo</span>
+      </div>
+      <div class="opt-note">+ Ad spend paid directly by KACV to Meta/Google · + 30% management fee · Minimum 3-month commitment recommended</div>
+
+      <div class="opt-incl">
+        <div class="opt-section-title" style="margin-top:16px;">What's Included in Social Media (₹50K)</div>
+        <div class="incl-item">10 professional design posters/month</div>
+        <div class="incl-item">8 Reels/month (scripted, directed, edited)</div>
+        <div class="incl-item">All profile management — Instagram, Facebook, Pinterest, Twitter/X</div>
+        <div class="incl-item">Authority narrative & brand tone control</div>
+        <div class="incl-item">Google My Business (GMB) — Advanced optimisation + weekly posts</div>
+        <div class="incl-item">Campaign planning for events</div>
+        <div class="incl-item">Community engagement & DM management</div>
+        <div class="incl-item">Advanced analytics & monthly report</div>
+        <div class="incl-item">Founder / vision content</div>
+        <div class="incl-item">Lead nurturing via social + GMB</div>
+      </div>
+    </div>
+
+    <!-- OPTION 2 -->
+    <div class="opt">
+      <div class="opt-badge">Model B · Content Partnership</div>
+      <h3>KACV Provides Content, We Do the Rest</h3>
+      <div class="opt-tagline">Your team captures raw content — photos, videos, event moments. We handle all strategy, editing, posting, and marketing.</div>
+
+      <div class="opt-section">
+        <div class="opt-section-title">One-Time Investment</div>
+        <div class="opt-item"><span class="opt-item-name">Dynamic Website (8–12 pages, Python)</span><span class="opt-item-price big">₹48,000</span></div>
+        <div class="opt-item"><span class="opt-item-name" style="font-size:11px;color:var(--muted)">+ GST · Hosting, domain & server billed separately</span><span class="opt-item-price" style="font-size:11px;color:var(--muted)">~₹8–15K/yr</span></div>
+        <div class="opt-item"><span class="opt-item-name">Annual Master Strategy Plan</span><span class="opt-item-price big">₹15,000</span></div>
+      </div>
+
+      <div class="opt-section">
+        <div class="opt-section-title">Monthly Retainer</div>
+        <div class="opt-item"><span class="opt-item-name">Social Media Management (Content Partnership)</span><span class="opt-item-price big">₹40,000</span></div>
+        <div class="opt-item"><span class="opt-item-name" style="font-size:11px;color:var(--muted)">5 posters · 2 edited videos · All platform handling</span><span class="opt-item-price"></span></div>
+        <div class="opt-item"><span class="opt-item-name">SAG-EO Core (SEO + AI + AEO)</span><span class="opt-item-price big">₹35,000</span></div>
+        <div class="opt-item"><span class="opt-item-name">Paid Ads Management</span><span class="opt-item-price big">30% of budget</span></div>
+        <div class="opt-item"><span class="opt-item-name" style="font-size:11px;color:var(--muted)">Meta + Google · Tourist targeting · Retargeting · Reporting</span><span class="opt-item-price"></span></div>
+      </div>
+
+      <div class="opt-total">
+        <span class="opt-total-lbl">Monthly Total (excl. ads)</span>
+        <span class="opt-total-price">₹75,000 /mo</span>
+      </div>
+      <div class="opt-note">+ Ad spend paid directly by KACV to Meta/Google · + 30% management fee · Minimum 3-month commitment recommended</div>
+
+      <div class="opt-incl">
+        <div class="opt-section-title" style="margin-top:16px;">What's Included in Social Media (₹40K)</div>
+        <div class="incl-item">5 design posters/month (from raw content provided)</div>
+        <div class="incl-item">2 edited, optimised Reels/month (from raw footage provided)</div>
+        <div class="incl-item">All profile management — Instagram, Facebook, Pinterest, Twitter/X</div>
+        <div class="incl-item">Strategic storytelling & brand tone control</div>
+        <div class="incl-item">Google My Business (GMB) optimisation + posts</div>
+        <div class="incl-item">Campaign planning for events</div>
+        <div class="incl-item">Community engagement & DM management</div>
+        <div class="incl-item">Monthly analytics report</div>
+        <div class="incl-item rg">KACV team provides: raw photos, raw video, event footage</div>
+        <div class="incl-item rg">FlumenX handles: editing, captioning, strategy, scheduling, optimisation</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <p><strong>Our recommendation:</strong> Model A (Full-Service) is the fastest path to results because it removes all dependency on internal team bandwidth. For a venue running events regularly, having a dedicated creative team means no missed opportunities during busy event periods. Model B is ideal if KACV has a confident content creator on-site who captures material consistently.</p>
+  </div>
+</div>
+</div>
+
+<!-- ===== WEBSITE ===== -->
+<div class="sec" id="s-website">
+<div class="wrap">
+  <div class="lbl">Section 03</div>
+  <h2>Dynamic Website — ₹48,000 + GST</h2>
+  <p class="lead">A professional, scalable website built in Python — designed from day one for SEO, AI search visibility, lead generation, event booking, and future growth. Not a template. Not a page builder. A real, expandable digital foundation.</p>
+
+  <div class="callout">
+    <p><strong>On the current website:</strong> If KACV can provide access to the existing site (credentials, hosting details, or developer contact), we will assess whether it can be modified and migrated. If not recoverable, the new build is the stronger long-term investment — Python-based architecture means it can be expanded, integrated, and scaled to any level without platform limitations.</p>
+  </div>
+
+  <h3>What We Build</h3>
+  <table class="tbl">
+    <thead><tr><th>Page / Feature</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Homepage</strong></td><td>Hero, brand story, event highlights, CTA to book/visit</td></tr>
+      <tr><td><strong>About KACV</strong></td><td>8.5-acre story, ULCC background, artisan community, mission</td></tr>
+      <tr><td><strong>Events</strong></td><td>Dynamic event listing with date, description, ticket/booking integration</td></tr>
+      <tr><td><strong>Artisans / Studios</strong></td><td>Profile pages for featured artisans — builds SEO and emotional connection</td></tr>
+      <tr><td><strong>Workshops</strong></td><td>Workshop listing with online pre-booking form</td></tr>
+      <tr><td><strong>Visit Us</strong></td><td>Map, directions, timings, entry details, GMB integration</td></tr>
+      <tr><td><strong>Emporium / Shop</strong></td><td>Craft showcase with enquiry/order forms (future e-commerce ready)</td></tr>
+      <tr><td><strong>Gallery</strong></td><td>Dynamic image/video gallery, event recaps</td></tr>
+      <tr><td><strong>Tour Operators</strong></td><td>B2B enquiry page — group bookings, commission structure</td></tr>
+      <tr><td><strong>Blog / News</strong></td><td>SEO content hub — artisan stories, event recaps, craft guides</td></tr>
+      <tr><td><strong>Contact / Leads</strong></td><td>Lead capture with source tracking, WhatsApp CTA, email integration</td></tr>
+      <tr><td><strong>Admin Panel</strong></td><td>KACV team can update events, gallery, and artisan profiles independently</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Technical Highlights</h3>
+  <div class="two">
+    <div class="blk">
+      <h4>Built for SEO & AI Search</h4>
+      <ul class="pts">
+        <li>Schema markup / structured data from day one</li>
+        <li>Answer-first page architecture for AI citations</li>
+        <li>Fast load, mobile-first, Core Web Vitals optimised</li>
+        <li>Meta tags, OG tags, sitemap, robots.txt configured</li>
+        <li>Blog/content system for ongoing keyword targeting</li>
+      </ul>
+    </div>
+    <div class="blk">
+      <h4>Built for Growth & Revenue</h4>
+      <ul class="pts">
+        <li>Meta Pixel + Google Tag Manager integrated on launch</li>
+        <li>Event booking / ticket enquiry funnel built in</li>
+        <li>Lead capture with WhatsApp and email routing</li>
+        <li>Tour operator B2B enquiry page</li>
+        <li>Newsletter/WhatsApp list building from day one</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="blk rg">
+    <h4>Hosting, Domain & Server — Billed Separately</h4>
+    <ul class="pts">
+      <li><strong>Domain:</strong> ~₹1,000–1,500/year (if new domain needed)</li>
+      <li><strong>Hosting/Server:</strong> ~₹6,000–12,000/year depending on traffic and plan chosen</li>
+      <li><strong>SSL Certificate:</strong> Included with most hosting plans (Let's Encrypt)</li>
+      <li><strong>Annual Maintenance:</strong> Available as add-on after year 1</li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<!-- ===== SOCIAL MEDIA ===== -->
+<div class="sec" id="s-social">
+<div class="wrap">
+  <div class="lbl">Section 04</div>
+  <h2>Social Media Management</h2>
+  <p class="lead">Full management of KACV's digital presence across all platforms — content creation, community building, event marketing, and Google My Business — designed to turn reach into footfall and ticket sales.</p>
+
+  <div class="two">
+    <div>
+      <h3>Model A — Full-Service · ₹50,000/month</h3>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">Everything created, managed, and optimised by FlumenX.</p>
+      <ul class="pts">
+        <li><strong>10 professional posters/month</strong> — event promos, artisan stories, cultural content</li>
+        <li><strong>8 Reels/month</strong> — scripted, shot, edited, captioned, scheduled</li>
+        <li><strong>Authority narrative</strong> — brand voice, positioning, tone guidelines</li>
+        <li><strong>Founder / vision content</strong> — building credibility at leadership level</li>
+        <li><strong>Advanced GMB</strong> — weekly posts, Q&A, reviews, booking button, event listings</li>
+        <li><strong>Campaign planning</strong> — event-specific marketing roadmaps</li>
+        <li><strong>Community engagement</strong> — comments, DMs, follower growth</li>
+        <li><strong>Advanced analytics</strong> — monthly report, insights, recommendations</li>
+        <li><strong>All platform profiles</strong> — Instagram, Facebook, Pinterest, Twitter/X</li>
+        <li><strong>Lead nurturing</strong> — funnelling profile visitors toward bookings</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Model B — Content Partnership · ₹40,000/month</h3>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">KACV provides raw content. FlumenX handles everything else.</p>
+      <ul class="pts">
+        <li><strong>5 posters/month</strong> — designed from client-provided photos and event material</li>
+        <li><strong>2 edited Reels/month</strong> — from raw footage provided by KACV team</li>
+        <li><strong>Strategic storytelling</strong> — narrative and brand tone on all content</li>
+        <li><strong>GMB management</strong> — optimisation, posts, reviews, local SEO</li>
+        <li><strong>Campaign planning</strong> — event marketing roadmaps</li>
+        <li><strong>Community engagement</strong> — comments, DMs, follower growth</li>
+        <li><strong>Monthly analytics report</strong></li>
+        <li><strong>All platform profiles</strong> — Instagram, Facebook, Pinterest, Twitter/X</li>
+        <li style="color:var(--rg2);">KACV responsibility: raw photos, raw video, event content delivery</li>
+        <li style="color:var(--rg2);">FlumenX responsibility: editing, strategy, scheduling, optimisation</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Content Strategy — The Proven Formula</h3>
+  <table class="tbl">
+    <thead><tr><th>Reel Type</th><th>Frequency</th><th>Goal</th><th>Proven Reach</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Artisan face story</strong> — close-up, authentic</td><td>1/week</td><td>Brand credibility + intl. audience</td><td>50K–138K+</td></tr>
+      <tr><td><strong>Event energy</strong> — crowd, colour, atmosphere</td><td>Every event</td><td>FOMO + ticket sales</td><td>30K–50K</td></tr>
+      <tr><td><strong>Discovery hook</strong> — "Did you know KACV..."</td><td>1/week</td><td>New audience + saves</td><td>15K–40K</td></tr>
+      <tr><td><strong>Behind the scenes</strong> — process, making</td><td>1/week</td><td>Retention + workshop bookings</td><td>10K–25K</td></tr>
+    </tbody>
+  </table>
+</div>
+</div>
+
+<!-- ===== SEO + SAGEO ===== -->
+<div class="sec" id="s-seo">
+<div class="wrap">
+  <div class="lbl">Section 05</div>
+  <h2>SEO + SAG-EO — Search & AI Visibility</h2>
+  <p class="lead">Search behaviour has fundamentally shifted. Ranking on Google is no longer enough — KACV must also appear in AI-generated answers (ChatGPT, Gemini, Perplexity, Copilot). SAG-EO is FlumenX's exclusive methodology that covers both.</p>
+
+  <div class="blk rg">
+    <h4>What SAG-EO Covers</h4>
+    <div class="two" style="margin-top:12px;">
+      <div>
+        <p style="color:var(--rg2);font-size:13px;font-weight:600;margin-bottom:6px;">SEO — Traditional Search</p>
+        <ul class="pts">
+          <li>Technical SEO audit and fixes</li>
+          <li>Keyword strategy (tourist, cultural, local)</li>
+          <li>On-page optimisation — every page</li>
+          <li>High-quality backlink building</li>
+          <li>Monthly rankings and traffic reports</li>
+        </ul>
+      </div>
+      <div>
+        <p style="color:var(--rg2);font-size:13px;font-weight:600;margin-bottom:6px;">AEO + GEO — AI & Voice Search</p>
+        <ul class="pts">
+          <li>Answer-first page architecture</li>
+          <li>Schema / structured data (all types)</li>
+          <li>Question inventory — 50–150 questions answered</li>
+          <li>Citable content for AI summaries</li>
+          <li>Brand entity footprint — get cited in AI engines</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <h3>SAG-EO Packages</h3>
+  <div class="pg">
+    <div class="pc">
+      <div class="pc-name">SAG-EO Core</div>
+      <div class="pc-price"><sup>₹</sup>35,000</div>
+      <div class="pc-period">per month</div>
+      <div class="pc-div"></div>
+      <ul class="pc-feats">
+        <li>Technical SEO Audit + Fixes</li>
+        <li>Information Architecture <span style="color:var(--muted);font-size:11px">Basic clustering</span></li>
+        <li>Schema / Structured Data <span style="color:var(--muted);font-size:11px">Essential types</span></li>
+        <li>Question Inventory <span style="color:var(--muted);font-size:11px">50 questions</span></li>
+        <li>Answer-First Pages <span style="color:var(--muted);font-size:11px">5 pages/month</span></li>
+        <li>Citable Content Upgrades <span style="color:var(--muted);font-size:11px">2/month</span></li>
+        <li>Brand Entity Footprint <span style="color:var(--muted);font-size:11px">Basic setup</span></li>
+        <li>AI Visibility Tracking <span style="color:var(--muted);font-size:11px">Monthly report</span></li>
+        <li>Rankings & Traffic Reports</li>
+      </ul>
+      <div class="pc-note">Recommended starting point for KACV — covers core SEO + AI citation foundation.</div>
+    </div>
+    <div class="pc feat">
+      <div class="pc-name">SAG-EO Scale</div>
+      <div class="pc-price"><sup>₹</sup>55,000</div>
+      <div class="pc-period">per month</div>
+      <div class="pc-div"></div>
+      <ul class="pc-feats">
+        <li>Technical SEO Audit + Fixes</li>
+        <li>Information Architecture <span style="color:var(--muted);font-size:11px">Complete clustering</span></li>
+        <li>Schema / Structured Data <span style="color:var(--muted);font-size:11px">All relevant types</span></li>
+        <li>Question Inventory <span style="color:var(--muted);font-size:11px">150 questions</span></li>
+        <li>Answer-First Pages <span style="color:var(--muted);font-size:11px">10 pages/month</span></li>
+        <li>Citable Content Upgrades <span style="color:var(--muted);font-size:11px">5/month</span></li>
+        <li>Brand Entity Footprint <span style="color:var(--muted);font-size:11px">Complete setup</span></li>
+        <li>AI Visibility Tracking <span style="color:var(--muted);font-size:11px">Bi-weekly report</span></li>
+        <li>Rankings & Traffic Reports</li>
+      </ul>
+      <div class="pc-note">For aggressive organic growth and dominant AI citation presence across Google, ChatGPT, Gemini, and Perplexity.</div>
+    </div>
+    <div class="pc">
+      <div class="pc-name">SAG-EO Dominance</div>
+      <div class="pc-price"><sup>₹</sup>85,000</div>
+      <div class="pc-period">per month</div>
+      <div class="pc-div"></div>
+      <ul class="pc-feats">
+        <li>Technical SEO Audit + Fixes</li>
+        <li>Information Architecture <span style="color:var(--muted);font-size:11px">Advanced clustering</span></li>
+        <li>Schema / Structured Data <span style="color:var(--muted);font-size:11px">All types + custom</span></li>
+        <li>Question Inventory <span style="color:var(--muted);font-size:11px">Unlimited questions</span></li>
+        <li>Answer-First Pages <span style="color:var(--muted);font-size:11px">20 pages/month</span></li>
+        <li>Citable Content Upgrades <span style="color:var(--muted);font-size:11px">10/month</span></li>
+        <li>Brand Entity Footprint <span style="color:var(--muted);font-size:11px">Premium setup</span></li>
+        <li>AI Visibility Tracking <span style="color:var(--muted);font-size:11px">Weekly report</span></li>
+        <li>Rankings & Traffic Reports</li>
+      </ul>
+      <div class="pc-note">Category dominance across all organic and AI channels.</div>
+    </div>
+  </div>
+
+  <h3>Strategic SEO Packages (Traditional)</h3>
+  <div class="pg">
+    <div class="pc">
+      <div class="pc-name">Launch</div>
+      <div class="pc-price"><sup>₹</sup>15,000</div>
+      <div class="pc-period">per month</div>
+      <div class="pc-div"></div>
+      <ul class="pc-feats">
+        <li>Business & Market Study</li>
+        <li>Keyword Strategy <span style="color:var(--muted);font-size:11px">20–30 keywords</span></li>
+        <li>On-Page SEO <span style="color:var(--muted);font-size:11px">10 pages</span></li>
+        <li>Technical SEO <span style="color:var(--muted);font-size:11px">Basic audit & fixes</span></li>
+        <li>Content Planning <span style="color:var(--muted);font-size:11px">2 blogs/month</span></li>
+        <li>High-Quality Backlinks <span style="color:var(--muted);font-size:11px">5/month</span></li>
+        <li>Monthly Reports + Strategy Calls</li>
+      </ul>
+    </div>
+    <div class="pc feat">
+      <div class="pc-name">Growth</div>
+      <div class="pc-price"><sup>₹</sup>28,000</div>
+      <div class="pc-period">per month</div>
+      <div class="pc-div"></div>
+      <ul class="pc-feats">
+        <li>Business & Market Study</li>
+        <li>Keyword Strategy <span style="color:var(--muted);font-size:11px">40–60 keywords</span></li>
+        <li>On-Page SEO <span style="color:var(--muted);font-size:11px">20 pages</span></li>
+        <li>Technical SEO <span style="color:var(--muted);font-size:11px">Complete audit & fixes</span></li>
+        <li>Content Planning <span style="color:var(--muted);font-size:11px">4 blogs/month</span></li>
+        <li>High-Quality Backlinks <span style="color:var(--muted);font-size:11px">10/month</span></li>
+        <li>UX & CRO Insights</li>
+        <li>Detailed Monthly Reports</li>
+        <li>Strategy Calls <span style="color:var(--muted);font-size:11px">2/month</span></li>
+      </ul>
+    </div>
+    <div class="pc">
+      <div class="pc-name">Authority</div>
+      <div class="pc-price"><sup>₹</sup>45,000</div>
+      <div class="pc-period">per month</div>
+      <div class="pc-div"></div>
+      <ul class="pc-feats">
+        <li>Business & Market Study</li>
+        <li>Keyword Strategy <span style="color:var(--muted);font-size:11px">80+ keywords</span></li>
+        <li>On-Page SEO <span style="color:var(--muted);font-size:11px">Unlimited pages</span></li>
+        <li>Technical SEO <span style="color:var(--muted);font-size:11px">Advanced monitoring</span></li>
+        <li>Content Planning <span style="color:var(--muted);font-size:11px">8 blogs/month</span></li>
+        <li>High-Quality Backlinks <span style="color:var(--muted);font-size:11px">20/month</span></li>
+        <li>UX & CRO Insights</li>
+        <li>Comprehensive Reports</li>
+        <li>Weekly Strategy Calls</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout">
+    <p><strong>Important notes on SEO & SAG-EO:</strong> 3-month minimum commitment recommended — search systems need time to build authority. AI feature inclusion (ChatGPT, Gemini citations) is optimised for but not guaranteed. SAG-EO is an exclusive FlumenX methodology. Content volume and backlinks vary by industry competitiveness.</p>
+  </div>
+</div>
+</div>
+
+<!-- ===== ADS ===== -->
+<div class="sec" id="s-ads">
+<div class="wrap">
+  <div class="lbl">Section 06</div>
+  <h2>Paid Advertising — 30% Management Fee</h2>
+  <p class="lead">Meta (Facebook + Instagram) and Google campaign management. The ad spend is paid directly by KACV to the platforms — FlumenX charges 30% of the total monthly budget as the management and strategy fee.</p>
+
+  <div class="callout">
+    <p><strong>Example:</strong> If KACV allocates ₹50,000/month to run ads — ₹50,000 goes directly to Meta/Google, and FlumenX charges ₹15,000 (30%) for campaign management, strategy, optimisation, and reporting.</p>
+  </div>
+
+  <h3>What's Included in Ad Management</h3>
+  <div class="two">
+    <div class="blk">
+      <h4>Campaign Architecture</h4>
+      <ul class="pts">
+        <li>Tourist geo-targeting — Kovalam 15km radius</li>
+        <li>Pre-travel intent audiences — Kerala travel searchers</li>
+        <li>Cultural interest targeting — art/craft audiences</li>
+        <li>Retargeting — video viewers, website visitors</li>
+        <li>International tourist targeting — UK, US, Germany, France</li>
+        <li>Tour operator + corporate interest targeting</li>
+      </ul>
+    </div>
+    <div class="blk">
+      <h4>Management & Reporting</h4>
+      <ul class="pts">
+        <li>Conversion campaign setup (not just traffic)</li>
+        <li>Meta Pixel + Google Tag Manager configuration</li>
+        <li>A/B creative testing — continuous optimisation</li>
+        <li>Weekly performance reviews</li>
+        <li>Monthly full report — reach, cost/ticket, ROAS</li>
+        <li>Event-specific campaign briefs for each event</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Suggested Monthly Ad Budgets</h3>
+  <table class="tbl">
+    <thead><tr><th>Channel</th><th>Suggested Budget</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td>Meta — Tourist Geo-Targeting</td><td>₹12,000–18,000</td><td>Tourists currently in/near Kovalam → direct ticket conversion</td></tr>
+      <tr><td>Meta — Cultural Audience</td><td>₹8,000–12,000</td><td>Art/craft interests in Kerala, TN, KA → event bookings</td></tr>
+      <tr><td>Meta — Retargeting</td><td>₹5,000–8,000</td><td>Warm audiences — cheapest cost per conversion</td></tr>
+      <tr><td>Meta — International</td><td>₹6,000–10,000</td><td>UK/US/Germany pre-travel targeting</td></tr>
+      <tr><td>Google Search</td><td>₹8,000–15,000</td><td>High-intent searches — "things to do in Kovalam"</td></tr>
+      <tr><td><strong>Suggested Monthly Total</strong></td><td><strong>₹39,000–63,000</strong></td><td>Paid directly to platforms by KACV</td></tr>
+      <tr><td><strong>FlumenX Fee (30%)</strong></td><td><strong>₹11,700–18,900</strong></td><td>Strategy, management, reporting</td></tr>
+    </tbody>
+  </table>
+</div>
+</div>
+
+<!-- ===== TERMS ===== -->
+<div class="sec" id="s-terms">
+<div class="wrap">
+  <div class="lbl">Section 07</div>
+  <h2>Payment Terms & Important Notes</h2>
+
+  <div class="pt-grid">
+    <div class="pt-card">
+      <h4>Website & One-Time Projects</h4>
+      <div class="pt-item"><em>50% advance</em> payment required to initiate the project</div>
+      <div class="pt-item"><em>50% balance</em> payment due upon final delivery and approval</div>
+      <div class="pt-item">Source files released only after full payment</div>
+      <div class="pt-item">GST applicable as per government norms</div>
+    </div>
+    <div class="pt-card rg">
+      <h4>Monthly Retainers</h4>
+      <div class="pt-item"><em>100% advance</em> required for first month (Social Media, SAG-EO, SEO)</div>
+      <div class="pt-item">Subsequent months payable by <em>5th of each month</em></div>
+      <div class="pt-item"><em>3-month minimum</em> commitment recommended for best results</div>
+      <div class="pt-item">Monthly deliverables confirmed via shared brief each month</div>
+    </div>
+  </div>
+
+  <div class="blk" style="margin-top:16px;">
+    <h4>Important Notes</h4>
+    <div class="two">
+      <ul class="pts">
+        <li><strong>Ad spend</strong> is paid directly by KACV to Google/Meta — not included in FlumenX service fee</li>
+        <li><strong>Print costs</strong> for business cards, brochures, etc. are billed separately</li>
+        <li><strong>Third-party costs</strong> — domain, hosting, premium tools — not included in service fee</li>
+      </ul>
+      <ul class="pts">
+        <li>All prices are in <strong>INR (₹)</strong> and exclude applicable taxes</li>
+        <li>Payment via <strong>bank transfer, UPI, or online payment</strong> accepted</li>
+        <li>Invoices will be provided for all payments</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Engagement Summary — At a Glance</h3>
+  <table class="tbl">
+    <thead><tr><th>Item</th><th>Model A (Full-Service)</th><th>Model B (Content Partnership)</th><th>Type</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Website</strong></td><td>₹48,000 + GST</td><td>₹48,000 + GST</td><td>One-time</td></tr>
+      <tr><td><strong>Annual Master Plan</strong></td><td>₹15,000</td><td>₹15,000</td><td>One-time</td></tr>
+      <tr><td><strong>Hosting + Domain</strong></td><td>~₹8,000–15,000/yr</td><td>~₹8,000–15,000/yr</td><td>Annual</td></tr>
+      <tr><td><strong>Social Media</strong></td><td>₹50,000/month</td><td>₹40,000/month</td><td>Monthly</td></tr>
+      <tr><td><strong>SAG-EO Core</strong></td><td>₹35,000/month</td><td>₹35,000/month</td><td>Monthly</td></tr>
+      <tr><td><strong>Ads Management Fee</strong></td><td>30% of monthly budget</td><td>30% of monthly budget</td><td>Monthly</td></tr>
+      <tr style="background:rgba(201,149,106,0.06)"><td><strong>Monthly Total (excl. ads)</strong></td><td><strong style="color:var(--rg2)">₹85,000/month</strong></td><td><strong style="color:var(--rg2)">₹75,000/month</strong></td><td>Monthly</td></tr>
+      <tr style="background:rgba(201,149,106,0.06)"><td><strong>One-Time Total</strong></td><td><strong style="color:var(--rg2)">₹63,000 + GST</strong></td><td><strong style="color:var(--rg2)">₹63,000 + GST</strong></td><td>One-time</td></tr>
+    </tbody>
+  </table>
+</div>
+</div>
+
+<!-- ===== CONTACT ===== -->
+<div class="sec" id="s-contact">
+<div class="wrap">
+  <div class="lbl">Section 08</div>
+  <h2>Ready to Begin?</h2>
+  <p class="lead">The strategy is clear, the plan is ready, and the opportunity is real. The next step is a simple conversation to confirm the model and kick off Month 1.</p>
+
+  <div class="cta-bar">
+    <div class="cta-text">
+      <h3>Let's Start the Conversation</h3>
+      <p>Call, WhatsApp, or email — we'll respond within 24 hours and schedule the kickoff session.</p>
+    </div>
+    <div class="cta-btns">
+      <a href="tel:+918907634900" class="btn gold">📞 Call Us</a>
+      <a href="https://wa.me/918907634900" class="btn outline">💬 WhatsApp</a>
+    </div>
+  </div>
+
+  <div class="contact-row">
+    <div class="contact-card">
+      <div class="type">Phone / WhatsApp</div>
+      <div class="val">+91 89076 34900</div>
+    </div>
+    <div class="contact-card">
+      <div class="type">General Enquiries</div>
+      <div class="val">info@flumenx.com</div>
+    </div>
+    <div class="contact-card">
+      <div class="type">Direct Contact</div>
+      <div class="val">anoopkrishna@flumenx.com</div>
+    </div>
+    <div class="contact-card">
+      <div class="type">Website</div>
+      <div class="val">www.flumenx.com</div>
+    </div>
+  </div>
+
+  <div class="blk rg" style="margin-top:32px;">
+    <h4>What Happens After You Say Yes</h4>
+    <table class="tbl">
+      <thead><tr><th>Day</th><th>Milestone</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Day 1</strong></td><td>Kickoff call — confirm scope, deliverables, and content handover process</td></tr>
+        <tr><td><strong>Day 2–3</strong></td><td>Advance invoice issued, payment confirmed, project officially begins</td></tr>
+        <tr><td><strong>Week 1</strong></td><td>Website wireframes shared for review · Monthly brief for social media sent</td></tr>
+        <tr><td><strong>Week 2</strong></td><td>First social media content calendar submitted for approval</td></tr>
+        <tr><td><strong>Week 3</strong></td><td>Website first build preview shared</td></tr>
+        <tr><td><strong>Week 4</strong></td><td>SAG-EO audit report delivered · Ads campaign structure submitted for approval</td></tr>
+        <tr><td><strong>Month 2</strong></td><td>Website live · All campaigns running · First analytics report delivered</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="conf">Confidential · FlumenX Digital</div><br>
+  <img src="data:image/png;base64,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HRGu5GMNqbWto1k1bpqG2W2luMUzKtsxdURsa3dDXD715OfOHRarREarWKxiGa7IdW23SF7q665Q1csc1N4pop2tc4HeaeO84cOCyLattJsWq9Li126kuUUwqGS708bA3ABzyeTnj2LVCiJNImcmVmWyLVVu0hqOpuNyhqpYpaR0DRTta528Xsdk7zhww0rDURZjMYbb2pbTLDqnSb7Tb6S5RTumZIHTxsDcNPHiHk/ItY2O63CyXOG5WypfT1MRy17eo6gjkQewr4URK1iIw3tpvbfbpYWR6gts9NNyMtL58Z790kFvyr3ptsWiWRb7amsld7xtM7Py4HyrmpFGZ0qtyat23TVFO6n01b30pcMeU1WC9v8A6sGQD3kn0LWFiuxptW2+93F89QYa6KqndnekfuvDnczxJweZXlKI1FYiNm/rntq0tU22qpo6C8h8sL2NLoYsAkEcfsi0AiIVrFej7tP1kVvv1ur5mvdFTVUUzwwAuIa8E4z14LelZtt0pNSTQtt96DnxuaMwxYyRj8IufCiFqRbq2jsG1NoLR1xlv2po7hVXVhLKNkNO18cDSOL8lwy88Ry4DPbw3V/CN2ffgb3+qs/fXIi/K87zDsxwfMNadbXm0z89o9I2fqcPzPW4encpEY+TPNte0Oq2g6oNU0SQWmlzHQU7ubW9XuHLedgZ7AAOOMnKPBe2yy7L9SyUV2fPNpe4u+24mDeNPJjDZmN7eQcBzGOZa0LTai/a4XhtLhdGujpRitej49TWvqXnUtO8v9Bv4U2x/wDG1x/u6T/Zc2+FVqXZPrq4Q6r0TcKll9kcI7hTyUT42VLAMNl3iMB7cAH3wxyLeOilCvoSbzMYkREUYfaiItMCIiAiIiiIogqiFREVREQEREUREQFMoiAoqiCIiIGVERQERQoBUREBEUKAiKKAVERVUKIURUUVUUBCiIPtREWmREUQVRERBFEQEREUREQERRAREQFERAQohQTKIigIihQCoiICIiAVERQFChUVWBCihQFERRQqKlRAUKqhQfciItMIiIgivREQQIiIoiIgKFEQEREEVREEREQFDzREBERZBflEVBERQFCiKgiIgh5qIiKKFEQgURFFQoiIChREH//Z" alt="FlumenX" style="height:28px;margin-bottom:10px;opacity:0.7;"><br>
+  Proposal prepared for Kerala Arts & Crafts Village, Kovalam · March 2026<br>
+  <span style="margin-top:6px;display:block;font-size:10px;">This document is confidential and prepared exclusively for KACV. All prices in INR and exclude applicable taxes.</span>
+</div>
+
+<button class="scroll-up" id="su" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+function show(id,btn){
+  document.querySelectorAll('.sec').forEach(s=>s.classList.remove('on'));
+  document.querySelectorAll('.nb').forEach(b=>b.classList.remove('on'));
+  document.getElementById('s-'+id).classList.add('on');
+  btn.classList.add('on');
+  const nav=document.querySelector('.nav');
+  window.scrollTo({top:nav.offsetTop-10,behavior:'smooth'});
+}
+document.addEventListener('copy',e=>{e.preventDefault();flash();});
+document.addEventListener('contextmenu',e=>{e.preventDefault();flash();});
+document.addEventListener('keydown',e=>{
+  if((e.ctrlKey||e.metaKey)&&['c','a','s','p','u'].includes(e.key.toLowerCase())){e.preventDefault();flash();}
+  if(e.key==='PrintScreen'){e.preventDefault();flash();}
+});
+function flash(){
+  const n=document.getElementById('pn');
+  n.classList.add('on');
+  setTimeout(()=>n.classList.remove('on'),2000);
+}
+window.addEventListener('scroll',()=>{
+  document.getElementById('su').classList.toggle('v',window.scrollY>300);
+});
+</script>
+</body>
+</html>
