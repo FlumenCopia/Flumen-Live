@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>70YY — Strategy & Growth Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+--bg:#faf7f2;--ink:#1a1a1a;--cream:#f0ebe0;--gold:#c9a84c;--gold-light:#f0e6c8;--gold-dark:#a8893a;
+--rose:#c45b5b;--rose-light:#fce8e8;--teal:#2a7a6e;--teal-light:#e0f0ed;
+--purple:#6b4c8a;--purple-light:#f3e8ff;--card:#fff;--border:#e0d8cc;
+--shadow:0 1px 12px rgba(0,0,0,0.05);--radius:10px;
+}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+h1,h2,h3,h4{font-family:'Playfair Display',serif}
+
+/* SIDEBAR */
+.sidebar{position:fixed;top:0;left:0;width:220px;height:100vh;background:linear-gradient(180deg,#0d1b14 0%,#162419 100%);color:#fff;z-index:200;display:flex;flex-direction:column;border-right:1px solid rgba(42,122,110,0.3)}
+.sb-brand{padding:20px 16px;border-bottom:1px solid rgba(42,122,110,0.2)}
+.sb-logo{display:flex;align-items:center;gap:10px}
+.sb-mark{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--teal),#4ecdc4);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:800;font-size:14px;color:#fff}
+.sb-brand h2{font-size:16px;letter-spacing:0.5px}
+.sb-brand p{font-size:9px;color:#4ecdc4;text-transform:uppercase;letter-spacing:2.5px;margin-top:1px}
+.sb-nav{flex:1;padding:12px 0}
+.sb-item{display:flex;align-items:center;gap:10px;padding:10px 16px;font-size:13px;color:rgba(255,255,255,0.55);cursor:pointer;transition:all 0.2s;border-left:3px solid transparent}
+.sb-item:hover{color:#fff;background:rgba(42,122,110,0.12)}
+.sb-item.active{color:#4ecdc4;background:rgba(42,122,110,0.15);border-left-color:#4ecdc4}
+.sb-item .ico{font-size:16px;width:20px;text-align:center}
+.sb-quote{padding:16px;border-top:1px solid rgba(42,122,110,0.15);font-size:11px;color:rgba(255,255,255,0.35);font-style:italic;line-height:1.6}
+
+/* MAIN */
+.main{margin-left:220px;min-height:100vh}
+
+/* TOPBAR */
+.topbar{background:#fff;border-bottom:1px solid var(--border);padding:14px 28px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.topbar h1{font-size:18px;font-weight:700}
+.topbar-badge{display:flex;align-items:center;gap:6px;padding:6px 14px;background:var(--teal-light);border-radius:20px;font-size:11px;font-weight:600;color:var(--teal)}
+
+/* CONTENT */
+.content{padding:24px 28px 60px}
+.panel{display:none}.panel.active{display:block}
+
+/* CARDS */
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);margin-bottom:16px;overflow:hidden}
+.card-head{padding:14px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px}
+.card-head h3{font-size:15px;display:flex;align-items:center;gap:8px}
+.card-body{padding:18px}
+
+/* GRID */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+
+/* TIMELINE */
+.timeline{position:relative;padding-left:28px}
+.timeline::before{content:'';position:absolute;left:9px;top:0;bottom:0;width:2px;background:var(--teal)}
+.tl-item{position:relative;margin-bottom:20px;padding-left:16px}
+.tl-item::before{content:'';position:absolute;left:-22px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--teal);border:2px solid #fff}
+.tl-item h4{font-size:13px;font-weight:700;color:var(--teal)}
+.tl-item p{font-size:12px;color:#555;margin-top:3px;line-height:1.7}
+
+/* SEC TITLE */
+.sec-title{font-size:18px;font-weight:700;margin:24px 0 14px;padding-bottom:6px;border-bottom:2px solid var(--teal);display:flex;align-items:center;gap:8px}
+.sec-title:first-child{margin-top:0}
+
+/* PERSONA */
+.persona{display:flex;gap:18px;padding:18px;background:linear-gradient(135deg,#faf7f2,#fff);border-radius:var(--radius);border:1px solid var(--border);margin-bottom:14px}
+.persona-av{width:70px;height:70px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#e8d5a3);display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0}
+.persona-info h4{font-size:15px;margin-bottom:3px}
+.persona-info .ptag{font-size:10px;color:var(--teal);font-weight:600;text-transform:uppercase;letter-spacing:0.5px}
+.persona-info p{font-size:12px;line-height:1.7;color:#555;margin-top:4px}
+
+/* PHASE CARD */
+.phase{border-radius:var(--radius);padding:20px;margin-bottom:16px;border:1px solid var(--border)}
+.phase h3{font-size:16px;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.phase p{font-size:12px;line-height:1.9;color:#444}
+.phase .target{margin-top:12px;padding:10px;background:rgba(42,122,110,0.06);border-radius:6px;font-size:12px}
+.phase .target strong{color:var(--teal)}
+
+/* DOMAIN CARD */
+.domain{background:linear-gradient(135deg,var(--cream),#fff);border:2px solid var(--gold);border-radius:var(--radius);padding:18px;text-align:center;transition:all 0.3s}
+.domain:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(201,168,76,0.15)}
+.domain h3{font-size:20px;color:var(--gold);font-family:'Playfair Display',serif}
+.domain .rec{margin-top:6px;font-size:11px;font-weight:600}
+
+/* CONTENT PILL */
+.pill{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:14px;font-size:11px;font-weight:600;margin:3px 2px}
+.pill-gold{background:var(--gold-light);color:#8a6d1b}
+.pill-teal{background:var(--teal-light);color:var(--teal)}
+.pill-rose{background:var(--rose-light);color:var(--rose)}
+.pill-purple{background:var(--purple-light);color:var(--purple)}
+
+/* BAR */
+.bar-row{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.bar-label{width:130px;font-size:11px;text-align:right;flex-shrink:0}
+.bar-track{flex:1;height:22px;background:var(--cream);border-radius:3px;overflow:hidden}
+.bar-fill{height:100%;border-radius:3px;display:flex;align-items:center;padding-left:6px;font-size:10px;font-weight:600;color:#fff;transition:width 0.6s}
+.bar-val{width:50px;font-size:11px;text-align:right}
+
+/* TAGLINE */
+.tagline{padding:12px 16px;background:var(--cream);border-radius:6px;margin-bottom:8px;font-size:13px;font-style:italic;border-left:3px solid var(--gold)}
+
+/* CHECKLIST */
+.check{font-size:12px;line-height:2.2;color:#444}
+.check span{display:inline-block;width:18px;height:18px;border:2px solid var(--border);border-radius:4px;vertical-align:middle;margin-right:6px;cursor:pointer;transition:all 0.2s}
+.check span.done{background:var(--teal);border-color:var(--teal)}
+
+/* COLOR SWATCH */
+.swatch{display:inline-block;width:22px;height:22px;border-radius:4px;vertical-align:middle;margin-right:4px;border:1px solid rgba(0,0,0,0.1)}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .sidebar{display:none}.main{margin-left:0}
+  .g2,.g3{grid-template-columns:1fr}
+  .topbar{flex-direction:column;gap:10px;align-items:flex-start}
+  .content{padding:16px}
+  .persona{flex-direction:column;align-items:center;text-align:center}
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.card,.phase,.persona{animation:fadeUp 0.4s ease both}
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="sb-brand">
+    <div class="sb-logo"><div class="sb-mark">70</div><div><h2>70YY</h2><p>Strategy Hub</p></div></div>
+  </div>
+  <nav class="sb-nav">
+    <div class="sb-item active" onclick="showPanel(0)"><span class="ico">📋</span>Registration</div>
+    <div class="sb-item" onclick="showPanel(1)"><span class="ico">🎯</span>Strategy</div>
+    <div class="sb-item" onclick="showPanel(2)"><span class="ico">📱</span>Digital Marketing</div>
+    <div class="sb-item" onclick="showPanel(3)"><span class="ico">👥</span>Buyer Personas</div>
+    <div class="sb-item" onclick="showPanel(4)"><span class="ico">📈</span>Growth Plan</div>
+    <div class="sb-item" onclick="showPanel(5)"><span class="ico">🏷️</span>Brand Identity</div>
+    <div class="sb-item" onclick="showPanel(6)"><span class="ico">📦</span>Inventory</div>
+  </nav>
+  <div class="sb-quote">"Age is just a number. Style is forever."<br>— 70YY</div>
+</aside>
+
+<!-- MAIN -->
+<div class="main">
+  <div class="topbar">
+    <h1 id="pageTitle">📋 Business Registration</h1>
+    <div class="topbar-badge">🚀 Launch Playbook — April 2026</div>
+  </div>
+
+  <div class="content">
+
+<!-- ===== PANEL 0: REGISTRATION ===== -->
+<div class="panel active" id="p0">
+  <div class="sec-title">📋 Business Registration & Tax Compliance</div>
+
+  <div class="card" style="border-top:4px solid var(--rose)">
+    <div class="card-body" style="font-size:13px;line-height:1.8">
+      <p>⚠️ <strong>Current status:</strong> First purchase of ₹43,910 made without GST bills. This is common for first-time visits — but going forward, GST compliance is mandatory for e-commerce.</p>
+      <p style="color:var(--teal);font-weight:600;margin-top:6px">Below is your complete step-by-step compliance roadmap.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><h3>🏢 Step-by-Step Business Setup</h3></div>
+    <div class="card-body">
+      <div class="timeline">
+        <div class="tl-item">
+          <h4>Week 1 — Business Structure</h4>
+          <p><strong>Recommended: Sole Proprietorship under Rohini's name</strong> — simplest, fastest, cheapest. Can upgrade to Pvt Ltd later under Misc Archive. Alternatively, register as LLP if both Anoop & Rohini want formal co-ownership.</p>
+        </div>
+        <div class="tl-item">
+          <h4>Week 1–2 — GST Registration (FREE)</h4>
+          <p><strong>Portal:</strong> gst.gov.in → "Register Now"<br>
+          <strong>Documents:</strong> PAN card (Rohini's) + Aadhaar card + Business address proof (electricity bill / rent agreement) + Bank passbook/statement + Photograph of proprietor<br>
+          <strong>Process:</strong> Part A (TRN generation via OTP) → Part B (business details, bank info, upload docs) → Aadhaar verification → ARN issued → GSTIN in 3–7 working days<br>
+          <strong>Cost:</strong> Completely FREE on the portal<br>
+          <strong>Why mandatory:</strong> GST registration is required for e-commerce sellers AND interstate sales — both apply to 70YY. Also needed to list on Amazon/Flipkart later.<br>
+          <strong>HSN Code:</strong> 7117 (Imitation jewelry) — 3% GST. If turnover under ₹1.5Cr, opt for Composition Scheme at 1%.</p>
+        </div>
+        <div class="tl-item">
+          <h4>Week 2 — Trade License & Shop Act</h4>
+          <p>Apply at Trivandrum Municipal Corporation or Kerala K-SMART portal online. Documents: ID proof, address proof, business nature declaration. Cost: ₹500–2,000. Processing: 1–2 weeks.</p>
+        </div>
+        <div class="tl-item">
+          <h4>Week 2–3 — MSME / Udyam Registration (FREE)</h4>
+          <p><strong>Portal:</strong> udyamregistration.gov.in — completely free, self-declaration based. Classify as "Micro Enterprise" (investment under ₹1Cr). Benefits: easier bank loans, government scheme access, tax concessions, priority in tenders.</p>
+        </div>
+        <div class="tl-item">
+          <h4>Week 3 — Dedicated Business Bank Account</h4>
+          <p>Open a current account in business name. Recommended banks: HDFC, ICICI, Kotak (all integrate well with Razorpay/Cashfree). Separate personal and business finances from day one.</p>
+        </div>
+        <div class="tl-item">
+          <h4>Week 3–4 — Payment Gateway</h4>
+          <p>Apply for Razorpay or Cashfree. Needs: GSTIN, PAN, bank account, business proof. Setup: 2–3 days. Enable: UPI, cards, net banking, EMI, PayLater. Fee: ~2% per transaction.</p>
+        </div>
+        <div class="tl-item">
+          <h4>Week 4 — Shipping Partner</h4>
+          <p>Shiprocket (starts ₹26/500g, integrates with most ecom platforms) or Delhivery Direct. Set up COD option too — 40–50% of Indian ecom orders are still COD.</p>
+        </div>
+        <div class="tl-item">
+          <h4>Month 2 — Trademark Filing</h4>
+          <p>File at ipindia.gov.in for "70YY" name + logo. Cost: ₹4,500 for individuals/MSME. Full registration takes 18–24 months, but filing gives you ™ status immediately. Protect the brand early.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><h3>📑 Tax & Financial Systems</h3></div>
+    <div class="card-body">
+      <div class="g2">
+        <div>
+          <h4 style="font-size:13px;color:var(--teal);margin-bottom:8px">GST Compliance (Monthly/Quarterly)</h4>
+          <div style="font-size:12px;line-height:2">
+            <p>• <strong>GSTR-1:</strong> Monthly/Quarterly outward supply return</p>
+            <p>• <strong>GSTR-3B:</strong> Monthly summary return with tax payment</p>
+            <p>• <strong>Input Tax Credit:</strong> From next purchase, GET GST BILLS from wholesalers — you can claim that GST back!</p>
+            <p>• <strong>Invoicing:</strong> Auto-generate GST-compliant invoices via Zoho Invoice</p>
+          </div>
+        </div>
+        <div>
+          <h4 style="font-size:13px;color:var(--gold);margin-bottom:8px">Recommended Tools Stack</h4>
+          <div style="font-size:12px;line-height:2">
+            <p>• <strong>Accounting:</strong> Zoho Books (₹749/mo) or Khatabook (Free)</p>
+            <p>• <strong>Invoicing:</strong> Zoho Invoice (Free tier)</p>
+            <p>• <strong>Inventory:</strong> Google Sheets → Zoho Inventory (later)</p>
+            <p>• <strong>Payments:</strong> Razorpay (2% fee)</p>
+            <p>• <strong>Shipping:</strong> Shiprocket (₹26/500g)</p>
+            <p>• <strong>CRM:</strong> WhatsApp Business (Free)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><h3>🌐 Domain Recommendation</h3></div>
+    <div class="card-body">
+      <div class="g3">
+        <div class="domain"><h3>70yy.in</h3><p style="font-size:12px;margin-top:6px">Short, punchy, India-focused. Easy to type. Perfect for social media bios.</p><div class="rec" style="color:var(--teal)">⭐ TOP RECOMMENDATION</div></div>
+        <div class="domain"><h3>70yyoung.com</h3><p style="font-size:12px;margin-top:6px">.com TLD for global credibility. Good for NRI market expansion.</p><div class="rec" style="color:var(--gold)">2nd — Global Play</div></div>
+        <div class="domain"><h3>70yearsyoung.in</h3><p style="font-size:12px;margin-top:6px">Descriptive but too long to type/remember for social media.</p><div class="rec" style="color:#999">3rd — Too Long</div></div>
+      </div>
+      <p style="font-size:11px;color:#999;margin-top:10px;text-align:center">💡 Strategy: Register 70yy.in as primary + 70yyoung.com as redirect. ~₹1,200/year total.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== PANEL 1: STRATEGY ===== -->
+<div class="panel" id="p1">
+  <div class="sec-title">🎯 Marketing & Positioning Strategy</div>
+
+  <div class="card" style="background:linear-gradient(135deg,#1a1a1a,#2d2418);color:#fff;border:none">
+    <div class="card-body" style="padding:28px;text-align:center">
+      <h3 style="font-size:20px;color:var(--gold);margin-bottom:14px">The 70YY Unique Selling Proposition</h3>
+      <p style="font-size:15px;line-height:1.8;opacity:0.9;max-width:700px;margin:0 auto">"Two 70-year-old mothers from Kerala discover that age is just a number — and launch their dream jewelry business online. Watch Prasanna Amma and Ramani Aunty navigate e-commerce, one saree drape at a time."</p>
+      <p style="margin-top:14px;font-size:12px;color:var(--gold);font-weight:600">This is NOT a jewelry brand. This is a MOVEMENT. The jewelry is the product; the grandmothers are the brand.</p>
+    </div>
+  </div>
+
+  <div class="g2" style="margin-top:16px">
+    <div class="card">
+      <div class="card-head"><h3>🏆 Value Propositions</h3></div>
+      <div class="card-body" style="font-size:12px;line-height:2.2">
+        <p>🏆 <strong>Trust:</strong> "Curated by grandmothers who've worn real temple jewelry for 50+ years"</p>
+        <p>🏆 <strong>Quality:</strong> "Chennai-sourced, Amma-approved — only pieces that pass our touch test"</p>
+        <p>🏆 <strong>Story:</strong> "Every purchase supports two 70-year-old women proving dreams have no age limit"</p>
+        <p>🏆 <strong>Value:</strong> "Temple jewelry that looks like gold, feels like heritage, priced for real life"</p>
+        <p>🏆 <strong>Community:</strong> "Join the 70YY family — where tradition meets tomorrow"</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-head"><h3>🔍 Search Demand Intelligence</h3></div>
+      <div class="card-body">
+        <div class="bar-row"><div class="bar-label">Temple Necklace</div><div class="bar-track"><div class="bar-fill" style="width:95%;background:var(--gold)">Peak</div></div><div class="bar-val">⭐⭐⭐⭐⭐</div></div>
+        <div class="bar-row"><div class="bar-label">Bridal Jewelry Set</div><div class="bar-track"><div class="bar-fill" style="width:92%;background:var(--rose)">Very High</div></div><div class="bar-val">⭐⭐⭐⭐⭐</div></div>
+        <div class="bar-row"><div class="bar-label">Choker Sets</div><div class="bar-track"><div class="bar-fill" style="width:88%;background:var(--teal)">High</div></div><div class="bar-val">⭐⭐⭐⭐</div></div>
+        <div class="bar-row"><div class="bar-label">Jhumka Earrings</div><div class="bar-track"><div class="bar-fill" style="width:85%;background:var(--teal)">High</div></div><div class="bar-val">⭐⭐⭐⭐</div></div>
+        <div class="bar-row"><div class="bar-label">Kasumala</div><div class="bar-track"><div class="bar-fill" style="width:75%;background:var(--gold)">Strong</div></div><div class="bar-val">⭐⭐⭐⭐</div></div>
+        <div class="bar-row"><div class="bar-label">Palakka Necklace</div><div class="bar-track"><div class="bar-fill" style="width:65%;background:var(--teal)">Kerala</div></div><div class="bar-val">⭐⭐⭐</div></div>
+        <div class="bar-row"><div class="bar-label">Guttapusalu</div><div class="bar-track"><div class="bar-fill" style="width:60%;background:var(--gold)">Rising</div></div><div class="bar-val">⭐⭐⭐</div></div>
+        <div class="bar-row"><div class="bar-label">Kids Jewelry</div><div class="bar-track"><div class="bar-fill" style="width:45%;background:var(--rose)">Growing</div></div><div class="bar-val">⭐⭐</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><h3>📅 Peak Season Calendar</h3></div>
+    <div class="card-body" style="font-size:12px;line-height:2">
+      <p>🔥 <strong>Apr–May:</strong> Vishu + Akshaya Tritiya + Wedding season — YOU ARE HERE. Launch timing is PERFECT.</p>
+      <p>🔥 <strong>Aug–Sep:</strong> Onam — biggest Kerala festival. Stock up by July. Kerala-specific Kasavu + Palakka themed marketing.</p>
+      <p>🔥 <strong>Sep–Oct:</strong> Navratri + Dussehra — temple jewelry peak nationwide.</p>
+      <p>🔥 <strong>Oct–Nov:</strong> Diwali — 2nd biggest. Heavy discounting period. Plan flash sales.</p>
+      <p>🔥 <strong>Jan–Feb:</strong> South Indian wedding season peak. Push bridal sets.</p>
+      <p>📊 <strong>Lean months:</strong> June–July, Dec — use for content building, inventory restocking, system improvements.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><h3>🛒 Next Purchase Strategy</h3></div>
+    <div class="card-body">
+      <div class="g2">
+        <div>
+          <h4 style="font-size:13px;color:var(--teal);margin-bottom:8px">✅ Stock Up — High Priority</h4>
+          <div style="font-size:12px;line-height:2">
+            <p>1. <strong>Bridal Combo Sets</strong> — highest search volume, highest ticket</p>
+            <p>2. <strong>Temple Chokers</strong> — trending, compact, easy to ship, high margins</p>
+            <p>3. <strong>Palakka designs</strong> — Kerala-specific, aligns with brand origin</p>
+            <p>4. <strong>Bangles / Kada sets</strong> — currently ZERO bangles! Huge gap</p>
+            <p>5. <strong>More Guttapusalu</strong> — trending upward</p>
+            <p>6. <strong>Kids range expansion</strong> — only 1 SKU. Parents = repeat buyers</p>
+          </div>
+        </div>
+        <div>
+          <h4 style="font-size:13px;color:var(--gold);margin-bottom:8px">💰 Budget Plan</h4>
+          <div style="font-size:12px;line-height:2">
+            <p>💰 <strong>Reinvest:</strong> First ₹30K revenue → reinvest</p>
+            <p>🎯 <strong>Target:</strong> ₹25K–30K second purchase</p>
+            <p>📋 <strong>Mix:</strong> 60% best-seller restock + 40% new categories</p>
+            <p>📝 <strong>CRITICAL:</strong> Get GST bills this time!</p>
+            <p>📸 <strong>Ask wholesaler:</strong> Digital catalog images for website</p>
+            <p>🤝 <strong>Negotiate:</strong> With ₹43K rapport, ask 5–10% repeat discount</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== PANEL 2: DIGITAL MARKETING ===== -->
+<div class="panel" id="p2">
+  <div class="sec-title">📱 Digital Marketing Playbook</div>
+
+  <div class="card">
+    <div class="card-head"><h3>📅 Weekly Content Calendar</h3></div>
+    <div class="card-body" style="font-size:12px;line-height:2.2">
+      <p><span class="pill pill-gold">Monday</span> <strong>Amma's Pick of the Week</strong> — Product showcase with Prasanna Amma wearing the piece</p>
+      <p><span class="pill pill-teal">Tuesday</span> <strong>Behind the Scenes</strong> — Packing orders, Chennai sourcing trips, learning tech</p>
+      <p><span class="pill pill-purple">Wednesday</span> <strong>Jewelry Education</strong> — "Did you know this is called Guttapusalu?" Kerala jewelry culture</p>
+      <p><span class="pill pill-rose">Thursday</span> <strong>Customer Spotlight</strong> — Testimonials, user-generated content, reviews</p>
+      <p><span class="pill pill-gold">Friday</span> <strong>Funny Amma Reel</strong> — Amma trying Instagram, learning Gen-Z slang, tech struggles</p>
+      <p><span class="pill pill-teal">Saturday</span> <strong>New Arrivals / Flash Sale</strong> — Product drops, limited edition alerts</p>
+      <p><span class="pill pill-purple">Sunday</span> <strong>Amma's Wisdom</strong> — Inspirational, age-positivity, "70 is the new 30"</p>
+    </div>
+  </div>
+
+  <div class="g2">
+    <div class="card">
+      <div class="card-head"><h3>🎬 First 30 Days — Reel Ideas</h3></div>
+      <div class="card-body" style="font-size:12px;line-height:2.2">
+        <p>🎬 <strong>Reel 1:</strong> "My 70-year-old Amma just started a business. Here's what happened..." (intro hook)</p>
+        <p>🎬 <strong>Reel 2:</strong> Amma unboxing the Chennai purchase — genuine reactions to each piece</p>
+        <p>🎬 <strong>Reel 3:</strong> "Teaching Amma to take product photos" — funny BTS</p>
+        <p>🎬 <strong>Reel 4:</strong> Amma styling pieces on white saree — "How Amma Would Wear It"</p>
+        <p>🎬 <strong>Reel 5:</strong> "First order packed!" — emotional milestone moment</p>
+        <p>🎬 <strong>Reel 6:</strong> Amma reads the first customer review — genuine reaction</p>
+        <p>🎬 <strong>Reel 7:</strong> "70 but make it fashion" — trendy jewelry + Kerala kasavu saree</p>
+        <p>🎬 <strong>Reel 8:</strong> Amma & Ramani Aunty debating which necklace is prettier — comedy gold</p>
+        <p style="margin-top:8px;font-weight:600;color:var(--teal)">💡 Use Swarasaakhi for audio quality — make reels sound cinematic, not phone-recorded</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-head"><h3>📣 Advertising Strategy</h3></div>
+      <div class="card-body" style="font-size:12px;line-height:2.2">
+        <h4 style="font-size:12px;color:var(--teal);margin-bottom:6px">Phase 1 — Instagram/FB Ads (Month 2–3)</h4>
+        <p>• Budget: ₹200/day (₹6,000/month)</p>
+        <p>• Target: Women 22–55, Kerala + Tamil Nadu + Karnataka</p>
+        <p>• Interests: Jewelry, sarees, temples, weddings, gold</p>
+        <p>• Creative: Use best-performing organic reels as ads</p>
+
+        <h4 style="font-size:12px;color:var(--gold);margin-bottom:6px;margin-top:12px">Phase 2 — Google Shopping (Month 3–4)</h4>
+        <p>• Budget: ₹100/day (₹3,000/month)</p>
+        <p>• Product listing ads showing images + prices directly in Google</p>
+        <p>• Target keywords: "temple necklace online", "choker Kerala", "imitation jewelry"</p>
+
+        <h4 style="font-size:12px;color:var(--purple);margin-bottom:6px;margin-top:12px">Phase 3 — Influencer Seeding (Month 4–5)</h4>
+        <p>• Send free products to 10–15 micro-influencers (10K–50K followers)</p>
+        <p>• Focus: Kerala fashion creators, saree stylists, bridal content makers</p>
+        <p>• ROI: 1 viral influencer post = 200–500 followers + 10–30 orders</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><h3>🔧 Platform Setup Checklist</h3></div>
+    <div class="card-body">
+      <div class="g3">
+        <div>
+          <h4 style="font-size:12px;color:var(--teal);margin-bottom:6px">Instagram</h4>
+          <div class="check" onclick="this.querySelector('span')?.classList.toggle('done')">
+            <p><span></span> Business account setup</p>
+            <p><span></span> Bio: "70 Years Young 🌺 Temple Jewelry curated by Amma | Ship all India"</p>
+            <p><span></span> Link in bio → 70yy.in</p>
+            <p><span></span> Highlight covers: Products, Amma, Reviews, Behind Scenes</p>
+            <p><span></span> Shopping catalog connected</p>
+            <p><span></span> First 9 grid posts planned</p>
+          </div>
+        </div>
+        <div>
+          <h4 style="font-size:12px;color:#3b5998;margin-bottom:6px">Facebook</h4>
+          <div class="check">
+            <p><span></span> Business page created</p>
+            <p><span></span> Shop section enabled</p>
+            <p><span></span> Join Kerala jewelry groups</p>
+            <p><span></span> FB Marketplace listings</p>
+            <p><span></span> Meta Ads Manager setup</p>
+            <p><span></span> Pixel installed on website</p>
+          </div>
+        </div>
+        <div>
+          <h4 style="font-size:12px;color:#25D366;margin-bottom:6px">WhatsApp Business</h4>
+          <div class="check">
+            <p><span></span> Business profile complete</p>
+            <p><span></span> Catalog with all products</p>
+            <p><span></span> Auto-reply messages</p>
+            <p><span></span> Broadcast lists (segments)</p>
+            <p><span></span> Quick replies for FAQs</p>
+            <p><span></span> Order confirmation templates</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== PANEL 3: PERSONAS ===== -->
+<div class="panel" id="p3">
+  <div class="sec-title">👥 Buyer Personas</div>
+
+  <div class="persona">
+    <div class="persona-av">👩‍💼</div>
+    <div class="persona-info">
+      <div class="ptag">Primary — 45% of Revenue</div>
+      <h4>Meera — The Kerala IT Professional</h4>
+      <p><strong>Age:</strong> 26–38 · <strong>Location:</strong> Kochi / Trivandrum / Bangalore · <strong>Income:</strong> ₹8–25 LPA</p>
+      <p>Works in IT/tech. Wears traditional for office Fridays, festivals, family functions. Shops online 80% of the time. Active on Instagram. Values quality + convenience over rock-bottom pricing. Gold is too expensive — wants "gold look" without gold prices. Tired of generic Amazon jewelry.</p>
+      <p><strong>Buys:</strong> Chokers (₹699–999), Temple Necklaces (₹799–1,499), Jhumkas (₹449–699). <strong>AOV:</strong> ₹1,200</p>
+      <p><strong>Reach:</strong> Instagram Reels, FB targeted ads (IT companies, Kochi/TVM/BLR), Google Shopping</p>
+      <p><strong>Website:</strong> Clean mobile UX, quick checkout, good product photos, size comparisons</p>
+    </div>
+  </div>
+
+  <div class="persona">
+    <div class="persona-av" style="background:linear-gradient(135deg,var(--rose),#e8a0a0)">👰</div>
+    <div class="persona-info">
+      <div class="ptag" style="color:var(--rose)">High-Value — 25% of Revenue</div>
+      <h4>Lakshmi — The Budget Bride</h4>
+      <p><strong>Age:</strong> 22–32 · <strong>Location:</strong> Kerala, Tamil Nadu, Karnataka · <strong>Income:</strong> Family-funded wedding</p>
+      <p>Getting married. Needs multiple jewelry sets for different ceremonies (muhurtham, reception, engagement). Gold is ₹11,000+/gram — she needs affordable alternatives for secondary sets. Needs pieces that look premium in wedding photos.</p>
+      <p><strong>Buys:</strong> Bridal sets (₹1,999–2,999), Harams (₹1,499–2,499), multiple necklaces. <strong>AOV:</strong> ₹4,500–8,000</p>
+      <p><strong>Reach:</strong> Wedding planning FB groups, bridal Instagram pages, YouTube wedding videos, Pinterest boards</p>
+      <p><strong>Website:</strong> "Bridal Collection" section, combo deals, wedding planning guide, real wedding photos</p>
+    </div>
+  </div>
+
+  <div class="persona">
+    <div class="persona-av" style="background:linear-gradient(135deg,var(--purple),#9b7dbd)">👩‍🏫</div>
+    <div class="persona-info">
+      <div class="ptag" style="color:var(--purple)">Volume — 20% of Revenue</div>
+      <h4>Devi — The Festival & Temple Goer</h4>
+      <p><strong>Age:</strong> 35–55 · <strong>Location:</strong> Kerala, Tamil Nadu · <strong>Income:</strong> ₹3–8 LPA</p>
+      <p>Traditional, religious. Visits temples regularly. Celebrates every festival with new clothes + jewelry. Buys for self + daughters/granddaughters. Watches Facebook videos. WhatsApp-first shopper. Worried about online fraud — needs strong trust signals.</p>
+      <p><strong>Buys:</strong> Kasumala (₹899–1,299), Temple necklaces (₹599–999), Palakka (₹699). <strong>AOV:</strong> ₹800–1,200</p>
+      <p><strong>Reach:</strong> Facebook (she's 90% FB), WhatsApp catalog, YouTube reviews</p>
+      <p><strong>Website:</strong> COD option critical, simple navigation, Malayalam support, Amma's face = instant trust</p>
+    </div>
+  </div>
+
+  <div class="persona">
+    <div class="persona-av" style="background:linear-gradient(135deg,#e67e22,#f4c794)">💃</div>
+    <div class="persona-info">
+      <div class="ptag" style="color:#e67e22">Growth — 10% (Rising Fast)</div>
+      <h4>Priya — The Gen-Z Collector</h4>
+      <p><strong>Age:</strong> 18–25 · <strong>Location:</strong> Pan-India, NRI diaspora · <strong>Income:</strong> Student / early career</p>
+      <p>Loves "desi aesthetic" trend. Pairs temple jewelry with jeans + crop tops. Instagram-native. Influenced by creators. Values brand story and aesthetics. The grandmother brand story will be her absolute FAVORITE thing on the internet.</p>
+      <p><strong>Buys:</strong> Statement jhumkas (₹399–599), Mini chokers (₹499–699), Layered chains. <strong>AOV:</strong> ₹600–900</p>
+      <p><strong>Reach:</strong> Instagram Reels (grandmother story!), influencer collabs, Threads, Pinterest style boards</p>
+      <p><strong>Website:</strong> "Under ₹699" section, trend-driven collections, Instagram-worthy packaging</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== PANEL 4: GROWTH PLAN ===== -->
+<div class="panel" id="p4">
+  <div class="sec-title">📈 12-Month Growth Roadmap</div>
+
+  <div class="phase" style="background:var(--teal-light);border-color:var(--teal)">
+    <h3 style="color:var(--teal)">🌱 Phase 1: Foundation — Month 1–2 (Apr–May 2026)</h3>
+    <p>☐ Register domain 70yy.in + 70yyoung.com<br>
+    ☐ GST registration (Rohini's proprietorship)<br>
+    ☐ MSME/Udyam registration<br>
+    ☐ Product photography — ALL 61 items. Natural light + cream fabric backdrop. Flat lay + model shots with Prasanna Amma<br>
+    ☐ Build ecom website (Misc Archive IT — Akhil)<br>
+    ☐ Instagram + Facebook business pages setup<br>
+    ☐ Record 10 launch reels featuring Prasanna Amma & Ramani Aunty<br>
+    ☐ Razorpay + Shiprocket integration<br>
+    ☐ WhatsApp Business catalog</p>
+    <div class="target">
+      <strong>Target:</strong> Website live, 500 Instagram followers, first 5 orders<br>
+      <strong>Budget:</strong> ₹5,000 (domain + hosting + packaging)
+    </div>
+  </div>
+
+  <div class="phase" style="background:var(--gold-light);border-color:var(--gold)">
+    <h3 style="color:#8a6d1b">🚀 Phase 2: Traction — Month 3–4 (Jun–Jul 2026)</h3>
+    <p>☐ First Instagram ad campaign: ₹200/day (₹12K/month)<br>
+    ☐ Target: Kerala women 22–55, interests: jewelry, sarees, temples, weddings<br>
+    ☐ Second Chennai purchase trip — ₹25–30K (WITH GST bills!)<br>
+    ☐ Add bangles, bridal sets, more kids range<br>
+    ☐ Launch "Amma's Choice" weekly feature<br>
+    ☐ Start Google Shopping ads (₹100/day)<br>
+    ☐ Cross 2,000 Instagram followers</p>
+    <div class="target">
+      <strong>Target:</strong> ₹30K–50K revenue, 2,000 followers, 30–50 orders<br>
+      <strong>Budget:</strong> ₹15K (ads) + ₹30K (inventory) = ₹45,000
+    </div>
+  </div>
+
+  <div class="phase" style="background:var(--rose-light);border-color:var(--rose)">
+    <h3 style="color:var(--rose)">🔥 Phase 3: Scale — Month 5–8 (Aug–Nov 2026) — FESTIVAL SEASON!</h3>
+    <p>☐ THIS IS THE GOLDMINE — Onam → Navratri → Dussehra → Diwali<br>
+    ☐ Stock up BEFORE Onam (August) — ₹50–75K inventory purchase<br>
+    ☐ Onam collection: Kerala-specific Kasavu + Palakka themed marketing<br>
+    ☐ Double ad spend: ₹500/day across Insta + FB + Google<br>
+    ☐ Launch on Amazon/Flipkart marketplace (additional channel)<br>
+    ☐ Influencer collabs — free products to 10–15 micro-influencers (10K–50K followers)<br>
+    ☐ Launch bridal collection for wedding season<br>
+    ☐ Target: 100–200 orders/month by Diwali</p>
+    <div class="target">
+      <strong>Target:</strong> ₹2–3L revenue, 5,000+ followers, dominant in Kerala temple jewelry search<br>
+      <strong>Budget:</strong> ₹30K/month (ads) + ₹75K (inventory) = ₹1,95,000
+    </div>
+  </div>
+
+  <div class="phase" style="background:var(--purple-light);border-color:var(--purple)">
+    <h3 style="color:var(--purple)">👑 Phase 4: Dominate — Month 9–12 (Dec 2026 – Mar 2027)</h3>
+    <p>☐ Launch Kanchipuram Silk vertical (second category, same website)<br>
+    ☐ Build email marketing list — 2,000+ subscribers<br>
+    ☐ Launch "70YY Club" loyalty program with repeat customer rewards<br>
+    ☐ Explore wholesale/B2B to Kerala boutiques and NRI stores<br>
+    ☐ Evaluate upgrading to Pvt Ltd under Misc Archive<br>
+    ☐ NRI market — US/Gulf Kerala diaspora (HUGE untapped)<br>
+    ☐ Hire a part-time social media manager</p>
+    <div class="target">
+      <strong>Year 1 Total:</strong> ₹5–8L revenue, 10,000+ followers, 500+ orders, recognized brand in Kerala temple jewelry<br>
+      <strong>Stretch Goal:</strong> ₹10L if festival season performs well
+    </div>
+  </div>
+</div>
+
+<!-- ===== PANEL 5: BRAND ===== -->
+<div class="panel" id="p5">
+  <div class="sec-title">🏷️ Brand Identity</div>
+
+  <div class="card" style="background:linear-gradient(135deg,var(--cream),#fff);border:2px solid var(--gold);text-align:center;padding:32px">
+    <div style="font-family:'Playfair Display',serif;font-size:56px;font-weight:800;color:var(--gold)">70YY</div>
+    <div style="font-size:13px;letter-spacing:4px;text-transform:uppercase;color:#999;margin-top:2px">70 Years Young</div>
+    <div style="font-size:16px;font-style:italic;color:var(--ink);margin-top:16px;font-family:'Playfair Display',serif">"Age is just a number. Style is forever."</div>
+  </div>
+
+  <div class="g2">
+    <div class="card">
+      <div class="card-head"><h3>🎨 Brand Voice & Tone</h3></div>
+      <div class="card-body" style="font-size:12px;line-height:2.2">
+        <p><strong>Voice:</strong> Warm, authentic — grandmother's wisdom meets modern ambition</p>
+        <p><strong>Tone:</strong> Loving but ambitious. Traditional yet bold. Funny but wise.</p>
+        <p><strong>Language:</strong> Mix of Malayalam touches + English. "Amma says...", "As Ammamma would put it..."</p>
+        <p><strong>Never:</strong> Corporate jargon. Fake urgency. Aggressive discounting language.</p>
+        <p><strong>Always:</strong> Personal. Story-driven. Celebratory of age and tradition.</p>
+        <div class="tagline" style="margin-top:10px">"Every piece in our collection is hand-picked by our 70-year-old founders. If it doesn't pass the Amma test, it doesn't make it to your cart."</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-head"><h3>🎨 Visual Identity</h3></div>
+      <div class="card-body" style="font-size:12px;line-height:2.2">
+        <p><strong>Primary:</strong> <span class="swatch" style="background:#c9a84c"></span> Temple Gold + <span class="swatch" style="background:#1a1a1a"></span> Rich Black</p>
+        <p><strong>Secondary:</strong> <span class="swatch" style="background:#faf7f2;border:1px solid #ddd"></span> Warm Cream + <span class="swatch" style="background:#c45b5b"></span> Ruby Red</p>
+        <p><strong>Accent:</strong> <span class="swatch" style="background:#2a7a6e"></span> Temple Teal</p>
+        <p><strong>Fonts:</strong> Playfair Display (headings) + DM Sans (body)</p>
+        <p><strong>Photography:</strong> Warm tones, natural light, saree drapes as backgrounds. Amma/Aunty in every 3rd post.</p>
+        <p><strong>Packaging:</strong> Cream box + gold foil "70YY" stamp. Handwritten note from "Amma" in each order.</p>
+        <p><strong>Unboxing:</strong> Include: product + handwritten note + backchain (free) + small card with QR to Insta</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><h3>✨ Marketing Taglines</h3></div>
+    <div class="card-body">
+      <div class="tagline">"70 and thriving. Just like our jewelry."</div>
+      <div class="tagline">"Hand-picked by Amma. Loved by you."</div>
+      <div class="tagline">"Age-old wisdom. New-age business."</div>
+      <div class="tagline">"From our family's treasure chest to yours."</div>
+      <div class="tagline">"Where every piece has a grandmother's blessing."</div>
+      <div class="tagline">"Temple jewelry, tested by time. Curated by love."</div>
+      <div class="tagline">"Amma's taste. Your style. Forever young."</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><h3>📋 Brand Story — For Website "About Us"</h3></div>
+    <div class="card-body" style="font-size:13px;line-height:1.9;max-width:700px">
+      <p>In a small house in Kerala, two sisters — Prasanna (70) and Ramani (70) — grew up surrounded by the shimmer of temple jewelry. For decades, they selected pieces for their daughters' weddings, their granddaughters' birthdays, their own temple visits.</p>
+      <p style="margin-top:10px">One day, their daughter Rohini asked them a question: <em>"Amma, what if you started your own business?"</em></p>
+      <p style="margin-top:10px">They laughed. They're 70! What do they know about the internet? About "e-commerce"? About "Instagram"?</p>
+      <p style="margin-top:10px">But then they thought — <strong>who better to pick jewelry than two women who've been wearing it for half a century?</strong></p>
+      <p style="margin-top:10px">And so, <strong>70YY — 70 Years Young</strong> was born. Every piece you find here has been hand-picked in the wholesale markets of Chennai by Prasanna Amma and Ramani Aunty themselves. If it doesn't pass the Amma test — the touch, the weight, the way it catches light against a white saree — it doesn't make it to our store.</p>
+      <p style="margin-top:10px;font-weight:600;color:var(--teal)">We're proof that dreams don't have an expiry date. Welcome to our family.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ===== PANEL 6: INVENTORY CATALOG ===== -->
+<div class="panel" id="p6">
+
+  <!-- KPI bar -->
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px">
+    <div style="background:var(--teal-light);border:1px solid var(--teal);border-radius:10px;padding:16px;text-align:center">
+      <div style="font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:var(--teal)" id="kpiSkus">62</div>
+      <div style="font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#666;margin-top:4px">Total SKUs</div>
+    </div>
+    <div style="background:var(--gold-light);border:1px solid var(--gold);border-radius:10px;padding:16px;text-align:center">
+      <div style="font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:var(--gold)" id="kpiUnits">196</div>
+      <div style="font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#666;margin-top:4px">Total Units</div>
+    </div>
+    <div style="background:var(--rose-light);border:1px solid var(--rose);border-radius:10px;padding:16px;text-align:center">
+      <div style="font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:var(--rose)" id="kpiMRP">—</div>
+      <div style="font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#666;margin-top:4px">Total MRP Value</div>
+    </div>
+    <div style="background:var(--purple-light);border:1px solid var(--purple);border-radius:10px;padding:16px;text-align:center">
+      <div style="font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:var(--purple)" id="kpiSingles">—</div>
+      <div style="font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#666;margin-top:4px">★ Limited Singles</div>
+    </div>
+  </div>
+
+  <!-- Tip banner -->
+  <div style="background:linear-gradient(135deg,#1a1a1a,#2d2418);color:#fff;border-radius:10px;padding:12px 16px;margin-bottom:14px;font-size:12px;display:flex;align-items:center;gap:10px">
+    <span style="font-size:18px">💡</span>
+    <span><strong style="color:var(--gold)">Website Pricing Strategy:</strong> Show a higher <s style="color:#f87171">Slashed Price</s> alongside the lower <strong style="color:#4ade80">Offer Price</strong> — this is standard e-commerce practice (Shrishti, Daivik, Sullie all do this). Click any price cell to edit it directly.</span>
+  </div>
+
+  <!-- Main catalog card -->
+  <div class="card">
+    <div class="card-head" style="flex-wrap:wrap;gap:8px">
+      <h3>🏷️ Product Catalog — 62 SKUs (Share with Dev Team)</h3>
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+        <input type="text" id="catSearch" placeholder="🔍 Search name / SKU..." oninput="filterCat()"
+          style="padding:6px 12px;border:1px solid var(--border);border-radius:6px;font-size:12px;font-family:'DM Sans',sans-serif;width:180px">
+        <select id="catCatFilter" onchange="filterCat()"
+          style="padding:6px 12px;border:1px solid var(--border);border-radius:6px;font-size:12px;font-family:'DM Sans',sans-serif;cursor:pointer">
+          <option value="">All Categories</option>
+          <option value="necklace">Necklace</option>
+          <option value="choker">Choker</option>
+          <option value="jhumka">Jhumka</option>
+          <option value="haram">Haram</option>
+          <option value="pendant">Pendant</option>
+          <option value="chain">Chain</option>
+          <option value="other">Other</option>
+        </select>
+        <span style="font-size:11px;color:#999" id="catCount"></span>
+        <button onclick="exportCatalogCSV()" style="padding:5px 12px;background:var(--teal);color:#fff;border:none;border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif">📄 Export CSV</button>
+      </div>
+    </div>
+    <div style="padding:10px 16px;background:#fffdf5;border-bottom:1px solid var(--border);font-size:11px;color:#888">
+      ✏️ <strong>To edit any price:</strong> Click the price cell → type new value → press Enter or click away to save. Changes auto-update the preview.
+    </div>
+    <div style="overflow:auto;max-height:620px">
+      <table style="width:100%;border-collapse:collapse;font-size:12px;table-layout:fixed;min-width:760px">
+        <thead>
+          <tr style="background:var(--cream);position:sticky;top:0;z-index:2">
+            <th style="width:110px;padding:10px 12px;text-align:left;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:#666;border-bottom:2px solid var(--border)">SKU Code</th>
+            <th style="width:auto;padding:10px 12px;text-align:left;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:#666;border-bottom:2px solid var(--border)">Product Name</th>
+            <th style="width:78px;padding:10px 12px;text-align:center;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:#666;border-bottom:2px solid var(--border)">Category</th>
+            <th style="width:40px;padding:10px 12px;text-align:center;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:#666;border-bottom:2px solid var(--border)">Qty</th>
+            <th style="width:100px;padding:10px 12px;text-align:right;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:#c45b5b;border-bottom:2px solid var(--border)">Slashed Price</th>
+            <th style="width:100px;padding:10px 12px;text-align:right;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:#2a7a6e;border-bottom:2px solid var(--border)">Offer Price</th>
+            <th style="width:140px;padding:10px 12px;text-align:center;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:#555;border-bottom:2px solid var(--border)">Website Preview</th>
+            <th style="width:62px;padding:10px 12px;text-align:center;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:#555;border-bottom:2px solid var(--border)">Demand</th>
+          </tr>
+        </thead>
+        <tbody id="catBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Category summary -->
+  <div class="card">
+    <div class="card-head"><h3>📊 Inventory by Category</h3></div>
+    <div class="card-body" id="catSummaryBox"></div>
+  </div>
+
+</div>
+
+  </div><!-- end content -->
+</div><!-- end main -->
+
+<script>
+function showPanel(i){
+  document.querySelectorAll('.panel').forEach((p,j)=>p.classList.toggle('active',j===i));
+  document.querySelectorAll('.sb-item').forEach((s,j)=>s.classList.toggle('active',j===i));
+  const t=['📋 Business Registration','🎯 Strategy & Positioning','📱 Digital Marketing','👥 Buyer Personas','📈 Growth Roadmap','🏷️ Brand Identity','📦 Product Inventory'];
+  document.getElementById('pageTitle').textContent=t[i]||'';
+}
+// Interactive checklist
+document.querySelectorAll('.check p').forEach(p=>{
+  p.style.cursor='pointer';
+  p.addEventListener('click',()=>{
+    const s=p.querySelector('span');
+    if(s)s.classList.toggle('done');
+  });
+});
+
+// ===== INVENTORY CATALOG DATA =====
+const CATALOG=[
+{id:1,sku:"70YY0001",name:"Kasu Mala (2nd Quality)",cat:"necklace",qty:2,offer:950,slashed:1349,demand:"medium"},
+{id:2,sku:"70YY0002",name:"Long Stone Kasumala",cat:"necklace",qty:2,offer:1199,slashed:1699,demand:"high"},
+{id:3,sku:"70YY0003",name:"Long Beaded Jhumka",cat:"jhumka",qty:2,offer:849,slashed:1199,demand:"high"},
+{id:4,sku:"70YY0004",name:"Simple Flower R&G",cat:"pendant",qty:3,offer:499,slashed:699,demand:"medium"},
+{id:5,sku:"70YY0005",name:"Peacock + Pendant Design",cat:"necklace",qty:3,offer:1299,slashed:1799,demand:"high"},
+{id:6,sku:"70YY0006",name:"Guttapusalu Style Necklace",cat:"necklace",qty:3,offer:1199,slashed:1699,demand:"high"},
+{id:7,sku:"70YY0007",name:"4 Manga + Pendant",cat:"necklace",qty:3,offer:699,slashed:999,demand:"medium"},
+{id:8,sku:"70YY0008",name:"Stone Round Design",cat:"pendant",qty:3,offer:599,slashed:849,demand:"medium"},
+{id:9,sku:"70YY0009",name:"Gar Chain Jhumka",cat:"jhumka",qty:3,offer:1279,slashed:1799,demand:"high"},
+{id:10,sku:"70YY0010",name:"Long Beaded Jhumka (B)",cat:"jhumka",qty:2,offer:849,slashed:1199,demand:"high"},
+{id:11,sku:"70YY0011",name:"Jhumka Stone",cat:"jhumka",qty:2,offer:649,slashed:899,demand:"high"},
+{id:12,sku:"70YY0012",name:"Full Stone Big Flower Pendant",cat:"pendant",qty:3,offer:1099,slashed:1549,demand:"high"},
+{id:13,sku:"70YY0013",name:"Choker Single Stone WGR",cat:"choker",qty:3,offer:399,slashed:599,demand:"high"},
+{id:14,sku:"70YY0014",name:"Ruby Attigai",cat:"choker",qty:3,offer:499,slashed:699,demand:"high"},
+{id:15,sku:"70YY0015",name:"Ruby Pearl Pendant Chain",cat:"chain",qty:2,offer:649,slashed:899,demand:"medium"},
+{id:16,sku:"70YY0016",name:"Jhumka Gold Style",cat:"jhumka",qty:5,offer:749,slashed:1049,demand:"high"},
+{id:17,sku:"70YY0017",name:"Layer Jhumka",cat:"jhumka",qty:5,offer:549,slashed:799,demand:"high"},
+{id:18,sku:"70YY0018",name:"Simple Multiple-Flower Pendant",cat:"pendant",qty:5,offer:579,slashed:799,demand:"medium"},
+{id:19,sku:"70YY0019",name:"Guttapusalu Style",cat:"necklace",qty:3,offer:1099,slashed:1549,demand:"high"},
+{id:20,sku:"70YY0020",name:"White Flower Stone",cat:"necklace",qty:5,offer:899,slashed:1249,demand:"medium"},
+{id:21,sku:"70YY0021",name:"Lotus Choker",cat:"choker",qty:3,offer:749,slashed:1049,demand:"high"},
+{id:22,sku:"70YY0022",name:"Simple Flower W+R Stone",cat:"necklace",qty:7,offer:449,slashed:649,demand:"medium"},
+{id:23,sku:"70YY0023",name:"Single Pendant Square R&P",cat:"pendant",qty:3,offer:749,slashed:1049,demand:"medium"},
+{id:24,sku:"70YY0024",name:"White Stone Square",cat:"necklace",qty:3,offer:649,slashed:899,demand:"medium"},
+{id:25,sku:"70YY0025",name:"Small Flower Ruby Single P",cat:"pendant",qty:5,offer:399,slashed:599,demand:"low"},
+{id:26,sku:"70YY0026",name:"Ruby Choker",cat:"choker",qty:3,offer:1099,slashed:1549,demand:"high"},
+{id:27,sku:"70YY0027",name:"Green Red Pendant",cat:"pendant",qty:2,offer:649,slashed:899,demand:"medium"},
+{id:28,sku:"70YY0028",name:"Kids Elephant Chain",cat:"chain",qty:3,offer:349,slashed:499,demand:"medium"},
+{id:29,sku:"70YY0029",name:"Flower Necklace",cat:"necklace",qty:3,offer:749,slashed:1049,demand:"medium"},
+{id:30,sku:"70YY0030",name:"X-mas Type Necklace",cat:"necklace",qty:3,offer:799,slashed:1149,demand:"low"},
+{id:31,sku:"70YY0031",name:"Small Stone Pearl",cat:"necklace",qty:7,offer:1099,slashed:1549,demand:"high"},
+{id:32,sku:"70YY0032",name:"Ruby Green Stone Big Pearl+",cat:"necklace",qty:4,offer:799,slashed:1149,demand:"high"},
+{id:33,sku:"70YY0033",name:"Palakka Pendant G&R",cat:"pendant",qty:10,offer:599,slashed:849,demand:"high"},
+{id:34,sku:"70YY0034",name:"Small Green Flowers",cat:"pendant",qty:3,offer:599,slashed:849,demand:"medium"},
+{id:35,sku:"70YY0035",name:"Lekshmi Pendant Gold GR Mix",cat:"pendant",qty:3,offer:449,slashed:649,demand:"medium"},
+{id:36,sku:"70YY0036",name:"Moon Type Necklace",cat:"necklace",qty:5,offer:599,slashed:849,demand:"medium"},
+{id:37,sku:"70YY0037",name:"Small Neckpiece R&G Pearl",cat:"necklace",qty:3,offer:499,slashed:699,demand:"medium"},
+{id:38,sku:"70YY0038",name:"Oval Simple Necklace",cat:"necklace",qty:3,offer:549,slashed:799,demand:"medium"},
+{id:39,sku:"70YY0039",name:"Thathakkoodu",cat:"other",qty:15,offer:299,slashed:449,demand:"high"},
+{id:40,sku:"70YY0040",name:"3 Cut Piece Necklace",cat:"necklace",qty:3,offer:649,slashed:899,demand:"medium"},
+{id:41,sku:"70YY0041",name:"Kasu with Manga",cat:"necklace",qty:3,offer:1049,slashed:1449,demand:"high"},
+{id:42,sku:"70YY0042",name:"Simple Necklace Flower",cat:"necklace",qty:5,offer:849,slashed:1199,demand:"medium"},
+{id:43,sku:"70YY0043",name:"Beaded Jhumka W,R,G ★",cat:"jhumka",qty:1,offer:849,slashed:1199,demand:"high"},
+{id:44,sku:"70YY0044",name:"Kammal ★",cat:"jhumka",qty:1,offer:399,slashed:599,demand:"medium"},
+{id:45,sku:"70YY0045",name:"Single Line ★",cat:"chain",qty:1,offer:649,slashed:899,demand:"medium"},
+{id:46,sku:"70YY0046",name:"Jhumka ★",cat:"jhumka",qty:1,offer:749,slashed:1049,demand:"high"},
+{id:47,sku:"70YY0047",name:"Kasu with Pendant ★",cat:"necklace",qty:1,offer:2199,slashed:3049,demand:"high"},
+{id:48,sku:"70YY0048",name:"Devi Haram ★",cat:"haram",qty:1,offer:1650,slashed:2299,demand:"high"},
+{id:49,sku:"70YY0049",name:"Gutta Pusalu Style ★",cat:"necklace",qty:1,offer:989,slashed:1399,demand:"high"},
+{id:50,sku:"70YY0050",name:"Choker (Stone) ★",cat:"choker",qty:1,offer:2100,slashed:2899,demand:"high"},
+{id:51,sku:"70YY0051",name:"Hand Painted Haram ★",cat:"haram",qty:1,offer:1449,slashed:1999,demand:"high"},
+{id:52,sku:"70YY0052",name:"Green Haram (All Deities) ★",cat:"haram",qty:1,offer:2699,slashed:3749,demand:"high"},
+{id:53,sku:"70YY0053",name:"Kasumala (2nd Quality) ★",cat:"necklace",qty:1,offer:699,slashed:999,demand:"medium"},
+{id:54,sku:"70YY0054",name:"Jyothika Inspired ★",cat:"necklace",qty:1,offer:2299,slashed:3199,demand:"high"},
+{id:55,sku:"70YY0055",name:"Lekshmi Small Pendant ★",cat:"pendant",qty:1,offer:789,slashed:1099,demand:"medium"},
+{id:56,sku:"70YY0056",name:"Elephant Necklace ★",cat:"necklace",qty:1,offer:769,slashed:1099,demand:"medium"},
+{id:57,sku:"70YY0057",name:"Lekshmi Pendant Big ★",cat:"pendant",qty:1,offer:899,slashed:1249,demand:"medium"},
+{id:58,sku:"70YY0058",name:"Venkata Style ★",cat:"necklace",qty:1,offer:1599,slashed:2249,demand:"high"},
+{id:59,sku:"70YY0059",name:"Rashmika Wedding ★",cat:"necklace",qty:1,offer:1699,slashed:2349,demand:"high"},
+{id:60,sku:"70YY0060",name:"Ruby Stone Square ★",cat:"necklace",qty:1,offer:899,slashed:1249,demand:"medium"},
+{id:61,sku:"70YY0061",name:"Small Ruby Pendant ★",cat:"pendant",qty:1,offer:489,slashed:699,demand:"medium"},
+{id:62,sku:"70YY0062",name:"Backchains (bundle)",cat:"other",qty:50,offer:0,slashed:0,demand:"low"}
+];
+
+
+const CAT_COLORS={
+  necklace:'background:#f0e6c8;color:#8a6d1b',
+  jhumka:'background:#fce8e8;color:#c45b5b',
+  choker:'background:#e0f0ed;color:#2a7a6e',
+  pendant:'background:#f3e8ff;color:#6b4c8a',
+  haram:'background:#fff3e0;color:#e67e22',
+  chain:'background:#e3f2fd;color:#1565c0',
+  other:'background:#eee;color:#666'
+};
+const DEM_COLORS={
+  high:'background:#e8f5e9;color:#2e7d32',
+  medium:'background:#f0e6c8;color:#8a6d1b',
+  low:'background:#fce8e8;color:#c45b5b'
+};
+
+// Make CATALOG mutable (prices editable)
+let catalog = CATALOG.map(i=>({...i}));
+
+// ─── Filter ─────────────────────────────────────────────────────────────────
+function filterCat(){
+  const q=(document.getElementById('catSearch')?.value||'').toLowerCase();
+  const cat=document.getElementById('catCatFilter')?.value||'';
+  const list=catalog.filter(i=>{
+    if(q&&!i.name.toLowerCase().includes(q)&&!i.sku.toLowerCase().includes(q))return false;
+    if(cat&&i.cat!==cat)return false;
+    return true;
+  });
+  renderCat(list);
+}
+
+// ─── Editable price cell ─────────────────────────────────────────────────────
+function makeEditable(cell, id, field, prefix){
+  const item = catalog.find(i=>i.id===id);
+  if(!item) return;
+  const current = item[field];
+  cell.innerHTML = `<input type="number" value="${current}"
+    style="width:80px;padding:3px 6px;border:2px solid var(--teal);border-radius:5px;
+    font-size:13px;font-weight:700;font-family:'DM Sans',sans-serif;text-align:right;
+    background:#f0fdf4;color:var(--ink);outline:none"
+    onblur="savePrice(this,${id},'${field}')"
+    onkeydown="if(event.key==='Enter')this.blur()"
+    onclick="event.stopPropagation()" autofocus>`;
+  cell.querySelector('input').select();
+}
+
+function savePrice(input, id, field){
+  const val = parseInt(input.value)||0;
+  const item = catalog.find(i=>i.id===id);
+  if(!item) return;
+  item[field] = val;
+  renderCat(); // re-render with current filter
+}
+
+// ─── Render catalog table ────────────────────────────────────────────────────
+function renderCat(list){
+  list = list || catalog;
+  const tb = document.getElementById('catBody');
+  if(!tb) return;
+
+  let html='', totalMRP=0, singles=0, totalUnits=0;
+  // Always update KPIs from full catalog
+  catalog.forEach(i=>{
+    totalUnits+=i.qty;
+    if(i.offer>0) totalMRP+=i.qty*i.offer;
+    if(i.qty===1&&i.offer>0) singles++;
+  });
+  const el=id=>document.getElementById(id);
+  if(el('kpiSkus')) el('kpiSkus').textContent=catalog.length;
+  if(el('kpiUnits')) el('kpiUnits').textContent=totalUnits;
+  if(el('kpiMRP')) el('kpiMRP').textContent='₹'+totalMRP.toLocaleString();
+  if(el('kpiSingles')) el('kpiSingles').textContent=singles;
+
+  list.forEach(i=>{
+    const bgRow = i.qty===1&&i.offer>0 ? 'background:rgba(201,168,76,0.04)' : '';
+    const qtyLabel = i.qty===1 ? `<span style="color:var(--rose);font-weight:700">1 ★</span>` : i.qty;
+
+    if(i.offer===0){
+      // Backchain / free item
+      html += `<tr>
+        <td style="padding:8px 12px;font-size:10px;font-weight:700;color:var(--teal);font-family:monospace;border-bottom:1px solid #f5f0e8">${i.sku}</td>
+        <td style="padding:8px 12px;font-size:12px;font-weight:500;border-bottom:1px solid #f5f0e8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis" title="${i.name}">${i.name}</td>
+        <td style="padding:8px 12px;text-align:center;border-bottom:1px solid #f5f0e8"><span style="padding:2px 8px;border-radius:10px;font-size:10px;font-weight:600;${CAT_COLORS[i.cat]||'background:#eee;color:#666'}">${i.cat}</span></td>
+        <td style="padding:8px 12px;text-align:center;border-bottom:1px solid #f5f0e8">${i.qty}</td>
+        <td colspan="2" style="padding:8px 12px;text-align:center;border-bottom:1px solid #f5f0e8;color:var(--gold);font-weight:700;font-size:12px">🎁 FREE GIFT</td>
+        <td style="padding:8px 12px;text-align:center;border-bottom:1px solid #f5f0e8;font-size:11px;color:#999">w/ orders ₹1,500+</td>
+        <td style="padding:8px 12px;text-align:center;border-bottom:1px solid #f5f0e8"><span style="padding:2px 8px;border-radius:10px;font-size:10px;font-weight:600;${DEM_COLORS[i.demand]}">${i.demand}</span></td>
+      </tr>`;
+      return;
+    }
+
+    const discount = i.slashed>0 ? Math.round((1-i.offer/i.slashed)*100) : 0;
+
+    html += `<tr style="${bgRow}" onmouseenter="this.style.background='rgba(201,168,76,0.05)'" onmouseleave="this.style.background='${i.qty===1&&i.offer>0?'rgba(201,168,76,0.04)':'transparent'}'">
+      <td style="padding:8px 12px;font-size:10px;font-weight:700;color:var(--teal);font-family:monospace;border-bottom:1px solid #f5f0e8;letter-spacing:0.5px">${i.sku}</td>
+      <td style="padding:8px 12px;font-size:12px;font-weight:500;border-bottom:1px solid #f5f0e8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis" title="${i.name}">${i.name}</td>
+      <td style="padding:8px 12px;text-align:center;border-bottom:1px solid #f5f0e8"><span style="padding:2px 8px;border-radius:10px;font-size:10px;font-weight:600;${CAT_COLORS[i.cat]||'background:#eee;color:#666'}">${i.cat}</span></td>
+      <td style="padding:8px 12px;text-align:center;border-bottom:1px solid #f5f0e8">${qtyLabel}</td>
+      <td style="padding:8px 12px;text-align:right;border-bottom:1px solid #f5f0e8;cursor:pointer"
+          title="Click to edit slashed price"
+          onclick="makeEditable(this,${i.id},'slashed','₹')">
+        <span style="color:#c45b5b;text-decoration:line-through;font-size:12px;font-weight:600">₹${i.slashed.toLocaleString()}</span>
+        <span style="font-size:9px;color:#aaa;display:block;margin-top:1px">✏️ click to edit</span>
+      </td>
+      <td style="padding:8px 12px;text-align:right;border-bottom:1px solid #f5f0e8;cursor:pointer"
+          title="Click to edit offer price"
+          onclick="makeEditable(this,${i.id},'offer','₹')">
+        <span style="color:var(--teal);font-size:14px;font-weight:700">₹${i.offer.toLocaleString()}</span>
+        <span style="font-size:9px;color:#aaa;display:block;margin-top:1px">✏️ click to edit</span>
+      </td>
+      <td style="padding:8px 12px;text-align:center;border-bottom:1px solid #f5f0e8">
+        <div style="display:inline-flex;align-items:center;gap:5px;background:#fff;border:1px solid var(--border);border-radius:6px;padding:4px 8px;white-space:nowrap">
+          <span style="color:#c45b5b;text-decoration:line-through;font-size:11px">₹${i.slashed.toLocaleString()}</span>
+          <span style="color:var(--teal);font-weight:700;font-size:13px">₹${i.offer.toLocaleString()}</span>
+          ${discount>0?`<span style="background:#e8f5e9;color:#2e7d32;font-size:9px;font-weight:700;padding:1px 5px;border-radius:10px">${discount}% off</span>`:''}
+        </div>
+      </td>
+      <td style="padding:8px 12px;text-align:center;border-bottom:1px solid #f5f0e8"><span style="padding:2px 8px;border-radius:10px;font-size:10px;font-weight:600;${DEM_COLORS[i.demand]}">${i.demand}</span></td>
+    </tr>`;
+  });
+
+  tb.innerHTML = html;
+
+  const cnt=document.getElementById('catCount');
+  if(cnt) cnt.textContent=`Showing ${list.length} of ${catalog.length} items`;
+
+  // Category summary
+  const cats={};
+  catalog.filter(i=>i.offer>0).forEach(i=>{
+    if(!cats[i.cat]) cats[i.cat]={skus:0,units:0,mrp:0};
+    cats[i.cat].skus++;cats[i.cat].units+=i.qty;cats[i.cat].mrp+=i.qty*i.offer;
+  });
+  const catC={necklace:'#c9a84c',jhumka:'#c45b5b',choker:'#2a7a6e',pendant:'#6b4c8a',haram:'#e67e22',chain:'#1565c0',other:'#888'};
+  let ch='<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:10px">';
+  Object.entries(cats).sort((a,b)=>b[1].mrp-a[1].mrp).forEach(([k,v])=>{
+    ch+=`<div style="border:1px solid var(--border);border-radius:8px;padding:12px;border-left:4px solid ${catC[k]||'#888'}">
+      <div style="font-weight:700;font-size:13px;text-transform:capitalize;color:${catC[k]||'#888'}">${k}</div>
+      <div style="font-size:11px;color:#888;margin-top:3px">${v.skus} SKUs · ${v.units} units</div>
+      <div style="font-size:15px;font-weight:700;color:var(--teal);margin-top:4px">₹${v.mrp.toLocaleString()}</div>
+    </div>`;
+  });
+  ch+='</div>';
+  const sb=document.getElementById('catSummaryBox');
+  if(sb) sb.innerHTML=ch;
+}
+
+// ─── CSV Export (no cost!) ────────────────────────────────────────────────────
+function exportCatalogCSV(){
+  let csv='SKU,Product Name,Category,Qty,Slashed Price,Offer Price,Discount%,Demand\n';
+  catalog.forEach(i=>{
+    const disc=i.slashed>0?Math.round((1-i.offer/i.slashed)*100):0;
+    const offer=i.offer===0?'FREE GIFT':i.offer;
+    const slashed=i.slashed===0?'—':i.slashed;
+    csv+=`${i.sku},"${i.name}",${i.cat},${i.qty},${slashed},${offer},${disc}%,${i.demand}\n`;
+  });
+  const blob=new Blob([csv],{type:'text/csv'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='70YY_product_catalog.csv';a.click();
+}
+
+// Init
+renderCat();
+
+
+</script>
+</body>
+</html>
