@@ -3,7 +3,7 @@ import AboutPoster from "@/components/containers/about/AboutPoster";
 import AboutCraft from "@/components/containers/about/AboutCraft";
 import AboutOverview from "@/components/containers/about/AboutOverview";
 import AboutTool from "@/components/containers/about/AboutTool";
-import OurTeam from "@/components/containers/about/OurTeam";
+import PremiumTeamSection from "@/components/containers/about/PremiumTeamSection";
 import Review from "@/components/containers/home-two/Review";
 import Footer from "@/components/layout/footer/Footer";
 import InitCustomCursor from "@/components/layout/InitCustomCursor";
@@ -35,7 +35,7 @@ const page = () => {
         <AboutPoster/>
         <CounterTwo/>
         <AboutCraft />
-        {/* <OurTeam /> */}
+        <PremiumTeamSection />
         <AboutOverview />
         <AboutTool />
         <Review />
